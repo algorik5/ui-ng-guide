@@ -1,7 +1,14 @@
 
 <nz-layout class="layout">
+
   <nz-header>
     <div class="logo"></div>
+
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <li nz-menu-item>nav 1</li>
+      <li nz-menu-item>nav 2</li>
+      <li nz-menu-item>nav 3</li>
+    </ul>
   </nz-header>
   <nz-layout>
     <nz-sider [nzWidth]="200" style="background:#fff">
@@ -21,6 +28,13 @@
             <span title><i nz-icon nzType="notification"></i>Page Header</span>
           </a>
         </li>
+
+        <li nz-menu-item routerLinkActive="ant-menu-item-selected">
+          <a title routerLink="test1">
+            <span title><i nz-icon nzType="notification"></i>Test1</span>
+          </a>
+        </li>
+        
       </ul>
     </nz-sider>
     <nz-layout style="padding:0 24px 24px">

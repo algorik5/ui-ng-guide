@@ -6,6 +6,9 @@ const routes: Routes = [
   { path: 'table', loadChildren: () => import('./table/table.module').then(m => m.TableModule) },
   { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
   { path: 'page-header', loadChildren: () => import('./page-header/page-header.module').then(m => m.PageHeaderModule) },
+
+  {path: 'test1',loadChildren: () => import('./test1/test1.module').then(m => m.Test1Module)},
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

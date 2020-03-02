@@ -48,9 +48,10 @@
               nz-icon
               nz-tooltip
               nzTitle="What do you want other to call you"
-              type="question-circle"
+              nzType="question-circle"
               theme="outline"
             ></i>
+            <!-- <i nz-icon nzType="question-circle" nzTheme="outline"></i> -->
           </span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
@@ -88,7 +89,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha" nzRequired>Captcha</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzExtra]="extraTpl">
           <div nz-row [nzGutter]="8">
             <div nz-col [nzSpan]="12">
               <input nz-input formControlName="captcha" id="captcha" />
@@ -100,7 +101,10 @@
           <nz-form-explain *ngIf="validateForm.get('captcha')?.dirty && validateForm.get('captcha')?.errors"
             >Please input the captcha you got!</nz-form-explain
           >
-          <nz-form-extra>We must make sure that your are a human.</nz-form-extra>
+          <!-- <nz-form-extra>We must make sure that your are a human.</nz-form-extra> -->
+          <ng-template #extraTpl>
+            We must make sure that your are a human.
+          </ng-template>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item nz-row style="margin-bottom:8px;">
