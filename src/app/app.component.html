@@ -5,38 +5,40 @@
     <div class="logo"></div>
 
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
-      <li nz-menu-item>nav 1</li>
-      <li nz-menu-item>nav 2</li>
-      <li nz-menu-item>nav 3</li>
+      <!-- <li nz-menu-item nzSelected>template</li> -->
+      <!-- <li nz-menu-item [nzSelected]="template_selected">nav 1</li>
+      <li nz-menu-item [nzSelected]="test1_selected">nav 2</li>
+      <li nz-menu-item >nav 3</li> -->
+      <li nz-menu-item (click)="setMenuType('main')" nzSelected>main</li>
+      <li nz-menu-item (click)="setMenuType('template')">template</li>
+      <li nz-menu-item (click)="setMenuType('test')">test</li>
     </ul>
   </nz-header>
   <nz-layout>
     <nz-sider [nzWidth]="200" style="background:#fff">
-      <ul nz-menu [nzMode]="'inline'" style="height:100%">
-        <li nz-menu-item routerLinkActive="ant-menu-item-selected">
-          <a title routerLink="table">
-            <span title><i nz-icon nzType="user"></i>Table</span>
-          </a>
-        </li>
-        <li nz-menu-item routerLinkActive="ant-menu-item-selected">
-          <a title routerLink="form">
-            <span title><i nz-icon nzType="laptop"></i>Form</span>
-          </a>
-        </li>
-        <li nz-menu-item routerLinkActive="ant-menu-item-selected">
-          <a title routerLink="page-header">
-            <span title><i nz-icon nzType="notification"></i>Page Header</span>
-          </a>
-        </li>
-
-        <li nz-menu-item routerLinkActive="ant-menu-item-selected">
-          <a title routerLink="test1">
-            <span title><i nz-icon nzType="notification"></i>Test1</span>
-          </a>
-        </li>
-        
-      </ul>
+      <ng-container *ngIf="menuType=='main'">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="table"><span title><i nz-icon nzType="user"></i>Table</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="form"><span title><i nz-icon nzType="laptop"></i>Form</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="page-header"><span title><i nz-icon nzType="notification"></i>Page Header</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1"><span title><i nz-icon nzType="notification"></i>Test1</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="dashboard"><span title><i nz-icon nzType="notification"></i>Dashboard</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="dashboardv2"><span title><i nz-icon nzType="notification"></i>Dashboard v2</span></a></li>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="menuType=='template'">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/login"><span title><i nz-icon nzType="user"></i>login</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/userfilter"><span title><i nz-icon nzType="laptop"></i>userfilter</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/userform"><span title><i nz-icon nzType="laptop"></i>userform</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/usertable"><span title><i nz-icon nzType="laptop"></i>usertable</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/userdetail"><span title><i nz-icon nzType="laptop"></i>userdetail</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/profile"><span title><i nz-icon nzType="laptop"></i>profile</span></a></li>
+        </ul>
+      </ng-container>
+      
     </nz-sider>
+
     <nz-layout style="padding:0 24px 24px">
       <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
         <router-outlet></router-outlet>

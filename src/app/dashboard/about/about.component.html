@@ -1,1 +1,111 @@
-<p>about works!</p>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6">
+        <nz-card>
+          <nz-statistic [nzValue]="11.28 | number: '1.0-2'" [nzTitle]="'cpu'" [nzPrefix]="prefixTplOne" [nzSuffix]="'%'" [nzValueStyle]="{ color: '#3F8600' }"></nz-statistic>
+          <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+        </nz-card>
+      </nz-col>
+      <nz-col [nzSpan]="6">
+        <nz-card>
+          <nz-statistic [nzValue]="9.3 | number: '1.0-2'" [nzTitle]="'memory'" [nzPrefix]="prefixTplTwo" [nzSuffix]="'%'" [nzValueStyle]="{ color: '#CF1322' }" > </nz-statistic>
+          <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
+        </nz-card>
+      </nz-col>
+      <nz-col [nzSpan]="6">
+        <nz-card>
+          <nz-statistic [nzValue]="9.3 | number: '1.0-2'" [nzTitle]="'disk'" [nzPrefix]="prefixTplTwo" [nzSuffix]="'%'" [nzValueStyle]="{ color: '#3F8600' }" > </nz-statistic>
+          <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
+        </nz-card>
+      </nz-col>
+      <nz-col [nzSpan]="6">
+        <nz-card>
+          <nz-statistic [nzValue]="9.3 | number: '1.0-2'" [nzTitle]="'swap'" [nzPrefix]="prefixTplTwo" [nzSuffix]="'%'" [nzValueStyle]="{ color: '#3F8600' }" > </nz-statistic>
+          <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
+        </nz-card>
+      </nz-col>
+    </nz-row>
+</div>
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-card>
+        <div echarts [options]="linechartoptions" style="height:300px;"></div>
+    </nz-card>
+</div>
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="8">
+            <nz-card>
+                <div echarts [options]="barchartoptions" style="height:200px;"></div>
+            </nz-card>
+        </nz-col>
+        <nz-col [nzSpan]="8">
+            <nz-card>
+                <div echarts [options]="barchartoptions" style="height:200px;"></div>
+            </nz-card>
+        </nz-col>
+        <nz-col [nzSpan]="8">
+            <nz-card>
+                <div echarts [options]="barchartoptions" style="height:200px;"></div>
+            </nz-card>
+        </nz-col>
+    </nz-row>
+</div>
+
+
+<br>
+<nz-card>
+  <!-- <h4>queue status</h4> -->
+  <nz-table #basicTable [nzData]="tabledata" nzTitle="queue status">
+    <thead>
+      <tr> <th>Name</th> <th>Age</th> <th>Address</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data"> <td>{{ data.name }}</td> <td>{{ data.age }}</td> <td>{{ data.address }}</td> </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+  <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="12">
+          <nz-card>
+            <nz-table #basicTable [nzData]="tabledata">
+              <thead>
+                <tr> <th>Name</th> <th>Age</th> <th>Address</th></tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of basicTable.data"> <td>{{ data.name }}</td> <td>{{ data.age }}</td> <td>{{ data.address }}</td> </tr>
+              </tbody>
+            </nz-table>
+          </nz-card>
+      </nz-col>
+      <nz-col [nzSpan]="12">
+          <nz-card>
+            <nz-table #basicTable [nzData]="tabledata">
+              <thead>
+                <tr> <th>Name</th> <th>Age</th> <th>Address</th></tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of basicTable.data"> <td>{{ data.name }}</td> <td>{{ data.age }}</td> <td>{{ data.address }}</td> </tr>
+              </tbody>
+            </nz-table>
+          </nz-card>
+      </nz-col>
+  </nz-row>
+</div>
+
+
+
+
+<br>
+<div id="g2plot1"></div><!-- card에는 안들어감 + 멀티column에 넣을수없음 -->
+  
+
+<br>
+<div id="g21"></div>

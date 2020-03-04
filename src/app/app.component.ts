@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare var Flatted;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isCollapsed = false;
+
+  menuType = "main";
+  setMenuType(type) {
+    console.log("=== setMenuType type="+type);
+    this.menuType = type;
+  }
 }

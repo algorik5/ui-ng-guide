@@ -1,0 +1,57 @@
+<!-- Email -->
+<nz-form-item>
+	<nz-form-label>{{ 'user_email' }}</nz-form-label>
+	<input
+		nz-input
+		class="w-100"
+		(keyup)="onChangeDebounced()"
+		[placeholder]="'common_value-string'"
+		[(ngModel)]="email"
+	/>
+</nz-form-item>
+<!-- /Email -->
+<!-- Name -->
+<nz-form-item>
+	<nz-form-label>{{ 'user_name' }}</nz-form-label>
+	<input
+		nz-input
+		class="w-100"
+		(keyup)="onChangeDebounced()"
+		[placeholder]="'common_value-string'"
+		[(ngModel)]="name"
+	/>
+</nz-form-item>
+<!-- /Name -->
+<!-- Role -->
+<nz-form-item>
+	<nz-form-label>{{ 'user_role' }}</nz-form-label>
+	<input
+		nz-input
+		class="w-100"
+		(keyup)="onChangeDebounced()"
+		[placeholder]="'common_value-string'"
+		[(ngModel)]="role"
+	/>
+</nz-form-item>
+<!-- /Role -->
+<!-- Banned -->
+<nz-form-item>
+	<nz-form-label>{{ 'user_banned' }}</nz-form-label>
+	<nz-select
+		class="w-100"
+		[nzPlaceHolder]="'common_value-boolean'"
+		[(ngModel)]="banned"
+		(ngModelChange)="onChange()"
+		[nzAllowClear]="true"
+	>
+		<nz-option
+			[nzValue]="true"
+			[nzLabel]="'common_true'"
+		></nz-option>
+		<nz-option
+			[nzValue]="false"
+			[nzLabel]="'common_false'"
+		></nz-option>
+	</nz-select>
+</nz-form-item>
+<!-- /Banned -->

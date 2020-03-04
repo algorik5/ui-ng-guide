@@ -1,0 +1,42 @@
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> <nz-card> <app-viewcpumax></app-viewcpumax> </nz-card> </nz-col>
+      <nz-col [nzSpan]="6"> <nz-card> <app-viewmemorymax></app-viewmemorymax> </nz-card> </nz-col>
+      <nz-col [nzSpan]="6"> <nz-card> <app-viewdiskmax></app-viewdiskmax> </nz-card> </nz-col>
+      <nz-col [nzSpan]="6"> <nz-card> <app-viewswapmax></app-viewswapmax> </nz-card> </nz-col>
+    </nz-row>
+</div>
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="24"> <nz-card> <app-viewcputrend></app-viewcputrend> </nz-card> </nz-col>
+    </nz-row>
+</div>
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="8"> <nz-card> <app-view-memory-status></app-view-memory-status> </nz-card> </nz-col>
+        <nz-col [nzSpan]="8"> <nz-card> <app-view-memory-status></app-view-memory-status> </nz-card> </nz-col>
+        <nz-col [nzSpan]="8"> <nz-card> <app-view-memory-status></app-view-memory-status> </nz-card> </nz-col>
+    </nz-row>
+</div>
+
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="24"> <nz-card> <app-view-queue-status></app-view-queue-status> </nz-card> </nz-col>
+    </nz-row>
+</div>
+
+
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12"> <nz-card> <app-view-queue-detail></app-view-queue-detail> </nz-card> </nz-col>
+    <nz-col [nzSpan]="12"> <nz-card> <app-view-queue-detail></app-view-queue-detail> </nz-card> </nz-col>
+  </nz-row>
+</div>

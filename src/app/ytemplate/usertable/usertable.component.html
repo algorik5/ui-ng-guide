@@ -1,0 +1,82 @@
+<div class="user-list-container">
+	<nz-card class="table-container">
+		<nz-table
+			#table
+			[nzData]="items"
+			[nzShowSizeChanger]="true"
+			[nzFrontPagination]="false"
+			[nzLoading]="refreshing"
+			[nzLoadingDelay]="refreshingDelay"
+			[nzTotal]="total"
+			[nzNoResult]="notFound"
+			[(nzPageIndex)]="pageIndex"
+			[(nzPageSize)]="pageSize"
+			(nzPageIndexChange)="update()"
+			(nzPageSizeChange)="update(true)"
+		>
+			<thead [nzSingleSort]="true" (nzSortChange)="sort($event)">
+				<tr>
+					<th
+						*ngIf="columns.includes('created_at')"
+						nzShowSort
+						nzSortKey="created_at"
+					>
+						{{ 'user_created-at' }}
+					</th>
+					<th
+						*ngIf="columns.includes('email')"
+						nzShowSort
+						nzSortKey="email"
+					>
+						{{ 'user_email' }}
+					</th>
+					<th
+						*ngIf="columns.includes('name')"
+						nzShowSort
+						nzSortKey="name"
+					>
+						{{ 'user_name' }}
+					</th>
+					<th *ngIf="columns.includes('role')">
+						{{ 'user_role' }}
+					</th>
+					<th *ngIf="columns.includes('banned')">
+						{{ 'user_banned' }}
+					</th>
+					<th *ngIf="columns.includes('last_connected_at')">
+						{{ 'user_last-connected-at' }}
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let row of table.data" (click)="onClick(row)">
+					<td *ngIf="columns.includes('created_at')">
+						{{ row.created_at }}
+					</td>
+					<td *ngIf="columns.includes('email')">
+						{{ row.email }}
+					</td>
+					<td *ngIf="columns.includes('name')">
+						{{ row.name }}
+					</td>
+					<td *ngIf="columns.includes('role')">
+						{{ row.role }}
+					</td>
+					<td *ngIf="columns.includes('banned')">
+						{{
+							(row.banned ? 'common_true' : 'common_false')
+						}}
+					</td>
+					<td *ngIf="columns.includes('last_connected_at')">
+						{{ row.last_connected_at }}
+					</td>
+				</tr>
+			</tbody>
+		</nz-table>
+	</nz-card>
+	<ng-template #notFound>
+		<nz-empty
+			[nzNotFoundContent]="'user_common_not-found'"
+		></nz-empty>
+	</ng-template>
+</div>

@@ -1,0 +1,194 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 my-3 my-lg-5">
+			<form
+				nz-form
+				class="user-form w-100"
+				[formGroup]="form"
+				(ngSubmit)="onSubmit()"
+			>
+				<!-- Email -->
+				<nz-form-item>
+					<nz-form-label>{{
+						'user_email'
+					}}</nz-form-label>
+					<nz-form-control>
+						<input
+							nz-input
+							class="w-100"
+							type="email"
+							[placeholder]="'common_value-string'"
+							formControlName="email"
+						/>
+						<nz-form-explain
+							*ngIf="
+								form.controls['email'].invalid &&
+								(form.controls['email'].dirty ||
+									form.controls['email'].touched)
+							"
+							class="mt-1"
+						>
+							<div *ngIf="form.controls['email'].errors.required">
+								{{ 'common_error-required' }}
+							</div>
+							<div
+								*ngIf="!form.controls['email'].errors.required"
+							>
+								{{ 'common_error-format' }}
+							</div>
+						</nz-form-explain>
+					</nz-form-control>
+				</nz-form-item>
+				<!-- /Email -->
+				<!-- Name -->
+				<nz-form-item>
+					<nz-form-label>{{ 'user_name' }}</nz-form-label>
+					<nz-form-control>
+						<input
+							nz-input
+							class="w-100"
+							type="text"
+							[placeholder]="'common_value-string'"
+							formControlName="name"
+						/>
+						<nz-form-explain
+							*ngIf="
+								form.controls['name'].invalid &&
+								(form.controls['name'].dirty ||
+									form.controls['name'].touched)
+							"
+							class="mt-1"
+						>
+							<div *ngIf="form.controls['name'].errors.required">
+								{{ 'common_error-required' }}
+							</div>
+							<div *ngIf="!form.controls['name'].errors.required">
+								{{ 'common_error-format' }}
+							</div>
+						</nz-form-explain>
+					</nz-form-control>
+				</nz-form-item>
+				<!-- /Name -->
+				<!-- Password -->
+				<nz-form-item>
+					<nz-form-label>{{
+						'user_password'
+					}}</nz-form-label>
+					<nz-form-control>
+						<input
+							nz-input
+							class="w-100"
+							type="password"
+							autocomplete="new-password"
+							[placeholder]="'common_value-string'"
+							formControlName="password"
+						/>
+						<nz-form-explain
+							*ngIf="
+								form.controls['password'].invalid &&
+								(form.controls['password'].dirty ||
+									form.controls['password'].touched)
+							"
+							class="mt-1"
+						>
+							<div
+								*ngIf="
+									form.controls['password'].errors.required
+								"
+							>
+								{{ 'common_error-required' }}
+							</div>
+							<div
+								*ngIf="
+									!form.controls['password'].errors.required
+								"
+							>
+								{{ 'common_error-format' }}
+							</div>
+						</nz-form-explain>
+					</nz-form-control>
+				</nz-form-item>
+				<!-- /Password -->
+				<!-- Role -->
+				<nz-form-item>
+					<nz-form-label>{{ 'user_role' }}</nz-form-label>
+					<nz-form-control>
+						<input
+							nz-input
+							class="w-100"
+							type="text"
+							[placeholder]="'common_value-string'"
+							formControlName="role"
+						/>
+						<nz-form-explain
+							*ngIf="
+								form.controls['role'].invalid &&
+								(form.controls['role'].dirty ||
+									form.controls['role'].touched)
+							"
+							class="mt-1"
+						>
+							<div *ngIf="form.controls['role'].errors.required">
+								{{ 'common_error-required' }}
+							</div>
+							<div *ngIf="!form.controls['role'].errors.required">
+								{{ 'common_error-format' }}
+							</div>
+						</nz-form-explain>
+					</nz-form-control>
+				</nz-form-item>
+				<!-- /Role -->
+				<!-- Banned -->
+				<nz-form-item>
+					<nz-form-label>{{
+						'user_banned'
+					}}</nz-form-label>
+					<nz-form-control>
+						<nz-select
+							class="w-100"
+							[nzPlaceHolder]="'common_value-boolean'"
+							formControlName="banned"
+						>
+							<nz-option
+								[nzValue]="true"
+								[nzLabel]="'common_true'"
+							></nz-option>
+							<nz-option
+								[nzValue]="false"
+								[nzLabel]="'common_false'"
+							></nz-option>
+						</nz-select>
+						<nz-form-explain
+							*ngIf="
+								form.controls['banned'].invalid &&
+								(form.controls['banned'].dirty ||
+									form.controls['banned'].touched)
+							"
+							class="mt-1"
+						>
+							<div
+								*ngIf="form.controls['banned'].errors.required"
+							>
+								{{ 'common_error-required' }}
+							</div>
+							<div
+								*ngIf="!form.controls['banned'].errors.required"
+							>
+								{{ 'common_error-format' }}
+							</div>
+						</nz-form-explain>
+					</nz-form-control>
+				</nz-form-item>
+				<!-- /Banned -->
+				<button
+					nz-button
+					nzType="primary"
+					[disabled]="form.invalid"
+					[nzLoading]="loading"
+				>
+					{{ 'common_save' }}
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
