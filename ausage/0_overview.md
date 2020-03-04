@@ -1,4 +1,8 @@
 
+# ng-zorro universial starter 수정
+	수정 (form.component.html) : nz-form-extra >>> [nzExtra]="extraTpl" + <ng-template #extraTpl>
+	수정 (form.component.html) : nzType="question-circle"
+	수정 (angular.json) : assets...{glob...input...output...} <<< getting-started참고
 
 
 # =================== ng-zorro 참고

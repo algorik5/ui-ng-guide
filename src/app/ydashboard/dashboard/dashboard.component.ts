@@ -5,11 +5,11 @@ import { Bar } from '@antv/g2plot';
 // import { Chart } from '@antv/g2';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.less']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.less']
 })
-export class AboutComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private _document: any) { }
 
