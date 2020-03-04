@@ -6,6 +6,7 @@ import { UserfilterComponent } from './userfilter/userfilter.component';
 import { UserformComponent } from './userform/userform.component';
 import { UsertableComponent } from './usertable/usertable.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
+import { UserallComponent } from './userall/userall.component';
 
  
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'userform',component: UserformComponent },
   { path: 'usertable',component: UsertableComponent },
   { path: 'userdetail',component: UserdetailComponent },
+  { path: 'userall',component: UserallComponent },
   { path: 'profile',component: ProfileComponent }
 ];
 

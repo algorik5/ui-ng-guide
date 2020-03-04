@@ -1,0 +1,23 @@
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> <nz-card> <h6>filter</h6><app-userfilter></app-userfilter> </nz-card> </nz-col>
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'table'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-usertable></app-usertable> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'form'" [nzActive]="'false'" [nzDisabled]="'false'">
+                        <nz-card> <app-userform></app-userform> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

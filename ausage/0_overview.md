@@ -5,7 +5,10 @@
 = module.ts > import { NgZorroAntdModule } from 'ng-zorro-antd';
 = collapse	일반페이지
 = ng document >>> constructor(@Inject(DOCUMENT) private _document: any){}
+= layout : section		card,collapse,stats,list(안에 card+nzgrid)
 
+# =================== ng 참고
+= constructor(private router: Router) > this.router.navigateByUrl(`/user/${user.getId()}`);
 
 
 # ============= 개발가이드
@@ -18,8 +21,9 @@
 
 
 # 향후 - ng9 > ng-zorro체크후(1~2주후)
-
-
+# 향후 - guard - hapify참고
+# 향후 - reusable tab - ng-alain
+# 향후 - 개발플랫폼 - ? like hapify sandbox
 
 # 보류 - 프로젝트명 변경
 -	vs에서 검색후 수동변경
