@@ -10,8 +10,8 @@ import { UserallComponent } from './userall/userall.component';
 
  
 const routes: Routes = [
-  { path: '',component: LoginComponent },
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
+  // { path: '',component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent },
   { path: 'userfilter',component: UserfilterComponent },
   { path: 'userform',component: UserformComponent },
