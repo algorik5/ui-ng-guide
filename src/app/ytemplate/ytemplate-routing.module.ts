@@ -7,11 +7,15 @@ import { UserformComponent } from './userform/userform.component';
 import { UsertableComponent } from './usertable/usertable.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { UserallComponent } from './userall/userall.component';
+import { AformComponent } from './aform/aform.component';
 
  
 const routes: Routes = [
   // { path: '',component: LoginComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'afrom', pathMatch: 'full' },
+
+  { path: 'aform',component: AformComponent },
+
   { path: 'login',component: LoginComponent },
   { path: 'userfilter',component: UserfilterComponent },
   { path: 'userform',component: UserformComponent },

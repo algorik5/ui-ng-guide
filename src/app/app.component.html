@@ -23,9 +23,10 @@
       <ng-container *ngIf="menuType=='sqlview'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="sqlview/sqlquery"><span title><i nz-icon nzType="notification"></i>sql query</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="sqlview/sqlchart"><span title><i nz-icon nzType="notification"></i>sql chart</span></a></li>
         </ul>
       </ng-container>
-      
+
       <ng-container *ngIf="menuType=='dashboard'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="dashboard/dashboard"><span title><i nz-icon nzType="notification"></i>Dashboard</span></a></li>
@@ -37,6 +38,7 @@
       </ng-container>
       <ng-container *ngIf="menuType=='template'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/aform"><span title><i nz-icon nzType="user"></i>aform</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/login"><span title><i nz-icon nzType="user"></i>login</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/userfilter"><span title><i nz-icon nzType="laptop"></i>userfilter</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/userform"><span title><i nz-icon nzType="laptop"></i>userform</span></a></li>
