@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SqlqueryService } from '../sqlquery.service';
 import { PubsubService } from 'src/app/aservice/pubsub.service';
 import { SqlService } from 'src/app/aservice/sql.service';
 import { LoggingService } from 'src/app/aservice/logging.service';

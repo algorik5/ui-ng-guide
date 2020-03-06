@@ -1,25 +1,25 @@
 
 # module
-- ng g m sqlview/sqlquery --routing
+- ng g m ytemplate/sqlquery --routing
 - sqlquery.module.ts	
-  - ngzorromodule...formsmodule...
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
 
 # main page/service
-- ng g c sqlview/sqlquery
-- ng g s sqlview/sqlquery/sqlquery
+- ng g c ytemplate/sqlquery
+- ---ng g s ytemplate/sqlquery/sqlquery
 
 # routing
 - sqlquery-routing
   - { path: 'sqlquery',component: SqlqueryComponent },
 - app-routing
-  - { path: 'sqlview',loadChildren: () => import('./sqlview/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  - { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
 - app.compoent
-  - <a title routerLink="sqlview/sqlquery"...
+  - <a title routerLink="template/sqlquery"...
 
 # detail view
-- ng g c sqlview/sqlquery/sqlquery-condition
-- ng g c sqlview/sqlquery/sqlquery-list
-- ng g c sqlview/sqlquery/sqlquery-update
+- ng g c ytemplate/sqlquery/sqlquery-condition
+- ng g c ytemplate/sqlquery/sqlquery-list
+- ng g c ytemplate/sqlquery/sqlquery-update
 
 # page layout
 - sqlquery.compoenent.html
@@ -30,7 +30,7 @@
 
 
 # ======================== 참고
-- ng g c sqlview/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
+- ng g c ytemplate/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
 
 
 

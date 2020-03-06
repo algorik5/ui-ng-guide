@@ -1,0 +1,26 @@
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+  <ng-container *ngFor="let column of getFormColumns()">
+      <nz-form-item>
+          <nz-form-label nzRequired nzFor="{{column}}">{{column}}</nz-form-label>
+          <nz-form-control nzErrorTip="Please input your {{column}}!">
+              <nz-input-group>
+                <input type="text" nz-input formControlName="{{column}}" placeholder="{{column}}" />
+              </nz-input-group>
+          </nz-form-control>
+      </nz-form-item>
+  </ng-container>
+</form>
+  
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-3 my-lg-5">
+      <nz-card>
+        <ng-container *ngFor="let column of getFormColumns()">
+          <div class="mb-4"><h5>{{column}}</h5></div><div>{{ getFormValue(column) }}</div>
+        </ng-container>
+      </nz-card>
+    </div>
+  </div>
+</div>
+  

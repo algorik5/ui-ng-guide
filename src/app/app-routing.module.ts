@@ -11,6 +11,7 @@ const routes: Routes = [
 
   { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
   { path: 'template',loadChildren: () => import('./ytemplate/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
+  { path: 'template',loadChildren: () => import('./ytemplate/dynamictable/dynamictable.module').then(m => m.DynamictableModule)},
 
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},

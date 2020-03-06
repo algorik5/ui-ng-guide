@@ -7,8 +7,8 @@
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
       <li nz-menu-item (click)="setMenuType('main')" nzSelected>main</li>
       <li nz-menu-item (click)="setMenuType('sqlview')">sqlview</li>
-      <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('template')">template</li>
+      <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('test')">test</li>
     </ul>
   </nz-header>
@@ -22,6 +22,8 @@
 
       <ng-container *ngIf="menuType=='template'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/dynamictable"><span title><i nz-icon nzType="notification"></i>dynamic table</span></a></li>
+
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/sqlquery"><span title><i nz-icon nzType="notification"></i>sql query</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="template/sqlchart"><span title><i nz-icon nzType="notification"></i>sql chart</span></a></li>
         </ul>

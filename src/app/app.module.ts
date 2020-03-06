@@ -4,13 +4,14 @@ import { ANT_ICONS } from '../ant-svg-icons'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N, en_US, NZ_ICONS } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
+import { NZ_I18N, en_US, NZ_ICONS, NgZorroAntdModule } from 'ng-zorro-antd';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { SharedModule } from './shared.module'
+import { NgxEchartsModule } from 'ngx-echarts';
 
 registerLocaleData(en);
 
@@ -21,7 +22,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule

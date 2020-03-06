@@ -12,15 +12,16 @@ export class SqlchartListComponent implements OnInit {
 
   constructor(private table:TableService,private pubsub:PubsubService) { }
 
-  tableData = [];
   ngOnInit() {
-    this.tableData = this.table.test_data();
+    this.table.test_data();
 
     this.pubsub.sub("sqlchart.datas",datas => {
-      this.tableData = datas; 
+      this.table.setData(datas); 
     });
   }
 
+  getTableData() { return this.table.getData(); }
+  
   selectRow(data)
   {
     console.log("====== selectRow data="+JSON.stringify(data));

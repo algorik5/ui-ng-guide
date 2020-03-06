@@ -72,6 +72,20 @@ export class ObjectUtil
     { 
         return ObjectUtil.stringifyEx(o); 
     }
+    static objectToStringEx2(data,column:string) {
+        // if(column.includes("."))
+        // {
+        //   let split = column.split(".");
+        //   return ObjectUtil.objectToStringEx(data[split[0]][split[1]]);
+        // }
+        // if(typeof(data[column]) == 'object') return "[object]";//아래 테이블에 값 표현
+        // return ObjectUtil.objectToStringEx(data[column]);
+        if(typeof(data) != 'object') return data;
+        if (data.hasOwnProperty(column)==false) return;
+        if(Array.isArray(data[column])) return "array["+data[column].length +"]";
+        return data[column];
+     }
+
 
     //(typescript) JSON format per se doesn't support object references - TypeError: Converting circular structure to JSON
     static stringifyEx (object:any){

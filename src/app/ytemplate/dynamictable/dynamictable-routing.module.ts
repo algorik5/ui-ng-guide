@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SqlqueryComponent } from './sqlquery.component';
+import { DynamictableComponent } from './dynamictable.component';
 
 
 const routes: Routes = [
-  { path: 'sqlquery',component: SqlqueryComponent }
+  { path: 'dynamictable',component: DynamictableComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SqlqueryRoutingModule { }
+export class DynamictableRoutingModule { }

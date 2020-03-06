@@ -17,21 +17,21 @@ export class PubsubService {
   @Output() private pubsub: EventEmitter<any> = new EventEmitter();
 
   /////////////// 사용법 pub : private pubsub:PubsubService , pubsub.pub("test.1",data)
-  pub(subject:string,data:any)
+  pub(topic:string,data:any)
   {
-    this.logging.debug("pub #subject="+subject + "#data="+data);
-    this.pubsub.emit({key:subject,value:data});
+    this.logging.debug("pub #topic="+topic + "#data="+data);
+    this.pubsub.emit({key:topic,value:data});
   }
 
   /////////////// 사용법 sub : private pubsub:PubsubService , pubsub.sub("test.1",data=>{ console.log("sub data="+JSON.stringyfy(data)); })
-  sub(subject:string,handler:any)
+  sub(topic:string,handler:any)
   {
     //this.row.subscribe(handler);
     this.pubsub.pipe(//asObservable().
       filter(data=> { 
-        if(data["key"]==subject) 
+        if(data["key"]==topic) 
         {
-          this.logging.debug("sub #subject="+subject + "#data="+data);
+          this.logging.debug("sub #topic="+topic + "#data="+data);
           return true; 
         }
         return false; 

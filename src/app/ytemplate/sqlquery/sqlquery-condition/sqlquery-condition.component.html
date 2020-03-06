@@ -1,24 +1,24 @@
 <form nz-form [formGroup]="form" (ngSubmit)="formSubmit()">
     <nz-form-item>
-        <nz-form-label nzRequired nzFor="email">sql</nz-form-label>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-label nzRequired nzFor="sql">sql</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your sql!">
             <nz-input-group>
               <textarea nz-input formControlName="sql" rows="3" placeholder="sql"></textarea>
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-label nzRequired nzFor="email">User Name</nz-form-label>
-        <nz-form-control nzErrorTip="Please input your username!">
-            <nz-input-group nzPrefixIcon="user">
+        <nz-form-label nzRequired nzFor="userName">User Name</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your userName!">
+            <nz-input-group>
               <input type="text" nz-input formControlName="userName" placeholder="Username" />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-label nzRequired nzFor="email">Password</nz-form-label>
+        <nz-form-label nzRequired nzFor="password">Password</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
+            <nz-input-group>
               <input type="password" nz-input formControlName="password" placeholder="Password" />
             </nz-input-group>
         </nz-form-control>

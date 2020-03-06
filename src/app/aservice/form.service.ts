@@ -1,0 +1,58 @@
+import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoggingService } from './logging.service';
+
+////////////////////////////// usage (샘플 - dynamictable-detail)
+//html - <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()"> <ng-container *ngFor="let column of getFormColumns()"> <nz-form-item> ...
+//ts 1 - constructor(private form:FormService (또는 new FormService)
+//ts 2 - getFormgroup() { return this.form.getFormgroup(); }
+//ts 3 - getFormColumns() { return this.form.getControlNames(); }
+//form clear - this.form.clearForm(); 
+//form add control - this.form.addControl(key); 
+//form add value - this.form.setControlValue(key,data[key]);
+//form get value - this.form.getControlValue(name);
+//참고.NullInjectorError: No provider for FormBuilder - service에서 FormBuilder사용시 발생 >>> app.modules.ts > FormsModule,ReactiveFormsModule 
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FormService {
+
+  constructor(private fb: FormBuilder,private logging:LoggingService) { this.initForm(); }
+
+  formgroup: FormGroup;
+  initForm()
+  {
+    this.logging.debug("initForm");
+    this.formgroup = this.fb.group({});
+  }
+  getFormgroup() { return this.formgroup; }
+  clearForm()
+  {
+    this.logging.debug("clearForm");
+    this.formgroup.reset();
+  }
+
+  addControl(name)
+  {
+    this.formgroup.addControl(name,new FormControl(null,Validators.required));
+  }
+  setControlValue(name,value)
+  {
+    this.formgroup.controls[name].setValue(value);
+  }
+  getControlValue(name)
+  {
+    return this.formgroup.controls[name].value;
+  }
+
+  getControlNames()
+  {
+    //if(this.formgroup == null) return [];
+    //if(this.formgroup.controls == null) return [];
+    return Object.keys(this.formgroup.controls);
+  }
+
+
+
+}
