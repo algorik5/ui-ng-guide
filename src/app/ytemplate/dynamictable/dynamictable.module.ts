@@ -12,7 +12,7 @@ import { DynamictableDetailComponent } from './dynamictable-detail/dynamictable-
 
 
 @NgModule({
-  declarations: [DynamictableComponent, DynamictableConditionComponent, DynamictableResultComponent, DynamictableDetailComponent],
+  declarations: [DynamictableComponent, DynamictableConditionComponent, DynamictableResultComponent, DynamictableDetailComponent ],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
