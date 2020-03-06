@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { YtemplateRoutingModule } from './ytemplate-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -16,6 +15,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { AformComponent } from './aform/aform.component';
 import { ViewFormZorroComponent } from './aform/view-form-zorro.component';
 import { ViewFormHapifyComponent } from './aform/view-form-hapify.component';
+import { YtestRoutingModule } from './ytest-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, ProfileComponent, UserfilterComponent, UserformComponent, UsertableComponent, UserdetailComponent, UserallComponent, AformComponent, ViewFormZorroComponent, ViewFormHapifyComponent],
@@ -24,7 +24,7 @@ import { ViewFormHapifyComponent } from './aform/view-form-hapify.component';
     FormsModule,ReactiveFormsModule,
     NgZorroAntdModule,
     NgxEchartsModule,
-    YtemplateRoutingModule
+    YtestRoutingModule
   ]
 })
-export class YtemplateModule { }
+export class YtestModule { }

@@ -6,12 +6,14 @@ const routes: Routes = [
 
   { path: 'test1',loadChildren: () => import('./test1/test1.module').then(m => m.Test1Module)},
 
-  // { path: 'sqlview',loadChildren: () => import('./sqlview/sqlview.module').then(m => m.SqlviewModule)},
-  { path: 'sqlview',loadChildren: () => import('./sqlview/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
-  { path: 'sqlchart',loadChildren: () => import('./sqlview/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
+  // { path: 'sqlview',loadChildren: () => import('./sqlview/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  // { path: 'sqlview',loadChildren: () => import('./sqlview/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
+
+  { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  { path: 'template',loadChildren: () => import('./ytemplate/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
 
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
-  { path: 'template',loadChildren: () => import('./ytemplate/ytemplate.module').then(m => m.YtemplateModule)},
+  { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
