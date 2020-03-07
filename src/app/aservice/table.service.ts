@@ -49,13 +49,10 @@ export class TableService {
 
 
   ////////////////////////////// test data
+  testmode = true;
   test_data()
   {
-    let testdata = this.test_datacreate();
-    this.setData(testdata);
-  }
-  private test_datacreate()
-  {
+    if(this.testmode == false) return;
     let tableData = [];
     let datas = zTestDataUtil.test_data();
     datas.forEach((data,i)=>{

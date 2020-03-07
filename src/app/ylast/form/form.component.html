@@ -1,0 +1,31 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : form nz-form 복사<br>
+    2. ts : 전체복사<br>
+       - selector/class명은 변경<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+<button nz-button nzType="dashed" (click)="testdata()">testdata</button>
+
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+    <ng-container *ngFor="let column of getFormColumns()">
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="{{column}}">{{column}}</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your {{column}}!">
+                <nz-input-group>
+                  <input type="text" nz-input formControlName="{{column}}" placeholder="{{column}}" />
+                    <!-- <textarea nz-input formControlName="sql" rows="3" placeholder="sql"></textarea> -->
+                    <!-- <nz-tag *ngFor="let column of getColumns()" [nzColor]="column['color']" (click)="clickColumn(column)">{{column['name']}}</nz-tag> -->
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+    </ng-container>
+
+    <nz-form-item>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'">Run</button>
+        </nz-form-control>
+    </nz-form-item>
+
+  </form>
+    

@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/aservice/echarts.service';
-import { SqlService } from 'src/app/aservice/sql.service';
 import { PubsubService } from 'src/app/aservice/pubsub.service';
+import { LoggingService } from 'src/app/aservice/logging.service';
 
 @Component({
-  selector: 'app-sqlchart-chart',
-  templateUrl: './sqlchart-chart.component.html',
-  styleUrls: ['./sqlchart-chart.component.less']
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.less']
 })
-export class SqlchartChartComponent implements OnInit {
+export class ChartComponent implements OnInit {
 
-  constructor(private chart:EchartsService,private pubsub:PubsubService) { }
+  constructor(private chart:EchartsService,private pubsub:PubsubService,private logging:LoggingService) { }
 
   ngOnInit() {
-    
+
     this.testdata();
 
-    this.pubsub.sub("sqlchart.datas",datas => {
+    this.pubsub.sub("xxx.datas",datas => {
       this.chart.clearChart();
       datas.forEach((data,i)=>{
         this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
@@ -32,6 +32,7 @@ export class SqlchartChartComponent implements OnInit {
   testdata_use = true;
   testdata() { 
     if(this.testdata_use == false) return;
+    this.chart.clearChart();
     let chartdatas = this.chart.test_data();
     this.chart.addDatas(chartdatas);
   }

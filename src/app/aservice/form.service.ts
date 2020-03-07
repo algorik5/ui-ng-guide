@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoggingService } from './logging.service';
+import { zTestDataUtil } from '../autil/zTestDataUtil';
 
 ////////////////////////////// usage (샘플 - dynamictable-detail)
 //html - <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()"> <ng-container *ngFor="let column of getFormColumns()"> <nz-form-item> ...
@@ -30,9 +31,11 @@ export class FormService {
   clearForm()
   {
     this.logging.debug("clearForm");
-    this.formgroup.reset();
+    //안됨-이전control남아있음 - this.formgroup.reset();
+    this.formgroup = this.fb.group({});
   }
 
+  addControls(names:Array<string>) { names.forEach(name => { this.addControl(name); }); }
   addControl(name)
   {
     this.formgroup.addControl(name,new FormControl(null,Validators.required));
@@ -54,5 +57,15 @@ export class FormService {
   }
 
 
-
+  //////////////// test data
+  testmode = true;
+  test_data()
+  {
+    if(this.testmode == false) return;
+    let datas = zTestDataUtil.test_data();
+    let data = datas[0];//{id:"id-1",name:"name-1"};
+    if(datas.length%3==1) [1].forEach(no=>data["no-"+no] = no);
+    if(datas.length%3==2) [1,2].forEach(no=>data["no-"+no] = no);
+    return data;
+  }
 }

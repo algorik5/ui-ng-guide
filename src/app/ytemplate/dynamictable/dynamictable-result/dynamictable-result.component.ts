@@ -12,7 +12,7 @@ export class DynamictableResultComponent implements OnInit {
   constructor(private table: TableService, private pubsub: PubsubService,private logging:LoggingService) {}
 
   ngOnInit() {
-    this.table.test_data();
+    this.tableInit();
 
     this.pubsub.sub("dynamictable.datas", datas => {
       this.table.setData(datas);
@@ -24,6 +24,11 @@ export class DynamictableResultComponent implements OnInit {
     });
   }
 
+  tableInit()
+  {
+    let datas = this.table.test_data();
+    this.table.setData(datas);
+  }
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
 

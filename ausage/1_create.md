@@ -9,8 +9,10 @@
 # 현재 module 수정
 - sqlquery.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
+
 - sqlquery-routing
-  - { path: 'sqlquery',component: SqlqueryComponent },
+  - { path: 'sqlquery',component: SqlqueryComponent }
 
 # 현재 page layout 
 - sqlquery.compoenent.html
@@ -23,6 +25,17 @@
   - <a title routerLink="template/sqlquery"...
 
 # detail view 개발
+
+
+
+
+# ========================================== ylast
+ng g m ylast/form --routing
+ng g c ylast/form
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
+  - { path: 'form',component: FormComponent }
+  - { path: 'last',loadChildren: () => import('./ylast/form/form.module').then(m => m.FormModule)},
+  - <a title routerLink="last/form"...
 
 
 

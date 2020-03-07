@@ -28,12 +28,7 @@ export class EchartsService {
 
 
   /////////////////////////// ngx-charts
-  initChart(event) { 
-    this.logging.debug("===initChart start #event="+event);
-    this.setChartInstance(event); 
-  }
-
-  chartoptions:EChartOption = {
+  chartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
     //title: { text: 'test chart' },
     tooltip: { trigger: 'axis' },
     xAxis: { type: 'time' },
@@ -53,16 +48,20 @@ export class EchartsService {
   {
     this.chartoptions.legend.data = [];
     this.chartoptions.series = [];
+    if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
     this.chartinstance.clear();
   }
 
   maxrow = 10;
+  addDatas(datas) { datas.forEach(data=>this.addData(data)) }
   addData(data)//{legend:host,x:date,y:value}
   {
     let legend = data["legend"];
     let x = data["x"];
     let y = data["y"];
+    this.addDataRow(legend,x,y);
   }
+  addDataRows(datas) { datas.forEach(data=>this.addDataRow(data["legend"],data["x"],data["y"])) }
   addDataRow(legend,x,y)
   {
     this.logging.debug("===addDataRow start #legend="+legend +"#x="+x +"#y="+y);
@@ -75,15 +74,25 @@ export class EchartsService {
     }
     if(series["data"].length > this.maxrow) series["data"].shift();
     series["data"].push([x,y]);
+    if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
     this.chartinstance.setOption(this.chartoptions);
   }
 
   ////////////////////////////// test data
+  testmode = true;
   test_data()
   {
+    if(this.testmode == false) return;
+    let chartdatas = [];
     let datas = zTestDataUtil.test_data();
     datas.forEach((data,i)=>{
-      this.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+      //this.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+      chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]});//data["memory"]
     });
+    return chartdatas;
   }
+
+
+
+  
 }

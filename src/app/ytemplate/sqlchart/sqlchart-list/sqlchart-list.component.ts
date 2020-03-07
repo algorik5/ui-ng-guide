@@ -13,13 +13,18 @@ export class SqlchartListComponent implements OnInit {
   constructor(private table:TableService,private pubsub:PubsubService) { }
 
   ngOnInit() {
-    this.table.test_data();
+    this.tableInit();
 
     this.pubsub.sub("sqlchart.datas",datas => {
       this.table.setData(datas); 
     });
   }
 
+  tableInit()
+  {
+    let datas = this.table.test_data();
+    this.table.setData(datas);
+  }
   getTableData() { return this.table.getData(); }
   
   selectRow(data)

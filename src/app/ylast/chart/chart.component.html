@@ -1,0 +1,22 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : zdiv echarts 복사<br>
+    2. ts : typescript_text 복사<br>
+    참고.설치과정<br>
+        -문서 -  https://ng.ant.design/experimental/code-editor/en<br>
+        -npm install monaco-editor@0.17.1 (zorro사용) <<< ambient context(20버젼에러)<br>
+        -styles.less > @import "../node_modules/ng-zorro-antd/code-editor/style/entry.less";<br>
+        -angular.json >  z "glob": "**/*","input": "./node_modules/monaco-editor/min/vs","output": "/assets/vs/" z<br>
+        -xxx.module.ts 	import z NzCodeEditorModule z  from 'ng-zorro-antd/code-editor'<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+<nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'realtime'" [nzActive]="'true'" [nzDisabled]="'false'"> 
+        <nz-card>
+            <button nz-button nzType="dashed" (click)="testdata()">testdata</button>
+            <div echarts [options]="getChartOptions()" (chartInit)="setChartInstance($event)"></div>
+        </nz-card> 
+    </nz-collapse-panel> 
+
+</nz-collapse>

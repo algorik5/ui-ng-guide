@@ -1,0 +1,22 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : 전체복사<br>
+    2. ts : 전체복사<br>
+       - selector/class명은 변경<br>
+    참고. ts는 form과 동일 > form전환은 html만 바꾸면 됨<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+<button nz-button nzType="dashed" (click)="testdata()">testdata</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <nz-card>
+            <ng-container *ngFor="let column of getFormColumns()">
+                <div><h5>{{column}}</h5></div>
+                <div>{{ getFormValue(column) }}</div>
+            </ng-container>
+        </nz-card>
+        </div>
+    </div>
+</div>
