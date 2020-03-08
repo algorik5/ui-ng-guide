@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { TableService } from 'src/app/aservice/table.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AatableService } from 'src/app/aservice/aatable.service';
 
 @Component({
   selector: 'app-sqlquery-list',
@@ -9,7 +9,7 @@ import { TableService } from 'src/app/aservice/table.service';
 })
 export class SqlqueryListComponent implements OnInit {
 
-  constructor(private table:TableService,private pubsub:PubsubService) { }
+  constructor(private table:AatableService,private pubsub:AapubsubService) { }
 
   ngOnInit() {
     this.tableInit();

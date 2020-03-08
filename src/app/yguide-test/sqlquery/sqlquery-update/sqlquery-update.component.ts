@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SqlqueryService } from '../sqlquery.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 @Component({
   selector: 'app-sqlquery-update',
@@ -10,7 +10,7 @@ import { PubsubService } from 'src/app/aservice/pubsub.service';
 })
 export class SqlqueryUpdateComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private pubsub:PubsubService) { }
+  constructor(private fb: FormBuilder,private pubsub:AapubsubService) { }
 
   ngOnInit() {
     this.formInit();

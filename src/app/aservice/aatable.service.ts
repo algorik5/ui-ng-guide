@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TableService {
+export class AatableService {
 
-  constructor(private logging:LoggingService) { }
+  constructor(private logging:AaloggingService) { }
 
   datas = [];
   getData() { return this.datas; }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { PubsubService } from "src/app/aservice/pubsub.service";
-import { TableService } from "src/app/aservice/table.service";
-import { LoggingService } from 'src/app/aservice/logging.service';
+import { AapubsubService } from "src/app/aservice/aapubsub.service";
+import { AatableService } from "src/app/aservice/aatable.service";
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
   selector: 'app-dynamicchart-table',
@@ -9,7 +9,7 @@ import { LoggingService } from 'src/app/aservice/logging.service';
   styleUrls: ['./dynamicchart-table.component.less']
 })
 export class DynamicchartTableComponent implements OnInit {
-  constructor(private table: TableService, private pubsub: PubsubService,private logging:LoggingService) {}
+  constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
   ngOnInit() {
     this.tableInit();

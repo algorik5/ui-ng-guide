@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
 
 ////////////////////////////// usage (샘플 - dynamictable-detail)
@@ -18,9 +18,9 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
   providedIn: 'root',
 })
 //@Injectable()
-export class FormService {
+export class AaformService {
 
-  constructor(private fb: FormBuilder,private logging:LoggingService) { this.initForm(); }
+  constructor(private fb: FormBuilder,private logging:AaloggingService) { this.initForm(); }
 
   formgroup: FormGroup;
   initForm()

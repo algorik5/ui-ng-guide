@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormService } from 'src/app/aservice/form.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { LoggingService } from 'src/app/aservice/logging.service';
-import { SqlService } from 'src/app/aservice/sql.service';
+import { AaformService } from 'src/app/aservice/aaform.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { AasqlService } from 'src/app/aservice/aasql.service';
 
 @Component({
   selector: 'app-sqlquery2-condition',
@@ -11,7 +11,7 @@ import { SqlService } from 'src/app/aservice/sql.service';
 })
 export class Sqlquery2ConditionComponent implements OnInit {
 
-  constructor(private form:FormService,private pubsub:PubsubService,private logging:LoggingService,private sql:SqlService) { }
+  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService,private sql:AasqlService) { }
 
   ngOnInit() {
     // //샘플 - pubsub form

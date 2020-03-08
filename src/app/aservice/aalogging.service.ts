@@ -1,13 +1,13 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { DateUtil } from '../autil/DateUtil';
-import { PubsubService } from './pubsub.service';
+import { AapubsubService } from './aapubsub.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoggingService {
+export class AaloggingService {
 
   constructor() { }
   //constructor(private pubsub:PubsubService) { }//사용불가 - WARNING in Circular dependency detected > 필요하다면 pubsub = new PubsubService

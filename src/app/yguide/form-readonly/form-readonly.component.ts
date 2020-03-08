@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { LoggingService } from 'src/app/aservice/logging.service';
-import { FormService } from 'src/app/aservice/form.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { AaformService } from 'src/app/aservice/aaform.service';
 
 @Component({
   selector: 'app-form-readonly',
   templateUrl: './form-readonly.component.html',
   styleUrls: ['./form-readonly.component.less']
-  ,providers: [FormService]
+  ,providers: [AaformService]
 })
 export class FormReadonlyComponent implements OnInit {
 
-  constructor(private form:FormService,private pubsub:PubsubService,private logging:LoggingService) { }
+  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
   ngOnInit() {
 

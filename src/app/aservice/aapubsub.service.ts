@@ -1,14 +1,14 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter,map } from 'rxjs/operators';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PubsubService {
+export class AapubsubService {
 
-  constructor(private logging:LoggingService) { }
+  constructor(private logging:AaloggingService) { }
 
   /////////////////////////// 참고자료
   //https://github.com/MRebati/angular7-pubsub/blob/master/src/angular7-pubsub.service.ts

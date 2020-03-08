@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SqlchartService } from '../sqlchart.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { SqlService } from 'src/app/aservice/sql.service';
-import { LoggingService } from 'src/app/aservice/logging.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AasqlService } from 'src/app/aservice/aasql.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
   selector: 'app-sqlchart-condition',
@@ -12,7 +12,7 @@ import { LoggingService } from 'src/app/aservice/logging.service';
 })
 export class SqlchartConditionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private pubsub:PubsubService,private sql:SqlService,private logging:LoggingService) { }
+  constructor(private fb: FormBuilder,private pubsub:AapubsubService,private sql:AasqlService,private logging:AaloggingService) { }
 
   ngOnInit() {
     this.formInit();

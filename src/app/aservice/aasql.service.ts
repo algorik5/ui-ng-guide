@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 import { NumberUtil } from '../autil/NumberUtil';
 import { DateUtil } from '../autil/DateUtil';
 import { StringUtil } from '../autil/StringUtil';
@@ -15,9 +15,9 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
 @Injectable({
   providedIn: 'root'
 })
-export class SqlService {
+export class AasqlService {
 
-  constructor(private logging:LoggingService) { }
+  constructor(private logging:AaloggingService) { }
 
   sqlrownum = "10";
 

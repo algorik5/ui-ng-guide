@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
-import { EchartsService } from 'src/app/aservice/echarts.service';
-import { SqlService } from 'src/app/aservice/sql.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
+import { AaechartsService } from 'src/app/aservice/aaecharts.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 @Component({
   selector: 'app-sqlchart-chart',
@@ -11,7 +10,7 @@ import { PubsubService } from 'src/app/aservice/pubsub.service';
 })
 export class SqlchartChartComponent implements OnInit {
 
-  constructor(private chart:EchartsService,private pubsub:PubsubService) { }
+  constructor(private chart:AaechartsService,private pubsub:AapubsubService) { }
 
   ngOnInit() {
     

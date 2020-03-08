@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class AahttpService {
 
-  constructor(private logging:LoggingService,private http: HttpClient) { }
+  constructor(private logging:AaloggingService,private http: HttpClient) { }
 
   // this.http.get<any>(myurl)
     // .subscribe((res) => {

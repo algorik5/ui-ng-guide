@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { zTestDataUtil } from 'src/app/autil/zTestDataUtil';
-import { TableService } from 'src/app/aservice/table.service';
+import { AatableService } from 'src/app/aservice/aatable.service';
 
 @Component({
   selector: 'app-sqlchart-list',
@@ -10,7 +10,7 @@ import { TableService } from 'src/app/aservice/table.service';
 })
 export class SqlchartListComponent implements OnInit {
 
-  constructor(private table:TableService,private pubsub:PubsubService) { }
+  constructor(private table:AatableService,private pubsub:AapubsubService) { }
 
   ngOnInit() {
     this.tableInit();

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { PubsubService } from "src/app/aservice/pubsub.service";
-import { SqlService } from "src/app/aservice/sql.service";
-import { LoggingService } from "src/app/aservice/logging.service";
-import { FormService } from "src/app/aservice/form.service";
+import { AapubsubService } from "src/app/aservice/aapubsub.service";
+import { AasqlService } from "src/app/aservice/aasql.service";
+import { AaloggingService } from "src/app/aservice/aalogging.service";
+import { AaformService } from "src/app/aservice/aaform.service";
 import { ObjectUtil } from 'src/app/autil/ObjectUtil';
 
 @Component({
@@ -12,10 +12,10 @@ import { ObjectUtil } from 'src/app/autil/ObjectUtil';
 })
 export class DynamicchartConditionComponent implements OnInit {
   constructor(
-    private form:FormService,
-    private pubsub: PubsubService,
-    private sql: SqlService,
-    private logging: LoggingService
+    private form:AaformService,
+    private pubsub: AapubsubService,
+    private sql: AasqlService,
+    private logging: AaloggingService
   ) {}
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TableService } from 'src/app/aservice/table.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { LoggingService } from 'src/app/aservice/logging.service';
+import { AatableService } from 'src/app/aservice/aatable.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
 
@@ -12,7 +12,7 @@ import { MathUtil } from 'src/app/autil/MathUtil';
 })
 export class Sqlquery2ResultComponent implements OnInit {
 
-  constructor(private table: TableService, private pubsub: PubsubService,private logging:LoggingService) {}
+  constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
   ngOnInit() {
     //pubsub-table 샘플

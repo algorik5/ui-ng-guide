@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
-import { EchartsService } from 'src/app/aservice/echarts.service';
-import { PubsubService } from 'src/app/aservice/pubsub.service';
-import { LoggingService } from 'src/app/aservice/logging.service';
+import { AaechartsService } from 'src/app/aservice/aaecharts.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
 
@@ -13,7 +13,7 @@ import { MathUtil } from 'src/app/autil/MathUtil';
 })
 export class ChartComponent implements OnInit {
 
-  constructor(private chart:EchartsService,private pubsub:PubsubService,private logging:LoggingService) { }
+  constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
   ngOnInit() {
 

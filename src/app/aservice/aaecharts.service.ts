@@ -4,15 +4,15 @@ import { DateUtil } from '../autil/DateUtil';
 import { NumberUtil } from '../autil/NumberUtil';
 import { StringUtil } from '../autil/StringUtil';
 import { MathUtil } from '../autil/MathUtil';
-import { LoggingService } from './logging.service';
+import { AaloggingService } from './aalogging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EchartsService {
+export class AaechartsService {
 
-  constructor(private logging:LoggingService) { }
+  constructor(private logging:AaloggingService) { }
 
   /////////////////////////// ngx-charts
   chartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
