@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from 'src/app/aservice/form.service';
 import { PubsubService } from 'src/app/aservice/pubsub.service';
 import { LoggingService } from 'src/app/aservice/logging.service';
+import { SqlService } from 'src/app/aservice/sql.service';
 
 @Component({
   selector: 'app-sqlquery2-update',
@@ -11,7 +12,7 @@ import { LoggingService } from 'src/app/aservice/logging.service';
 })
 export class Sqlquery2UpdateComponent implements OnInit {
 
-  constructor(private form:FormService,private pubsub:PubsubService,private logging:LoggingService) { }
+  constructor(private form:FormService,private pubsub:PubsubService,private logging:LoggingService,private sql:SqlService) { }
 
   ngOnInit() {
     //샘플 - pubsub form
@@ -38,6 +39,15 @@ export class Sqlquery2UpdateComponent implements OnInit {
   formSubmit()//html에서 호출
   {
     let values = this.form.getControlValues();//[{name:x,value:x}...]
+    let query = "update server set "
+      +"\n cpu='"+this.form.getControlValue("cpu")+"'"
+      +"\n ,memory='"+this.form.getControlValue("memory")+"'"
+      +"\n where 1=1"
+      +"\n and   host='"+this.form.getControlValue("host")+"'"
+      ;
+
+    let rs = this.sql.update(query);
+    //this.pubsub.pub("sqlquery2.datas",sqldatas);
   }
 
   formInit()

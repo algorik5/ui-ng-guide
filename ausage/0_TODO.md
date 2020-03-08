@@ -1,4 +1,21 @@
 
+
+(보류) logging.debug > classname or type <<< disable가능하게
+	? https://github.com/dbfannin/ngx-logger
+	*** https://github.com/Angular-RU/angular-logger
+
+
+
+service 싱글턴 제거 (https://poiemaweb.com/angular-service) *** https://angular.io/guide/singleton-services ***https://angular.io/guide/providers
+	service.ts > providedIn : root <<< 싱글턴
+	compo.ts > @Component({ ... providers: [FormService] <<< 해당compo child까지 싱글턴
+	module.ts > @NgModule({...providers: [UserService],})
+
+
+
+
+
+
 # ng-zorro universial starter 수정
 	수정 (form.component.html) : nz-form-extra >>> [nzExtra]="extraTpl" + <ng-template #extraTpl>
 	수정 (form.component.html) : nzType="question-circle"

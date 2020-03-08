@@ -31,6 +31,11 @@ export class SqlService {
 
     return this.rs;
   }
+  update(sql:string)
+  {
+    return 1;
+  }
+  
   getDatas() 
   { 
     if(this.rs == null) return [];
