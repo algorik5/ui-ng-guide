@@ -24,7 +24,7 @@ service 싱글턴 제거 (https://poiemaweb.com/angular-service) *** https://ang
 
 
 
-# ng-zorro universial starter 수정
+# ng-zorro universial starter 수정 > ui-ng-guide
 	수정 (form.component.html) : nz-form-extra >>> [nzExtra]="extraTpl" + <ng-template #extraTpl>
 	수정 (form.component.html) : nzType="question-circle"
 	수정 (angular.json) : assets...{glob...input...output...} <<< getting-started참고

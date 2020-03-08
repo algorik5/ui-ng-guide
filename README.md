@@ -1,6 +1,6 @@
-# NG-ZORRO Universal Starter
+# ui-ng-guide
 
-A NG-ZORRO starter for Universal using the Angular CLI
+ui ng guide (by ng-zorro universial starter)
 
 ## Installation
 
