@@ -1,5 +1,5 @@
 {
-  "name": "ng-zorro-universal-starter",
+  "name": "ui-ng-guide",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -15,7 +15,7 @@
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "build:client-and-server-bundles": "ng build --prod && ng run ng-zorro-universal-starter:server:production"
+    "build:client-and-server-bundles": "ng build --prod && ng run ui-ng-guide:server:production"
   },
   "private": false,
   "dependencies": {
@@ -36,7 +36,7 @@
     "echarts": "^4.6.0",
     "express": "^4.15.2",
     "monaco-editor": "^0.17.1",
-    "ng-zorro-antd": "^8.3.0",
+    "ng-zorro-antd": "^8.5.2",
     "ngx-echarts": "^4.2.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.2",

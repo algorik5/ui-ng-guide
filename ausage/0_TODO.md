@@ -1,5 +1,13 @@
 
 
+========= 업그레이드
+== ng-zorro-antd
+npm install ng-zorro-antd
+== ng
+
+
+
+
 (보류) logging.debug > classname or type <<< disable가능하게
 	? https://github.com/dbfannin/ngx-logger
 	*** https://github.com/Angular-RU/angular-logger
