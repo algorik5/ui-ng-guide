@@ -1,10 +1,10 @@
 # generate
-- ng g m ytemplate/sqlquery --routing
-- ng g c ytemplate/sqlquery
-- ---ng g s ytemplate/sqlquery/sqlquery
-- ng g c ytemplate/sqlquery/sqlquery-condition
-- ng g c ytemplate/sqlquery/sqlquery-list
-- ng g c ytemplate/sqlquery/sqlquery-update
+- ng g m yguide-test/sqlquery --routing
+- ng g c yguide-test/sqlquery
+- ---ng g s yguide-test/sqlquery/sqlquery
+- ng g c yguide-test/sqlquery/sqlquery-condition
+- ng g c yguide-test/sqlquery/sqlquery-list
+- ng g c yguide-test/sqlquery/sqlquery-update
 
 # 현재 module 수정
 - sqlquery.module.ts	
@@ -20,9 +20,9 @@
 
 # app module 수정
 - app-routing
-  - { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  - { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
 - app.compoent
-  - <a title routerLink="template/sqlquery"...
+  - <a title routerLink="guide-test/sqlquery"...
 
 # detail view 개발
 
@@ -40,7 +40,7 @@ ng g c yguide/form
 
 
 # ======================== 참고
-- ng g c ytemplate/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
+- ng g c yguide-test/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
 
 
 

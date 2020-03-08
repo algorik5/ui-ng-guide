@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/editor/editor.module').then(m => m.EditorModule)},
 
   
-  { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
-  { path: 'template',loadChildren: () => import('./ytemplate/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
-  { path: 'template',loadChildren: () => import('./ytemplate/dynamictable/dynamictable.module').then(m => m.DynamictableModule)},
-  { path: 'template',loadChildren: () => import('./ytemplate/dynamicchart/dynamicchart.module').then(m => m.DynamicchartModule)},
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamictable/dynamictable.module').then(m => m.DynamictableModule)},
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamicchart/dynamicchart.module').then(m => m.DynamicchartModule)},
 
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},
