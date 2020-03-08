@@ -13,19 +13,6 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
 export class EchartsService {
 
   constructor(private logging:LoggingService) { }
-    /////////////////////////// 사용법
-    /*  
-      ///////1 html
-      <div echarts [options]="chartoptions" (chartInit)="chartinit($event)"></div>
-      ///////2 ts
-      chartoptions:EChartOption = {};//주의 - null로 선언되면 chartinit 호출안됨
-      chartinit(event) { 
-        this.chart.initChart(event); 
-        this.chartoptions = this.chart.getChartOption(); 
-        this.chart.test_adddata();
-      }
-  */
-
 
   /////////////////////////// ngx-charts
   chartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
@@ -65,6 +52,7 @@ export class EchartsService {
   addDataRow(legend,x,y)
   {
     this.logging.debug("===addDataRow start #legend="+legend +"#x="+x +"#y="+y);
+    //if(x instanceof Date)
     let series = this.chartoptions.series.find(o=>o["name"]==legend);
     if(series == null)
     {
@@ -83,13 +71,24 @@ export class EchartsService {
   test_data()
   {
     if(this.testmode == false) return;
-    let chartdatas = [];
     let datas = zTestDataUtil.test_data();
+    return datas;
+  }
+  test_createchartdatas()
+  {
+    let datas = zTestDataUtil.test_data();
+    let chartdatas = [];
     datas.forEach((data,i)=>{
-      //this.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
       chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]});//data["memory"]
     });
     return chartdatas;
+  }
+  test_adddatas()
+  {
+    let datas = zTestDataUtil.test_data();
+    datas.forEach((data,i)=>{
+      this.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+    });
   }
 
 

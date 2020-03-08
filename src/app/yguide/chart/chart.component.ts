@@ -3,6 +3,8 @@ import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/aservice/echarts.service';
 import { PubsubService } from 'src/app/aservice/pubsub.service';
 import { LoggingService } from 'src/app/aservice/logging.service';
+import { DateUtil } from 'src/app/autil/DateUtil';
+import { MathUtil } from 'src/app/autil/MathUtil';
 
 @Component({
   selector: 'app-chart',
@@ -15,28 +17,38 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
 
-    this.testdata();
-
-    this.pubsub.sub("xxx.datas",datas => {
+	////////////////////////////////////////////////////////// chart  
+    this.pubsub.sub("xxx.datas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();
-      datas.forEach((data,i)=>{
-        this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
-      });
+      this.chart.addDatas(datas);
     });
+    this.pubsub.sub("xxx.data",data => {//{legend:-,x:-,y:-}
+      //this.chart.clearChart();
+      this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+    });
+
+	////////////////////////////////////////////////////////// testdata  
+    this.testdata();
   }
 
   ////////////////////////////////////////////////////////// chart  
   getChartOptions() { return this.chart.getChartOption(); }
   setChartInstance(event) { this.chart.setChartInstance(event); }
 
-  testdata_use = true;
+  ////////////////////////////////////////////////////////// testdata  
   testdata() { 
-    if(this.testdata_use == false) return;
     this.chart.clearChart();
-    let chartdatas = this.chart.test_data();
-    this.chart.addDatas(chartdatas);
+    let datas = this.chart.test_data();
+    let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
+    this.pubsub.pub("xxx.datas",chartdatas);//this.chart.addDatas(chartdatas);
   }
-
+  test_no = 0;
+  testdata_row() { 
+    this.test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.test_no);
+    let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
+    let chartdata = {legend:legend,x:x,y:y};
+    this.pubsub.pub("xxx.data",chartdata);//this.chart.addData(chartdata);
+  }
 
 // ////////////////////////////////////////////////////////// click
 // curx;cury;curlegend;

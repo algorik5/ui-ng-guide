@@ -2,15 +2,6 @@ import { Injectable } from '@angular/core';
 import { LoggingService } from './logging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
 
-////////////////////////////// usage (샘플 - sqlchart-list 또는 dynamictable-result)
-//html - <nz-table #basicTable [nzData]="getTableData()"
-//ts 1 - constructor(private table: TableService (또는 new TableService)
-//ts 2 - getTableData() { return this.table.getData(); }
-//ts 3 - this.table.setData(datas);
-//참고.컬럼 show 변경 - this.table.changeColumnShow(column);
-//참고.테스트 데이터 사용 - this.table.test_data();
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,15 +11,28 @@ export class TableService {
 
   datas = [];
   getData() { return this.datas; }
-  setData(datas)
+  clearData() { this.datas = []; }
+  setData(mydatas)
   {
-    this.datas = datas;
+    this.datas = mydatas;
     this.setColumns(this.datas);
+    this.logging.debug("=== setData mydata="+JSON.stringify(mydatas))
+  }
+
+  addDatas(mydatas)
+  {
+    this.datas = this.datas.concat(mydatas);
+    this.logging.debug("=== addDatas mydata="+JSON.stringify(mydatas))
+  }
+  addData(mydata)
+  {
+    this.datas.push(mydata);
+    this.logging.debug("=== addData mydata="+JSON.stringify(mydata))
   }
 
   columns = [];//[{name:xxx,enable:xxx},...]
   clearColumns() { this.columns = []; }
-  setColumns(datas)
+  setColumns(mydatas)
   {
     this.clearColumns();
     if(this.datas == null || this.datas.length < 1) return this.columns;
@@ -42,6 +46,7 @@ export class TableService {
   changeColumnShow(column) 
   { 
     let find = this.columns.find(data=>data["name"]==column);
+    if(find["show"] == null) { find["show"] = true; return; }
     if(find["show"] == true) find["show"] = false;
     else find["show"] = true;
     this.logging.debug("=== changeColumnShow find="+JSON.stringify(find))

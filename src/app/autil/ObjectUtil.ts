@@ -29,10 +29,11 @@ export class ObjectUtil
 
     static cloneObject(obj:any)//:any --- any를 return하니 안되네... 흠
     {
+        //return {...obj};//deep copy - array안됨 ?
+        return JSON.parse(JSON.stringify(obj));//deep copy
+        
         //return Object.assign({}, obj);//deep copy 아님 - 되는거 같은데 ...
         //return Object.create(obj);//deep copy 아님
-        //return JSON.parse(JSON.stringify(obj));//deep copy
-        return {...obj};//deep copy
         /////////// object deep copy
         // let user = { name: 'Dzon', age: 25, address: 'Sunny street 34' };
         // let updatedUser = { ...user ,name: 'Peter' }

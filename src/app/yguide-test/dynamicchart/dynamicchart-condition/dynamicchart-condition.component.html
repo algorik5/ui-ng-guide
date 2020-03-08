@@ -1,29 +1,4 @@
 <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
-    <ng-container *ngFor="let column of getFormColumns()">
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="{{column}}">{{column}}</nz-form-label>
-            <nz-form-control nzErrorTip="Please input your {{column}}!">
-                <nz-input-group>
-                  <input type="text" nz-input formControlName="{{column}}" placeholder="{{column}}" />
-                </nz-input-group>
-            </nz-form-control>
-        </nz-form-item>
-    </ng-container>
-
-    <nz-form-item>
-        <nz-form-label nzRequired nzFor="columns">columns</nz-form-label>
-        <nz-form-control nzErrorTip="Please input your columns!">
-            <nz-input-group>
-              <nz-tag *ngFor="let column of getColumns()" [nzColor]="column['color']" (click)="clickColumn(column)">{{column['name']}}</nz-tag>
-            </nz-input-group>
-        </nz-form-control>
-    </nz-form-item>
-    
-  </form>
-    
-  
-
-<!-- <form nz-form [formGroup]="form" (ngSubmit)="formSubmit()">
     <nz-form-item>
     <nz-form-label nzRequired nzFor="sql">sql</nz-form-label>
         <nz-form-control nzErrorTip="Please input your sql!">
@@ -33,20 +8,41 @@
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
+
     <nz-form-item>
-        <nz-form-label nzRequired nzFor="columns">columns</nz-form-label>
-        <nz-form-control nzErrorTip="Please input your columns!">
+        <nz-form-label nzRequired nzFor="legend">legend</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your legend!">
             <nz-input-group>
-              <nz-tag *ngFor="let column of getColumns()" [nzColor]="column['color']" (click)="clickColumn(column)">{{column['name']}}</nz-tag>
+              <nz-tag *ngFor="let column of getLegendColumns()" [nzColor]="column['color']" (click)="clickLegendColumn(column)">{{column['name']}}</nz-tag>
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
-</form> -->
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="x">x</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your x!">
+            <nz-input-group>
+              <nz-tag *ngFor="let column of getXColumns()" [nzColor]="column['color']" (click)="clickXColumn(column)">{{column['name']}}</nz-tag>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="y">y</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your y!">
+            <nz-input-group>
+              <nz-tag *ngFor="let column of getYColumns()" [nzColor]="column['color']" (click)="clickYColumn(column)">{{column['name']}}</nz-tag>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
 
     <!-- <nz-form-item>
         <nz-form-control>
           <button nz-button [nzType]="'primary'">Run</button>
         </nz-form-control>
       </nz-form-item> -->
+
+</form>
+
 
   

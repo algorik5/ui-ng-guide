@@ -31,7 +31,13 @@ export class SqlService {
 
     return this.rs;
   }
+  getDatas() 
+  { 
+    if(this.rs == null) return [];
+    return this.rs; 
+  }
 
+  
   columns = [];//[{name:xxx,color:xxx},...]
   clearColumns() { this.columns = []; }
   setColumns(rs)
