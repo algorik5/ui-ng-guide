@@ -8,7 +8,6 @@
 
 # 현재 module 수정
 - sqlquery.module.ts	
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
 
 - sqlquery-routing

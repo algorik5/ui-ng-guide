@@ -18,36 +18,41 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
 
 	////////////////////////////////////////////////////////// chart  
-    this.pubsub.sub("xxx.datas",datas => {//[{legend:-,x:-,y:-}...
+    this.pubsub.sub("mychart.datas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();
       this.chart.addDatas(datas);
     });
-    this.pubsub.sub("xxx.data",data => {//{legend:-,x:-,y:-}
+    this.pubsub.sub("mychart.data",data => {//{legend:-,x:-,y:-}
       //this.chart.clearChart();
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
     });
 
-	////////////////////////////////////////////////////////// testdata  
-    this.testdata();
+    this.chartInit();
   }
 
   ////////////////////////////////////////////////////////// chart  
   getChartOptions() { return this.chart.getChartOption(); }
   setChartInstance(event) { this.chart.setChartInstance(event); }
 
+  chartInit()
+  {
+    ////////////////////////////////////////////////////////// testdata  
+    this.test_datas();
+  }
+
   ////////////////////////////////////////////////////////// testdata  
-  testdata() { 
+  test_datas() { 
     this.chart.clearChart();
     let datas = this.chart.test_data();
     let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
-    this.pubsub.pub("xxx.datas",chartdatas);//this.chart.addDatas(chartdatas);
+    this.pubsub.pub("mychart.datas",chartdatas);//this.chart.addDatas(chartdatas);
   }
   test_no = 0;
-  testdata_row() { 
+  test_datarow() { 
     this.test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.test_no);
     let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
     let chartdata = {legend:legend,x:x,y:y};
-    this.pubsub.pub("xxx.data",chartdata);//this.chart.addData(chartdata);
+    this.pubsub.pub("mychart.data",chartdata);//this.chart.addData(chartdata);
   }
 
 // ////////////////////////////////////////////////////////// click

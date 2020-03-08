@@ -15,8 +15,9 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
 //참고.NullInjectorError: No provider for FormBuilder - service에서 FormBuilder사용시 발생 >>> app.modules.ts > FormsModule,ReactiveFormsModule 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+//@Injectable()
 export class FormService {
 
   constructor(private fb: FormBuilder,private logging:LoggingService) { this.initForm(); }
@@ -55,6 +56,13 @@ export class FormService {
     //if(this.formgroup.controls == null) return [];
     return Object.keys(this.formgroup.controls);
   }
+  getControlValues()
+  {
+    let names = this.getControlNames();
+    let values = [];//[{name:x,value:x}]
+    names.forEach(name=>{ values.push({name:name,value:this.getControlValue(name)}); });
+    return values;
+  }
 
 
   //////////////// test data
@@ -63,9 +71,13 @@ export class FormService {
   {
     if(this.testmode == false) return;
     let datas = zTestDataUtil.test_data();
-    let data = datas[0];//{id:"id-1",name:"name-1"};
-    if(datas.length%3==1) [1].forEach(no=>data["no-"+no] = no);
-    if(datas.length%3==2) [1,2].forEach(no=>data["no-"+no] = no);
-    return data;
+    return datas;
+  }
+  test_data_row()
+  {
+    // let data = datas[0];//{id:"id-1",name:"name-1"};
+    // if(datas.length%3==1) [1].forEach(no=>data["no-"+no] = no);
+    // if(datas.length%3==2) [1,2].forEach(no=>data["no-"+no] = no);
+    // return data;
   }
 }

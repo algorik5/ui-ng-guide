@@ -1,0 +1,22 @@
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+    <ng-container *ngFor="let column of getFormColumns()">
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="{{column}}">{{column}}</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your {{column}}!">
+                <nz-input-group>
+                  <input type="text" nz-input formControlName="{{column}}" placeholder="{{column}}" />
+                    <!-- <textarea nz-input formControlName="sql" rows="3" placeholder="sql"></textarea> -->
+                    <!-- <nz-tag *ngFor="let column of getColumns()" [nzColor]="column['color']" (click)="clickColumn(column)">{{column['name']}}</nz-tag> -->
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+    </ng-container>
+
+    <nz-form-item>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'">Run</button>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>

@@ -1,0 +1,26 @@
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+          <nz-card> <h6>search</h6> <app-sqlquery2-condition></app-sqlquery2-condition> </nz-card> 
+      </nz-col>
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-sqlquery2-result></app-sqlquery2-result> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'update'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-sqlquery2-update></app-sqlquery2-update> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>
