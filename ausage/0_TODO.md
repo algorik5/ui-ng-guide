@@ -17,7 +17,7 @@
 
 # ============= 개발가이드
 표준 - no inline
----(곽방식)대시보드v2
+---(곽방식)대시보드v2 
 	ng g c dashboardv2/about
 	ng g c dashboardv2/about/view-cpu-max --inlineStyle=true --inlineTemplate=true --flat=true
 	ng g c dashboardv2/about/view-memory-max --inlineStyle=true --inlineTemplate=true --flat=true

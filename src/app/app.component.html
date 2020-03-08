@@ -6,7 +6,7 @@
 
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
       <li nz-menu-item (click)="setMenuType('main')" nzSelected>main</li>
-      <li nz-menu-item (click)="setMenuType('last')">last</li>
+      <li nz-menu-item (click)="setMenuType('guide')">guide</li>
       <li nz-menu-item (click)="setMenuType('template')">template</li>
       <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('test')">test</li>
@@ -20,14 +20,14 @@
         </ul>
       </ng-container>
 
-      <ng-container *ngIf="menuType=='last'">
+      <ng-container *ngIf="menuType=='guide'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/layout"><span title><i nz-icon nzType="notification"></i>layout</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/form"><span title><i nz-icon nzType="notification"></i>form</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/form-readonly"><span title><i nz-icon nzType="notification"></i>form-readonly</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/table"><span title><i nz-icon nzType="notification"></i>table</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/chart"><span title><i nz-icon nzType="notification"></i>chart</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="last/editor"><span title><i nz-icon nzType="notification"></i>editor</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout"><span title><i nz-icon nzType="notification"></i>layout</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form"><span title><i nz-icon nzType="notification"></i>form</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form-readonly"><span title><i nz-icon nzType="notification"></i>form-readonly</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/table"><span title><i nz-icon nzType="notification"></i>table</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/chart"><span title><i nz-icon nzType="notification"></i>chart</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/editor"><span title><i nz-icon nzType="notification"></i>editor</span></a></li>
         </ul>
       </ng-container>
 

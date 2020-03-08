@@ -29,13 +29,13 @@
 
 
 
-# ========================================== ylast
-ng g m ylast/form --routing
-ng g c ylast/form
+# ========================================== guide
+ng g m yguide/form --routing
+ng g c yguide/form
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
   - { path: 'form',component: FormComponent }
-  - { path: 'last',loadChildren: () => import('./ylast/form/form.module').then(m => m.FormModule)},
-  - <a title routerLink="last/form"...
+  - { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
+  - <a title routerLink="guide/form"...
 
 
 

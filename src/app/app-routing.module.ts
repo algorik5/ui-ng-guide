@@ -6,12 +6,12 @@ const routes: Routes = [
 
   { path: 'test1',loadChildren: () => import('./test1/test1.module').then(m => m.Test1Module)},
 
-  { path: 'last',loadChildren: () => import('./ylast/layout/layout.module').then(m => m.LayoutModule)},
-  { path: 'last',loadChildren: () => import('./ylast/form/form.module').then(m => m.FormModule)},
-  { path: 'last',loadChildren: () => import('./ylast/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
-  { path: 'last',loadChildren: () => import('./ylast/table/table.module').then(m => m.TableModule)},
-  { path: 'last',loadChildren: () => import('./ylast/chart/chart.module').then(m => m.ChartModule)},
-  { path: 'last',loadChildren: () => import('./ylast/editor/editor.module').then(m => m.EditorModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/layout/layout.module').then(m => m.LayoutModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/table/table.module').then(m => m.TableModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/chart/chart.module').then(m => m.ChartModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/editor/editor.module').then(m => m.EditorModule)},
 
   
   { path: 'template',loadChildren: () => import('./ytemplate/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
