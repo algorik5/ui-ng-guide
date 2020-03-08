@@ -1,5 +1,33 @@
 
 
+https://ng.ant.design/components/menu/en
+https://ng-alain.github.io/ng-alain/#/dashboard/v1
+
+================================================ last샘플 - 가이드
+pubsub
+sql
+--? ashared acompo
+(보류) checked > __checked,안보이게...
+(보류) 테이블크기 고정
+2. 템플릿
+treedata(table)
+=================== 기타
+굿홈페이지 - https://gatsby-starter-theme-antv.antv.vision/en
+
+
+
+=================== 기존소스 포팅
+stomp	stompview
+util	jsontree
+== bit.dev(share compo) : https://bit.dev/components?packageDependencies=%40angular%2Fcore
+==== 이슈
+상단클릭시 디폴트화면 이동
+url(route)로 직접 들어올때 메뉴가 자동 선택되어야 함
+user create : this.router.navigateByUrl(`/user/${user.getId()}`);
+
+
+
+
 ========= 업그레이드
 == ng-zorro-antd
 npm install ng-zorro-antd
