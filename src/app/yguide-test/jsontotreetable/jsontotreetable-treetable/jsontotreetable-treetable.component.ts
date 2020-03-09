@@ -12,9 +12,12 @@ export class JsontotreetableTreetableComponent implements OnInit {
 
   constructor(private treetable: AatreetableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
+  jsonviewdata = [];
+  
   ngOnInit() {
 
     this.pubsub.sub("jsontotreetable.treetable", datas => {
+      this.jsonviewdata = datas;
       this.treetable.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
 

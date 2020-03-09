@@ -79,15 +79,38 @@ export class AatreetableService {
     }
     else
     {
-      let treedatas = [];
-      Object.keys(mydata).forEach(key=>{
-        let treedata = { "name":key, "value":mydata[key], "type":"mytype","path":"//mypath" };
-        treedatas.push(treedata);
-      });
-      let last = [{"data":{name:"data",value:"object",type:"mytype",path:"//mypath"},children:treedatas}];
-      this.logging.debug("=== treetable service convertTreeData end   #array="+ Array.isArray(last) +"#"+ JSONUtil.stringify(last));
-      return last;
+      let treedatas = this.objectToTreeTableData(mydata);
+      // Object.keys(mydata).forEach(key=>{
+      //   let value = mydata[key];
+      //   let data = this.valueToTreeTableData(key,value);
+      //   treedatas.push(data);
+      // });
+      this.logging.debug("=== treetable service convertTreeData end   #"+ JSONUtil.stringify(treedatas));
+      return treedatas;
     }
+  }
+  objectToTreeTableData(obj)
+  {
+    let treedatas = [];
+    Object.keys(obj).forEach(key=>{
+      let value = obj[key];
+      if(typeof(value) == 'object')
+      {
+        let datas = this.objectToTreeTableData(value);
+        treedatas.concat(datas);
+      }
+      else
+      {
+        let data = this.valueToTreeTableData(key,value);
+        treedatas.push(data);
+      }
+    });
+    return treedatas;
+  }
+  valueToTreeTableData(key,value)
+  {
+    let data = {data:{ "name":key, "value":value, "type":"mytype","path":"//mypath" },children:[]};
+    return data;
   }
 
 }

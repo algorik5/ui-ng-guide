@@ -46,7 +46,7 @@ export class JsontotreetableConditionComponent implements OnInit {
   
   ////////////////////////////////////////////////////////// nz-tag
   name = "testdatas";
-  values = [{name:"data",color:"lime"},{name:"array",color:"lime"},{name:"others",color:"lime"}];//red
+  values = [{name:"data",color:"lime"},{name:"datachild",color:"lime"},{name:"array",color:"lime"},{name:"others",color:"lime"}];//red
   getValues() { return this.values; }
   clickValue(value) {//{name:data,color:"lime"}
     if(value["color"]=="red") return;
@@ -56,6 +56,7 @@ export class JsontotreetableConditionComponent implements OnInit {
 
     let data = {};
     if(value["name"]=="data") data = this.test_data;
+    else if(value["name"]=="datachild") data = this.test_datachild;
     else if(value["name"]=="array") data = this.test_array;
     else if(value["name"]=="others") data = this.test_others;
     this.pubsub.pub("jsontotreetable.editordata",data);
@@ -65,6 +66,7 @@ export class JsontotreetableConditionComponent implements OnInit {
   }
 
   test_data = {a:"a1",b:"b1"};
+  test_datachild = {a:"a1",b:"b1",c:{ca:"ca1",cb:"cb1"}};
   test_array = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
   test_others = [{a:"a1",b:"b1",child:[{c:"c1"}]},{a:"a1",b:"b1"}];
 }
