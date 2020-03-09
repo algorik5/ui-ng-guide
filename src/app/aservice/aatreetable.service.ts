@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AaloggingService } from './aalogging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
-import { JsonUtil } from '../autil/JsonUtil';
+import { JSONUtil } from '../autil/JSONUtil';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +39,7 @@ export class AatreetableService {
   onSelect(event,selectdatas)//event는 무시 
   {
     this.selectdatas = selectdatas; 
-    console.log("-------------- onSelect #size="+ (Array.isArray(this.selectdatas)) +"#data="+ JsonUtil.stringify(this.selectdatas));
+    console.log("-------------- onSelect #size="+ (Array.isArray(this.selectdatas)) +"#data="+ JSONUtil.stringify(this.selectdatas));
   }
 
   ////////////////////////////// test data

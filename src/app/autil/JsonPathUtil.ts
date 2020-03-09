@@ -1,6 +1,6 @@
 declare var defiant;
 
-export class JsonPathUtil {
+export class JSONPathUtil {
     //사용법 : let searchs = JsonPathUtil.searchObjects(this.jsonobject,search);
     static searchObjects(object,mypath)//,debugmsgs):any[]//항상 array리턴
     {
@@ -21,8 +21,8 @@ export class JsonPathUtil {
     };
     static searchTest()
     {
-        let searchs = defiant.search(JsonPathUtil.testdata, '//car[color="yellow"]/name');
-        //let pkpathdata = JsonPathUtil.searchObjects(JsonPathUtil.testdata,"//*[pk='Y']/path");
+        let searchs = defiant.search(JSONPathUtil.testdata, '//car[color="yellow"]/name');
+        //let pkpathdata = JSONPathUtil.searchObjects(JSONPathUtil.testdata,"//*[pk='Y']/path");
         console.log("--- searchTest #searchs="+ JSON.stringify(searchs));
 
     }

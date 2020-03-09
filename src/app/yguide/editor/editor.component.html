@@ -10,7 +10,17 @@
 </nz-card> </nz-collapse-panel> </nz-collapse>
 
 
+<button nz-button nzType="dashed" (click)="test_data()">test_data</button>
+<button nz-button nzType="dashed" (click)="changeTheme()">theme</button>
+
+
 <nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'json'" [nzActive]="'true'" [nzDisabled]="'false'"> 
+        <nz-card> 
+            <nz-code-editor style="height:100px;" [ngModel]="json_text" [nzEditorOption]="{ language: 'json' }">sss</nz-code-editor>
+        </nz-card> 
+    </nz-collapse-panel> 
+
     <nz-collapse-panel [nzHeader]="'typescript'" [nzActive]="'true'" [nzDisabled]="'false'"> 
         <nz-card> 
             <nz-code-editor style="height:100px;" [ngModel]="typescript_text" [nzEditorOption]="{ language: 'typescript' }"></nz-code-editor>
@@ -19,11 +29,6 @@
     <nz-collapse-panel [nzHeader]="'markdown'" [nzActive]="'true'" [nzDisabled]="'false'"> 
         <nz-card> 
             <nz-code-editor style="height:100px;" [ngModel]="markdown_text" [nzEditorOption]="{ language: 'markdown' }"></nz-code-editor>
-        </nz-card> 
-    </nz-collapse-panel> 
-    <nz-collapse-panel [nzHeader]="'dont_use'" [nzActive]="'true'" [nzDisabled]="'false'"> 
-        <nz-card> 
-            <nz-code-editor style="height:100px;" [nzEditorOption]="{ language: 'markdown' }">sss</nz-code-editor>
         </nz-card> 
     </nz-collapse-panel> 
 

@@ -43,7 +43,7 @@ export class JsontotreetableConditionComponent implements OnInit {
   formInit()
   {
     ////////////////////////////////////////////////////////// testdata  
-    this.test_data();
+    //this.test_data();
     // this.form.addControls(["host","ip"]);
     // this.form.setControlValue("host","host-1");
     // this.form.setControlValue("ip","ip-0");
@@ -58,19 +58,16 @@ export class JsontotreetableConditionComponent implements OnInit {
     //ColorUtil.changeColor(value);
     ColorUtil.changeColorAll(this.values,"lime");
     ColorUtil.changeColorValue(value,"red"); 
+
+    let data = {};
+    if(value["name"]=="data") data = this.test_data;
+    else if(value["name"]=="array") data = this.test_array;
+    else if(value["name"]=="others") data = this.test_others;
+    this.pubsub.pub("myeditor.data",data);
+
   }
 
-  ////////////////////////////////////////////////////////// testdata  
-  test_data()
-  {
-    let datas = this.form.test_data();
-    let data = datas[0];
-    this.pubsub.pub("myform.data",data);
-  }
-  test_no = 0;
-  test_columnadd() { 
-    this.test_no++;
-    let row = {name:"no-"+this.test_no,value:"val-"+this.test_no};
-    this.pubsub.pub("myform.columnadd",row);
-  }
+  test_data = {a:"a1",b:"b1"};
+  test_array = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
+  test_others = [{a:"a1",b:"b1",child:[{c:"c1"}]},{a:"a1",b:"b1"}];
 }

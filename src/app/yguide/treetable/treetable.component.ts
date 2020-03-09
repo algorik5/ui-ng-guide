@@ -4,7 +4,7 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
 import { AatreetableService } from 'src/app/aservice/aatreetable.service';
-import { JsonUtil } from 'src/app/autil/JsonUtil';
+import { JSONUtil } from 'src/app/autil/JSONUtil';
 
 
 @Component({
@@ -46,6 +46,19 @@ export class TreetableComponent implements OnInit {
     this.pubsub.pub("mytreetable.datas",datas);//this.treetable.setData(datas);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+  
   /////////////////////////// treetable/primeng
   // treetable_selectevent(){
   //   let set = new Set(); 
