@@ -12,6 +12,10 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { SharedModule } from './shared.module'
 import { NgxEchartsModule } from 'ngx-echarts';
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {TreeTableModule} from 'primeng/treetable';
 
 registerLocaleData(en);
 
@@ -22,7 +26,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,
+    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule

@@ -20,6 +20,7 @@
   "private": false,
   "dependencies": {
     "@angular/animations": "~8.2.7",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.7",
     "@angular/compiler": "~8.2.7",
     "@angular/core": "~8.2.7",
@@ -38,6 +39,9 @@
     "monaco-editor": "^0.17.1",
     "ng-zorro-antd": "^8.5.2",
     "ngx-echarts": "^4.2.2",
+    "ngx-json-viewer": "^2.4.0",
+    "primeicons": "^2.0.0",
+    "primeng": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",

@@ -1,0 +1,98 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    결론 : primeng treetable 사용<br>
+    html : cdk-virtual-scroll-viewport 복사
+    ts   : constructor뒤 복사<br>
+    주의 : [(selection)]에 함수사용불가(안됨-getTreeTableSelectData()
+	====================== 참고-zorro<br>
+	주의 1 : data표현방법이 어려움<br>
+	주의 2 : child check가 안됨<br>
+	향후 : json to treetabledata<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+<button nz-button nzType="dashed" (click)="test_datas()">test_datas</button>
+
+
+
+<cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+    <!-- <p-treeTable [value]="getTreeTableData()" selectionMode="checkbox" [(selection)]="getTreeTableSelectData()" (onNodeSelect)="treeTableOnSelect($event)" (onNodeUnselect)="treeTableOnSelect($event)" (onHeaderCheckboxToggle)="treeTableOnSelect($event)"> -->
+    <p-treeTable [value]="getTreeTableData()" selectionMode="checkbox" [(selection)]="treetable_selectdata" (onNodeSelect)="treeTableOnSelect($event)" (onNodeUnselect)="treeTableOnSelect($event)" (onHeaderCheckboxToggle)="treeTableOnSelect($event)">
+      <ng-template pTemplate="caption">
+        <div style="text-align:left"> 
+          <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox> 
+          <span style="margin-left: .25em; vertical-align: middle">Toggle All</span> 
+        </div>
+     </ng-template>
+      <ng-template pTemplate="header" let-columns> 
+          <tr> 
+              <th *ngFor="let col of getTreeTableColumns()"> {{col}} </th> 
+          </tr> 
+      </ng-template>
+      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+          <tr>
+              <td *ngFor="let col of getTreeTableColumns(); let i = index">
+                  <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                  <p-treeTableCheckbox [value]="rowNode" *ngIf="i == 0"></p-treeTableCheckbox>
+                  <!-- <p-treeTableCheckbox [value]="rowNode" *ngIf="i == 0" (click)="clicktreecheck(rowData)"></p-treeTableCheckbox> -->
+                  {{rowData[col]}}
+              </td>
+          </tr>
+      </ng-template>
+    </p-treeTable>        
+  </cdk-virtual-scroll-viewport>
+
+
+
+
+
+
+
+
+
+
+<!-- /////////////////////////////////////////// zorro 사용안함  -->
+<!-- <nz-table #expandTable [nzData]="treetabledatas">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [nzDisabled]="true"></th>
+        <th nzWidth="40%">Name</th>
+        <th nzWidth="30%">Age</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of expandTable.data">
+        <ng-container *ngFor="let item of treetabledatas_map[data.key]">
+          <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+            <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+            <td
+              [nzIndentSize]="item.level * 20"
+              [nzShowExpand]="!!item.children"
+              [(nzExpand)]="item.expand"
+              (nzExpandChange)="treetable_collapse(treetabledatas_map[data.key], item, $event)"
+            >
+              {{ item.name }}
+            </td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.address }}</td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </nz-table>
+
+
+  <nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'listOfMapData'" [nzActive]="'true'" [nzDisabled]="'false'"> 
+        <nz-card>
+            <ngx-json-viewer [json]="listOfMapData" [expanded]="true"></ngx-json-viewer>
+        </nz-card> 
+    </nz-collapse-panel> 
+    <nz-collapse-panel [nzHeader]="'mapOfExpandedData'" [nzActive]="'true'" [nzDisabled]="'false'"> 
+        <nz-card>
+            <ngx-json-viewer [json]="mapOfExpandedData" [expanded]="true"></ngx-json-viewer>
+        </nz-card> 
+    </nz-collapse-panel> 
+
+</nz-collapse> -->

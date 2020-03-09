@@ -29,12 +29,12 @@
 
 
 # ========================================== guide
-ng g m yguide/form --routing
-ng g c yguide/form
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
-  - { path: 'form',component: FormComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
-  - <a title routerLink="guide/form"...
+ng g m yguide/jsonview --routing
+ng g c yguide/jsonview
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
+  - { path: 'jsonview',component: JsonviewComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
+  - <a title routerLink="guide/jsonview"...
 
 
 

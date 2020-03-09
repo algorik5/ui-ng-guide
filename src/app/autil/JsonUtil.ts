@@ -1,3 +1,5 @@
+declare var Flatted;
+
 export class JsonUtil
 {
     static pretty(obj)
@@ -6,4 +8,11 @@ export class JsonUtil
         console.log('--------- str # '+ str);
     }
 
+    static stringify(obj):string
+    {
+        try{
+            return JSON.stringify(obj);
+        }catch(e) { console.log("====== JsonUtil.stringify ERROR # "+ e);}
+        return "[Flatted]"+Flatted.stringify(obj);
+    }
 }

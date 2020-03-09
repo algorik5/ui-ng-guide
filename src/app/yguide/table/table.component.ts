@@ -45,10 +45,8 @@ export class TableComponent implements OnInit {
     this.test_datas();
   }
 
-  testdata_use = true;
   test_datas()
   {
-    if(this.testdata_use == false) return;
     let datas = this.table.test_data();
     this.pubsub.pub("mytable.datas",datas);//this.table.setData(datas);
   }

@@ -8,7 +8,7 @@ export class zTestDataUtil
     static test_data()
     {
         zTestDataUtil.size++; if(zTestDataUtil.size > 10) zTestDataUtil.size = 3;
-        console.log("======= test_data #size="+ zTestDataUtil.size);
+        console.log("======= zTestDataUtil test_data #size="+ zTestDataUtil.size);
         let datas = [];
         let curdate = new Date();
         for(let i=0;i<zTestDataUtil.size;i++)
