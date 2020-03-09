@@ -17,14 +17,14 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     //샘플 - pubsub form
-    this.pubsub.sub("myform.data",data=>{
-      this.logging.debug("=== myform.data="+JSON.stringify(data))
+    this.pubsub.sub("myname.form",data=>{
+      this.logging.debug("=== myname.form="+JSON.stringify(data))
       this.form.clearForm();
       this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
       Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
     });
-    this.pubsub.sub("myform.columnadd",row=>{//{name:col1,value:value1}
-      this.logging.debug("=== myform.columnadd="+JSON.stringify(row))
+    this.pubsub.sub("myname.form-row",row=>{//{name:col1,value:value1}
+      this.logging.debug("=== myname.formrow="+JSON.stringify(row))
       //this.form.clearForm();
       this.form.addControl(row["name"]);
       this.form.setControlValue(row["name"],row["value"]);
@@ -69,12 +69,12 @@ export class FormComponent implements OnInit {
   {
     let datas = this.form.test_data();
     let data = datas[0];
-    this.pubsub.pub("myform.data",data);
+    this.pubsub.pub("myname.form",data);
   }
   test_no = 0;
   test_columnadd() { 
     this.test_no++;
     let row = {name:"no-"+this.test_no,value:"val-"+this.test_no};
-    this.pubsub.pub("myform.columnadd",row);
+    this.pubsub.pub("myname.form-row",row);
   }
 }

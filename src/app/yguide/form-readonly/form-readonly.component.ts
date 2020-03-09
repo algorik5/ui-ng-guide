@@ -16,14 +16,14 @@ export class FormReadonlyComponent implements OnInit {
   ngOnInit() {
 
     //pubsub-form 샘플
-    this.pubsub.sub("myform-readonly.data",data=>{
-      this.logging.debug("=== myform-readonly.data="+JSON.stringify(data))
+    this.pubsub.sub("myname.form-readonly",data=>{
+      this.logging.debug("=== myname.form-readonly="+JSON.stringify(data))
       this.form.clearForm();
       this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
       Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
     });
-    this.pubsub.sub("myform-readonly.columnadd",row=>{//{name:col1,value:value1}
-      this.logging.debug("=== myform-readonly.columnadd="+JSON.stringify(row))
+    this.pubsub.sub("myname.form-readonly-row",row=>{//{name:col1,value:value1}
+      this.logging.debug("=== myname.form-readonlyrow="+JSON.stringify(row))
       //this.form.clearForm();
       this.form.addControl(row["name"]);
       this.form.setControlValue(row["name"],row["value"]);
@@ -56,12 +56,12 @@ export class FormReadonlyComponent implements OnInit {
   {
     let datas = this.form.test_data();
     let data = datas[0];
-    this.pubsub.pub("myform-readonly.data",data);
+    this.pubsub.pub("myname.form-readonly",data);
   }
   test_no = 0;
   test_columnadd() { 
     this.test_no++;
     let row = {name:"no-"+this.test_no,value:"val-"+this.test_no};
-    this.pubsub.pub("myform-readonly.columnadd",row);
+    this.pubsub.pub("myname.form-readonly-row",row);
   }  
 }

@@ -18,7 +18,7 @@ export class TreetableComponent implements OnInit {
 
   ngOnInit() {
 
-    this.pubsub.sub("mytreetable.datas", datas => {
+    this.pubsub.sub("myname.treetable", datas => {
       this.treetable.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
 
@@ -43,7 +43,7 @@ export class TreetableComponent implements OnInit {
   test_datas()
   {
     let datas = this.treetable.test_data();
-    this.pubsub.pub("mytreetable.datas",datas);//this.treetable.setData(datas);
+    this.pubsub.pub("myname.treetable",datas);//this.treetable.setData(datas);
   }
 
 

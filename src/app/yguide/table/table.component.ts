@@ -16,15 +16,15 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     //pubsub-table 샘플
-    this.pubsub.sub("mytable.datas", datas => {
+    this.pubsub.sub("myname.table", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
-    this.pubsub.sub("mytable.data", data => {
+    this.pubsub.sub("myname.table-row", data => {
       this.table.addData(data);
     });
 
     //pubsub-table 샘플 - 컬럼 show
-    this.pubsub.sub("mytable.columnshow", column => {
+    this.pubsub.sub("myname.table-columnshow", column => {
       this.table.changeColumnShow(column);
     });
 
@@ -36,7 +36,7 @@ export class TableComponent implements OnInit {
 
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
-    this.pubsub.pub("mytable.dataselect", data);
+    this.pubsub.pub("myname.table-select", data);
   }
 
   tableInit()
@@ -48,7 +48,7 @@ export class TableComponent implements OnInit {
   test_datas()
   {
     let datas = this.table.test_data();
-    this.pubsub.pub("mytable.datas",datas);//this.table.setData(datas);
+    this.pubsub.pub("myname.table",datas);//this.table.setData(datas);
   }
   test_no = 0;
   test_data() { 
@@ -60,7 +60,7 @@ export class TableComponent implements OnInit {
   }
   test_columnshow()
   {
-    this.pubsub.pub("mytable.columnshow","host");//this.table.changeColumnShow("host");
+    this.pubsub.pub("myname.table-columnshow","host");//this.table.changeColumnShow("host");
   }
 
 }
