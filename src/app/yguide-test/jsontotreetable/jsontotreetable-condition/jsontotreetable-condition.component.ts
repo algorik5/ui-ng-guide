@@ -3,6 +3,7 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
+import { AatreetableService } from 'src/app/aservice/aatreetable.service';
 
 @Component({
   selector: 'app-jsontotreetable-condition',
@@ -11,22 +12,16 @@ import { ColorUtil } from 'src/app/autil/ColorUtil';
 })
 export class JsontotreetableConditionComponent implements OnInit {
 
-  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService) { }
+  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService,private treetable: AatreetableService) { }
 
   ngOnInit() {
-    //샘플 - pubsub form
-    this.pubsub.sub("myform.data",data=>{
-      this.logging.debug("=== myform.data="+JSON.stringify(data))
-      this.form.clearForm();
-      this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
-      Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
-    });
-    this.pubsub.sub("myform.columnadd",row=>{//{name:col1,value:value1}
-      this.logging.debug("=== myform.columnadd="+JSON.stringify(row))
-      //this.form.clearForm();
-      this.form.addControl(row["name"]);
-      this.form.setControlValue(row["name"],row["value"]);
-    });
+
+    // this.pubsub.sub("jsontotreetable.data",data=>{
+    //   this.logging.debug("=== jsontotreetable.data="+JSON.stringify(data))
+    //   this.form.clearForm();
+    //   this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
+    //   Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
+    // });
 
     this.formInit();
   }
@@ -63,8 +58,10 @@ export class JsontotreetableConditionComponent implements OnInit {
     if(value["name"]=="data") data = this.test_data;
     else if(value["name"]=="array") data = this.test_array;
     else if(value["name"]=="others") data = this.test_others;
-    this.pubsub.pub("myeditor.data",data);
+    this.pubsub.pub("jsontotreetable.editordata",data);
 
+    let treedatas = this.treetable.convertTreeData(data);
+    this.pubsub.pub("jsontotreetable.treetable",treedatas);
   }
 
   test_data = {a:"a1",b:"b1"};

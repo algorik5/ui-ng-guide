@@ -13,8 +13,8 @@ export class JsontotreetableEditorComponent implements OnInit {
   constructor(private pubsub:AapubsubService,private logging:AaloggingService,private nzCodeEditorService: NzCodeEditorService) { }
 
   ngOnInit() {
-    this.pubsub.sub("myeditor.data",data=>{
-      this.logging.debug("=== myeditor.data="+JSON.stringify(data));
+    this.pubsub.sub("jsontotreetable.editordata",data=>{
+      this.logging.debug("=== jsontotreetable.editordata="+JSON.stringify(data));
       this.json_text = JSON.stringify(data,null,2);
     });
   }
@@ -32,7 +32,7 @@ export class JsontotreetableEditorComponent implements OnInit {
   test_data()
   {
     let data = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
-    this.pubsub.pub("myeditor.data",data);
+    this.pubsub.pub("jsontotreetable.editordata",data);
   }
 
 

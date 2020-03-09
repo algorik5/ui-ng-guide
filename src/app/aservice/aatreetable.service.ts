@@ -69,5 +69,25 @@ export class AatreetableService {
   [ 
     { "data":{ "name":"Documents1", "value":"75kb1", "type":"Folder1","path":"//Documents1" } }
   ];
+  ////////////////////////////// convert
+  convertTreeData(mydata)
+  {
+    this.logging.debug("=== treetable service convertTreeData start #array="+ Array.isArray(mydata) +"#"+ JSONUtil.stringify(mydata));
+    if(Array.isArray(mydata))
+    {
+
+    }
+    else
+    {
+      let treedatas = [];
+      Object.keys(mydata).forEach(key=>{
+        let treedata = { "name":key, "value":mydata[key], "type":"mytype","path":"//mypath" };
+        treedatas.push(treedata);
+      });
+      let last = [{"data":{name:"data",value:"object",type:"mytype",path:"//mypath"},children:treedatas}];
+      this.logging.debug("=== treetable service convertTreeData end   #array="+ Array.isArray(last) +"#"+ JSONUtil.stringify(last));
+      return last;
+    }
+  }
 
 }
