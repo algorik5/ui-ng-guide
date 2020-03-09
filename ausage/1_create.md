@@ -1,27 +1,27 @@
 # generate
-- ng g m yguide-test/sqlquery --routing
-- ng g c yguide-test/sqlquery
+- ng g m yguide-test/jsontotreetable --routing
+- ng g c yguide-test/jsontotreetable
 - ---ng g s yguide-test/sqlquery/sqlquery
-- ng g c yguide-test/sqlquery/sqlquery-condition
-- ng g c yguide-test/sqlquery/sqlquery-list
-- ng g c yguide-test/sqlquery/sqlquery-update
+- ng g c yguide-test/jsontotreetable/jsontotreetable-condition
+- ng g c yguide-test/jsontotreetable/jsontotreetable-editor
+- ng g c yguide-test/jsontotreetable/jsontotreetable-treetable
 
 # 현재 module 수정
 - sqlquery.module.ts	
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
 
 - sqlquery-routing
-  - { path: 'sqlquery',component: SqlqueryComponent }
+  - { path: 'jsontotreetable',component: JsontotreetableComponent }
 
 # 현재 page layout 
-- sqlquery.compoenent.html
-	nz-row/col...<app-sqlquery-condition...
+- jsontotreetable.compoenent.html
+	nz-row/col...<app-jsontotreetable-condition...
 
 # app module 수정
 - app-routing
-  - { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
+  - { path: 'guide-test',loadChildren: () => import('./yguide-test/jsontotreetable/jsontotreetable.module').then(m => m.JsontotreetableModule)},
 - app.compoent
-  - <a title routerLink="guide-test/sqlquery"...
+  - <a title routerLink="guide-test/jsontotreetable"...
 
 # detail view 개발
 
@@ -29,10 +29,10 @@
 
 
 # ========================================== guide
-ng g m yguide/jsonview --routing
-ng g c yguide/jsonview
+ng g m yguide/jsontotreetable --routing
+ng g c yguide/jsontotreetable
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'jsonview',component: JsonviewComponent }
+  - { path: 'jsontotreetable',component: JsontotreetableComponent }
   - { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
   - <a title routerLink="guide/jsonview"...
 

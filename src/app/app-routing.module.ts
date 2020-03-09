@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamicchart/dynamicchart.module').then(m => m.DynamicchartModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
-
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/jsontotreetable/jsontotreetable.module').then(m => m.JsontotreetableModule)},
+  
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},
 

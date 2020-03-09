@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AapubsubService } from "src/app/aservice/aapubsub.service";
 import { AasqlService } from "src/app/aservice/aasql.service";
 import { AaloggingService } from "src/app/aservice/aalogging.service";
+import { ColorUtil } from 'src/app/autil/ColorUtil';
 
 @Component({
   selector: "app-dynamictable-condition",
@@ -43,7 +44,7 @@ export class DynamictableConditionComponent implements OnInit {
 
   clickColumn(column)
   {
-    this.sql.changeColumnColor(column);
+    ColorUtil.changeColor(column);
     this.pubsub.pub("dynamictable.column", column["name"]);
   }
 }

@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
-import { AaformService } from 'src/app/aservice/aaform.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
-//import { NzCodeEditorService } from 'ng-zorro-antd/code-editor';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.less']
-  ,providers: [AaformService]
+  selector: 'app-jsontotreetable-condition',
+  templateUrl: './jsontotreetable-condition.component.html',
+  styleUrls: ['./jsontotreetable-condition.component.less']
 })
-export class FormComponent implements OnInit {
+export class JsontotreetableConditionComponent implements OnInit {
 
   constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
@@ -50,8 +48,7 @@ export class FormComponent implements OnInit {
     // this.form.setControlValue("host","host-1");
     // this.form.setControlValue("ip","ip-0");
   }
-
-  ////////////////////////////////////////////////////////// nz-tag 
+  
   ////////////////////////////////////////////////////////// nz-tag
   name = "testdatas";
   values = [{name:"data",color:"lime"},{name:"array",color:"lime"},{name:"others",color:"lime"}];//red
@@ -63,7 +60,6 @@ export class FormComponent implements OnInit {
     ColorUtil.changeColorValue(value,"red"); 
   }
 
-	
   ////////////////////////////////////////////////////////// testdata  
   test_data()
   {

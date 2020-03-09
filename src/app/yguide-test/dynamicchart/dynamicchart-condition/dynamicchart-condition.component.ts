@@ -46,7 +46,7 @@ export class DynamicchartConditionComponent implements OnInit {
   // getColumns() { return this.sql.getColumns(); }
   // clickColumn(column)
   // {
-  //   this.sql.changeColumnColor(column);
+  //    ColorUtil.changeColor(column);
   //   this.pubsub.pub("dynamicchart.column", column["name"]);
   // }
 

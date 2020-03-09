@@ -9,7 +9,6 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
 ////////////////////////////// usage (샘플 - sqlchart-list 또는 dynamictable-result)
 //ts 1 - constructor(private sql: SqlService (또는 new SqlService)
 //ts 2 - let datas = this.sql.select(sql);
-//참고.컬럼 color 변경 - this.sql.changeColumnColor(column);
 //참고.테스트 데이터 사용 - this.sql.test_data();
 
 @Injectable({
@@ -55,11 +54,5 @@ export class AasqlService {
   getColumns()
   {
     return this.columns;
-  }
-  changeColumnColor(column) 
-  { 
-    if(column["color"] == "red") column["color"] = "lime";
-    else column["color"] = "red";
-    this.logging.debug("=== changeColumnColor find="+JSON.stringify(column))
   }
 }

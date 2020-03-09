@@ -1,0 +1,20 @@
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="name">name</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your name!">
+            <nz-input-group>
+                <!-- <input type="text" nz-input formControlName="name" placeholder="name" /> -->
+                <!-- <textarea nz-input formControlName="name" rows="3" placeholder="name"></textarea> -->
+                <nz-tag *ngFor="let value of getValues()" [nzColor]="value['color']" (click)="clickValue(value)">{{value['name']}}</nz-tag>
+        </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'">Run</button>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>
