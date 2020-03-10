@@ -12,8 +12,10 @@ export class EditorComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService,private nzCodeEditorService: NzCodeEditorService) { }
 
+  topicprefix = "myname.editor";//this.topicprefix+".datas"
+  
   ngOnInit() {
-    this.pubsub.sub("myname.editor",data=>{
+    this.pubsub.sub(this.topicprefix+".datas",data=>{
       this.logging.debug("=== myname.editor="+JSON.stringify(data))
       this.json_text = JSON.stringify(data,null,2);
     });
@@ -31,9 +33,11 @@ export class EditorComponent implements OnInit {
   }
 
   ///////////////////////////////////////////// test
+  test_no = 0;
   test_data()
   {
     let data = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
-    this.pubsub.pub("myname.editor",data);
+    this.test_no++; if(this.test_no%2==0) data = [];
+    this.pubsub.pub(this.topicprefix+".datas",data);
   }
 }

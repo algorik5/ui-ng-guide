@@ -14,6 +14,13 @@ export class ArrayUtil
         //array 맨앞에 넣기 - ["first"].concat(arr)
         return [str].concat(arr);
     }
+    static addLast(arr,str)
+    {
+        return arr.concat(str);//OK == [str]
+        // return arr.concat([str]);//OK
+        // return arr.push(...[str]);//OK
+        // return arr.push.apply(arr,[str]);//OK-ES6
+    }
 
     static removeDup(arr):any[] { return Array.from(new Set(arr)); }
     
@@ -154,15 +161,6 @@ export class ArrayUtil
 
         //
         //////////////////////////// rxjs operator > groupby ...
-    }
-    addArrayTest()
-    {
-        let ids = [1,2,3];
-        let temps = [10,20,30];
-        ids = ids.concat(temps);//return값이 add된 것임
-
-        ids.push(...temps);//ES6
-        ids.push.apply(ids, temps);
     }
 }
 

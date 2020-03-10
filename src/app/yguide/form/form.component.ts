@@ -15,15 +15,17 @@ export class FormComponent implements OnInit {
 
   constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
+  topicprefix = "myname.form";//this.topicprefix+".datas"
+
   ngOnInit() {
     //샘플 - pubsub form
-    this.pubsub.sub("myname.form",data=>{
+    this.pubsub.sub(this.topicprefix+".datas",data=>{
       this.logging.debug("=== myname.form="+JSON.stringify(data))
       this.form.clearForm();
       this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
       Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
     });
-    this.pubsub.sub("myname.form-row",row=>{//{name:col1,value:value1}
+    this.pubsub.sub(this.topicprefix+".data",row=>{//{name:col1,value:value1}
       this.logging.debug("=== myname.formrow="+JSON.stringify(row))
       //this.form.clearForm();
       this.form.addControl(row["name"]);
@@ -69,12 +71,12 @@ export class FormComponent implements OnInit {
   {
     let datas = this.form.test_data();
     let data = datas[0];
-    this.pubsub.pub("myname.form",data);
+    this.pubsub.pub(this.topicprefix+".datas",data);
   }
   test_no = 0;
   test_columnadd() { 
     this.test_no++;
     let row = {name:"no-"+this.test_no,value:"val-"+this.test_no};
-    this.pubsub.pub("myname.form-row",row);
+    this.pubsub.pub(this.topicprefix+".data",row);
   }
 }

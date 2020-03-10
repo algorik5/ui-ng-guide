@@ -16,9 +16,11 @@ export class TreetableComponent implements OnInit {
 
   constructor(private treetable: AatreetableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
+  topicprefix = "myname.treetable";//this.topicprefix+".datas"
+
   ngOnInit() {
 
-    this.pubsub.sub("myname.treetable", datas => {
+    this.pubsub.sub(this.topicprefix+".datas", datas => {
       this.treetable.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
 
@@ -43,7 +45,7 @@ export class TreetableComponent implements OnInit {
   test_datas()
   {
     let datas = this.treetable.test_data();
-    this.pubsub.pub("myname.treetable",datas);//this.treetable.setData(datas);
+    this.pubsub.pub(this.topicprefix+".datas",datas);//this.treetable.setData(datas);
   }
 
 

@@ -26,7 +26,7 @@ export class AatableService {
   }
   addData(mydata)
   {
-    this.datas.push(mydata);
+    this.datas = this.datas.concat(mydata);//안됨-this.datas.push(mydata);
     this.logging.debug("=== addData mydata="+JSON.stringify(mydata))
   }
 
