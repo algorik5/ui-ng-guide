@@ -36,7 +36,11 @@ export class SqlchartConditionComponent implements OnInit {
   {
     this.logging.debug("============ formSubmit # ");
     let sql = this.form.controls["sql"].value;
-    let datas = this.sql.select(sql);
-    this.pubsub.pub("sqlchart.datas",datas);
+    // let datas = this.sql.select(sql);
+    // this.pubsub.pub("sqlchart.datas",datas);
+    this.sql.select(sql,rs=>{ 
+      //let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
+    this.pubsub.pub("sqlchart.datas",rs);
+  });
   }
 }

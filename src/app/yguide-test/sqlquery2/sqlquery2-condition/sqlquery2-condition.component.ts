@@ -41,11 +41,15 @@ export class Sqlquery2ConditionComponent implements OnInit {
     let query = "select * from server"
       +"\n where 1=1"
       +"\n and   host='"+this.form.getControlValue("host")+"'"
-      +"\n and   ip='"+this.form.getControlValue("ip")+"'"
+      //+"\n and   ip='"+this.form.getControlValue("ip")+"'"
       ;
 
-    let sqldatas = this.sql.select(query);
-    this.pubsub.pub("sqlquery2.datas",sqldatas);
+    // let sqldatas = this.sql.select(query);
+    // this.pubsub.pub("sqlquery2.datas",sqldatas);
+    this.sql.select(query,rs=>{ 
+      //let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
+      this.pubsub.pub("sqlquery2.datas",rs);
+    });
   }
 
   formInit()

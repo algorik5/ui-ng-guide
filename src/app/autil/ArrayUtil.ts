@@ -3,6 +3,17 @@ import { groupBy, mergeMap, toArray } from 'rxjs/operators';
 
 export class ArrayUtil
 {
+    static util_tolowercase_allfields(datas) {//필드명을 소문자로 변경
+        //let datas = [{A:"aa",B:"bb"},{AA:"aa",BB:"bb"}];
+        let newdatas = [];
+        datas.forEach(data=>{ 
+            let newdata = {};
+            Object.keys(data).forEach(k=>{ newdata[k.toLowerCase()]=data[k]; });
+            newdatas.push(newdata);
+        });
+        //console.log(""+ JSON.stringify(newdatas));
+        return newdatas;
+    }
     // static zzz_arrayToObject(obj)//아직 테스트안함
     // {
     //     //~ array to object - object.keys.foreach...o[v]=v (기타-object.assign)

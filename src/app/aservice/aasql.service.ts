@@ -5,6 +5,8 @@ import { DateUtil } from '../autil/DateUtil';
 import { StringUtil } from '../autil/StringUtil';
 import { MathUtil } from '../autil/MathUtil';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
+import { AasqlremoteService } from './aasqlremote.service';
+import { of } from 'rxjs';
 
 ////////////////////////////// usage (샘플 - sqlchart-list 또는 dynamictable-result)
 //ts 1 - constructor(private sql: SqlService (또는 new SqlService)
@@ -16,19 +18,37 @@ import { zTestDataUtil } from '../autil/zTestDataUtil';
 })
 export class AasqlService {
 
-  constructor(private logging:AaloggingService) { }
+  constructor(private logging:AaloggingService,private sqlremote:AasqlremoteService) { }
 
   sqlrownum = "10";
 
+  testmode = false;
+
   rs;
-  select(sql:string)
+  setDatas(myrs){ this.rs = myrs; this.setColumns(); }
+  //this.sql.select(sql,rs=>{ this.pubsub.pub("sqlquery.datas",rs); });
+  select(sql:string,handler)
   {
-    this.logging.debug("select # "+ sql);
+    this.logging.debug("select #testmode="+this.testmode +"#sql="+ sql);
 
-    this.rs = zTestDataUtil.test_data();
-    this.setColumns(this.rs);
-
-    return this.rs;
+    if(this.testmode)
+    {
+      this.rs = zTestDataUtil.test_data();
+      // this.logging.debug("select #testmode="+this.testmode +"#rs="+ this.rs);
+      // this.setColumns(this.rs);
+      // return this.rs;
+      const observable = of(this.rs);//sqlremote가 aysnc여서 동일한 구조로 변경함
+      observable.subscribe(handler);
+    }
+    else 
+    {
+      this.sqlremote.select(sql,handler);
+      // this.sqlremote.select(sql,res=>{
+      //   this.rs = res; 
+      //   this.logging.debug("select #testmode="+this.testmode +"#rs="+ this.rs);
+      //   this.setColumns(this.rs);
+      // });
+    }
   }
   update(sql:string)
   {
@@ -44,7 +64,7 @@ export class AasqlService {
   
   columns = [];//[{name:xxx,color:xxx},...]
   clearColumns() { this.columns = []; }
-  setColumns(rs)
+  setColumns()//myrs)
   {
     this.clearColumns();
     if(this.rs == null || this.rs.length < 1) return this.columns;
@@ -54,5 +74,14 @@ export class AasqlService {
   getColumns()
   {
     return this.columns;
+  }
+  getColumnsv2(myrs)
+  {
+    return Object.keys(myrs[0]).map((column,i)=>{ return {name:column,color:'lime'}; });
+  }
+
+
+  se()
+  {
   }
 }

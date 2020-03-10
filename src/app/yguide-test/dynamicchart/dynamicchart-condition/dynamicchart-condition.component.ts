@@ -4,6 +4,7 @@ import { AasqlService } from "src/app/aservice/aasql.service";
 import { AaloggingService } from "src/app/aservice/aalogging.service";
 import { AaformService } from "src/app/aservice/aaform.service";
 import { ObjectUtil } from 'src/app/autil/ObjectUtil';
+import { JSONUtil } from 'src/app/autil/JSONUtil';
 
 @Component({
   selector: 'app-dynamicchart-condition',
@@ -35,12 +36,22 @@ export class DynamicchartConditionComponent implements OnInit {
   formSubmit() {
     this.logging.debug("============ formSubmit # ");
     let sql = this.form.getControlValue("sql");
-    let datas = this.sql.select(sql);
-
-    let columns = this.sql.getColumns();//name,color
-    this.legendColumns = ObjectUtil.cloneObject(columns);
-    this.xColumns = ObjectUtil.cloneObject(columns);
-    this.yColumns = ObjectUtil.cloneObject(columns);
+    // let datas = this.sql.select(sql);
+    // let columns = this.sql.getColumns();//name,color
+    // this.legendColumns = ObjectUtil.cloneObject(columns);
+    // this.xColumns = ObjectUtil.cloneObject(columns);
+    // this.yColumns = ObjectUtil.cloneObject(columns);
+    this.sql.select(sql,rs=>{ 
+      //let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
+    // this.pubsub.pub("sqlchart.datas",rs);
+      this.logging.debug("formSubmit select "+"#rs="+ JSONUtil.stringify(rs));
+      this.sql.setDatas(rs);
+      let columns = this.sql.getColumns();//name,color
+      this.logging.debug("formSubmit select "+"#columns="+ JSONUtil.stringify(columns));
+      this.legendColumns = ObjectUtil.cloneObject(columns);
+      this.xColumns = ObjectUtil.cloneObject(columns);
+      this.yColumns = ObjectUtil.cloneObject(columns);
+    });
   }
 
   // getColumns() { return this.sql.getColumns(); }

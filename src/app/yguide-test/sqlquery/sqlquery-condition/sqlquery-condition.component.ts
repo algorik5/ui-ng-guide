@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AasqlService } from 'src/app/aservice/aasql.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 
 @Component({
   selector: 'app-sqlquery-condition',
@@ -34,8 +35,12 @@ export class SqlqueryConditionComponent implements OnInit {
   {
     this.logging.debug("============ formSubmit # ");
     let sql = this.form.controls["sql"].value;
-    let datas = this.sql.select(sql);
-    this.pubsub.pub("sqlquery.datas",datas);
-  }
 
+    // let datas = this.sql.select(sql);
+    // this.pubsub.pub("sqlquery.datas",datas);
+    this.sql.select(sql,rs=>{ 
+      let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
+      this.pubsub.pub("sqlquery.datas",newdatas); 
+    });
+  }
 }

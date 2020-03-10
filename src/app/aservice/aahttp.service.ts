@@ -50,4 +50,21 @@ export class AahttpService {
     return this.http.get<any>(myurl);
   }
 
+
+
+  public async testSync() {
+    this.logging.info("---------testSync BEFORE");//
+    const json = await new Promise<string>(resolve => 
+    {
+      this.http.get<any>("assets/test_assets.json")
+      .subscribe((res) => {
+        this.logging.info("\t --- testSync 1 subscribe #res="+ JSON.stringify(json));//
+        //반드시 resolve하는 시점에 promise가 끝나서 뒤로 진행함 >>> resolve안하면 await뒤를 진행 안함
+        resolve(res);//promise가 리턴값이 있는 경우...
+        this.logging.info("\t --- testSync 2 subscribe #res="+ JSON.stringify(json));//
+      });
+    });
+    this.logging.info("---------testSync AFTER #json="+ JSON.stringify(json));//메인쓰레드는 계속 실행됨
+  }
+
 }
