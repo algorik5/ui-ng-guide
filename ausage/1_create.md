@@ -29,12 +29,12 @@
 
 
 # ========================================== guide
-ng g m yguide/jsontotreetable --routing
-ng g c yguide/jsontotreetable
+ng g m yguide/jsonpath --routing
+ng g c yguide/jsonpath
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'jsontotreetable',component: JsontotreetableComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
-  - <a title routerLink="guide/jsonview"...
+  - { path: 'jsonpath',component: JsonpathComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/jsonpath/jsonpath.module').then(m => m.JsonpathModule)},
+  - <a title routerLink="guide/jsonpath"...
 
 
 

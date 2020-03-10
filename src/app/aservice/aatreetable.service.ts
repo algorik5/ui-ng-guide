@@ -69,6 +69,7 @@ export class AatreetableService {
   [ 
     { "data":{ "name":"Documents1", "value":"75kb1", "type":"Folder1","path":"//Documents1" } }
   ];
+
   ////////////////////////////// convert
   convertTreeTableData(mydata)
   {
@@ -77,7 +78,7 @@ export class AatreetableService {
     this.logging.debug("=== convertTreeTableData end   #"+ JSONUtil.stringify(treedatas));
     return treedatas;
   }
-  objectToTreeTableDataRoot(obj)
+  private objectToTreeTableDataRoot(obj)
   {
     // array도 object이므로 맨위에 와야 함 + 처리안함>처리안하면 0,1,2..등으로 처리됨
     // if(Array.isArray(obj)) return arrayToTreeTableData("root",obj);
@@ -87,7 +88,7 @@ export class AatreetableService {
     treedatas = treedatas.concat(treedata);
     return treedatas;
   }
-  objectToTreeTableData(parentname,obj)
+  private objectToTreeTableData(parentname,obj)
   {
     let treedata = {data:{ "name":parentname, "value":"[object]", "type":"object","path":"//mypath" },children:[]};
     Object.keys(obj).forEach(key=>{ 
@@ -105,12 +106,12 @@ export class AatreetableService {
     });
     return treedata;
   }
-  valueToTreeTableData(key,value)
+  private valueToTreeTableData(key,value)
   {
     let data = {data:{ "name":key, "value":value, "type":"value","path":"//mypath" },children:[]};
     return data;
   }
-  // arrayToTreeTableData(parentname,obj)//사용안함
+  // private arrayToTreeTableData(parentname,obj)//사용안함
   // {
   //   let treedatas = [];
   //   obj.forEach(row=>{

@@ -18,7 +18,7 @@ export class ObjectUtil
     {
         let user = { name: 'Dzon', age: 25, address: 'Sunny street 34' };
         user = Object.assign({first: "first"}, user);//first
-        user = Object.assign(user,{first: "last"});//last >>> user["last"] = "last"
+        user = Object.assign(user,{last: "last"});//last >>> user["last"] = "last"
     }
     static getFields(obj):any[]//항상 array리턴
     {
