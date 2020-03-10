@@ -61,12 +61,22 @@ export class JsontotreetableConditionComponent implements OnInit {
     else if(value["name"]=="others") data = this.test_others;
     this.pubsub.pub("jsontotreetable.editordata",data);
 
-    let treedatas = this.treetable.convertTreeData(data);
+    let treedatas = this.treetable.convertTreeTableData(data);
     this.pubsub.pub("jsontotreetable.treetable",treedatas);
   }
 
   test_data = {a:"a1",b:"b1"};
-  test_datachild = {a:"a1",b:"b1",c:{ca:"ca1",cb:"cb1"}};
-  test_array = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
+  //test_datachild = {a:"a1",b:"b1",c:{ca:"ca1",cb:"cb1"}};
+  //test_datachild = {a:"a1",b:"b1",c:{ca:"ca1",cb:"cb1"},d:{da:"da1",db:"db1"}};
+  test_datachild = {a:"a1",b:"b1",
+    c:{ca:"ca1",cb:"cb1",
+      cc:{cca:"cca1",ccb:"ccb1"}},
+    d:{da:"da1",db:"db1"}};
+  //test_array = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
+  //test_array = [{a:"a1",b:"b1",c:{ca:"ca1",cb:"cb1"}},{d:"d2",e:"e1"}];
+  test_array = [{a:"a1",b:"b1",
+    c:{ca:"ca1",cb:"cb1"},
+      cc:[{cca:"cca1",ccb:"ccb1"},{cca:"cca2",ccb:"ccb2"}]},
+    {d:"d2",e:"e1"}];
   test_others = [{a:"a1",b:"b1",child:[{c:"c1"}]},{a:"a1",b:"b1"}];
 }

@@ -70,47 +70,54 @@ export class AatreetableService {
     { "data":{ "name":"Documents1", "value":"75kb1", "type":"Folder1","path":"//Documents1" } }
   ];
   ////////////////////////////// convert
-  convertTreeData(mydata)
+  convertTreeTableData(mydata)
   {
-    this.logging.debug("=== treetable service convertTreeData start #array="+ Array.isArray(mydata) +"#"+ JSONUtil.stringify(mydata));
-    if(Array.isArray(mydata))
-    {
-
-    }
-    else
-    {
-      let treedatas = this.objectToTreeTableData(mydata);
-      // Object.keys(mydata).forEach(key=>{
-      //   let value = mydata[key];
-      //   let data = this.valueToTreeTableData(key,value);
-      //   treedatas.push(data);
-      // });
-      this.logging.debug("=== treetable service convertTreeData end   #"+ JSONUtil.stringify(treedatas));
-      return treedatas;
-    }
+    this.logging.debug("=== convertTreeTableData start #array="+ Array.isArray(mydata) +"#"+ typeof(mydata) +"#"+JSONUtil.stringify(mydata));
+    let treedatas = this.objectToTreeTableDataRoot(mydata);
+    this.logging.debug("=== convertTreeTableData end   #"+ JSONUtil.stringify(treedatas));
+    return treedatas;
   }
-  objectToTreeTableData(obj)
+  objectToTreeTableDataRoot(obj)
   {
+    // array도 object이므로 맨위에 와야 함 + 처리안함>처리안하면 0,1,2..등으로 처리됨
+    // if(Array.isArray(obj)) return arrayToTreeTableData("root",obj);
     let treedatas = [];
-    Object.keys(obj).forEach(key=>{
+    if(typeof(obj) != 'object') return;
+    let treedata = this.objectToTreeTableData("root",obj);
+    treedatas = treedatas.concat(treedata);
+    return treedatas;
+  }
+  objectToTreeTableData(parentname,obj)
+  {
+    let treedata = {data:{ "name":parentname, "value":"[object]", "type":"object","path":"//mypath" },children:[]};
+    Object.keys(obj).forEach(key=>{ 
       let value = obj[key];
-      if(typeof(value) == 'object')
-      {
-        let datas = this.objectToTreeTableData(value);
-        treedatas.concat(datas);
+      if(typeof(value)=="object") //array는 key가 0,1,...
+      { 
+        let data = this.objectToTreeTableData(key,value);
+        treedata["children"] = treedata["children"].concat(data);
       }
       else
       {
         let data = this.valueToTreeTableData(key,value);
-        treedatas.push(data);
+        treedata["children"] = treedata["children"].concat(data);
       }
     });
-    return treedatas;
+    return treedata;
   }
   valueToTreeTableData(key,value)
   {
-    let data = {data:{ "name":key, "value":value, "type":"mytype","path":"//mypath" },children:[]};
+    let data = {data:{ "name":key, "value":value, "type":"value","path":"//mypath" },children:[]};
     return data;
   }
+  // arrayToTreeTableData(parentname,obj)//사용안함
+  // {
+  //   let treedatas = [];
+  //   obj.forEach(row=>{
+  //     let treedata = this.objectToTreeTableData(parentname,row);
+  //     treedatas = treedatas.concat(treedata);
+  //   });
+  //   return treedatas;
+  // }
 
 }
