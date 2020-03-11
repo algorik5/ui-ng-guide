@@ -4,11 +4,11 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
-  selector: 'app-jsontotreetable-treetable',
-  templateUrl: './jsontotreetable-treetable.component.html',
-  styleUrls: ['./jsontotreetable-treetable.component.less']
+  selector: 'app-my-treetable',
+  templateUrl: './my-treetable.component.html',
+  styleUrls: ['./my-treetable.component.less']
 })
-export class JsontotreetableTreetableComponent implements OnInit {
+export class MyTreetableComponent implements OnInit {
 
   constructor(private treetable: AatreetableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
@@ -16,7 +16,7 @@ export class JsontotreetableTreetableComponent implements OnInit {
   
   ngOnInit() {
 
-    this.pubsub.sub("jsontotreetable.treetable", datas => {
+    this.pubsub.sub("treetable-fromjson.treetable", datas => {
       this.jsonviewdata = datas;
       this.treetable.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
@@ -42,7 +42,6 @@ export class JsontotreetableTreetableComponent implements OnInit {
   test_datas()
   {
     let datas = this.treetable.test_data();
-    this.pubsub.pub("jsontotreetable.treetable",datas);//this.treetable.setData(datas);
+    this.pubsub.pub("treetable-fromjson.treetable",datas);//this.treetable.setData(datas);
   }
-
 }

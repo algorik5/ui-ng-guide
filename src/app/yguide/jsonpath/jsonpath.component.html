@@ -1,8 +1,11 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
-    1. html : 없음<br>
-    2. ts 1 : constructor(private jsonpath: AajsonpathService<br>
-    3. ts 2 : this.jsonpathdata = this.jsonpath.convertJSONPath(data);<br>
-    참고. jsonsearch사용법 : constructor(private jsonsearch:AajsonsearchService...this.jsonsearchdata = this.jsonsearch.search(this.sourcedata,this.input);<br>
+    ##### util - html없음<br>
+    -------------------------- jsonpath사용법<br>
+    constructor(private jsonpath: AajsonpathService<br>
+    this.jsonpathdata = this.jsonpath.convertJSONPath(data);<br>
+    -------------------------- jsonsearch사용법<br>
+    1.constructor(private jsonsearch:AajsonsearchService...<br>
+    2.this.jsonsearchdata = this.jsonsearch.search(this.sourcedata,this.input);<br>
 </nz-card> </nz-collapse-panel> </nz-collapse>
 
 

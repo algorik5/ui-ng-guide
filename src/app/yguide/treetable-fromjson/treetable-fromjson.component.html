@@ -1,0 +1,37 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    ##### util - html없음<br>
+    ---------------------------------------- json을 treetable로 변환<br>
+    treedatas = this.treetable.convertTreeTableData(data);<br>
+    ----------------------------------------json을 treedata로 변환하면서 path값 입력<br>
+    let jsonpathdata = this.jsonpath.convertJSONPath(data);<br>
+    treedatas = this.treetable.convertTreeTableData(jsonpathdata);<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+          <nz-card> <h6>search</h6> <app-my-condition></app-my-condition> </nz-card> 
+      </nz-col>
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-my-editor></app-my-editor> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'detail'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-my-treetable></app-my-treetable> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

@@ -29,12 +29,12 @@
 
 
 # ========================================== guide
-ng g m yguide/jsonpath --routing
-ng g c yguide/jsonpath
+ng g m yguide/stomp --routing
+ng g c yguide/stomp
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'jsonpath',component: JsonpathComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/jsonpath/jsonpath.module').then(m => m.JsonpathModule)},
-  - <a title routerLink="guide/jsonpath"...
+  - { path: 'stomp',component: StompComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
+  - <a title routerLink="guide/stomp"...
 
 
 

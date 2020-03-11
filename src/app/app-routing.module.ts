@@ -13,15 +13,16 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/chart/chart.module').then(m => m.ChartModule)},
   { path: 'guide',loadChildren: () => import('./yguide/editor/editor.module').then(m => m.EditorModule)},
   { path: 'guide',loadChildren: () => import('./yguide/treetable/treetable.module').then(m => m.TreetableModule)},
-  { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/treetable-fromjson/treetable-fromjson.module').then(m => m.TreetableFromjsonModule)},
   { path: 'guide',loadChildren: () => import('./yguide/jsonpath/jsonpath.module').then(m => m.JsonpathModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
 
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery2/sqlquery2.module').then(m => m.Sqlquery2Module)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamictable/dynamictable.module').then(m => m.DynamictableModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamicchart/dynamicchart.module').then(m => m.DynamicchartModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery/sqlquery.module').then(m => m.SqlqueryModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlchart/sqlchart.module').then(m => m.SqlchartModule)},
-  { path: 'guide-test',loadChildren: () => import('./yguide-test/jsontotreetable/jsontotreetable.module').then(m => m.JsontotreetableModule)},
   
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},

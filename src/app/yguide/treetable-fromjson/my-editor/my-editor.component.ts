@@ -4,17 +4,17 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { NzCodeEditorService } from 'ng-zorro-antd/code-editor';
 
 @Component({
-  selector: 'app-jsontotreetable-editor',
-  templateUrl: './jsontotreetable-editor.component.html',
-  styleUrls: ['./jsontotreetable-editor.component.less']
+  selector: 'app-my-editor',
+  templateUrl: './my-editor.component.html',
+  styleUrls: ['./my-editor.component.less']
 })
-export class JsontotreetableEditorComponent implements OnInit {
+export class MyEditorComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService,private nzCodeEditorService: NzCodeEditorService) { }
 
   ngOnInit() {
-    this.pubsub.sub("jsontotreetable.editordata",data=>{
-      this.logging.debug("=== jsontotreetable.editordata="+JSON.stringify(data));
+    this.pubsub.sub("treetable-fromjson.editordata",data=>{
+      this.logging.debug("=== treetable-fromjson.editordata="+JSON.stringify(data));
       this.json_text = JSON.stringify(data,null,2);
     });
   }
@@ -32,8 +32,7 @@ export class JsontotreetableEditorComponent implements OnInit {
   test_data()
   {
     let data = [{a:"a1",b:"b1"},{a:"a1",b:"b1"}];
-    this.pubsub.pub("jsontotreetable.editordata",data);
+    this.pubsub.pub("treetable-fromjson.editordata",data);
   }
-
 
 }

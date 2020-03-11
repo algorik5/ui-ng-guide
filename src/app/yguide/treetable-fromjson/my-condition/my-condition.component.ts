@@ -2,28 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
-import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { AatreetableService } from 'src/app/aservice/aatreetable.service';
 import { AajsonpathService } from 'src/app/aservice/aajsonpath.service';
+import { ColorUtil } from 'src/app/autil/ColorUtil';
 
 @Component({
-  selector: 'app-jsontotreetable-condition',
-  templateUrl: './jsontotreetable-condition.component.html',
-  styleUrls: ['./jsontotreetable-condition.component.less']
+  selector: 'app-my-condition',
+  templateUrl: './my-condition.component.html',
+  styleUrls: ['./my-condition.component.less']
 })
-export class JsontotreetableConditionComponent implements OnInit {
+export class MyConditionComponent implements OnInit {
 
   constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService
     ,private treetable: AatreetableService,private jsonpath:AajsonpathService) { }
 
   ngOnInit() {
-
-    // this.pubsub.sub("jsontotreetable.data",data=>{
-    //   this.logging.debug("=== jsontotreetable.data="+JSON.stringify(data))
-    //   this.form.clearForm();
-    //   this.form.addControls(Object.keys(data));//Object.keys(data).forEach(key=>{ this.form.addControl(key); });
-    //   Object.keys(data).forEach(key=>{ this.form.setControlValue(key,data[key]); });
-    // });
 
     this.formInit();
   }
@@ -39,11 +32,6 @@ export class JsontotreetableConditionComponent implements OnInit {
 
   formInit()
   {
-    ////////////////////////////////////////////////////////// testdata  
-    //this.test_data();
-    // this.form.addControls(["host","ip"]);
-    // this.form.setControlValue("host","host-1");
-    // this.form.setControlValue("ip","ip-0");
   }
 
   usejsonpath = "Y";
@@ -62,7 +50,7 @@ export class JsontotreetableConditionComponent implements OnInit {
     else if(value["name"]=="datachild") data = this.test_datachild;
     else if(value["name"]=="array") data = this.test_array;
     else if(value["name"]=="others") data = this.test_others;
-    this.pubsub.pub("jsontotreetable.editordata",data);
+    this.pubsub.pub("treetable-fromjson.editordata",data);
 
     
     let treedatas = null;
@@ -76,7 +64,7 @@ export class JsontotreetableConditionComponent implements OnInit {
       treedatas = this.treetable.convertTreeTableData(data);
     }
 
-    this.pubsub.pub("jsontotreetable.treetable",treedatas);
+    this.pubsub.pub("treetable-fromjson.treetable",treedatas);
   }
 
   test_data = {a:"a1",b:"b1"};
@@ -93,4 +81,5 @@ export class JsontotreetableConditionComponent implements OnInit {
       cc:[{cca:"cca1",ccb:"ccb1"},{cca:"cca2",ccb:"ccb2"}]},
     {d:"d2",e:"e1"}];
   test_others = [{a:"a1",b:"b1",child:[{c:"c1"}]},{a:"a1",b:"b1"}];
+
 }

@@ -46,7 +46,7 @@ export class Sqlquery2UpdateComponent implements OnInit {
       +"\n and   host='"+this.form.getControlValue("host")+"'"
       ;
 
-    let rs = this.sql.update(query);
+    let rs = this.sql.update(query,res=>{ this.logging.debug("update res="+res); });
     //this.pubsub.pub("sqlquery2.datas",sqldatas);
   }
 
