@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AaformService } from 'src/app/aservice/aaform.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
-import { ColorUtil } from 'src/app/autil/ColorUtil';
+import { AaformService } from 'src/app/aservice/aaform.service';
 
 @Component({
-  selector: 'app-stomp',
-  templateUrl: './stomp.component.html',
-  styleUrls: ['./stomp.component.less']
+  selector: 'app-form-static',
+  templateUrl: './form-static.component.html',
+  styleUrls: ['./form-static.component.less']
 })
-export class StompComponent implements OnInit {
+export class FormStaticComponent implements OnInit {
 
   constructor(private logging:AaloggingService,private form:AaformService) { }
 
@@ -29,17 +28,5 @@ export class StompComponent implements OnInit {
   formInit()
   {
     this.form.addControls(["name"]);
-  }
-
-  ////////////////////////////////////////////////////////// nz-tag
-  name = "testdatas";
-  tags = [{name:"pub",color:"lime"},{name:"sub",color:"lime"}];//red
-  getTags() { return this.tags; }
-
-  clickTag(tag) {//{name:data,color:"lime"}
-    if(tag["color"]=="red") return;
-    ColorUtil.changeColorAll(this.tags,"lime");
-    ColorUtil.changeColorValue(tag,"red");
-
   }
 }

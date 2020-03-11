@@ -29,11 +29,11 @@
 
 
 # ========================================== guide
-ng g m yguide/stomp --routing
-ng g c yguide/stomp
+ng g m yguide/form-static --routing
+ng g c yguide/form-static
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'stomp',component: StompComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
+  - { path: 'form-static',component: FormStaticComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/form-static/form-static.module').then(m => m.FormStaticModule)},
   - <a title routerLink="guide/stomp"...
 
 

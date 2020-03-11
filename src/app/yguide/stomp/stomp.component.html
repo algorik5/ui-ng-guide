@@ -1,1 +1,63 @@
-<p>stomp works!</p>
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : 전체복사<br>
+    2. nz-card 변경<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+          <nz-card> <h6>search</h6> 
+            <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="5" nzRequired nzFor="name">name</nz-form-label>
+                    <nz-form-control [nzSpan]="16" nzErrorTip="Please input your name!">
+                        <nz-input-group>
+                            <input type="text" nz-input formControlName="name" placeholder="name" />
+                        </nz-input-group>                        
+                    </nz-form-control>
+                    <nz-form-control [nzSpan]="3" nzErrorTip="Please input your name!">
+                        <nz-input-group>
+                            <button nz-button [nzType]="'primary'">Run</button>
+                        </nz-input-group>                        
+                    </nz-form-control>
+                </nz-form-item>
+              
+
+                
+                <!-- <nz-form-item>
+                    <nz-form-control>
+                      <button nz-button [nzType]="'primary'">Run</button>
+                    </nz-form-control>
+                </nz-form-item> -->
+            
+            </form>
+            
+        </nz-card> 
+      </nz-col>
+
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> result component </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'detail'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> detail </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

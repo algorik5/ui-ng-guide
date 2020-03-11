@@ -8,6 +8,7 @@ const routes: Routes = [
 
   { path: 'guide',loadChildren: () => import('./yguide/layout/layout.module').then(m => m.LayoutModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/form-static/form-static.module').then(m => m.FormStaticModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
   { path: 'guide',loadChildren: () => import('./yguide/table/table.module').then(m => m.TableModule)},
   { path: 'guide',loadChildren: () => import('./yguide/chart/chart.module').then(m => m.ChartModule)},

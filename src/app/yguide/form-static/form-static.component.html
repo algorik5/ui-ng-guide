@@ -1,0 +1,40 @@
+<nz-collapse>
+    <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'">
+        <nz-card>
+            참고.------ 1줄에 표현<br>
+            참고.------ 그냥 버튼<br>
+            주의.위의놈과 간격없이 붙어있으면 다음라인으로 밀린거임<br>
+        </nz-card>
+    </nz-collapse-panel>
+</nz-collapse>
+
+
+
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+    <h3> ------ 1줄에 표현 - nzSpan크기를 적절히 조정 (*주의-button은 input과 동일group에 넣으면 안됨) </h3>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="name">name</nz-form-label>
+        <nz-form-control [nzSpan]="16" nzErrorTip="Please input your name!">
+            <nz-input-group>
+                <input type="text" nz-input formControlName="name" placeholder="name" />
+                <!-- 다음라인으로 넘어감 <button nz-button [nzType]="'primary'">Run1</button> -->
+            </nz-input-group>
+        </nz-form-control>
+        <nz-form-control [nzSpan]="3" nzErrorTip="Please input your name!">
+            <nz-input-group>
+                <button nz-button [nzType]="'primary'">Run</button>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+    <h3> ------ 그냥 버튼 </h3>
+    <nz-form-item>
+        <nz-form-control>
+            <button nz-button [nzType]="'primary'">Run</button>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>
