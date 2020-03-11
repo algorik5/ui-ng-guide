@@ -39,8 +39,7 @@ export class SqlchartConditionComponent implements OnInit {
     // let datas = this.sql.select(sql);
     // this.pubsub.pub("sqlchart.datas",datas);
     this.sql.select(sql,rs=>{ 
-      //let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
-    this.pubsub.pub("sqlchart.datas",rs);
+      this.pubsub.pub("sqlchart.datas",rs);
   });
   }
 }

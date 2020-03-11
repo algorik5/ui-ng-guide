@@ -36,11 +36,8 @@ export class DynamictableConditionComponent implements OnInit {
   formSubmit() {
     this.logging.debug("============ formSubmit # ");
     let sql = this.form.controls["sql"].value;
-    // let datas = this.sql.select(sql);
-    // this.pubsub.pub("dynamictable.datas", datas);
     this.sql.select(sql,rs=>{ 
-      //let newdatas = ArrayUtil.util_tolowercase_allfields(rs);//임시 - HOST > host
-      this.pubsub.pub("sqlquery.datas",rs); 
+      this.pubsub.pub("dynamictable.datas",rs); 
     });
 
   }

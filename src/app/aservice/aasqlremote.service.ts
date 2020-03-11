@@ -24,24 +24,12 @@ export class AasqlremoteService {
   //this.sqlremote.select(sql,res=>{ });
   select(sql,handler)
   {
+    //this.logging.debug("sqlremote]select start "+"#sql="+sql);
     let params = new HttpParams().set("sql",sql).set("rownum",""+this.rownum);
-    this.http.get<any>(this.url,{params:params}).subscribe(handler
-      // res=>{ 
-      //   this.logging.debug("sqlremote]select "+"#res="+JSONUtil.stringify(res));
-      //   handler(res);
-      // }
+    //this.http.get<any>(this.url,{params:params}).subscribe(handler//OK
+    this.http.get<any>(this.url,{params:params}).subscribe(
+      res=>{ this.logging.debug("sqlremote]select res "+"#sql="+sql +"#res="+JSONUtil.stringify(res)); handler(res); }
       ,err=>{ this.logging.error("sqlremote]select ERROR "+"#sql="+sql +"#error="+JSONUtil.stringify(err)); }
     );
   }
 }
-// this.pubsub.pipe(//asObservable().
-// filter(data=> { 
-//   if(data["key"]==topic) 
-//   {
-//     this.logging.debug("sub #topic="+topic + "#data="+data);
-//     return true; 
-//   }
-//   return false; 
-// }),
-// map(data=>data["value"])
-// ).subscribe(handler);

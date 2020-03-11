@@ -13,3 +13,9 @@
 	compo.ts > @Component({ ... providers: [FormService] <<< 해당compo child까지 싱글턴
 	module.ts > @NgModule({...providers: [UserService],})
 
+
+
+
+# playgroup
+- typescript : https://www.typescriptlang.org/v2/en/play
+- ng : https://stackblitz.com/edit/angular-playground
