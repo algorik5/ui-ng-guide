@@ -84,31 +84,34 @@ export class AatreetableService {
     // if(Array.isArray(obj)) return arrayToTreeTableData("root",obj);
     let treedatas = [];
     if(typeof(obj) != 'object') return;
-    let treedata = this.objectToTreeTableData("root",obj);
+    let treedata = this.objectToTreeTableData("root",obj,"//");
     treedatas = treedatas.concat(treedata);
     return treedatas;
   }
-  private objectToTreeTableData(parentname,obj)
+  private objectToTreeTableData(parentname,obj,path)
   {
-    let treedata = {data:{ "name":parentname, "value":"[object]", "type":"object","path":"//mypath" },children:[]};
+    if(path == null) path = "-";
+    let treedata = {data:{ "name":parentname, "value":"[object]", "type":"object","path":path },children:[]};
     Object.keys(obj).forEach(key=>{ 
+      if(key.includes("$PATH")) return;//jsonpath에 만들어진 필드는 무시
       let value = obj[key];
       if(typeof(value)=="object") //array는 key가 0,1,...
       { 
-        let data = this.objectToTreeTableData(key,value);
+        let data = this.objectToTreeTableData(key,value,obj[key+"$PATH"]);
         treedata["children"] = treedata["children"].concat(data);
       }
       else
       {
-        let data = this.valueToTreeTableData(key,value);
+        let data = this.valueToTreeTableData(key,value,obj[key+"$PATH"]);
         treedata["children"] = treedata["children"].concat(data);
       }
     });
     return treedata;
   }
-  private valueToTreeTableData(key,value)
+  private valueToTreeTableData(key,value,path)
   {
-    let data = {data:{ "name":key, "value":value, "type":"value","path":"//mypath" },children:[]};
+    if(path == null) path = "-";
+    let data = {data:{ "name":key, "value":value, "type":"value","path":path },children:[]};
     return data;
   }
   // private arrayToTreeTableData(parentname,obj)//사용안함

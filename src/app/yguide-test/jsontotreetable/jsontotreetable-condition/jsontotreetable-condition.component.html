@@ -7,7 +7,7 @@
                 <!-- <input type="text" nz-input formControlName="name" placeholder="name" /> -->
                 <!-- <textarea nz-input formControlName="name" rows="3" placeholder="name"></textarea> -->
                 <nz-tag *ngFor="let value of getValues()" [nzColor]="value['color']" (click)="clickValue(value)">{{value['name']}}</nz-tag>
-        </nz-input-group>
+            </nz-input-group>
         </nz-form-control>
     </nz-form-item>
     
@@ -18,3 +18,9 @@
     </nz-form-item> -->
 
 </form>
+
+<h5>use jsonpath</h5>
+<nz-radio-group [(ngModel)]="usejsonpath">
+    <label nz-radio nzValue="Y">Y</label>
+    <label nz-radio nzValue="N">N</label>
+</nz-radio-group>

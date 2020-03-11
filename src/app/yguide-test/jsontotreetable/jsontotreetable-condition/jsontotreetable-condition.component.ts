@@ -4,6 +4,7 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { AatreetableService } from 'src/app/aservice/aatreetable.service';
+import { AajsonpathService } from 'src/app/aservice/aajsonpath.service';
 
 @Component({
   selector: 'app-jsontotreetable-condition',
@@ -12,7 +13,8 @@ import { AatreetableService } from 'src/app/aservice/aatreetable.service';
 })
 export class JsontotreetableConditionComponent implements OnInit {
 
-  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService,private treetable: AatreetableService) { }
+  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService
+    ,private treetable: AatreetableService,private jsonpath:AajsonpathService) { }
 
   ngOnInit() {
 
@@ -43,7 +45,8 @@ export class JsontotreetableConditionComponent implements OnInit {
     // this.form.setControlValue("host","host-1");
     // this.form.setControlValue("ip","ip-0");
   }
-  
+
+  usejsonpath = "Y";
   ////////////////////////////////////////////////////////// nz-tag
   name = "testdatas";
   values = [{name:"data",color:"lime"},{name:"datachild",color:"lime"},{name:"array",color:"lime"},{name:"others",color:"lime"}];//red
@@ -61,7 +64,18 @@ export class JsontotreetableConditionComponent implements OnInit {
     else if(value["name"]=="others") data = this.test_others;
     this.pubsub.pub("jsontotreetable.editordata",data);
 
-    let treedatas = this.treetable.convertTreeTableData(data);
+    
+    let treedatas = null;
+    if(this.usejsonpath=="Y")//jsonpath 사용하지 않는 경우 (path에 값 입력)
+    {
+      let jsonpathdata = this.jsonpath.convertJSONPath(data);
+      treedatas = this.treetable.convertTreeTableData(jsonpathdata);
+    }
+    else//jsonpath 사용하지 않는 경우 (path에 값 -)
+    {
+      treedatas = this.treetable.convertTreeTableData(data);
+    }
+
     this.pubsub.pub("jsontotreetable.treetable",treedatas);
   }
 

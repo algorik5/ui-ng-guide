@@ -23,7 +23,7 @@ export class AajsonpathService {
   getArrayTypes() { return Object.keys(JSONPathArrayType); }
 
 
-  ////////////////////////////// convert
+  ////////////////////////////// convert : {a:'a',b:'b'} >>> {a:'a',b:'b' ,a$PATH='//a',b$PATH='//b'}
   convertJSONPath(mydata) { return this.convertJSONPathByType(mydata,JSONPathArrayType.DEFAULT); }
   convertJSONPathByType(mydata,arrayType:JSONPathArrayType)
   {
@@ -48,6 +48,7 @@ export class AajsonpathService {
       {
         let mypath = parentpath +"/"+ key;
         if(NumberUtil.isNumber(key)) mypath = parentpath +this.applyArrayType(parentpath,key,arrayType);//key가 number이면 array >>> array는 parent[0] 형태
+        obj[key+this.pathname] = mypath;//(추가)object자신도 path가 필요함
         this.jsonpathAdd(mypath,value,arrayType);
       }
       else
