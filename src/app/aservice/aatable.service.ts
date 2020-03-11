@@ -49,7 +49,7 @@ export class AatableService {
     if(find["show"] == null) { find["show"] = true; return; }
     if(find["show"] == true) find["show"] = false;
     else find["show"] = true;
-    this.logging.debug("=== changeColumnShow find="+JSON.stringify(find))
+    this.logging.debug("=== changeColumnShow find="+JSON.stringify(find) +"#columns="+JSON.stringify(this.columns));
   }
 
 

@@ -25,6 +25,30 @@ export class AasqlService {
 
   testmode = false;
 
+  /////////////////////////////////////////////// rs
+  rs;
+  getDatas() { if(this.rs == null) return []; return this.rs; }
+  setDatas(myrs)
+  { 
+    this.rs = myrs; 
+    this.setColumns(); 
+  }
+  //////////////////////////////////////////////// column
+  columns = [];//[{name:xxx,color:xxx},...]
+  clearColumns() { this.columns = []; }
+  getColumns() { return this.columns; }
+  setColumns()//myrs)
+  {
+    this.clearColumns();
+    if(this.rs == null || this.rs.length < 1) return this.columns;
+    //this.columns = Object.keys(this.rs[0]);
+    this.columns = Object.keys(this.rs[0]).map((column,i)=>{ return {name:column,color:'lime'}; });
+  }
+
+
+
+
+  //////////////////////////////////////////////// select
   //this.sql.select(sql,rs=>{ this.pubsub.pub("sqlquery.datas",rs); });
   select(sql:string,handler)
   {
@@ -43,31 +67,17 @@ export class AasqlService {
     }
   }
 
-
-
-  rs;
-  getDatas() { if(this.rs == null) return []; return this.rs; }
-  setDatas(myrs)
-  { 
-    this.rs = myrs; 
-    this.setColumns(); 
-  }
-
-  update(sql:string)
+  //////////////////////////////////////////////// update
+  update(sql:string,handler)
   {
-    return 1;
+    if(this.testmode)
+    {
+      this.observe.arrayToObserve(-1,res=>{ handler(res); });//update result = 1
+    }
+    else
+    {
+      this.sqlremote.update(sql,res=>{ handler(res); });
+    }
   }
-  
 
-  
-  columns = [];//[{name:xxx,color:xxx},...]
-  clearColumns() { this.columns = []; }
-  getColumns() { return this.columns; }
-  setColumns()//myrs)
-  {
-    this.clearColumns();
-    if(this.rs == null || this.rs.length < 1) return this.columns;
-    //this.columns = Object.keys(this.rs[0]);
-    this.columns = Object.keys(this.rs[0]).map((column,i)=>{ return {name:column,color:'lime'}; });
-  }
 }

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AaformService } from 'src/app/aservice/aaform.service';
+import { AasqlService } from 'src/app/aservice/aasql.service';
+import { JSONUtil } from 'src/app/autil/JSONUtil';
 
 @Component({
   selector: 'app-dynamictable-detail',
@@ -11,7 +13,7 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 })
 export class DynamictableDetailComponent implements OnInit {
 
-  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService) { }
+  constructor(private form:AaformService,private pubsub:AapubsubService,private logging:AaloggingService,private sql:AasqlService) { }
 
   ngOnInit() {
 
@@ -30,6 +32,31 @@ export class DynamictableDetailComponent implements OnInit {
 
   formSubmit()
   {
+    this.test_update();
+  }
 
+  test_update()
+  {
+    this.logging.debug("======== test_update start #");//+ JSONUtil.stringify(this.form.getControlValues()));
+    ///////////////////////// 그냥 샘플
+    let setstr = null;
+    let values = this.form.getControlValues();//[{name...value}...]
+    values.forEach((v,i)=>{
+      if(["checked","HOST","TIME"].includes(v["name"])) return;
+      if(setstr == null) setstr = v["name"] +"='"+ v["value"]+"'";
+      else setstr = setstr +","+ v["name"] +"='"+ v["value"]+"'";
+    });
+
+    let wherestr = "HOST='"+ this.form.getControlValue("HOST") +"'"
+      +"and TIME='"+ this.form.getControlValue("TIME") +"'";
+
+    let sql = "update server"
+    +" set "+ setstr
+    +" where "+ wherestr;
+
+    this.logging.debug("======== test_update sql="+sql);
+    this.sql.update(sql,res=>{
+      this.logging.debug("======== test_update result="+res);
+    });
   }
 }
