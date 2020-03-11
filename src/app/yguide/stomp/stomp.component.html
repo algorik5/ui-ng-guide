@@ -34,10 +34,10 @@
                         </nz-input-group>                        
                     </nz-form-control>
                     <nz-form-control [nzSpan]="12" nzErrorTip="hellosub">
-                        <nz-input-group>
-                            <button nz-button [nzType]="'lime'" (click)="clickHelloSub()">sub</button>&nbsp;
-                            <button nz-button [nzType]="'primary'" (click)="clickHelloSubStop()">stop</button>&nbsp;
-                        </nz-input-group>                        
+                        <nz-radio-group formControlName="hellosubstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickHelloSub()">
+                            <label nz-radio-button nzValue="start">start</label>
+                            <label nz-radio-button nzValue="stop">stop</label>
+                        </nz-radio-group>
                     </nz-form-control>
                 </nz-form-item>
                
@@ -49,10 +49,11 @@
                         </nz-input-group>                        
                     </nz-form-control>
                     <nz-form-control [nzSpan]="12" nzErrorTip="appsub">
-                        <nz-input-group>
-                            <button nz-button [nzType]="'primary'" (click)="clickAppSub()">sub</button>&nbsp;
-                            <button nz-button [nzType]="'primary'" (click)="clickAppSubStop()">stop</button>&nbsp;
-                        </nz-input-group>
+                        <nz-radio-group formControlName="appsubstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickAppSub()">
+                            <label nz-radio-button nzValue="start">start</label>
+                            <label nz-radio-button nzValue="stop">stop</label>
+                        </nz-radio-group>
+
                     </nz-form-control>
                 </nz-form-item>
 
@@ -67,9 +68,11 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-card>
-                            <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'sub msgs/'+recvcount" [nzRenderItem]="smallItem" >
-                                <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
-                            </nz-list>
+                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                                <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'total/'+recvcount" [nzRenderItem]="smallItem" >
+                                    <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
+                                </nz-list>
+                            </cdk-virtual-scroll-viewport>
                         </nz-card> 
                     </nz-collapse-panel> 
                 </nz-collapse>

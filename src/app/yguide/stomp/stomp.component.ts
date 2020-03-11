@@ -32,6 +32,8 @@ export class StompComponent implements OnInit {
     this.form.addControlValue("hellopub",this.stomp.getPubTopic());
     this.form.addControlValue("hellosub",this.stomp.getSubTopic());
     this.form.addControlValue("appsub",this.stomp.getSubTopicApp());
+    this.form.addControlValue("hellosubstatus","stop");
+    this.form.addControlValue("appsubstatus","stop");
   }
 
   clickHelloPub(){
@@ -42,6 +44,10 @@ export class StompComponent implements OnInit {
   recvmsgs = [];
   recvcount = 0;
   clickHelloSub(){
+    let status = this.form.getControlValue("hellosubstatus");
+    this.logging.debug("===clickHelloSub #status="+ status);
+    if(status=="stop") { this.stomp.substop(); return; }
+
     let topic = this.form.getControlValue("hellosub");
     this.stomp.sub(topic,res=>{
       // this.logging.debug("==== hellosub msg # "+ JSON.stringify(res));
@@ -49,21 +55,18 @@ export class StompComponent implements OnInit {
       this.recvmsgs.push("hello]"+res)//JSON.stringify(res));
     });
   }
-  clickHelloSubStop()
-  {
-    this.stomp.substop();
-  }
+  //appsubstatus = "stop";
   clickAppSub(){
+    let status = this.form.getControlValue("appsubstatus");
+    this.logging.debug("===clickAppSub #status="+ status);
+    if(status=="stop") { this.stomp.substop(); return; }
+
     let topic = this.form.getControlValue("appsub");
     this.stomp.sub(topic,res=>{
       // this.logging.debug("==== appsub msg # "+ JSON.stringify(res));
       this.recvcount++;
       this.recvmsgs.push("app  ]"+JSON.stringify(res));
     });
-  }
-  clickAppSubStop()
-  {
-    this.stomp.substop();
   }
 
   ////////////////////////////////////////////////////////// nz-tag
