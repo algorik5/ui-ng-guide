@@ -32,6 +32,7 @@
     "@antv/g2plot": "^0.11.35",
     "@nguniversal/express-engine": "^8.1.1",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
+    "@stomp/rx-stomp": "^0.3.4",
     "@types/echarts": "^4.4.3",
     "core-js": "^3.1.4",
     "defiant.js": "^2.2.6",

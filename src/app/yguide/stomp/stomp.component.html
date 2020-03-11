@@ -13,27 +13,49 @@
             <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
 
                 <nz-form-item>
-                    <nz-form-label [nzSpan]="5" nzRequired nzFor="name">name</nz-form-label>
-                    <nz-form-control [nzSpan]="16" nzErrorTip="Please input your name!">
+                    <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellopub">hellopub</nz-form-label> -->
+                    <nz-form-control [nzSpan]="10" nzErrorTip="hellopub">
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="name" placeholder="name" />
+                            <input type="text" nz-input formControlName="hellopub" placeholder="hellopub" />
                         </nz-input-group>                        
                     </nz-form-control>
-                    <nz-form-control [nzSpan]="3" nzErrorTip="Please input your name!">
+                    <nz-form-control [nzSpan]="5" nzErrorTip="hellopub">
                         <nz-input-group>
-                            <button nz-button [nzType]="'primary'">Run</button>
+                            <button nz-button [nzType]="'primary'" (click)="clickHelloPub()">pub</button>
                         </nz-input-group>                        
                     </nz-form-control>
                 </nz-form-item>
-              
 
-                
-                <!-- <nz-form-item>
-                    <nz-form-control>
-                      <button nz-button [nzType]="'primary'">Run</button>
+                <nz-form-item>
+                    <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellosub">hellosub</nz-form-label> -->
+                    <nz-form-control [nzSpan]="10" nzErrorTip="hellosub">
+                        <nz-input-group>
+                            <input type="text" nz-input formControlName="hellosub" placeholder="hellosub" />
+                        </nz-input-group>                        
                     </nz-form-control>
-                </nz-form-item> -->
-            
+                    <nz-form-control [nzSpan]="12" nzErrorTip="hellosub">
+                        <nz-input-group>
+                            <button nz-button [nzType]="'lime'" (click)="clickHelloSub()">sub</button>&nbsp;
+                            <button nz-button [nzType]="'primary'" (click)="clickHelloSubStop()">stop</button>&nbsp;
+                        </nz-input-group>                        
+                    </nz-form-control>
+                </nz-form-item>
+               
+                <nz-form-item>
+                    <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="appsub">appsub</nz-form-label> -->
+                    <nz-form-control [nzSpan]="10" nzErrorTip="appsub">
+                        <nz-input-group>
+                            <input type="text" nz-input formControlName="appsub" placeholder="appsub" />
+                        </nz-input-group>                        
+                    </nz-form-control>
+                    <nz-form-control [nzSpan]="12" nzErrorTip="appsub">
+                        <nz-input-group>
+                            <button nz-button [nzType]="'primary'" (click)="clickAppSub()">sub</button>&nbsp;
+                            <button nz-button [nzType]="'primary'" (click)="clickAppSubStop()">stop</button>&nbsp;
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
             </form>
             
         </nz-card> 
@@ -44,7 +66,11 @@
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-card> result component </nz-card> 
+                        <nz-card>
+                            <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'sub msgs/'+recvcount" [nzRenderItem]="smallItem" >
+                                <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
+                            </nz-list>
+                        </nz-card> 
                     </nz-collapse-panel> 
                 </nz-collapse>
             </nz-col>

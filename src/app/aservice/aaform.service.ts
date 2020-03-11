@@ -41,6 +41,11 @@ export class AaformService {
   {
     this.formgroup.addControl(name,new FormControl(null,Validators.required));
   }
+  addControlValue(name,value)
+  {
+    this.formgroup.addControl(name,new FormControl(null,Validators.required));
+    this.formgroup.controls[name].setValue(value);
+  }
   setControlValue(name,value)
   {
     this.formgroup.controls[name].setValue(value);

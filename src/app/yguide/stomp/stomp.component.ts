@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AaformService } from 'src/app/aservice/aaform.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
+import { AastompService } from 'src/app/aservice/aastomp.service';
 
 @Component({
   selector: 'app-stomp',
@@ -10,7 +11,7 @@ import { ColorUtil } from 'src/app/autil/ColorUtil';
 })
 export class StompComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService) { }
+  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService) { }
 
   ngOnInit() {
 
@@ -28,7 +29,41 @@ export class StompComponent implements OnInit {
 
   formInit()
   {
-    this.form.addControls(["name"]);
+    this.form.addControlValue("hellopub",this.stomp.getPubTopic());
+    this.form.addControlValue("hellosub",this.stomp.getSubTopic());
+    this.form.addControlValue("appsub",this.stomp.getSubTopicApp());
+  }
+
+  clickHelloPub(){
+    let topic = this.form.getControlValue("hellopub");
+    let msg = {name:"test1",value:"hello"};
+    this.stomp.pub(topic,msg);
+  }
+  recvmsgs = [];
+  recvcount = 0;
+  clickHelloSub(){
+    let topic = this.form.getControlValue("hellosub");
+    this.stomp.sub(topic,res=>{
+      // this.logging.debug("==== hellosub msg # "+ JSON.stringify(res));
+      this.recvcount++;
+      this.recvmsgs.push("hello]"+res)//JSON.stringify(res));
+    });
+  }
+  clickHelloSubStop()
+  {
+    this.stomp.substop();
+  }
+  clickAppSub(){
+    let topic = this.form.getControlValue("appsub");
+    this.stomp.sub(topic,res=>{
+      // this.logging.debug("==== appsub msg # "+ JSON.stringify(res));
+      this.recvcount++;
+      this.recvmsgs.push("app  ]"+JSON.stringify(res));
+    });
+  }
+  clickAppSubStop()
+  {
+    this.stomp.substop();
   }
 
   ////////////////////////////////////////////////////////// nz-tag
