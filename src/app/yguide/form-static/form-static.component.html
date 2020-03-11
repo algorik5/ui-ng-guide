@@ -30,6 +30,23 @@
 
 
 
+    <h3> ------ 1줄에 표현 - nzSpan크기를 적절히 조정 (*주의-radio는 input과 동일group에 넣으면 안됨) </h3>
+    <nz-form-item>
+        <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellosub">hellosub</nz-form-label> -->
+        <nz-form-control [nzSpan]="10" nzErrorTip="radiotest">
+            <nz-input-group>
+                <input type="text" nz-input formControlName="radiotext" placeholder="radiotext" />
+            </nz-input-group>                        
+        </nz-form-control>
+        <nz-form-control [nzSpan]="12" nzErrorTip="radiobutton">
+            <nz-radio-group formControlName="radiobuttonstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickRadio()">
+                <label nz-radio-button nzValue="start">start</label>
+                <label nz-radio-button nzValue="stop">stop</label>
+            </nz-radio-group>
+        </nz-form-control>
+    </nz-form-item>
+
+
     <h3> ------ 그냥 버튼 </h3>
     <nz-form-item>
         <nz-form-control>

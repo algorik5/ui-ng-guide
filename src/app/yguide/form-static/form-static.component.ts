@@ -28,5 +28,13 @@ export class FormStaticComponent implements OnInit {
   formInit()
   {
     this.form.addControls(["name"]);
+    this.form.addControlValue("radiotext","-");
+    this.form.addControlValue("radiobuttonstatus","stop");
+  }
+  clickRadio()
+  {
+    let status = this.form.getControlValue("radiobuttonstatus");
+    if(status == "stop") this.form.setControlValue("radiotext","-stop");
+    else if(status == "start") this.form.setControlValue("radiotext","-start");
   }
 }
