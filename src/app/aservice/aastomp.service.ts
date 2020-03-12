@@ -100,7 +100,7 @@ export class AastompService {
     // this.substartObs = this.sub_real(topic).subscribe(handler);//unsub하기 위함
     this.subscription = this.sub_real(topic).subscribe(res=>{ //unsub하기 위함
       //if(this.debug == true) console.log('### STOMP sub : ' + JSON.stringify(res));//connect debug에서 모든 내용 출력됨
-      if(res.body != null) handler(res.body);
+      if(res.body != null) handler(JSON.parse(res.body));//body는 string
       else this.logging.error("==== sub error - body notfound # "+ JSON.stringify(res));
     });
     return this.subscription;

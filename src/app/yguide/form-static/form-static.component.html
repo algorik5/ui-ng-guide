@@ -12,7 +12,7 @@
 
 <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
 
-    <h3> ------ 1줄에 표현 - nzSpan크기를 적절히 조정 (*주의-button은 input과 동일group에 넣으면 안됨) </h3>
+    <h3> ------ 1줄에 표현 (label/button) - nzSpan크기를 적절히 조정 (*주의-button은 input과 동일group에 넣으면 안됨) </h3>
     <nz-form-item>
         <nz-form-label [nzSpan]="5" nzRequired nzFor="name">name</nz-form-label>
         <nz-form-control [nzSpan]="16" nzErrorTip="Please input your name!">
@@ -30,7 +30,7 @@
 
 
 
-    <h3> ------ 1줄에 표현 - nzSpan크기를 적절히 조정 (*주의-radio는 input과 동일group에 넣으면 안됨) </h3>
+    <h3> ------ 1줄에 표현 (label/radio) - nzSpan크기를 적절히 조정 (*주의-radio는 input과 동일group에 넣으면 안됨) </h3>
     <nz-form-item>
         <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellosub">hellosub</nz-form-label> -->
         <nz-form-control [nzSpan]="10" nzErrorTip="radiotest">

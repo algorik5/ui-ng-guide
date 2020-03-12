@@ -12,14 +12,15 @@
           <nz-card> <h6>search</h6> 
             <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
 
+                <nz-divider [nzText]="'hello'" nzOrientation="left"></nz-divider>                
                 <nz-form-item>
                     <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellopub">hellopub</nz-form-label> -->
-                    <nz-form-control [nzSpan]="10" nzErrorTip="hellopub">
+                    <nz-form-control [nzSpan]="14" nzErrorTip="hellopub">
                         <nz-input-group>
                             <input type="text" nz-input formControlName="hellopub" placeholder="hellopub" />
                         </nz-input-group>                        
                     </nz-form-control>
-                    <nz-form-control [nzSpan]="5" nzErrorTip="hellopub">
+                    <nz-form-control [nzSpan]="10" nzErrorTip="hellopub">
                         <nz-input-group>
                             <button nz-button [nzType]="'primary'" (click)="clickHelloPub()">pub</button>
                         </nz-input-group>                        
@@ -28,27 +29,28 @@
 
                 <nz-form-item>
                     <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellosub">hellosub</nz-form-label> -->
-                    <nz-form-control [nzSpan]="10" nzErrorTip="hellosub">
+                    <nz-form-control [nzSpan]="14" nzErrorTip="hellosub">
                         <nz-input-group>
                             <input type="text" nz-input formControlName="hellosub" placeholder="hellosub" />
                         </nz-input-group>                        
                     </nz-form-control>
-                    <nz-form-control [nzSpan]="12" nzErrorTip="hellosub">
+                    <nz-form-control [nzSpan]="10" nzErrorTip="hellosub">
                         <nz-radio-group formControlName="hellosubstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickHelloSub()">
                             <label nz-radio-button nzValue="start">start</label>
                             <label nz-radio-button nzValue="stop">stop</label>
                         </nz-radio-group>
                     </nz-form-control>
                 </nz-form-item>
-               
+
+                <nz-divider [nzText]="'appsub(stat)'" nzOrientation="left"></nz-divider>                
                 <nz-form-item>
                     <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="appsub">appsub</nz-form-label> -->
-                    <nz-form-control [nzSpan]="10" nzErrorTip="appsub">
+                    <nz-form-control [nzSpan]="14" nzErrorTip="appsub">
                         <nz-input-group>
                             <input type="text" nz-input formControlName="appsub" placeholder="appsub" />
                         </nz-input-group>                        
                     </nz-form-control>
-                    <nz-form-control [nzSpan]="12" nzErrorTip="appsub">
+                    <nz-form-control [nzSpan]="10" nzErrorTip="appsub">
                         <nz-radio-group formControlName="appsubstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickAppSub()">
                             <label nz-radio-button nzValue="start">start</label>
                             <label nz-radio-button nzValue="stop">stop</label>
@@ -62,28 +64,48 @@
         </nz-card> 
       </nz-col>
 
+
+      
       <nz-col [nzSpan]="18"> 
         <nz-row [nzGutter]="16">
+
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-card>
-                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
-                                <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'total/'+recvcount" [nzRenderItem]="smallItem" >
-                                    <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
-                                </nz-list>
-                            </cdk-virtual-scroll-viewport>
-                        </nz-card> 
+                    <nz-collapse-panel [nzHeader]="'stat'" [nzActive]="'true'" [nzDisabled]="'false'">
+
+                        <nz-row [nzGutter]="16">
+                            <ng-container *ngFor="let key of countkeys()">
+                                <nz-col [nzSpan]="4">
+                                    <nz-card>
+                                        <nz-statistic [nzTitle]="key" [nzValue]="countvalue(key)" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
+                                        <ng-template #myicon><i nz-icon nzType="right"></i></ng-template>
+                                    </nz-card>
+                                </nz-col>
+                            </ng-container>
+                            <ng-container *ngFor="let key of statmapkeys()">
+                                <nz-col [nzSpan]="4">
+                                    <nz-card>
+                                        <nz-statistic [nzTitle]="key" [nzValue]="statmapvalue(key)" [nzValueStyle]="{ color: statusIconColor(key) }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
+                                        <ng-template #myicon><i nz-icon [nzType]="statusIconName(key)"></i></ng-template>
+                                    </nz-card>
+                                </nz-col>
+                            </ng-container>
+
+                          </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>
             </nz-col>
 
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'detail'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-card> 
-                            <nz-statistic [nzValue]="11.28 | number: '1.0-2'" [nzTitle]="'cpu'" [nzPrefix]="prefixTplOne" [nzSuffix]="'%'" [nzValueStyle]="{ color: '#3F8600' }"></nz-statistic>
-                            <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>                  
+                    <nz-collapse-panel [nzHeader]="'msgs'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card>
+                            <div style="margin-bottom: 8px;"><button nz-button (click)="clearList()">clear</button></div>
+                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                                <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'total/'+recvcount" [nzRenderItem]="smallItem" >
+                                    <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
+                                </nz-list>
+                            </cdk-virtual-scroll-viewport>
                         </nz-card> 
                     </nz-collapse-panel> 
                 </nz-collapse>

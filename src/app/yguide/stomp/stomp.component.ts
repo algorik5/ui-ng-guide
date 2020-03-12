@@ -3,6 +3,8 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { AastompService } from 'src/app/aservice/aastomp.service';
+import { AacountmapService } from 'src/app/aservice/aacountmap.service';
+import { AamapService } from 'src/app/aservice/aamap.service';
 
 @Component({
   selector: 'app-stomp',
@@ -11,11 +13,12 @@ import { AastompService } from 'src/app/aservice/aastomp.service';
 })
 export class StompComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService) { }
+  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private countmap:AacountmapService) { }
 
   ngOnInit() {
 
     this.formInit();
+    this.countInit();
   }
 
   getFormgroup() { return this.form.getFormgroup(); }//html에서 호출
@@ -43,6 +46,7 @@ export class StompComponent implements OnInit {
   }
   recvmsgs = [];
   recvcount = 0;
+  clearList(){ this.recvmsgs = []; this.recvcount = 0; }
   clickHelloSub(){
     let status = this.form.getControlValue("hellosubstatus");
     this.logging.debug("===clickHelloSub #status="+ status);
@@ -66,18 +70,34 @@ export class StompComponent implements OnInit {
       // this.logging.debug("==== appsub msg # "+ JSON.stringify(res));
       this.recvcount++;
       this.recvmsgs.push("app  ]"+JSON.stringify(res));
+
+
+      this.countadd("recv",1);
+
+      //this.statmapadd("cpu",2); this.statmapadd("memory",3); this.statmapadd("disk",4);
+      if(res["_type_"]=="GAP_DATA") { 
+        this.statmapadd("GAP.SRT",res["GAP"]["SRT"]);
+        this.statmapadd("GAP.END",res["GAP"]["END"]);
+        this.statmapadd("GAP.ERR",res["GAP"]["ERR"]);
+      }
     });
   }
 
-  ////////////////////////////////////////////////////////// nz-tag
-  name = "testdatas";
-  tags = [{name:"pub",color:"lime"},{name:"sub",color:"lime"}];//red
-  getTags() { return this.tags; }
+  ////////////////////////////////////////////////////////// count
+  countInit() { this.countadd("recv",0); }
+  countkeys() { return this.countmap.keysToArray(); }
+  countvalue(key) { return this.countmap.getCount(key); }
+  countadd(key,count) { this.countmap.addCount(key,count); }
 
-  clickTag(tag) {//{name:data,color:"lime"}
-    if(tag["color"]=="red") return;
-    ColorUtil.changeColorAll(this.tags,"lime");
-    ColorUtil.changeColorValue(tag,"red");
-
-  }
+  ////////////////////////////////////////////////////////// stat
+  statmap = new AamapService();//cpu:{name:"cpu",value:"1.0",status:"warn"}
+  statmapkeys() { return this.statmap.keysToArray(); }
+  statmapvalue(key) { return this.statmap.get(key)["value"]; }
+  statmapadd(key,value)
+  {
+    let status = "normal"; if(value >= 3) status = "warn"; if(value >= 4) status = "error";
+    this.statmap.set(key,{key:key,value:value,status:status});
+  }  
+  statusIconName(key) { let status = this.statmap.get(key)["status"]; return ColorUtil.statusIconName(status); }
+  statusIconColor(key){ let status = this.statmap.get(key)["status"]; return ColorUtil.statusIconColor(status); }
 }

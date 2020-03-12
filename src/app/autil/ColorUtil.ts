@@ -1,5 +1,15 @@
 export class ColorUtil
 {
+  static statusIconName(status) { 
+    if(status=="error") return "up";
+    if(status=="warn") return "down";
+    return "left";
+  }
+  static statusIconColor(status){
+    if(status=="error") return "red";
+    if(status=="warn") return "lime";
+    return "green";
+  }
   // static changeColorValueUnique(column,colorEnable,columns,colorDisable) 
   // { 
   //   this.changeColorAll(columns,colorDisable);//전체를 disable
