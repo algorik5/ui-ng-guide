@@ -14,7 +14,7 @@ export class StompchartChartComponent implements OnInit {
 
   constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  topicprefix = "stomptable.chart";//this.topicprefix+".datas"
+  topicprefix = "stompchart.stomp";//this.topicprefix+".datas"
 
   ngOnInit() {
 
@@ -26,6 +26,9 @@ export class StompchartChartComponent implements OnInit {
     this.pubsub.sub(this.topicprefix+".data",data => {//{legend:-,x:-,y:-}
       //this.chart.clearChart();
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+    });    
+    this.pubsub.sub(this.topicprefix+".clear",data => {//{legend:-,x:-,y:-}
+      this.chart.clearChart();
     });
 
     this.chartInit();
@@ -38,7 +41,7 @@ export class StompchartChartComponent implements OnInit {
   chartInit()
   {
     ////////////////////////////////////////////////////////// testdata  
-    this.test_datas();
+    // this.test_datas();
   }
 
   ////////////////////////////////////////////////////////// testdata  

@@ -11,14 +11,16 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 export class DynamicchartTableComponent implements OnInit {
   constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
+  topicprefix = "dynamicchart.chart";//this.topicprefix+".datas"
+
   ngOnInit() {
     this.tableInit();
 
-    this.pubsub.sub("dynamicchart.datas", datas => {
+    this.pubsub.sub(this.topicprefix+".datas", datas => {
       this.table.setData(datas);
     });
 
-    this.pubsub.sub("dynamicchart.column", column => {
+    this.pubsub.sub(this.topicprefix+".column", column => {
       //this.logging.debug("=== column="+ column)
       this.table.changeColumnShow(column);
     });
@@ -34,6 +36,6 @@ export class DynamicchartTableComponent implements OnInit {
 
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
-    this.pubsub.pub("dynamicchart.data", data);
+    this.pubsub.pub(this.topicprefix+".selectrow", data);
   }
 }

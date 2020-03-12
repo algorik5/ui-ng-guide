@@ -5,6 +5,7 @@ import { AaloggingService } from "src/app/aservice/aalogging.service";
 import { AaformService } from "src/app/aservice/aaform.service";
 import { ObjectUtil } from 'src/app/autil/ObjectUtil';
 import { JSONUtil } from 'src/app/autil/JSONUtil';
+import { ColorUtil } from 'src/app/autil/ColorUtil';
 
 @Component({
   selector: 'app-dynamicchart-condition',
@@ -19,8 +20,13 @@ export class DynamicchartConditionComponent implements OnInit {
     private logging: AaloggingService
   ) {}
 
+  topicprefix = "dynamicchart.chart";//this.topicprefix+".datas"
+
   ngOnInit() {
     this.formInit();
+
+    // this.pubsub.sub(this.topicprefix+".data", data => {
+    // });
   }
 
   formInit()
@@ -39,60 +45,39 @@ export class DynamicchartConditionComponent implements OnInit {
     this.sql.select(sql,rs=>{ 
       let columns = this.sql.getColumns();//name,color
       this.logging.debug("formSubmit select "+"#columns="+ JSONUtil.stringify(columns));
-      this.legendColumns = ObjectUtil.cloneObject(columns);
-      this.xColumns = ObjectUtil.cloneObject(columns);
-      this.yColumns = ObjectUtil.cloneObject(columns);
+
+      //////////////////////////////////// chart관련
+      this.setChartColumns(columns);
     });
   }
 
-  // getColumns() { return this.sql.getColumns(); }
-  // clickColumn(column)
-  // {
-  //    ColorUtil.changeColor(column);
-  //   this.pubsub.pub("dynamicchart.column", column["name"]);
-  // }
 
+
+
+  
+  //////////////////////////////////// chart관련
   legendColumns = []; xColumns = []; yColumns = [];
   curLegend; curX; curY;
+  setChartColumns(columns)
+  {
+    if(columns == null || columns.length < 1) return;
+    let colorColumns = ColorUtil.stringsToColorObject(columns,"lime");//color부여-//sql column은 color가 이미 부여됨(향후 변경)
+
+    this.legendColumns = ObjectUtil.cloneObject(colorColumns);
+    this.xColumns = ObjectUtil.cloneObject(colorColumns);
+    this.yColumns = ObjectUtil.cloneObject(colorColumns);
+  }
   getLegendColumns() { return this.legendColumns; }
   getXColumns() { return this.xColumns; }
   getYColumns() { return this.yColumns; }
-  clickLegendColumn(column)
-  {
-    this.curLegend = column;
-    this.changeColor(column,this.legendColumns);
-    //this.changeColorDisable(column,this.xColumns);
-    //this.changeColorDisable(column,this.yColumns);
-    this.changeSelect("legend",column);
-    // this.pubsub.pub("dynamicchart.column", column["name"]);
-  }
-  clickXColumn(column)
-  {
-    this.curX = column;
-    this.changeColor(column,this.xColumns);
-    //this.changeColorDisable(column,this.legendColumns);
-    //this.changeColorDisable(column,this.yColumns);
-    this.changeSelect("x",column);
-    // this.pubsub.pub("dynamicchart.column", column["name"]);
-  }
-  clickYColumn(column)
-  {
-    this.curY = column;
-    this.changeColor(column,this.yColumns);
-    //this.changeColorDisable(column,this.legendColumns);
-    //this.changeColorDisable(column,this.xColumns);
-    this.changeSelect("y",column);
-  }
+  clickLegendColumn(column) { this.curLegend = column; ColorUtil.changeColorClick(this.legendColumns,"lime",column,"red"); this.changeSelect("legend",column); }
+  clickXColumn(column) { this.curX = column; ColorUtil.changeColorClick(this.xColumns,"lime",column,"red"); this.changeSelect("x",column); }
+  clickYColumn(column) { this.curY = column; ColorUtil.changeColorClick(this.yColumns,"lime",column,"red"); this.changeSelect("y",column); }
 
   changeSelect(type,column)
   {
-    if(this.curLegend == null) return;
-    if(this.curX == null) return;
-    if(this.curY == null) return;
-
-    if(this.curLegend == this.curX) return;
-    if(this.curLegend == this.curY) return;
-    if(this.curX == this.curY) return;
+    if(this.curLegend == null || this.curX == null || this.curY == null) return;
+    if(this.curLegend == this.curX || this.curLegend == this.curY || this.curX == this.curY) return;
     
     this.logging.debug("=== changeSelect # " +"#legend="+this.curLegend["name"]+"#x="+this.curX["name"]+"#y="+this.curY["name"])
 
@@ -101,17 +86,6 @@ export class DynamicchartConditionComponent implements OnInit {
     let chartdatas = sqldatas.map(data => { return {legend:data[legend],x:data[x],y:data[y]}; });
     this.logging.debug("=== changeSelect 2 # " +"#chartdatas="+ JSON.stringify(chartdatas))
     //this.pubsub.pub("dynamicchart.column", {type:type,value:column});//column["name"]);
-    this.pubsub.pub("dynamicchart.datas", chartdatas);
+    this.pubsub.pub(this.topicprefix+".datas", chartdatas);//"dynamicchart.datas"
   }
-  changeColor(column,columns) 
-  { 
-    columns.map(c=>{
-      c["name"]==column["name"] ? c["color"]="red":c["color"]="lime"; 
-    });
-  }
-  changeColorDisable(column,columns) 
-  { 
-    columns.filter(c=>c["name"]==column["name"]).map(c=>{ c["color"]="lightgray" });
-  }
-
 }

@@ -22,6 +22,11 @@ export class StompComponent implements OnInit {
   ngOnInit() {
 
     this.formInit();
+
+    // this.pubsub.sub(this.topicprefix+".data",data => {
+
+    // });
+
   }
 
   getFormgroup() { return this.form.getFormgroup(); }//html에서 호출

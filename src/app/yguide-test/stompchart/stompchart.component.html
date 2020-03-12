@@ -28,6 +28,14 @@
                 </nz-collapse>
             </nz-col>
 
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'jsonview'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-stompchart-jsonview></app-stompchart-jsonview> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
         </nz-row>
       </nz-col>
     </nz-row>

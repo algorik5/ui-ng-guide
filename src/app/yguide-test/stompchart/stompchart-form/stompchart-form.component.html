@@ -18,4 +18,40 @@
     <nz-divider [nzText]="'recv(count)'" nzOrientation="left"></nz-divider>                
     <nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic>
 
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="msgtypes">msgtypes</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your msgtypes!">
+            <nz-input-group>
+                <nz-tag *ngFor="let msgtype of getMsgtypes()" [nzColor]="msgtype['color']" (click)="clickMsgtype(msgtype)">{{msgtype['name']}}</nz-tag>
+        </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="legend">legend</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your legend!">
+            <nz-input-group>
+              <nz-tag *ngFor="let column of getLegendColumns()" [nzColor]="column['color']" (click)="clickLegendColumn(column)">{{column['name']}}</nz-tag>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="x">x</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your x!">
+            <nz-input-group>
+              <nz-tag *ngFor="let column of getXColumns()" [nzColor]="column['color']" (click)="clickXColumn(column)">{{column['name']}}</nz-tag>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="y">y</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your y!">
+            <nz-input-group>
+              <nz-tag *ngFor="let column of getYColumns()" [nzColor]="column['color']" (click)="clickYColumn(column)">{{column['name']}}</nz-tag>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
 </form>

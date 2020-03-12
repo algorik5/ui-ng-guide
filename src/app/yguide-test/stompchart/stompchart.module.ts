@@ -13,10 +13,11 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
+import { StompchartJsonviewComponent } from './stompchart-jsonview/stompchart-jsonview.component';
 
 
 @NgModule({
-  declarations: [StompchartComponent, StompchartFormComponent, StompchartChartComponent, StompchartTableComponent],
+  declarations: [StompchartComponent, StompchartFormComponent, StompchartChartComponent, StompchartTableComponent, StompchartJsonviewComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,

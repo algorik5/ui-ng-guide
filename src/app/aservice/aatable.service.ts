@@ -22,12 +22,13 @@ export class AatableService {
   addDatas(mydatas)
   {
     this.datas = this.datas.concat(mydatas);
-    this.logging.debug("=== addDatas mydata="+JSON.stringify(mydatas))
+    this.logging.debug("=== table addDatas mydata="+JSON.stringify(mydatas))
   }
   addData(mydata)
   {
+    if(this.datas.length < 1) { this.setData([mydata]); return; }//실시간 차트의 경우 setData없이 addData만 호출함
     this.datas = this.datas.concat(mydata);//안됨-this.datas.push(mydata);
-    this.logging.debug("=== addData mydata="+JSON.stringify(mydata))
+    this.logging.debug("=== table addData mydata="+JSON.stringify(mydata))
   }
 
   columns = [];//[{name:xxx,enable:xxx},...]

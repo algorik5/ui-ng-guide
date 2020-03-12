@@ -51,7 +51,7 @@ export class AaechartsService {
   addDataRows(datas) { datas.forEach(data=>this.addDataRow(data["legend"],data["x"],data["y"])) }
   addDataRow(legend,x,y)
   {
-    this.logging.debug("===addDataRow start #legend="+legend +"#x="+x +"#y="+y);
+    this.logging.debug("===chart addDataRow start #legend="+legend +"#x="+x +"#y="+y);
     //if(x instanceof Date)
     let series = this.chartoptions.series.find(o=>o["name"]==legend);
     if(series == null)

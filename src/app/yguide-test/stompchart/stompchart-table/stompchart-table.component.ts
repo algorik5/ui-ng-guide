@@ -14,7 +14,7 @@ export class StompchartTableComponent implements OnInit {
 
   constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
-  topicprefix = "stomptable.table";//this.topicprefix+".datas"
+  topicprefix = "stompchart.stomp";//this.topicprefix+".datas"
 
   ngOnInit() {
     //pubsub-table 샘플
@@ -23,6 +23,9 @@ export class StompchartTableComponent implements OnInit {
     });
     this.pubsub.sub(this.topicprefix+".data", data => {
       this.table.addData(data);
+    });
+    this.pubsub.sub(this.topicprefix+".clear",data => {//{legend:-,x:-,y:-}
+      this.table.clearData();
     });
 
     //pubsub-table 샘플 - 컬럼 show
@@ -44,7 +47,7 @@ export class StompchartTableComponent implements OnInit {
   tableInit()
   {
     ////////////////////////////////////////////////////////// testdata  
-    this.test_datas();
+    // this.test_datas();
   }
 
   test_datas()

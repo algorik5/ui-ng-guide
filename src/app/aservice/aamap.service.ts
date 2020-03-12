@@ -7,13 +7,14 @@ export class AamapService {
 
   constructor() { }
 
-  map : Map<string,number> = new Map();
+  map : Map<string,any> = new Map();
 
   clear() { this.map.clear(); }
   contains(key) { return this.map.has(key); }
+  has(key) { return this.map.has(key); }
   get(key) { return this.map.get(key); }
   set(key,value) { this.map.set(key,value); }  
-  toObject() { //Array.from(this.map) >>> [["a",1],["b",1]]    
+  toObject() { //value가 object여서 OK //Array.from(this.map) >>> [["a",1],["b",1]]    
     let obj = {}; this.map.forEach((value, key) => { obj[key] = value });//for (let [key,value] of this.map) { obj[key] = value; }
     return obj;//{"a":1,"b":1}
   }
