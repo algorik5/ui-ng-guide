@@ -115,6 +115,8 @@ export class StompchartFormComponent implements OnInit {
   curMsgtype;
   clickMsgtype(msgtype)
   {
+    this.clearChartColumns();//legend clear
+    
     this.curMsgtype = msgtype["name"];
     ColorUtil.changeColorClick(this.getMsgtypes(),"lime",msgtype,"red");
     this.jsonpathadd(msgtype["name"]);
@@ -150,6 +152,7 @@ export class StompchartFormComponent implements OnInit {
     this.xColumns = ObjectUtil.cloneObject(colorColumns);
     this.yColumns = ObjectUtil.cloneObject(colorColumns);
   }
+  clearChartColumns() { this.legendColumns = []; this.xColumns = []; this.yColumns = []}
   getLegendColumns() { return this.legendColumns; }
   getXColumns() { return this.xColumns; }
   getYColumns() { return this.yColumns; }

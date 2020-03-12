@@ -26,6 +26,7 @@ export class AajsonpathService {
   uniquepathmap = new Map();//jsonpath unique 저장
   getUniqueJsonPath(mydata) 
   { 
+    this.uniquepathmap.clear();
     let pathdata = this.convertJSONPath(mydata);//내부적으로 addUniquePathMap호출함
     return Array.from(this.uniquepathmap.keys()); 
   }
