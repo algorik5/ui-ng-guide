@@ -5,6 +5,7 @@ import { AastompService } from 'src/app/aservice/aastomp.service';
 import { AacountmapService } from 'src/app/aservice/aacountmap.service';
 import { AamapService } from 'src/app/aservice/aamap.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 @Component({
   selector: 'app-stompchart-form',
@@ -13,7 +14,8 @@ import { ColorUtil } from 'src/app/autil/ColorUtil';
 })
 export class StompchartFormComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private countmap:AacountmapService) { }
+  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private countmap:AacountmapService
+    ,private pubsub:AapubsubService) { }
 
   ngOnInit() {
 
@@ -44,6 +46,7 @@ export class StompchartFormComponent implements OnInit {
     this.form.addControlValue("stompsub",this.stomp.getSubTopicApp());
     this.form.addControlValue("stompsubstatus","stop");
   }
+  topicprefix = "myname.stomp";//this.topicprefix+".datas"
   recvmsgs = [];
   clearList(){ this.recvmsgs = []; }
   clickStompsub(){
@@ -53,10 +56,13 @@ export class StompchartFormComponent implements OnInit {
 
     let topic = this.form.getControlValue("stompsub");
     this.stomp.sub(topic,res=>{
+      this.countadd("recv",1);
+
+      this.pubsub.pub(this.topicprefix+".data",{});//this.chart.addDatas(chartdatas);
+
       // this.logging.debug("==== stompsub msg # "+ JSON.stringify(res));
       this.recvmsgs.push("app  ]"+JSON.stringify(res));
 
-      this.countadd("recv",1);
 
       //this.statmapadd("cpu",2); this.statmapadd("memory",3); this.statmapadd("disk",4);
       if(res["_type_"]=="GAP_DATA") { 

@@ -5,6 +5,7 @@ import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { AastompService } from 'src/app/aservice/aastomp.service';
 import { AacountmapService } from 'src/app/aservice/aacountmap.service';
 import { AamapService } from 'src/app/aservice/aamap.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 @Component({
   selector: 'app-stomp',
@@ -13,7 +14,10 @@ import { AamapService } from 'src/app/aservice/aamap.service';
 })
 export class StompComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private countmap:AacountmapService) { }
+  constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private pubsub: AapubsubService
+    ,private countmap:AacountmapService) { }
+
+  topicprefix = "myname.stomp";//this.topicprefix+".datas"
 
   ngOnInit() {
 
@@ -35,6 +39,7 @@ export class StompComponent implements OnInit {
     this.stompsubInit();
 
     /////////////////////////////// test 
+    this.test_list_display();
     this.test_hello();
   }
 
@@ -44,8 +49,6 @@ export class StompComponent implements OnInit {
     this.form.addControlValue("stompsub",this.stomp.getSubTopicApp());
     this.form.addControlValue("stompsubstatus","stop");
   }
-  recvmsgs = [];
-  clearList(){ this.recvmsgs = []; }
   clickStompsub(){
     let status = this.form.getControlValue("stompsubstatus");
     this.logging.debug("===clickStompsub #status="+ status);
@@ -54,18 +57,13 @@ export class StompComponent implements OnInit {
     let topic = this.form.getControlValue("stompsub");
     this.stomp.sub(topic,res=>{
       // this.logging.debug("==== stompsub msg # "+ JSON.stringify(res));
-      this.recvmsgs.push("app  ]"+JSON.stringify(res));
 
       this.countadd("recv",1);
 
-      //this.statmapadd("cpu",2); this.statmapadd("memory",3); this.statmapadd("disk",4);
-      if(res["_type_"]=="GAP_DATA") { 
-        this.statmapadd("GAP.SRT",res["GAP"]["SRT"]);
-        this.statmapadd("GAP.END",res["GAP"]["END"]);
-        this.statmapadd("GAP.ERR",res["GAP"]["ERR"]);
-      }
+      this.pubsub.pub(this.topicprefix+".data",res);//this.chart.addDatas(chartdatas);
     });
   }
+
 
   ////////////////////////////////////////////////////////// count
   countInit() { this.countadd("recv",0); }
@@ -90,6 +88,24 @@ export class StompComponent implements OnInit {
 
 
 
+  ////////////////////////////////// test list
+  test_list = [];
+  test_list_add(data){ this.test_list = this.test_list.concat(data); }//주의-다른쓰레드에서 push는 안먹힘-this.test_list.push(data); }
+  test_list_clear(){ this.test_list = []; }
+  test_list_display()
+  {
+    //sub 샘플
+    this.pubsub.sub(this.topicprefix+".data", data => {
+      this.test_list_add("app]"+ JSON.stringify(data));
+
+      //this.statmapadd("cpu",2); this.statmapadd("memory",3); this.statmapadd("disk",4);
+      if(data["_type_"]=="GAP_DATA") { 
+        this.statmapadd("GAP.SRT",data["GAP"]["SRT"]);
+        this.statmapadd("GAP.END",data["GAP"]["END"]);
+        this.statmapadd("GAP.ERR",data["GAP"]["ERR"]);
+      }
+    });
+  }
 
   /////////////////////////////// test hello
   test_hello()
@@ -99,6 +115,7 @@ export class StompComponent implements OnInit {
     this.form.addControlValue("hellosubstatus","stop");
   }
   clickHelloPub(){
+    this.test_list_add(">>>>>>>>>>>>>>>>>>> clickHelloPub");
     let topic = this.form.getControlValue("hellopub");
     let msg = {name:"test1",value:"hello"};
     this.stomp.pub(topic,msg);
@@ -111,7 +128,7 @@ export class StompComponent implements OnInit {
     let topic = this.form.getControlValue("hellosub");
     this.stomp.sub(topic,res=>{
       // this.logging.debug("==== hellosub msg # "+ JSON.stringify(res));
-      this.recvmsgs.push("hello]"+res)//JSON.stringify(res));
+      this.test_list_add("hello]"+ JSON.stringify(res));
     });
   }
 }

@@ -109,9 +109,9 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'msgs'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-card>
-                            <div style="margin-bottom: 8px;"><button nz-button (click)="clearList()">clear</button></div>
+                            <div style="margin-bottom: 8px;"><button nz-button (click)="test_list_clear()">clear</button></div>
                             <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
-                                <nz-list [nzDataSource]="recvmsgs" nzBordered nzSize="small" [nzHeader]="'msgs'" [nzRenderItem]="smallItem" >
+                                <nz-list [nzDataSource]="test_list" nzBordered nzSize="small" [nzHeader]="'msgs'" [nzRenderItem]="smallItem" >
                                     <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
                                 </nz-list>
                             </cdk-virtual-scroll-viewport>

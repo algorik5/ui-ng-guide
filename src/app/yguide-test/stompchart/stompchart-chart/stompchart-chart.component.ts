@@ -14,11 +14,11 @@ export class StompchartChartComponent implements OnInit {
 
   constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  topicprefix = "myname.chart";//this.topicprefix+".datas"
+  topicprefix = "stomptable.chart";//this.topicprefix+".datas"
 
   ngOnInit() {
 
-	////////////////////////////////////////////////////////// chart  
+  	////////////////////////////////////////////////////////// chart  
     this.pubsub.sub(this.topicprefix+".datas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();
       this.chart.addDatas(datas);

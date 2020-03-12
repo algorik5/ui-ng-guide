@@ -25,6 +25,7 @@
 # detail view 개발
 -	nz-row/col 변경 >>> <app-stompchart-form></app-stompchart-form> ...
 - 각 화면 : yguide에서 복사
+- *** topic변경-myname
 
 
 

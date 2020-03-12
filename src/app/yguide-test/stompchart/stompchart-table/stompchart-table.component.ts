@@ -14,7 +14,7 @@ export class StompchartTableComponent implements OnInit {
 
   constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
-  topicprefix = "myname.table";//this.topicprefix+".datas"
+  topicprefix = "stomptable.table";//this.topicprefix+".datas"
 
   ngOnInit() {
     //pubsub-table 샘플
