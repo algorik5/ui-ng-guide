@@ -19,3 +19,10 @@
 # playgroup
 - typescript : https://www.typescriptlang.org/v2/en/play
 - ng : https://stackblitz.com/edit/angular-playground
+
+# Angular Universal (SSR - server side rendering)
+- npm run build:ssr > npm run serve:ssr > localhost:4000
+- server.ts
+
+
+
