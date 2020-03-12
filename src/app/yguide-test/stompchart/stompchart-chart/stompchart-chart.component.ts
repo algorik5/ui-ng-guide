@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EChartOption } from 'echarts';
 import { AaechartsService } from 'src/app/aservice/aaecharts.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
@@ -7,11 +6,11 @@ import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.less']
+  selector: 'app-stompchart-chart',
+  templateUrl: './stompchart-chart.component.html',
+  styleUrls: ['./stompchart-chart.component.less']
 })
-export class ChartComponent implements OnInit {
+export class StompchartChartComponent implements OnInit {
 
   constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
@@ -57,13 +56,4 @@ export class ChartComponent implements OnInit {
     this.pubsub.pub(this.topicprefix+".data",chartdata);//this.chart.addData(chartdata);
   }
 
-  
-  // /////////////////////////////// echarts
-  // linechartoptions = {
-  //   title: { text: 'cpu trend'},
-  //   xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-  //   yAxis: { type: 'value' },
-  //   series: [{ data: [820, 932, 901, 934, 1290, 1330, 1320], type: 'line' }]
-  // };
- 
 }

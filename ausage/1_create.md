@@ -1,29 +1,30 @@
-# generate
-- ng g m yguide-test/jsontotreetable --routing
-- ng g c yguide-test/jsontotreetable
-- ---ng g s yguide-test/sqlquery/sqlquery
-- ng g c yguide-test/jsontotreetable/jsontotreetable-condition
-- ng g c yguide-test/jsontotreetable/jsontotreetable-editor
-- ng g c yguide-test/jsontotreetable/jsontotreetable-treetable
+# xxx generate
+- ng g m yguide-test/stompchart --routing
+- ng g c yguide-test/stompchart
+- ---ng g s yguide-test/stompchart/stompchart
+- ng g c yguide-test/stompchart/stompchart-form
+- ng g c yguide-test/stompchart/stompchart-chart
+- ng g c yguide-test/stompchart/stompchart-table
 
 # 현재 module 수정
-- sqlquery.module.ts	
+- xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
 
-- sqlquery-routing
-  - { path: 'jsontotreetable',component: JsontotreetableComponent }
+- xxx-routing
+  - { path: 'stompchart',component: StompchartComponent }
 
 # 현재 page layout 
-- jsontotreetable.compoenent.html
-	nz-row/col...<app-jsontotreetable-condition...
+- stompchart.compoenent.html <<< yguide/layout복사 >>>
 
 # app module 수정
 - app-routing
-  - { path: 'guide-test',loadChildren: () => import('./yguide-test/jsontotreetable/jsontotreetable.module').then(m => m.JsontotreetableModule)},
+  - { path: 'guide-test',loadChildren: () => import('./yguide-test/stompchart/stompchart.module').then(m => m.StompchartModule)},
 - app.compoent
-  - <a title routerLink="guide-test/jsontotreetable"...
+  - <a title routerLink="guide-test/stompchart"...
 
 # detail view 개발
+-	nz-row/col 변경 >>> <app-stompchart-form></app-stompchart-form> ...
+- 각 화면 : yguide에서 복사
 
 
 
