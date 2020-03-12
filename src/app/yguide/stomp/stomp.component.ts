@@ -18,7 +18,6 @@ export class StompComponent implements OnInit {
   ngOnInit() {
 
     this.formInit();
-    this.countInit();
   }
 
   getFormgroup() { return this.form.getFormgroup(); }//html에서 호출
@@ -32,45 +31,30 @@ export class StompComponent implements OnInit {
 
   formInit()
   {
-    this.form.addControlValue("hellopub",this.stomp.getPubTopic());
-    this.form.addControlValue("hellosub",this.stomp.getSubTopic());
-    this.form.addControlValue("appsub",this.stomp.getSubTopicApp());
-    this.form.addControlValue("hellosubstatus","stop");
-    this.form.addControlValue("appsubstatus","stop");
+    this.countInit();
+    this.stompsubInit();
+
+    /////////////////////////////// test 
+    this.test_hello();
   }
 
-  clickHelloPub(){
-    let topic = this.form.getControlValue("hellopub");
-    let msg = {name:"test1",value:"hello"};
-    this.stomp.pub(topic,msg);
+  /////////////////////////////// stompsub
+  stompsubInit()
+  {
+    this.form.addControlValue("stompsub",this.stomp.getSubTopicApp());
+    this.form.addControlValue("stompsubstatus","stop");
   }
   recvmsgs = [];
-  recvcount = 0;
-  clearList(){ this.recvmsgs = []; this.recvcount = 0; }
-  clickHelloSub(){
-    let status = this.form.getControlValue("hellosubstatus");
-    this.logging.debug("===clickHelloSub #status="+ status);
+  clearList(){ this.recvmsgs = []; }
+  clickStompsub(){
+    let status = this.form.getControlValue("stompsubstatus");
+    this.logging.debug("===clickStompsub #status="+ status);
     if(status=="stop") { this.stomp.substop(); return; }
 
-    let topic = this.form.getControlValue("hellosub");
+    let topic = this.form.getControlValue("stompsub");
     this.stomp.sub(topic,res=>{
-      // this.logging.debug("==== hellosub msg # "+ JSON.stringify(res));
-      this.recvcount++;
-      this.recvmsgs.push("hello]"+res)//JSON.stringify(res));
-    });
-  }
-  //appsubstatus = "stop";
-  clickAppSub(){
-    let status = this.form.getControlValue("appsubstatus");
-    this.logging.debug("===clickAppSub #status="+ status);
-    if(status=="stop") { this.stomp.substop(); return; }
-
-    let topic = this.form.getControlValue("appsub");
-    this.stomp.sub(topic,res=>{
-      // this.logging.debug("==== appsub msg # "+ JSON.stringify(res));
-      this.recvcount++;
+      // this.logging.debug("==== stompsub msg # "+ JSON.stringify(res));
       this.recvmsgs.push("app  ]"+JSON.stringify(res));
-
 
       this.countadd("recv",1);
 
@@ -100,4 +84,34 @@ export class StompComponent implements OnInit {
   }  
   statusIconName(key) { let status = this.statmap.get(key)["status"]; return ColorUtil.statusIconName(status); }
   statusIconColor(key){ let status = this.statmap.get(key)["status"]; return ColorUtil.statusIconColor(status); }
+
+
+
+
+
+
+
+  /////////////////////////////// test hello
+  test_hello()
+  {
+    this.form.addControlValue("hellopub",this.stomp.getPubTopic());
+    this.form.addControlValue("hellosub",this.stomp.getSubTopic());
+    this.form.addControlValue("hellosubstatus","stop");
+  }
+  clickHelloPub(){
+    let topic = this.form.getControlValue("hellopub");
+    let msg = {name:"test1",value:"hello"};
+    this.stomp.pub(topic,msg);
+  }
+  clickHelloSub(){
+    let status = this.form.getControlValue("hellosubstatus");
+    this.logging.debug("===clickHelloSub #status="+ status);
+    if(status=="stop") { this.stomp.substop(); return; }
+
+    let topic = this.form.getControlValue("hellosub");
+    this.stomp.sub(topic,res=>{
+      // this.logging.debug("==== hellosub msg # "+ JSON.stringify(res));
+      this.recvmsgs.push("hello]"+res)//JSON.stringify(res));
+    });
+  }
 }

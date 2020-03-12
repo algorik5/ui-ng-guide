@@ -12,6 +12,7 @@
 
 <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
 
+    <nz-divider [nzText]="'label/button'" nzOrientation="left"></nz-divider>                
     <h3> ------ 1줄에 표현 (label/button) - nzSpan크기를 적절히 조정 (*주의-button은 input과 동일group에 넣으면 안됨) </h3>
     <nz-form-item>
         <nz-form-label [nzSpan]="5" nzRequired nzFor="name">name</nz-form-label>
@@ -30,6 +31,7 @@
 
 
 
+    <nz-divider [nzText]="'label/radio'" nzOrientation="left"></nz-divider>                
     <h3> ------ 1줄에 표현 (label/radio) - nzSpan크기를 적절히 조정 (*주의-radio는 input과 동일group에 넣으면 안됨) </h3>
     <nz-form-item>
         <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="hellosub">hellosub</nz-form-label> -->
