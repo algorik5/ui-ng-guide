@@ -3,6 +3,11 @@ import { groupBy, mergeMap, toArray } from 'rxjs/operators';
 
 export class ArrayUtil
 {
+    static setColumnValue(datas,column,value) { //없으면 추가됨
+        // datas.forEach(data=>data["checked"]=true);
+        datas.forEach(data=>data[column]=value);
+    }
+
     static util_tolowercase_allfields(datas) {//필드명을 소문자로 변경
         //let datas = [{A:"aa",B:"bb"},{AA:"aa",BB:"bb"}];
         let newdatas = [];

@@ -4,6 +4,8 @@ import { AatableService } from "src/app/aservice/aatable.service";
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
+import { zTestDataUtil } from 'src/app/autil/zTestDataUtil';
+import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 
 @Component({
   selector: 'app-table',
@@ -35,7 +37,8 @@ export class TableComponent implements OnInit {
 
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-
+  isEditable() { return this.table.isEditable(); }
+  setEditable(edit) { this.table.setEditable(edit); }
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -49,7 +52,9 @@ export class TableComponent implements OnInit {
 
   test_datas()
   {
-    let datas = this.table.test_data();
+    //let datas = this.table.test_data();
+    let datas = zTestDataUtil.test_data();
+    ArrayUtil.setColumnValue(datas,"checked",false);//datas.forEach(data=>data["checked"]=true);
     this.pubsub.pub(this.topicprefix+".datas",datas);//this.table.setData(datas);
   }
   test_no = 0;
@@ -63,5 +68,6 @@ export class TableComponent implements OnInit {
   {
     this.pubsub.pub(this.topicprefix+".columnshow","host");//this.table.changeColumnShow("host");
   }
-
+  test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.setEditable(this.test_editable); }
+  test_checked = false; test_check() { this.test_checked = this.test_checked?false:true; ArrayUtil.setColumnValue(this.table.getData(),"checked",this.test_checked); }
 }

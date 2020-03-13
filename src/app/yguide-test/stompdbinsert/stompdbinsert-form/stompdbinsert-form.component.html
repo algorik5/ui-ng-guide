@@ -1,0 +1,30 @@
+<form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+    <nz-form-item>
+        <!-- <nz-form-label [nzSpan]="7" nzRequired nzFor="stompsub">stompsub</nz-form-label> -->
+        <nz-form-control [nzSpan]="12" nzErrorTip="stompsub">
+            <nz-input-group>
+                <input type="text" nz-input formControlName="stompsub" placeholder="stompsub" />
+            </nz-input-group>                        
+        </nz-form-control>
+        <nz-form-control [nzSpan]="12" nzErrorTip="stompsub">
+            <nz-radio-group formControlName="stompsubstatus" [nzButtonStyle]="'solid'" (ngModelChange)="clickStompsub()">
+                <label nz-radio-button nzValue="start">start</label>
+                <label nz-radio-button nzValue="stop">stop</label>
+            </nz-radio-group>
+
+        </nz-form-control>
+    </nz-form-item>
+    <nz-divider [nzText]="'recv(count)'" nzOrientation="left"></nz-divider>                
+    <nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic>
+
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="msgtypes">msgtypes</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your msgtypes!">
+            <nz-input-group>
+                <nz-tag *ngFor="let msgtype of getMsgtypes()" [nzColor]="msgtype['color']" (click)="clickMsgtype(msgtype)">{{msgtype['name']}}</nz-tag>
+        </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>

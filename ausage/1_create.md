@@ -1,33 +1,28 @@
 # xxx generate
-- ng g m yguide-test/stompchart --routing
-- ng g c yguide-test/stompchart
-- ---ng g s yguide-test/stompchart/stompchart
-- ng g c yguide-test/stompchart/stompchart-form
-- ng g c yguide-test/stompchart/stompchart-chart
-- ng g c yguide-test/stompchart/stompchart-table
-
+- ng g m yguide-test/stompdbinsert --routing
+- ng g c yguide-test/stompdbinsert
+- ---ng g s yguide-test/stompdbinsert/stompdbinsert
+- ng g c yguide-test/stompdbinsert/stompdbinsert-form
+- ng g c yguide-test/stompdbinsert/stompdbinsert-tableschema
+- ng g c yguide-test/stompdbinsert/stompdbinsert-tabledata
 # 현재 module 수정
 - xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-
 - xxx-routing
-  - { path: 'stompchart',component: StompchartComponent }
-
-# 현재 page layout 
-- stompchart.compoenent.html <<< yguide/layout복사 >>>
-
+  - { path: 'stompdbinsert',component: StompdbinsertComponent }
 # app module 수정
 - app-routing
-  - { path: 'guide-test',loadChildren: () => import('./yguide-test/stompchart/stompchart.module').then(m => m.StompchartModule)},
+  - { path: 'guide-test',loadChildren: () => import('./yguide-test/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
 - app.compoent
-  - <a title routerLink="guide-test/stompchart"...
-
-# detail view 개발
--	nz-row/col 변경 >>> <app-stompchart-form></app-stompchart-form> ...
-- 각 화면 : yguide에서 복사
+  - <a title routerLink="guide-test/stompdbinsert"...
+# 화면 개발
+- (layout) stompdbinsert.compoenent.html <<< yguide/layout복사 >>>
+  -	nz-row/col 변경 >>> <app-stompdbinsert-form></app-stompdbinsert-form> ...
+- 각 화면 : yguide참고
 - *** topic변경-myname
-
-
+# *** service 설정 - 설정하지 않으면 singleton
+- (***주의) providers: [AatableService] <<< 또는 compo.ts에 설정 >>>
+- AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
 
 # ========================================== guide

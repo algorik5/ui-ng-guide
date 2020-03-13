@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AaloggingService } from './aalogging.service';
 import { zTestDataUtil } from '../autil/zTestDataUtil';
+import { ArrayUtil } from '../autil/ArrayUtil';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AatableService {
   setData(mydatas)
   {
     this.datas = mydatas;
-    this.setColumns(this.datas);
+    if(this.datas != null && this.datas.length > 0) this.setColumns(Object.keys(this.datas[0]));
     this.logging.debug("=== setData mydata="+JSON.stringify(mydatas))
   }
 
@@ -33,12 +34,10 @@ export class AatableService {
 
   columns = [];//[{name:xxx,enable:xxx},...]
   clearColumns() { this.columns = []; }
-  setColumns(mydatas)
+  setColumns(mycolumns)
   {
     this.clearColumns();
-    if(this.datas == null || this.datas.length < 1) return this.columns;
-    //this.columns = Object.keys(this.rs[0]);
-    this.columns = Object.keys(this.datas[0]).map((column,i)=>{ return {name:column,show:true}; });
+    this.columns = mycolumns.map((column,i)=>{ return {name:column,show:true}; });
   }
   getColumns()
   {
@@ -53,20 +52,19 @@ export class AatableService {
     this.logging.debug("=== changeColumnShow find="+JSON.stringify(find) +"#columns="+JSON.stringify(this.columns));
   }
 
+  ////////////////////////////// editable
+  editable = false;
+  isEditable() { return this.editable; }
+  setEditable(myeditable) { this.editable = myeditable; }
 
   ////////////////////////////// test data
   testmode = true;
   test_data()
   {
     if(this.testmode == false) return;
-    let tableData = [];
     let datas = zTestDataUtil.test_data();
-    datas.forEach((data,i)=>{
-      //this.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
-      //{key: '1',checked:false,name: 'John Brown',age: 32,address: 'New York No. 1 Lake Park' },
-      data["checked"] = false;
-      tableData.push(data);
-    });
-    return tableData;
+    //datas.forEach(data=>data["checked"]=true);
+    ArrayUtil.addColumnValue(datas,"checked",true);
+    return datas;
   }
 }
