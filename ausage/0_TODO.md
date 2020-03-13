@@ -1,3 +1,65 @@
+mqtt
+=================== stomp
+- alasql
+	- to table	불가? 보류
+- indexeddb
+= 대시보드
+
+
+
+
+=== 이슈 - getDbtables() { //html에서 함수를 연결해서 그런가? 호출횟수가 엄청 많구나...흠... 변경감지때문인가 ?
+	***** html에서 함수연결한거 모두 제거 <<< pubsub으로 변경
+=== 헐 - radio는 동일버튼 한번더 눌러도 이벤트 발생안함
+
+(화면)dblocal manage > 테이블조회,컬럼조회...
+=컬럼 : 안되면 __ > zzz
+pk에 해당하는 값 search
+	for ...
+
+
+
+
+================================== 소스 정리
+변경 ---- aa > a
+=====(보류)chartutil > clicklegend등 전부이동-가능한가?
+table-static
+form-static
+	form-1줄에 넣기 - nzspan <<< 
+	form item간 간격 - &nbsp; (버튼간 간격만) < input/button사이에 넣으면 이상해짐
+	button group
+	radio formControlName
+stat사용법,count사용법?
+stomp
+	멀티 topic sub 
+	stomp sub = 다른 화면갔다오면 sub안됨... ngdestory ? resub을 막아놨으니... (compo는 new됨)
+ip/time(date) <<< 컬럼명은 반드시 대문자 (HOST/IP)
+===========================================
+=== 기존소스 통합 - testv2,carbon
+usage복사 - 정리
+service포팅
+===각 service마다 설치방법 기술
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 https://ng.ant.design/components/menu/en
