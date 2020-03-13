@@ -81,6 +81,10 @@ export class DblocalComponent implements OnInit {
       this.test_result = this.sqllocal.createtable(test_sql); 
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }
+    else if(test_type == "showcolumn") {
+      this.test_result = this.sqllocal.getColumns("test_table"); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount(); 
+    }    
     else if(test_type == "insert") {
       this.test_result = this.sqllocal.insert(test_sql); 
       this.test_stat = "size="+this.sqllocal.dbtablecount();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AaformService } from 'src/app/aservice/aaform.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 @Component({
   selector: 'app-form-static',
@@ -9,9 +10,14 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 })
 export class FormStaticComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService) { }
+  constructor(private logging:AaloggingService,private form:AaformService,private pubsub:AapubsubService) { }
+
+  topicprefix = "myname.form-static";//this.topicprefix+".datas"
 
   ngOnInit() {
+
+    this.pubsub.sub(this.topicprefix+".data", data => {
+    });
 
     this.formInit();
   }

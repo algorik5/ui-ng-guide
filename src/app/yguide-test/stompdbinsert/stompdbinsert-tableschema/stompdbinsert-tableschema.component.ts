@@ -5,6 +5,7 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
+import { QueryUtil } from 'src/app/autil/QueryUtil';
 
 @Component({
   selector: 'app-stompdbinsert-tableschema',
@@ -65,16 +66,18 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   {
     let selectdata = this.table.getSelectData();
     let table = selectdata[0]["table"];
+    this.logging.debug("======= createtable start # "+ table);
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"]}; });
 
-    let columnQuery = null;
-    columntypes.forEach((columntype,i)=>{
-      if(columnQuery == null) columnQuery = ""+columntype["column"] +" "+ columntype["type"] ;
-      else columnQuery = columnQuery +","+ columntype["column"] +" "+ columntype["type"] ;
-    });
-    let query = "create table "+ table + "( "+ columnQuery +" )";
+    let query = QueryUtil.createtable_sql(table,columntypes);
     let rs = this.sqllocal.createtable(query);
+    if(rs > 0) this.pubsub.pub(this.topicprefix+".createtable",table);
+    this.logging.debug("======= createtable end # "+ table +"#rs="+ rs);
   }
-  testinsert() {}
-  testselect() { }
+  testinsert() {
+
+  }
+  testselect() { 
+
+  }
 }

@@ -42,7 +42,29 @@ export class AasqllocalService {
     return Object.keys(alasql.tables);
   }
   dbtablecount() { return Object.keys(alasql.tables).length; }//alasql.tables.length > undefined
-
+  
+  getColumns(table) 
+  {
+    let tableschema = alasql.databases.alasql.tables[table];
+    // this.logging.debug("=== getColumns === "+"#table="+table +"#tableschema="+ tableschema);
+    if(tableschema == null) return [];
+    let columns = tableschema["columns"];
+    if(columns == null) return [];
+    let newcolumns = columns.map(column=>{ return {column:column["columnid"],type:column["dbtypeid"]}});
+    this.logging.debug("=== getColumns === "+"#table="+table +"#newcolumns="+ newcolumns);
+    return newcolumns;
+  }
+  getColumnNames(table) 
+  {
+    let tableschema = alasql.databases.alasql.tables[table];
+    // this.logging.debug("=== getColumns === "+"#table="+table +"#tableschema="+ tableschema);
+    if(tableschema == null) return [];
+    let columns = tableschema["columns"];
+    if(columns == null) return [];
+    let newcolumns = columns.map(column=>{ return column["columnid"]});
+    this.logging.debug("=== getColumnNames === "+"#table="+table +"#newcolumns="+ newcolumns);
+    return newcolumns;
+  }
   createtable(sql:string)
   {
     try{

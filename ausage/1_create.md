@@ -21,6 +21,7 @@
 - 각 화면 : yguide참고
 - *** topic변경-myname
 # *** service 설정 - 설정하지 않으면 singleton
+- 결론 - singleton필요하지 않으면 반드시 compo에 설정해서 사용하자
 - (***주의) providers: [AatableService] <<< 또는 compo.ts에 설정 >>>
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 

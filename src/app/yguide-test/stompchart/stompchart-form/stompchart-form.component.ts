@@ -201,8 +201,5 @@ export class StompchartFormComponent implements OnInit {
     legenddatas.forEach((lgenddata,i)=>{
       this.pubsub.pub(this.topicprefix+".data",{legend:legenddatas[i],x:xdatas[i],y:ydatas[i]});//this.chart.addDatas(chartdatas);
     });
-    // let legenddata = legenddatas[0];
-    // let xdata = xdatas[0];
-    // let ydata = ydatas[0];
   }
 }
