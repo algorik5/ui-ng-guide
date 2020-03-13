@@ -43,13 +43,28 @@ export class TableComponent implements OnInit {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
   }
-
   tableInit()
   {
+    ////////////////////////////////////////////////////////// edit  
+    this.table.setEditable(false);
+
     ////////////////////////////////////////////////////////// testdata  
     this.test_datas();
   }
+  /////////////////////////////////////////////////////////// button
+  buttonStatus = "-";
+  buttonStatusClick()
+  {
+    this.logging.debug("======= buttonStatusClick # "+ this.buttonStatus);
+  }
 
+
+
+
+
+
+
+  ////////////////////////////////////////////////////////// testdata  
   test_datas()
   {
     //let datas = this.table.test_data();
@@ -68,6 +83,6 @@ export class TableComponent implements OnInit {
   {
     this.pubsub.pub(this.topicprefix+".columnshow","host");//this.table.changeColumnShow("host");
   }
-  test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.setEditable(this.test_editable); }
+  test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.table.setEditable(this.test_editable); }
   test_checked = false; test_check() { this.test_checked = this.test_checked?false:true; ArrayUtil.setColumnValue(this.table.getData(),"checked",this.test_checked); }
 }

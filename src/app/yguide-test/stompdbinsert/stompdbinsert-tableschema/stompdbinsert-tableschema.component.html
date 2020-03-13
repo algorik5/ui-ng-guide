@@ -1,22 +1,29 @@
-<nz-table #basicTable [nzData]="getTableData()" nzSize="small">
-    <thead>
-      <tr>
-        <th nzShowCheckbox [nzDisabled]="true"></th>
-        <ng-container *ngFor="let column of getTableColumns()">
-          <th *ngIf="column.show" >{{column["name"]}}</th>
-        </ng-container>
+<nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
+  <label nz-radio-button nzValue="createtable">createtable</label>
+  <label nz-radio-button nzValue="testinsert">testinsert</label>
+  <label nz-radio-button nzValue="testselect">testselect</label>
+</nz-radio-group>
 
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let data of basicTable.data">
-        <tr>
-          <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
-          <ng-container *ngFor="let column of getTableColumns()">
-            <td *ngIf="column.show">{{data[column["name"]]}} </td>
-          </ng-container>
-        </tr>
+<nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
+  <thead>
+    <tr>
+      <th nzShowCheckbox [nzDisabled]="true"></th>
+      <ng-container *ngFor="let column of getTableColumns()">
+        <th *ngIf="column.show">{{column["name"]}}</th>
       </ng-container>
-    </tbody>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of myTable.data">
+      <tr>
+        <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+        <ng-container *ngFor="let column of getTableColumns()">
+          <td *ngIf="column.show">
+            <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
+            <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
 </nz-table>
-  

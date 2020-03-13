@@ -12,6 +12,7 @@ export class AatableService {
 
   datas = [];
   getData() { return this.datas; }
+  getSelectData() { return this.datas.filter(data=>data["checked"]==true); }
   clearData() { this.datas = []; }
   setData(mydatas)
   {

@@ -27,4 +27,13 @@
         </nz-form-control>
     </nz-form-item>
 
+    <nz-form-item>
+        <nz-form-label nzRequired nzFor="dbtables">dbtables</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your dbtables!">
+            <nz-input-group>
+                <nz-tag *ngFor="let dbtable of getDbtables()">{{dbtable}}</nz-tag>
+        </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
 </form>

@@ -9,6 +9,7 @@ import { AajsonsearchService } from 'src/app/aservice/aajsonsearch.service';
 import { AamapService } from 'src/app/aservice/aamap.service';
 import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { StringUtil } from 'src/app/autil/StringUtil';
+import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 
 @Component({
   selector: 'app-stompdbinsert-form',
@@ -18,7 +19,8 @@ import { StringUtil } from 'src/app/autil/StringUtil';
 export class StompdbinsertFormComponent implements OnInit {
 
   constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private pubsub: AapubsubService
-    ,private countmap:AacountmapService,private jsonpath: AajsonpathService,private jsonsearch:AajsonsearchService) { }
+    ,private countmap:AacountmapService,private jsonpath: AajsonpathService,private jsonsearch:AajsonsearchService
+    ,private sqllocal:AasqllocalService) { }
 
   topicprefix = "stompdbinsert.stomp";//this.topicprefix+".datas"
 
@@ -120,6 +122,10 @@ export class StompdbinsertFormComponent implements OnInit {
 
     this.tableschema_apply(msgtype["name"]);
   }
+
+  /////////////////////////////// dbtable
+  getDbtables() { return this.sqllocal.dbtables(); }
+  clickDbtable(table) {}
 
   /////////////////////////////// tableschema
   tableschema_apply(msgtype) 
