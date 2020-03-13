@@ -31,13 +31,13 @@
 
 
 # ========================================== guide
-ng g m yguide/form-static --routing
-ng g c yguide/form-static
+ng g m yguide/dblocal --routing
+ng g c yguide/dblocal
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'form-static',component: FormStaticComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/form-static/form-static.module').then(m => m.FormStaticModule)},
-  - <a title routerLink="guide/stomp"...
-
+  - { path: 'dblocal',component: DblocalComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
+  - <a title routerLink="guide/dblocal"...
+복사 - guide/dblocal에서 복사
 
 
 # ======================== 참고

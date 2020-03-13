@@ -1,0 +1,89 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : 없음 <br>
+    2. ts<br>
+    - private sqllocal:AasqllocalService<br>
+    - createtable > insert > select<br>
+
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+        <nz-collapse> 
+            <nz-collapse-panel [nzHeader]="'test_senario'" [nzActive]="'true'" [nzDisabled]="'false'">
+                <nz-card> <h6>appsub</h6> 
+                    <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+                        <!-- test senario 작성 -->
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="7" nzRequired nzFor="test_type">test</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="test_type">
+                                <nz-radio-group formControlName="test_type" [nzButtonStyle]="'solid'" (ngModelChange)="test_type_click()">
+                                    <label nz-radio-button nzValue="dbinfoall">dbinfoall</label>
+                                    <label nz-radio-button nzValue="dbinfo">dbinfo</label>
+                                    <label nz-radio-button nzValue="dbtables">dbtables</label>
+                                    <label nz-radio-button nzValue="createtable">createtable</label>
+                                    <label nz-radio-button nzValue="insert">insert</label>
+                                    <label nz-radio-button nzValue="select">select</label>
+                                    <label nz-radio-button nzValue="pstmt">pstmt</label>
+                                </nz-radio-group>
+
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <!-- 추가 - test 상세내용 기술 (test data) -->
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24" nzRequired nzFor="test_sql">test_sql</nz-form-label>
+                            <nz-form-control [nzSpan]="24" nzErrorTip="test_sql">
+                                <textarea nz-input formControlName="test_sql" rows="5" placeholder="test_sql"></textarea>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                    </form>
+                </nz-card> 
+            </nz-collapse-panel>
+        </nz-collapse>
+    </nz-col>
+
+
+      
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <!-- test summary 결과 -->
+                    <nz-collapse-panel [nzHeader]="'test_stat'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-row [nzGutter]="16">
+                            <nz-col [nzSpan]="12">
+                                <nz-card>
+                                    <nz-statistic [nzTitle]="test_stat_title" [nzValue]="test_stat" [nzValueStyle]="{ color: test_stat_color() }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
+                                    <ng-template #myicon><i nz-icon [nzType]="test_stat_icon()"></i></ng-template>
+                                </nz-card>
+                            </nz-col>
+                          </nz-row>
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <!-- test json 표시 -->
+                    <nz-collapse-panel [nzHeader]="'test_result'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card>
+                            <!-- <div style="margin-bottom: 8px;"><button nz-button (click)="test_result_clear()">clear</button></div> -->
+                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                                <ngx-json-viewer [json]="test_result" [expanded]="true"></ngx-json-viewer>
+                            </cdk-virtual-scroll-viewport>
+                        </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>
