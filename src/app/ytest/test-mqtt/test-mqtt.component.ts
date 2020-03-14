@@ -3,6 +3,12 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
+/* 에러(사용불가) - mqtt.js (browserMqtt.js)
+//
+// import { connect } from 'mqtt';
+// const client = connect('wxs://localhost:10001');
+*/
+
 @Component({
   selector: 'app-test-mqtt',
   templateUrl: './test-mqtt.component.html',
@@ -44,7 +50,6 @@ export class TestMqttComponent implements OnInit {
 
 
 
-  ////////////////////////////////////////// test
   // test_types = ["dbinfoall"];
   test_init()
   {
@@ -63,6 +68,9 @@ export class TestMqttComponent implements OnInit {
 
     this.test_stat_title = test_type;
     if(test_type == "pub") { 
+      console.log("=========== connect start # ");
+      // const client = connect('wxs://localhost:10001');
+      // console.log("=========== connect end # "+ client);
     }
     else if(test_type == "sub") { 
     }
@@ -73,7 +81,7 @@ export class TestMqttComponent implements OnInit {
     let test_data = {};
     if(test_type == "pub") test_data = {topic:"test/100",msg:"msg-1"};
     else if(test_type == "sub") test_data = {topic:"test/#"};
-    return test_data;
+    return JSON.stringify(test_data);
   }
   ////////////////////// test_stat
   test_stat_title = "-";
