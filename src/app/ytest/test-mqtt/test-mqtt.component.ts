@@ -3,11 +3,18 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
-/* 에러(사용불가) - mqtt.js (browserMqtt.js)
-//
-// import { connect } from 'mqtt';
-// const client = connect('wxs://localhost:10001');
+/* 
+=========================================에러(사용불가) - mqtt.js (browserMqtt.js)
+import { connect } from 'mqtt';
+const client = connect('wxs://localhost:10001');
+=========================================에러(사용불가) - paho-mqtt (paho-mqtt.js)
+npm install paho-mqtt
+angular.json > "./node_modules/paho-mqtt/paho-mqtt-min.js"
+(안됨) declare var Paho; declare var PahoMQTT;
+
+
 */
+
 
 @Component({
   selector: 'app-test-mqtt',
@@ -69,12 +76,13 @@ export class TestMqttComponent implements OnInit {
     this.test_stat_title = test_type;
     if(test_type == "pub") { 
       console.log("=========== connect start # ");
-      // const client = connect('wxs://localhost:10001');
-      // console.log("=========== connect end # "+ client);
+      // console.log("=========== connect client # "+ client);
+      console.log("=========== connect con # ");
     }
     else if(test_type == "sub") { 
     }
   }
+  
   ////////////////////// test_data
   test_data_init(test_type)
   {
