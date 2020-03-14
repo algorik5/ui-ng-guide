@@ -62,20 +62,17 @@ export class TestMqttComponent implements OnInit {
     this.form.setControlValue("test_data",test_data);
 
     this.test_stat_title = test_type;
-    if(test_type == "dbinfoall") { 
+    if(test_type == "pub") { 
     }
-    else if(test_type == "dbinfo") { 
-      // this.test_result = this.sqllocal.dbtables(); 
-      // this.test_stat = "size="+this.sqllocal.dbtablecount(); 
+    else if(test_type == "sub") { 
     }
   }
   ////////////////////// test_data
   test_data_init(test_type)
   {
-    let test_data = "";
-    if(test_type == "dbinfo") test_data = "-";
-    else if(test_type == "dbtables") test_data = "-";
-    else if(test_type == "createtable") test_data = "create table test_table ( host string,time date,cpu double,memory double,disk double )";
+    let test_data = {};
+    if(test_type == "pub") test_data = {topic:"test/100",msg:"msg-1"};
+    else if(test_type == "sub") test_data = {topic:"test/#"};
     return test_data;
   }
   ////////////////////// test_stat

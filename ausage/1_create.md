@@ -40,7 +40,7 @@ ng g c yguide/dblocal
 ng g c ytest/test-mqtt
   - { path: 'test-mqtt',component: TestMqttComponent }
   - <a title routerLink="guide/test-mqtt"...
-복사 - guide/dblocal에서 복사
+복사 - ytest/test-mqtt에서 복사
 
 
 

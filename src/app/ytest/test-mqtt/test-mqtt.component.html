@@ -22,14 +22,8 @@
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="test_type">test</nz-form-label>
                             <nz-form-control [nzSpan]="12" nzErrorTip="test_type">
                                 <nz-radio-group formControlName="test_type" [nzButtonStyle]="'solid'" (ngModelChange)="test_type_click()">
-                                    <label nz-radio-button nzValue="dbinfoall">dbinfoall</label>
-                                    <label nz-radio-button nzValue="dbinfo">dbinfo</label>
-                                    <label nz-radio-button nzValue="dbtables">dbtables</label>
-                                    <label nz-radio-button nzValue="createtable">createtable</label>
-                                    <label nz-radio-button nzValue="showcolumn">showcolumn</label>
-                                    <label nz-radio-button nzValue="insert">insert</label>
-                                    <label nz-radio-button nzValue="select">select</label>
-                                    <label nz-radio-button nzValue="pstmt">pstmt</label>
+                                    <label nz-radio-button nzValue="pub">pub</label><br>
+                                    <label nz-radio-button nzValue="sub">sub</label>
                                 </nz-radio-group>
 
                             </nz-form-control>
