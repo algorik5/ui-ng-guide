@@ -16,14 +16,17 @@ import { AformComponent } from './aform/aform.component';
 import { ViewFormZorroComponent } from './aform/view-form-zorro.component';
 import { ViewFormHapifyComponent } from './aform/view-form-hapify.component';
 import { YtestRoutingModule } from './ytest-routing.module';
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { TreeTableModule } from 'primeng/treetable';
+import { TestMqttComponent } from './test-mqtt/test-mqtt.component';
 
 @NgModule({
-  declarations: [LoginComponent, ProfileComponent, UserfilterComponent, UserformComponent, UsertableComponent, UserdetailComponent, UserallComponent, AformComponent, ViewFormZorroComponent, ViewFormHapifyComponent],
+  declarations: [LoginComponent, ProfileComponent, UserfilterComponent, UserformComponent, UsertableComponent, UserdetailComponent, UserallComponent, AformComponent, ViewFormZorroComponent, ViewFormHapifyComponent, TestMqttComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,
-    NgZorroAntdModule,
-    NgxEchartsModule,
+    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
     YtestRoutingModule
   ]
 })

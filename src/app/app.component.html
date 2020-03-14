@@ -69,6 +69,9 @@
       </ng-container>
       <ng-container *ngIf="menuType=='test'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
+
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/test-mqtt"><span title><i nz-icon nzType="laptop"></i>mqtt</span></a></li>
+
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/aform"><span title><i nz-icon nzType="user"></i>aform</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/login"><span title><i nz-icon nzType="user"></i>login</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/userfilter"><span title><i nz-icon nzType="laptop"></i>userfilter</span></a></li>

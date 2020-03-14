@@ -8,6 +8,7 @@ import { UsertableComponent } from './usertable/usertable.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { UserallComponent } from './userall/userall.component';
 import { AformComponent } from './aform/aform.component';
+import { TestMqttComponent } from './test-mqtt/test-mqtt.component';
 
  
 const routes: Routes = [
@@ -22,7 +23,10 @@ const routes: Routes = [
   { path: 'usertable',component: UsertableComponent },
   { path: 'userdetail',component: UserdetailComponent },
   { path: 'userall',component: UserallComponent },
-  { path: 'profile',component: ProfileComponent }
+  { path: 'profile',component: ProfileComponent },
+
+  { path: 'test-mqtt',component: TestMqttComponent }
+  
 ];
 
 @NgModule({

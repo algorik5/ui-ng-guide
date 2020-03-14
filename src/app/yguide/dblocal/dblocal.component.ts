@@ -52,7 +52,7 @@ export class DblocalComponent implements OnInit {
   test_init()
   {
     this.form.addControlValue("test_type","-");//dbinfo
-    this.form.addControlValue("test_sql","-");
+    this.form.addControlValue("test_data","-");
   }
   test_type_click()
   {
@@ -61,8 +61,8 @@ export class DblocalComponent implements OnInit {
 
     let test_type = this.form.getControlValue("test_type");
 
-    let test_sql = this.test_sql_init(test_type);
-    this.form.setControlValue("test_sql",test_sql);
+    let test_data = this.test_data_init(test_type);
+    this.form.setControlValue("test_data",test_data);
 
     this.test_stat_title = test_type;
     if(test_type == "dbinfoall") { 
@@ -78,7 +78,7 @@ export class DblocalComponent implements OnInit {
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }
     else if(test_type == "createtable") {
-      this.test_result = this.sqllocal.createtable(test_sql); 
+      this.test_result = this.sqllocal.createtable(test_data); 
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }
     else if(test_type == "showcolumn") {
@@ -86,30 +86,30 @@ export class DblocalComponent implements OnInit {
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }    
     else if(test_type == "insert") {
-      this.test_result = this.sqllocal.insert(test_sql); 
+      this.test_result = this.sqllocal.insert(test_data); 
       this.test_stat = "size="+this.sqllocal.dbtablecount();
     }
     else if(test_type == "select") { 
-      this.test_result = this.sqllocal.select(test_sql); 
+      this.test_result = this.sqllocal.select(test_data); 
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }
     else if(test_type == "pstmt") { 
       let datas = [{host:"host-z1",time:"2001-01-01",cpu:11,memory:22,disk:33},{host:"host-z2",time:"2001-01-02",cpu:11,memory:22,disk:33}];
-      this.test_result = this.sqllocal.insert_pstmt(test_sql,datas); 
+      this.test_result = this.sqllocal.insert_pstmt(test_data,datas); 
       this.test_stat = "size="+this.test_result; 
     }
   }
-  ////////////////////// test_sql
-  test_sql_init(test_type)
+  ////////////////////// test_data
+  test_data_init(test_type)
   {
-    let test_sql = "";
-    if(test_type == "dbinfo") test_sql = "-";
-    else if(test_type == "dbtables") test_sql = "-";
-    else if(test_type == "createtable") test_sql = "create table test_table ( host string,time date,cpu double,memory double,disk double )";
-    else if(test_type == "insert") test_sql = "insert into test_table (host,time,cpu,memory,disk) values ( 'host-x','2111-11-11',1,2,3 )";
-    else if(test_type == "select") test_sql = "select * from test_table";
-    else if(test_type == "pstmt") test_sql = "insert into test_table (host,time,cpu,memory,disk) values ( :host,:time,:cpu,:memory,:disk )";
-    return test_sql;
+    let test_data = "";
+    if(test_type == "dbinfo") test_data = "-";
+    else if(test_type == "dbtables") test_data = "-";
+    else if(test_type == "createtable") test_data = "create table test_table ( host string,time date,cpu double,memory double,disk double )";
+    else if(test_type == "insert") test_data = "insert into test_table (host,time,cpu,memory,disk) values ( 'host-x','2111-11-11',1,2,3 )";
+    else if(test_type == "select") test_data = "select * from test_table";
+    else if(test_type == "pstmt") test_data = "insert into test_table (host,time,cpu,memory,disk) values ( :host,:time,:cpu,:memory,:disk )";
+    return test_data;
   }
   ////////////////////// test_stat
   test_stat_title = "-";

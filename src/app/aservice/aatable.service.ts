@@ -65,7 +65,7 @@ export class AatableService {
     if(this.testmode == false) return;
     let datas = zTestDataUtil.test_data();
     //datas.forEach(data=>data["checked"]=true);
-    ArrayUtil.addColumnValue(datas,"checked",true);
+    ArrayUtil.setColumnValue(datas,"checked",true);
     return datas;
   }
 }

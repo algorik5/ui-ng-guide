@@ -36,6 +36,16 @@ ng g c yguide/dblocal
 복사 - guide/dblocal에서 복사
 
 
+# ========================================== test
+ng g c ytest/test-mqtt
+  - { path: 'test-mqtt',component: TestMqttComponent }
+  - <a title routerLink="guide/test-mqtt"...
+복사 - guide/dblocal에서 복사
+
+
+
+
+
 # ======================== 참고
 - ng g c yguide-test/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
 
