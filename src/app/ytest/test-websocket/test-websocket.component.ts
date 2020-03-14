@@ -3,6 +3,8 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
+import ResClient from 'resclient';
+
 @Component({
   selector: 'app-test-websocket',
   templateUrl: './test-websocket.component.html',
@@ -50,8 +52,21 @@ export class TestWebsocketComponent implements OnInit {
     this.form.addControlValue("test_type","-");
     this.form.addControlValue("test_data","-");
   }
+
+  ws_url = "ws://localhost:8080";
+  client:ResClient;
   test_type_click()
   {
+    if(this.client == null)
+    {
+      this.logging.debug("#################### ResClient start # "+ this.ws_url);
+      this.client = new ResClient(this.ws_url);
+      this.logging.debug("#################### ResClient client # "+ this.client.getHostUrl());
+      // this.client.on((event,handler)=>{
+      //   this.logging.debug("\t === on # ");//+event +":"+ handler);
+      // });
+    }
+
     this.test_result = [];
     this.test_stat = "";
 
@@ -61,10 +76,12 @@ export class TestWebsocketComponent implements OnInit {
     this.form.setControlValue("test_data",test_data);
 
     this.test_stat_title = test_type;
-    if(test_type == "pub") { 
-      console.log("=========== connect start # ");
-      // console.log("=========== connect client # "+ client);
-      console.log("=========== connect con # ");
+    if(test_type == "pub") {
+      this.client.get("test.1").then(model => {
+        this.logging.debug("\t === MSG # "+JSON.stringify(model));
+      }).catch(err => {
+        this.logging.debug("### error # "+JSON.stringify(err));
+      });
     }
     else if(test_type == "sub") { 
     }

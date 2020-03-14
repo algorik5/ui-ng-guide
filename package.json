@@ -46,6 +46,7 @@
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0",
     "reflect-metadata": "^0.1.13",
+    "resclient": "^2.1.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
