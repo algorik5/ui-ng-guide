@@ -4,15 +4,23 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 /* 
-=========================================에러(사용불가) - mqtt.js (browserMqtt.js)
+결론 - mqtt사용안함
+=========== 참고 (mosquitto 실행-2중화 등은 ?)
+mosquitto -v -p 10001
+mosquitto_sub -h localhost -p 10001 -t test/# -v	<<< -d(debug)
+mosquitto_pub -h localhost -p 10001 -t test/1 -m msg1	<<< -d(debug)
+(참고-online test) online test : https://mitsuruog.github.io/what-mqtt/ 
+
+=========================================에러(사용불가) - mqtt.js (browserMqtt.js) <<< 현재
 import { connect } from 'mqtt';
 const client = connect('wxs://localhost:10001');
-=========================================에러(사용불가) - paho-mqtt (paho-mqtt.js)
+=========================================에러(사용불가) - paho-mqtt (paho-mqtt.js) <<< 2년
 npm install paho-mqtt
 angular.json > "./node_modules/paho-mqtt/paho-mqtt-min.js"
 (안됨) declare var Paho; declare var PahoMQTT;
 
-
+=========================================테스트안함 - ngx-mqtt <<< 5개월(MQTT.js 내장)
+npm install ngx-mqtt <<< 5개월(MQTT.js 내장)
 */
 
 
