@@ -37,9 +37,9 @@ ng g c yguide/dblocal
 
 
 # ========================================== test
-ng g c ytest/test-mqtt
-  - { path: 'test-mqtt',component: TestMqttComponent }
-  - <a title routerLink="guide/test-mqtt"...
+ng g c ytest/test-websocket
+  - { path: 'test-websocket',component: TestWebsocketComponent }
+  - <a title routerLink="guide/test-websocket"...
 복사 - ytest/test-mqtt에서 복사
 
 

@@ -1,9 +1,18 @@
-mqtt
-=================== stomp
-- alasql
-	- to table	불가? 보류
 - indexeddb
 = 대시보드
+(화면)dblocal manage > 테이블조회,컬럼조회...
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12,7 +21,6 @@ mqtt
 	***** html에서 함수연결한거 모두 제거 <<< pubsub으로 변경
 === 헐 - radio는 동일버튼 한번더 눌러도 이벤트 발생안함
 
-(화면)dblocal manage > 테이블조회,컬럼조회...
 =컬럼 : 안되면 __ > zzz
 pk에 해당하는 값 search
 	for ...
