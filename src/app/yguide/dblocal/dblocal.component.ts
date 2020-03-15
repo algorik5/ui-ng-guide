@@ -54,7 +54,15 @@ export class DblocalComponent implements OnInit {
     this.form.addControlValue("test_type","-");//dbinfo
     this.form.addControlValue("test_data","-");
   }
+  //test_stat2
   test_type_click()
+  {
+    try
+    {
+      this.test_type_click_real();
+    }catch(err) { console.log("ERROR="+err); this.test_stat2 = ""+err; }
+  }
+  test_type_click_real()
   {
     this.test_result = [];
     this.test_stat = "";
@@ -81,7 +89,7 @@ export class DblocalComponent implements OnInit {
       this.test_result = this.sqllocal.createtable(test_data); 
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }
-    else if(test_type == "showcolumn") {
+    else if(test_type == "column") {
       this.test_result = this.sqllocal.getColumns("test_table"); 
       this.test_stat = "size="+this.sqllocal.dbtablecount(); 
     }    
@@ -98,6 +106,36 @@ export class DblocalComponent implements OnInit {
       this.test_result = this.sqllocal.insert_pstmt(test_data,datas); 
       this.test_stat = "size="+this.test_result; 
     }
+    else if(test_type == "createtable-pk") {
+      this.test_result = this.sqllocal.createtable(test_data); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount(); 
+    }
+    else if(test_type == "column-pk") {
+      this.test_result = this.sqllocal.getColumns("test_table_pk"); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount(); 
+    }    
+    else if(test_type == "insert-pk") {
+      this.test_result = this.sqllocal.insert(test_data); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount();
+    }
+    else if(test_type == "upsert-pk") {
+      this.test_result = this.sqllocal.insert(test_data); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount();
+    }
+    else if(test_type == "update-pk") {
+      this.test_result = this.sqllocal.insert(test_data); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount();
+    }
+    else if(test_type == "select-pk") { 
+      this.test_result = this.sqllocal.select(test_data); 
+      this.test_stat = "size="+this.sqllocal.dbtablecount(); 
+    }
+    else if(test_type == "pstmt-pk") { 
+      let datas = [{host:"host-z1",time:"2001-01-01",cpu:11,memory:22,disk:33},{host:"host-z2",time:"2001-01-02",cpu:11,memory:22,disk:33}];
+      this.test_result = this.sqllocal.insert_pstmt(test_data,datas); 
+      this.test_stat = "size="+this.test_result; 
+    }
+
   }
   ////////////////////// test_data
   test_data_init(test_type)
@@ -109,6 +147,13 @@ export class DblocalComponent implements OnInit {
     else if(test_type == "insert") test_data = "insert into test_table (host,time,cpu,memory,disk) values ( 'host-x','2111-11-11',1,2,3 )";
     else if(test_type == "select") test_data = "select * from test_table";
     else if(test_type == "pstmt") test_data = "insert into test_table (host,time,cpu,memory,disk) values ( :host,:time,:cpu,:memory,:disk )";
+    else if(test_type == "createtable-pk") test_data = "create table test_table_pk ( host string,time date,cpu double,memory double,disk double,primary key (host) )";
+    else if(test_type == "insert-pk") test_data = "insert into test_table_pk (host,time,cpu,memory,disk) values ( 'host-x','2111-11-11',1,2,3 )";
+    // else if(test_type == "upsert-pk") test_data = "replace into test_table_pk (host,time,cpu,memory,disk) values ( 'host-x','2111-11-11',11,22,33 )";
+    else if(test_type == "upsert-pk") test_data = "--- not support ";
+    else if(test_type == "update-pk") test_data = "update test_table_pk set cpu=999 where host='host-x' ";
+    else if(test_type == "select-pk") test_data = "select * from test_table_pk";
+    else if(test_type == "pstmt-pk") test_data = "insert into test_table_pk (host,time,cpu,memory,disk) values ( :host,:time,:cpu,:memory,:disk )";
     return test_data;
   }
   ////////////////////// test_stat
@@ -116,6 +161,11 @@ export class DblocalComponent implements OnInit {
   test_stat = "-";
   test_stat_color() { return "lime"; }
   test_stat_icon() { return "up"; }
+  ////////////////////// test_stat2
+  test_stat2_title = "error";
+  test_stat2 = "-";
+  test_stat2_color() { return "lime"; }
+  test_stat2_icon() { return "up"; }
   ////////////////////// test_result
   test_result = [];
   test_result_clear() {}

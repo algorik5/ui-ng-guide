@@ -164,8 +164,8 @@ export class StompdbinsertFormComponent implements OnInit {
     if(res["_type_"] != table) return;
     this.logging.debug("=== dbbtable_insert # " +"#table="+this.curDbtable["name"]+"#_type_="+res["_type_"]);
 
-    let columns = this.sqllocal.getColumnNames(table);
-    let sql = QueryUtil.insert_sql(table,columns);
+    let columntypes = this.sqllocal.getColumns(table);
+    let sql = QueryUtil.insert_sql(table,columntypes);
 
     let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
     this.sqllocal.insert_pstmt(sql,flatdatas);

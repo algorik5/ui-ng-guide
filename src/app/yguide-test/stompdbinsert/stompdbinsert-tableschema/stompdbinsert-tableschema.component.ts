@@ -65,7 +65,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     let selectdata = this.table.getSelectData();
     let table = selectdata[0]["table"];
     this.logging.debug("======= createtable start # "+ table);
-    let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"]}; });
+    let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
 
     let sql = QueryUtil.createtable_sql(table,columntypes);
     let rs = this.sqllocal.createtable(sql);

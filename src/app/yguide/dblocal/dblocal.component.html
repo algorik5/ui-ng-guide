@@ -26,10 +26,17 @@
                                     <label nz-radio-button nzValue="dbinfo">dbinfo</label><br>
                                     <label nz-radio-button nzValue="dbtables">dbtables</label><br>
                                     <label nz-radio-button nzValue="createtable">createtable</label><br>
-                                    <label nz-radio-button nzValue="showcolumn">showcolumn</label><br>
+                                    <label nz-radio-button nzValue="column">column</label><br>
                                     <label nz-radio-button nzValue="insert">insert</label><br>
                                     <label nz-radio-button nzValue="select">select</label><br>
                                     <label nz-radio-button nzValue="pstmt">pstmt</label><br>
+                                    <label nz-radio-button nzValue="createtable-pk">createtable-pk</label><br>
+                                    <label nz-radio-button nzValue="column-pk">column-pk</label><br>
+                                    <label nz-radio-button nzValue="insert-pk">insert-pk</label><br>
+                                    <label nz-radio-button nzValue="update-pk">update-pk</label><br>
+                                    <label nz-radio-button nzValue="upsert-pk">--upsert-pk</label><br>
+                                    <label nz-radio-button nzValue="select-pk">select-pk</label><br>
+                                    <label nz-radio-button nzValue="pstmt-pk">pstmt-pk</label><br>
                                 </nz-radio-group>
 
                             </nz-form-control>
@@ -65,6 +72,13 @@
                                     <ng-template #myicon><i nz-icon [nzType]="test_stat_icon()"></i></ng-template>
                                 </nz-card>
                             </nz-col>
+                            <nz-col [nzSpan]="12">
+                                <nz-card>
+                                    <nz-statistic [nzTitle]="test_stat_title2" [nzValue]="test_stat2" [nzValueStyle]="{ color: test_stat2_color() }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
+                                    <ng-template #myicon><i nz-icon [nzType]="test_stat2_icon()"></i></ng-template>
+                                </nz-card>
+                            </nz-col>
+
                           </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>

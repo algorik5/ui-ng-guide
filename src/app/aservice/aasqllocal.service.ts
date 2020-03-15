@@ -50,9 +50,36 @@ export class AasqllocalService {
     if(tableschema == null) return [];
     let columns = tableschema["columns"];
     if(columns == null) return [];
-    let newcolumns = columns.map(column=>{ return {column:column["columnid"],type:column["dbtypeid"]}});
-    this.logging.debug("=== getColumns === "+"#table="+table +"#newcolumns="+ newcolumns);
+
+    let pkcolumns = this.getPKColumns(table);
+    // if(tableschema["pk"] != null) 
+    // { 
+    //   pkcolumns = tableschema["pk"]["columns"];
+    //   this.logging.debug("=== getColumns pkcolumns # "+"#table="+table +"#pkcolumns="+ pkcolumns);
+    // }
+
+    let newcolumns = columns.map(column=>{
+      let pk = pkcolumns.includes(column["columnid"]) ? "Y":"N"; 
+      return {column:column["columnid"],type:column["dbtypeid"],pk:pk}
+    });
+    this.logging.debug("=== getColumns === "+"#table="+table +"#pkcolumns="+ pkcolumns+"#newcolumns="+ newcolumns);
     return newcolumns;
+  }
+  getPKColumns(table) 
+  {
+    let tableschema = alasql.databases.alasql.tables[table];
+    // this.logging.debug("=== getColumns === "+"#table="+table +"#tableschema="+ tableschema);
+    if(tableschema == null) return [];
+    let columns = tableschema["columns"];
+    if(columns == null) return [];
+
+    let pkcolumns = [];
+    if(tableschema["pk"] != null) 
+    { 
+      pkcolumns = tableschema["pk"]["columns"];
+      this.logging.debug("=== getColumns pkcolumns # "+"#table="+table +"#pkcolumns="+ pkcolumns);
+    }
+    return pkcolumns;
   }
   getColumnNames(table) 
   {

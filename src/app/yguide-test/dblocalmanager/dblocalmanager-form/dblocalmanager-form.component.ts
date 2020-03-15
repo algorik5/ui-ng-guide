@@ -78,6 +78,7 @@ export class DblocalmanagerFormComponent implements OnInit {
   {
     let sql = this.form.getControlValue("sql");
     let rs = this.sqllocal.select(sql);
+    this.pubsub.pub("dblocalmanager.tabledata.datas",rs);
   }
 
 }
