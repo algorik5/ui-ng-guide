@@ -11,6 +11,7 @@ import { ArrayUtil } from 'src/app/autil/ArrayUtil';
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.less']
+  ,providers: [AatableService]
 })
 export class TableComponent implements OnInit {
 
@@ -90,4 +91,5 @@ export class TableComponent implements OnInit {
   }
   test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.table.setEditable(this.test_editable); }
   test_checked = false; test_check() { this.test_checked = this.test_checked?false:true; ArrayUtil.setColumnValue(this.table.getData(),"checked",this.test_checked); }
+
 }

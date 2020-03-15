@@ -1,1 +1,28 @@
-<p>dblocalmanager-tableschema works!</p>
+<!-- <nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
+    <label nz-radio-button nzValue="start">start</label>
+    <label nz-radio-button nzValue="end">end</label>
+  </nz-radio-group> -->
+  <nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [nzDisabled]="true"></th>
+        <ng-container *ngFor="let column of getTableColumns()">
+          <th *ngIf="column.show">{{column["name"]}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of myTable.data">
+        <tr>
+          <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+          <ng-container *ngFor="let column of getTableColumns()">
+            <td *ngIf="column.show">
+              <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
+              <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+  </nz-table>
+  

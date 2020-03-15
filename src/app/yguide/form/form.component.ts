@@ -55,10 +55,10 @@ export class FormComponent implements OnInit {
 
   ////////////////////////////////////////////////////////// nz-tag 
   ////////////////////////////////////////////////////////// nz-tag
-  name = "testdatas";
   values = [{name:"data",color:"lime"},{name:"array",color:"lime"},{name:"others",color:"lime"}];//red
   getValues() { return this.values; }
   clickValue(value) {//{name:data,color:"lime"}
+    // this.tables = tables.map(table=>{ return {name:table,color:"lime"}} );
     if(value["color"]=="red") return;
     //ColorUtil.changeColor(value);
     ColorUtil.changeColorAll(this.values,"lime");
