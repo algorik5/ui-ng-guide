@@ -23,6 +23,7 @@ export class AatableService {
 
   addDatas(mydatas)
   {
+    if(this.datas.length < 1) { this.setData(mydatas); return; }//실시간 차트의 경우 setData없이 addData만 호출함
     this.datas = this.datas.concat(mydatas);
     this.logging.debug("=== table addDatas mydata="+JSON.stringify(mydatas))
   }

@@ -15,8 +15,11 @@
 
         </nz-form-control>
     </nz-form-item>
-    <nz-divider [nzText]="'recv(count)'" nzOrientation="left"></nz-divider>                
-    <nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic>
+    <nz-divider [nzText]="'recv(count)'" nzOrientation="left"></nz-divider>
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
+        <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'insert'" [nzValue]="countvalue('insert')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
+    </nz-row>
 
     <nz-form-item>
         <nz-form-label nzRequired nzFor="msgtypes">msgtypes</nz-form-label>

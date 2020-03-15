@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
   { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
 
+  { path: 'guide-test',loadChildren: () => import('./yguide-test/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/stompchart/stompchart.module').then(m => m.StompchartModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery2/sqlquery2.module').then(m => m.Sqlquery2Module)},

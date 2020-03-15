@@ -23,7 +23,11 @@ export class StompdbinsertTabledataComponent implements OnInit {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
     });
     this.pubsub.sub(this.topicprefix+".data", data => {
-      this.table.addData(data);
+      this.table.addDatas(data);
+    });
+    this.pubsub.sub(this.topicprefix+".clear", data => {
+      this.table.clearColumns();
+      this.table.clearData();
     });
 
     //pubsub-table 샘플 - 컬럼 show

@@ -1,0 +1,42 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : 전체복사<br>
+    2. nz-card 변경<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+          <nz-card> <h6>form</h6> <app-dblocalmanager-form></app-dblocalmanager-form> </nz-card> 
+      </nz-col>
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'tableschema'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dblocalmanager-tableschema></app-dblocalmanager-tableschema> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'tabledata'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dblocalmanager-tabledata></app-dblocalmanager-tabledata> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+<!-- 
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'debugjsonview'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-stompdbinsert-debugjsonview></app-stompdbinsert-debugjsonview> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col> -->
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

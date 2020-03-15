@@ -45,7 +45,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
 
   tableInit()
   {
-    this.table.setColumns(["path","table","column","pk","samplevalue","checked"]);
+    this.table.setColumns(["path","table","column","type","pk","samplevalue","checked"]);
     ////////////////////////////////////////////////////////// edit  
     this.table.setEditable(true);
   }
@@ -67,8 +67,8 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     this.logging.debug("======= createtable start # "+ table);
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"]}; });
 
-    let query = QueryUtil.createtable_sql(table,columntypes);
-    let rs = this.sqllocal.createtable(query);
+    let sql = QueryUtil.createtable_sql(table,columntypes);
+    let rs = this.sqllocal.createtable(sql);
     if(rs > 0) this.pubsub.pub(this.topicprefix+".createtable",table);
     this.logging.debug("======= createtable end # "+ table +"#rs="+ rs);
   }

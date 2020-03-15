@@ -12,6 +12,7 @@ import { StringUtil } from 'src/app/autil/StringUtil';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
+import { QueryUtil } from 'src/app/autil/QueryUtil';
 
 @Component({
   selector: 'app-stompdbinsert-form',
@@ -82,7 +83,7 @@ export class StompdbinsertFormComponent implements OnInit {
 
 
   ////////////////////////////////////////////////////////// count
-  countInit() { this.countadd("recv",0); }
+  countInit() { this.countadd("recv",0); this.countadd("insert",0); }
   countkeys() { return this.countmap.keysToArray(); }
   countvalue(key) { return this.countmap.getCount(key); }
   countadd(key,count) { this.countmap.addCount(key,count); }
@@ -133,6 +134,8 @@ export class StompdbinsertFormComponent implements OnInit {
     
     //debugjsonview
     this.pubsub.pub("stompdbinsert.debugjsonview.datas",msgdata);
+    this.curDbtable = {};
+    this.pubsub.pub("stompdbinsert.tabledata.clear","clear");
   }
 
 
@@ -161,61 +164,16 @@ export class StompdbinsertFormComponent implements OnInit {
     if(res["_type_"] != table) return;
     this.logging.debug("=== dbbtable_insert # " +"#table="+this.curDbtable["name"]+"#_type_="+res["_type_"]);
 
-
-
-    let dbdatas = [];
     let columns = this.sqllocal.getColumnNames(table);
+    let sql = QueryUtil.insert_sql(table,columns);
 
-    // /////////////////// pkpath
-    // let columnfirst = columns[0]; columnfirst = StringUtil.replaceAll(columns[0],"__","/");
-    // let pkpath = columns[0]["path"];//첫번째 path
-    // let pkpatchsearchs = JsonPathUtil.searchObjects(datas,"//*[pk='Y']/path");//1.pk path
-    // if(pkpatchsearchs != null && Object.keys(pkpatchsearchs).length>0) pkpath = pkpatchsearchs["path"];
-    // else
-    // {
-    //   let data = datas.find(data=>data["path"].includes("[*]"));//2.array path
-    //   if(data != null && Object.keys(data).length>0) pkpath = data["path"];
-    //   LogUtil.debug("=== 2 #pkpath="+ JSON.stringify(pkpath));// +"#data="+JSON.stringify(data));
-    // }
-    // //////////////////// binding vaue
-    // let editordata = JSON.parse(this.editordata);
-    // let pkvalues = JsonPathUtil.searchObjects(editordata,pkpath);
-    // LogUtil.debug("=== #pkpath="+ JSON.stringify(pkpath) +"#pkvalues="+ JSON.stringify(pkvalues));
+    let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
+    this.sqllocal.insert_pstmt(sql,flatdatas);
+    this.countadd("insert",flatdatas.length);
 
-    // let count = 0;
-    // pkvalues.forEach((pk,pki)=>{
-    //   let sqldata = {};
-    //   let paths = datas.map(o=>o["path"]);
-    //   paths.forEach((path,pathi)=>{
-    //     let column = columns[pathi];
-    //     let value = "";
-    //     let searchs = JsonPathUtil.searchObjects(editordata,path);
-    //     if(searchs!=null&&searchs.length>0)
-    //     {
-    //       if(path.includes("[*]")) value = searchs[pki];//array인 경우
-    //       else value = searchs[0];//array아닌 경우
-    //     }
-    //     sqldata[column] = value;
-    //   });
-    //   console.log("\t #sql_insert sqldata=" + JSON.stringify(sqldata));
-    //   count = count + this.dblocal.insert_pstmt(sql,sqldata);
-    // });
-    // this.jsonObject = "insert-"+ count;
+    this.pubsub.pub("stompdbinsert.tabledata.data",flatdatas);
 
-
-
-
-
-    columns.forEach(column=>{
-      column = StringUtil.replaceAll(column,"__","/");
-      this.logging.debug("=== dbbtable_insert # " +"#column="+JSON.stringify(column));//+"#data="+data);
-      let datas = this.jsonsearch.search(res,column);//여러건
-      datas.forEach((data,i)=>{
-        dbdatas.push
-      });
-
-    });
-    this.logging.debug("=== dbbtable_insert END # " +"#table="+table+"#_type_="+res["_type_"]);
+    // this.logging.debug("=== dbbtable_insert END # " +"#table="+table+"#_type_="+res["_type_"]);
   }
 
   // getDbtables() { //사용안함 > 아래의 이슈때문에 ...
@@ -232,6 +190,18 @@ export class StompdbinsertFormComponent implements OnInit {
   /////////////////////////////// tableschema
   tableschema_apply(msgtype,msgdata) 
   {
+    let flatdatas = this.flatdata.objectToFlat(msgdata);//[{type:...,host:...}]
+    let table = flatdatas[0]["_type_"];
+    let tableschemas = Object.keys(flatdatas[0]).map(key=>{
+      let value = flatdatas[0][key];
+      return {path:"-",table:table,column:key,type:"string",pk:"N",samplevalue:value,checked:true};
+    });
+
+    this.pubsub.pub("stompdbinsert.tableschema.datas",tableschemas);
+    this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#tableschemas="+tableschemas);
+  }
+  zzztableschema_apply(msgtype,msgdata) 
+  {
     // let jsonpathdata = this.jsonpath.getUniqueJsonPath(msgdata);
     // let table = this.jsonsearch.search(msgdata,"//_type_")[0];
     // let tableschemas = jsonpathdata.map(path=>{ 
@@ -239,16 +209,8 @@ export class StompdbinsertFormComponent implements OnInit {
     //   let samplevalue = this.jsonsearch.search(msgdata,path)[0];
     //   return {path:path,table:table,column:column,pk:"N",samplevalue:samplevalue,checked:true};
     // });//"path","column","pk","samplevalue"
-
-
-    let flatdatas = this.flatdata.objectToFlat(msgdata);//[{type:...,host:...}]
-    let table = flatdatas[0]["_type_"];
-    let tableschemas = Object.keys(flatdatas[0]).map(key=>{
-      let value = flatdatas[0][key];
-      return {path:"-",table:table,column:key,pk:"N",samplevalue:value,checked:true};
-    });
-
-    this.pubsub.pub("stompdbinsert.tableschema.datas",tableschemas);
-    this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#tableschemas="+tableschemas);
+    // this.pubsub.pub("stompdbinsert.tableschema.datas",tableschemas);
+    // this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#tableschemas="+tableschemas);
   }
+
 }

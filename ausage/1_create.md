@@ -1,23 +1,23 @@
 # xxx generate
-- ng g m yguide-test/stompdbinsert --routing
-- ng g c yguide-test/stompdbinsert
-- ---ng g s yguide-test/stompdbinsert/stompdbinsert
-- ng g c yguide-test/stompdbinsert/stompdbinsert-form
-- ng g c yguide-test/stompdbinsert/stompdbinsert-tableschema
-- ng g c yguide-test/stompdbinsert/stompdbinsert-tabledata
+- ng g m yguide-test/dblocalmanager --routing
+- ng g c yguide-test/dblocalmanager
+- ---ng g s yguide-test/dblocalmanager/dblocalmanager
+- ng g c yguide-test/dblocalmanager/dblocalmanager-form
+- ng g c yguide-test/dblocalmanager/dblocalmanager-tableschema
+- ng g c yguide-test/dblocalmanager/dblocalmanager-tabledata
 # 현재 module 수정
 - xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
 - xxx-routing
-  - { path: 'stompdbinsert',component: StompdbinsertComponent }
+  - { path: 'dblocalmanager',component: DblocalmanagerComponent }
 # app module 수정
 - app-routing
-  - { path: 'guide-test',loadChildren: () => import('./yguide-test/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
+  - { path: 'guide-test',loadChildren: () => import('./yguide-test/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
 - app.compoent
-  - <a title routerLink="guide-test/stompdbinsert"...
+  - <a title routerLink="guide-test/dblocalmanager"...
 # 화면 개발
-- (layout) stompdbinsert.compoenent.html <<< yguide/layout복사 >>>
-  -	nz-row/col 변경 >>> <app-stompdbinsert-form></app-stompdbinsert-form> ...
+- (layout) ....compoenent.html <<< yguide/layout복사 >>>
+  -	nz-row/col 변경 >>> <app-dblocalmanager-form></app-dblocalmanager-form> ...
 - 각 화면 : yguide참고
 - *** topic변경-myname
 # *** service 설정 - 설정하지 않으면 singleton
