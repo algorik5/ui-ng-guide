@@ -64,8 +64,9 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   {
     let selectdata = this.table.getSelectData();
     let table = selectdata[0]["table"];
-    this.logging.debug("======= createtable start # "+ table);
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
+    // let columntypes = this.table.getColumns(table);
+    this.logging.debug("======= createtable start # "+ table);
 
     let sql = QueryUtil.createtable_sql(table,columntypes);
     let rs = this.sqllocal.createtable(sql);
@@ -73,10 +74,28 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     this.logging.debug("======= createtable end # "+ table +"#rs="+ rs);
   }
   testinsert() {
+    let selectdata = this.table.getSelectData();
+    let table = selectdata[0]["table"];
+    let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
+    // let columntypes = this.table.getColumns(table);
+    this.logging.debug("======= testinsert start # "+ table);
 
+    let sql = QueryUtil.insert_sql(table,columntypes);
+    let samplevalue = {}; selectdata.forEach(data=>{ samplevalue[data["column"]]= data["samplevalue"]; });
+    let rs = this.sqllocal.insert_pstmt(sql,samplevalue);
+    this.logging.debug("======= testinsert end # "+ table +"#rs="+ rs);
   }
   testselect() { 
+    let selectdata = this.table.getSelectData();
+    let table = selectdata[0]["table"];
+    let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
+    // let columntypes = this.table.getColumns(table);
+    this.logging.debug("======= testselect start # "+ table);
 
+    let sql = QueryUtil.select_sql(table,columntypes);
+    let rs = this.sqllocal.select(sql);
+    this.pubsub.pub("stompdbinsert.tabledata.data",rs);
+    this.logging.debug("======= testselect end # "+ table +"#rs="+ rs);
   }
 
 }

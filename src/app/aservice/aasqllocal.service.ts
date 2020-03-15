@@ -134,6 +134,7 @@ export class AasqllocalService {
     let pstmt = alasql.compile(sql);
     //let rs = pstmt(datas);
     let count = 0;
+    if(Array.isArray(datas) == false) datas = [datas];
     datas.forEach(data=> {
       let rs = pstmt(data); 
       count = count + rs;
