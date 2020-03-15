@@ -27,12 +27,12 @@
 
 
 # ========================================== guide
-ng g m yguide/dblocal --routing
-ng g c yguide/dblocal
+ng g m yguide/clipboard --routing
+ng g c yguide/clipboard
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'dblocal',component: DblocalComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
-  - <a title routerLink="guide/dblocal"...
+  - { path: 'clipboard',component: ClipboardComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/clipboard/clipboard.module').then(m => m.ClipboardModule)},
+  - <a title routerLink="guide/clipboard"...
 복사 - guide/dblocal에서 복사
 
 

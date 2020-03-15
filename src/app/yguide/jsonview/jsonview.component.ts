@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { NzCopyToClipboardService } from 'ng-zorro-antd';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-jsonview',
@@ -9,16 +11,19 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 })
 export class JsonviewComponent implements OnInit {
 
-  constructor(private pubsub: AapubsubService,private logging:AaloggingService) {}
+  constructor(private pubsub: AapubsubService,private logging:AaloggingService,private clipboard:NzCopyToClipboardService,private noti:NzNotificationService) {}
 
   topicprefix = "stompchart.stomp";//this.topicprefix+".datas"
 
-  jsonviewdata = {};//{id:"id1",name:"name1"};
-  
+  //////////////////////////////////////////////// debugjsondata
+  debugjsondata = {};//{id:"id1",name:"name1"};
+  debugjsondata_set(obj) { this.debugjsondata = obj; }
+  copyToClipboard() { this.clipboard.copy(JSON.stringify(this.debugjsondata)); this.noti.create("success","clipboard","copyed!!!"); }
+
   ngOnInit() {
 
     this.pubsub.sub(this.topicprefix+".jsonview", data => {
-      this.jsonviewdata = data;
+      this.debugjsondata_set(data);//this.debugjsondata = data;
     });
 
     ///////////////////////////////////////// test

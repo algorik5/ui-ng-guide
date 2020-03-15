@@ -27,3 +27,18 @@
     </ng-container>
   </tbody>
 </nz-table>
+
+
+
+
+
+<nz-collapse> 
+  <nz-collapse-panel [nzHeader]="'debugjsondata'" [nzActive]="'false'" [nzDisabled]="'false'">
+      <nz-card>
+          <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+              <ngx-json-viewer [json]="debugjsondata" [expanded]="true"></ngx-json-viewer>
+          </cdk-virtual-scroll-viewport>
+      </nz-card>        
+  </nz-collapse-panel> 
+</nz-collapse>
+

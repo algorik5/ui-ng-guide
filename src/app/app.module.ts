@@ -16,6 +16,7 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {TreeTableModule} from 'primeng/treetable';
+// import { ClipboardModule } from '@angular/cdk/clipboard'
 
 registerLocaleData(en);
 

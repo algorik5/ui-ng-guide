@@ -23,6 +23,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     //pubsub-table 샘플
     this.pubsub.sub(this.topicprefix+".datas", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
+      this.debugjsondata_set(datas);
     });
     this.pubsub.sub(this.topicprefix+".data", data => {
       this.table.addData(data);
@@ -80,4 +81,12 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   testselect() { 
 
   }
+
+
+
+
+  //////////////////////////////////////////////// debugjsondata
+  debugjsondata = [];
+  debugjsondata_set(obj) { this.debugjsondata = obj; }
+
 }

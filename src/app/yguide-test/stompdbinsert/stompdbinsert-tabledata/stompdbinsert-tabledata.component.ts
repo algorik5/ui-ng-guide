@@ -45,4 +45,5 @@ export class StompdbinsertTabledataComponent implements OnInit {
   tableInit()
   {
   }
+
 }
