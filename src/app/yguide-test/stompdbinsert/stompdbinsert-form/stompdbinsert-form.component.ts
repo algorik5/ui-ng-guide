@@ -11,6 +11,7 @@ import { ColorUtil } from 'src/app/autil/ColorUtil';
 import { StringUtil } from 'src/app/autil/StringUtil';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { ArrayUtil } from 'src/app/autil/ArrayUtil';
+import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 
 @Component({
   selector: 'app-stompdbinsert-form',
@@ -20,7 +21,7 @@ import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 export class StompdbinsertFormComponent implements OnInit {
 
   constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private pubsub: AapubsubService
-    ,private countmap:AacountmapService,private jsonpath: AajsonpathService,private jsonsearch:AajsonsearchService
+    ,private countmap:AacountmapService,private jsonpath: AajsonpathService,private jsonsearch:AajsonsearchService,private flatdata:AaflatdataService
     ,private sqllocal:AasqllocalService) { }
 
   topicprefix = "stompdbinsert.form";//this.topicprefix+".datas"
@@ -122,10 +123,16 @@ export class StompdbinsertFormComponent implements OnInit {
   curMsgtype;
   clickMsgtype(msgtype)
   {
-    this.curMsgtype = msgtype["name"];
+    let msgtypename = msgtype["name"];
+    
+    this.curMsgtype = msgtypename;
     ColorUtil.changeColorClick(this.getMsgtypes(),"lime",msgtype,"red");
 
-    this.tableschema_apply(msgtype["name"]);
+    let msgdata = this.msgdatamap.get(msgtypename);
+    this.tableschema_apply(msgtypename,msgdata);
+    
+    //debugjsonview
+    this.pubsub.pub("stompdbinsert.debugjsonview.datas",msgdata);
   }
 
 
@@ -223,18 +230,24 @@ export class StompdbinsertFormComponent implements OnInit {
   // } 
 
   /////////////////////////////// tableschema
-  tableschema_apply(msgtype) 
+  tableschema_apply(msgtype,msgdata) 
   {
-    let msgdata = this.msgdatamap.get(msgtype);
-    // this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#msgdata="+msgdata);
-    let jsonpathdata = this.jsonpath.getUniqueJsonPath(msgdata);
-    // this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#jsonpathdata="+jsonpathdata);
-    let table = this.jsonsearch.search(msgdata,"//_type_")[0];
-    let tableschemas = jsonpathdata.map(path=>{ 
-      let column = StringUtil.replaceAll(path,"/","__"); column = StringUtil.replaceAll(column,".","_");
-      let samplevalue = this.jsonsearch.search(msgdata,path)[0];
-      return {path:path,table:table,column:column,pk:"N",samplevalue:samplevalue,checked:true};
-    });//"path","column","pk","samplevalue"
+    // let jsonpathdata = this.jsonpath.getUniqueJsonPath(msgdata);
+    // let table = this.jsonsearch.search(msgdata,"//_type_")[0];
+    // let tableschemas = jsonpathdata.map(path=>{ 
+    //   let column = StringUtil.replaceAll(path,"/","__"); column = StringUtil.replaceAll(column,".","_");
+    //   let samplevalue = this.jsonsearch.search(msgdata,path)[0];
+    //   return {path:path,table:table,column:column,pk:"N",samplevalue:samplevalue,checked:true};
+    // });//"path","column","pk","samplevalue"
+
+
+    let flatdatas = this.flatdata.objectToFlat(msgdata);//[{type:...,host:...}]
+    let table = flatdatas[0]["_type_"];
+    let tableschemas = Object.keys(flatdatas[0]).map(key=>{
+      let value = flatdatas[0][key];
+      return {path:"-",table:table,column:key,pk:"N",samplevalue:value,checked:true};
+    });
+
     this.pubsub.pub("stompdbinsert.tableschema.datas",tableschemas);
     this.logging.debug("============ tableschema_apply "+"#msgtype="+msgtype+"#tableschemas="+tableschemas);
   }

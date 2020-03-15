@@ -14,10 +14,11 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { AatableService } from 'src/app/aservice/aatable.service';
+import { StompdbinsertDebugjsonviewComponent } from './stompdbinsert-debugjsonview/stompdbinsert-debugjsonview.component';
 
 
 @NgModule({
-  declarations: [StompdbinsertComponent, StompdbinsertFormComponent, StompdbinsertTableschemaComponent, StompdbinsertTabledataComponent],
+  declarations: [StompdbinsertComponent, StompdbinsertFormComponent, StompdbinsertTableschemaComponent, StompdbinsertTabledataComponent, StompdbinsertDebugjsonviewComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,

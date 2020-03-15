@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AatableService } from 'src/app/aservice/aatable.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
-import { DateUtil } from 'src/app/autil/DateUtil';
-import { MathUtil } from 'src/app/autil/MathUtil';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
 
@@ -23,7 +21,6 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     //pubsub-table 샘플
     this.pubsub.sub(this.topicprefix+".datas", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
-      this.debugjsondata_set(datas);
     });
     this.pubsub.sub(this.topicprefix+".data", data => {
       this.table.addData(data);
@@ -81,12 +78,5 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   testselect() { 
 
   }
-
-
-
-
-  //////////////////////////////////////////////// debugjsondata
-  debugjsondata = [];
-  debugjsondata_set(obj) { this.debugjsondata = obj; }
 
 }

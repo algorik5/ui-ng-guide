@@ -1,12 +1,44 @@
 
 export class ObjectUtil
 {
+    static flat_arrayToObject(arr)//[{a:aa},{b:bb},{c.cl:c11},{c.c12:c22}] >>> {a:aa,b:bb,c.cl:c11,c.c12:c22}
+    {
+        // let obj = arr.reduce((obj, item) => { return { ...obj, [item[key]]: item, }; });
+        let obj = {};
+        arr.forEach(data=>{ for (var key in data) { obj[key]=data[key]} });
+        return obj;
+    }
+  
+    static flat_objectToArray(obj)//{a:aa,b:bb,c:{c1:c11,c2:c22}} >>> [{a:aa},{b:bb},{c.cl:c11,c.c12:c22}]
+    {
+      let arr = [];
+      this.flat_objectToArray_real(arr,"",obj);
+      return arr;
+    }
+    private static flat_objectToArray_real(arr,parentkey,obj)
+    {
+      // for(var key in obj) { arr.push({[key]:obj[key]}); }
+      for(var key in obj) 
+      { 
+        let value = obj[key];
+        if(Array.isArray(value)) continue;//array는 일단 무시
+        let keynnew = parentkey.length>0? parentkey+"."+key:key;
+        if(typeof(value)=="object") this.flat_objectToArray_real(arr,keynnew,value);
+        else arr.push({[keynnew]:value}); 
+      }
+      // console.log("=== data#"+ JSON.stringify(arr));
+    }
+  
+  
+
+
+
+
     static values(obj)
     {
         //Object.values(obj);//불가 - 지원되지 않는 브라우저가 경우 있음
         return Object.keys(obj).map(k=>obj[k]);
     }
-
     static testCreate():void
     {
     }

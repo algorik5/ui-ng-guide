@@ -28,6 +28,14 @@
                 </nz-collapse>
             </nz-col>
 
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'debugjsonview'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-stompdbinsert-debugjsonview></app-stompdbinsert-debugjsonview> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
         </nz-row>
       </nz-col>
     </nz-row>
