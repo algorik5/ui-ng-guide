@@ -1,6 +1,11 @@
-- indexeddb
 = 대시보드
-(화면)dblocal manage > 테이블조회,컬럼조회...
+	last 테이블 - host pk,process pk
+	> host cpu 대시보드 - host갯수/max
+	> host memory 대시보드 - host갯수/max
+
+= 기타
+	테이블스키마도 저장 < restart후 화면에서 생성 가능하게
+	에러표시 >>> 최상위 에러표시 - dbinsert > 에러표시
 
 
 
@@ -14,22 +19,22 @@
 
 
 
+============= 설계서 - 다이어그램
+============= 화면설계 > 코드화 (스케처...)
+============= ng표준검토 > pubsub(모듈밖),모듈내service(formservice,tableservice,chartservice) constructor에...
+===(일단변경)stomp sub시 이전 sub stop후 resub (already sub > substop)
 
 
 
-=== 이슈 - getDbtables() { //html에서 함수를 연결해서 그런가? 호출횟수가 엄청 많구나...흠... 변경감지때문인가 ?
-	***** html에서 함수연결한거 모두 제거 <<< pubsub으로 변경
-=== 헐 - radio는 동일버튼 한번더 눌러도 이벤트 발생안함
 
-=컬럼 : 안되면 __ > zzz
-pk에 해당하는 값 search
-	for ...
+
+
+
 
 
 
 
 ================================== 소스 정리
-변경 ---- aa > a
 =====(보류)chartutil > clicklegend등 전부이동-가능한가?
 table-static
 form-static
@@ -48,6 +53,12 @@ usage복사 - 정리
 service포팅
 ===각 service마다 설치방법 기술
 
+=== 이슈 - getDbtables() { //html에서 함수를 연결해서 그런가? 호출횟수가 엄청 많구나...흠... 변경감지때문인가 ?
+	***** html에서 함수연결한거 모두 제거 <<< pubsub으로 변경
+=== 헐 - radio는 동일버튼 한번더 눌러도 이벤트 발생안함
+*** guide전체 설정 - providers: [AaformService]
+*** 마크다운으로 사용법 정리 - ng/zorro 등 (ausage제거)
+= 보류 - indexeddb
 
 
 
