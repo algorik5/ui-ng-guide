@@ -7,7 +7,7 @@
 	테이블스키마도 저장 < restart후 화면에서 생성 가능하게
 	에러표시 >>> 최상위 에러표시 - dbinsert > 에러표시
 
-
+= nats/resgate 연동
 
 
 
