@@ -30,8 +30,6 @@ export class LocalstorageComponent implements OnInit {
 
     ////////////////////////////////////////// form
     this.formInit();
-
-    this.manage_init();
   }
 
   ////////////////////////////////////////// form
@@ -49,32 +47,16 @@ export class LocalstorageComponent implements OnInit {
 
 
   ///////////////////////////////////// msgtablemapping
-  msgtablemapping_init()
+  msgtablemapping()
   {
-    this.form.addControlValue("msgtablemapping","-");
   }
-  msgtablemapping_click()
-  {
-    let msgtablemapping = this.form.getControlValue("msgtablemapping");
-
-    if(msgtablemapping == "msgtablemapping") { 
-
-    }
-    else if(msgtablemapping == "...") {  }
-  }
+  msgtablemapping_add1() { this.localstore.msgtablemapping_add("msg1","table1"); }
+  msgtablemapping_add11() { this.localstore.msgtablemapping_add("msg1","table2"); }
+  msgtablemapping_add2() { this.localstore.msgtablemapping_add("msg2","table1"); }
 
   ///////////////////////////////////// manage
-  manage_init()
-  {
-    this.form.addControlValue("manage","-");
-  }
-  manage_click()
-  {
-    let manage = this.form.getControlValue("manage");
-
-    if(manage == "testadd") { this.localstore.set(DateUtil.currentDateString2(),DateUtil.currentDateString()); }
-    else if(manage == "clear") { this.localstore.clear(); }
-  }
+  testadd() { this.localstore.set(DateUtil.currentDateString(),DateUtil.currentDateString()); }
+  clear() { this.localstore.clear(); }
   
   ////////////////////// test_stat
   test_stat_title = "-";
@@ -88,4 +70,5 @@ export class LocalstorageComponent implements OnInit {
 
   /////////////////////////////// debug localStorage
   getLocalStorage() { return this.localstore.keyvalues(); } //return localStorage; }
+  getMsgtablemapping() { return {}};//this.localstore.msgtablemapping_value(); }//.keyvalues(); } //return localStorage; }
 }

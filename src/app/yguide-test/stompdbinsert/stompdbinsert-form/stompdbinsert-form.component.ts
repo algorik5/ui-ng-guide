@@ -194,8 +194,7 @@ export class StompdbinsertFormComponent implements OnInit {
     let table = flatdatas[0]["_type_"];
     let tableschemas = Object.keys(flatdatas[0]).map(key=>{
       let value = flatdatas[0][key];
-      // return {path:"-",table:table,column:key,type:"string",pk:"N",samplevalue:value,checked:true};
-      return {path:"-",column:key,type:"string",pk:"N",samplevalue:value,checked:true};
+      return {column:key,type:"string",pk:"N",samplevalue:value,checked:true};
     });
 
     this.pubsub.pub("stompdbinsert.tableschema.datas",tableschemas);

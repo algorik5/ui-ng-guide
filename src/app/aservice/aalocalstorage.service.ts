@@ -40,29 +40,56 @@ export class AalocalstorageService {
 
   ////////////////////////////////////////// msgtablemapping
   private msgtablemapping_name = "msgtablemapping";
+  msgtablemapping_init() {
+    if(this.has(this.msgtablemapping_name)==false) { this.set(this.msgtablemapping_name,""); }//{} > [object Object]
+  }
+
   msgtablemapping_add(msg,table)//{type1:[table1,table2],type2:[table]...}
   {
-    if(this.has(this.msgtablemapping_name)==false) { this.set(this.msgtablemapping_name,{}); }
+    this.msgtablemapping_init();
+    let str = this.get(this.msgtablemapping_name);//[{type:type1,tables:[table1,table2]},{type:type2,tables:[table]...
+    this.logging.debug("--- msgtablemapping_add 1 # "+ msg +":"+ table +":"+ typeof(str) +":"+ str);// 
 
-    let str = this.get(this.msgtablemapping_name);//{type1:[table1,table2],type2:[table]...}
-    let obj = JSON.parse(str);
-    if(obj[msg] == null) obj[msg] = table;
+    if(str.length<1)
+    {
+      let arr = [{key:msg,value:[table]}];
+      this.logging.debug("--- msgtablemapping_add 2 # "+ msg +":"+ table +":"+ JSON.stringify(arr));
+      this.set(this.msgtablemapping_name,JSON.stringify(arr));
+    }
     else
     {
-      let tables = obj[msg];
-      if(tables.includes(table)) return;
-      obj[msg] = obj[msg].concat([table]);
+      let arr = JSON.parse(str);
+      let obj = arr.find(k=>k["key"]==msg);
+      if(obj == null) { obj = {key:msg,value:[table]}; arr = arr.concat(obj); }
+      else 
+      {
+        if(obj["value"].includes(table)==false) obj["value"] = obj["value"].concat(table); 
+      }
+      this.set(this.msgtablemapping_name,JSON.stringify(arr));
     }
-    this.set(msg,obj);
-    this.logging.debug("---------- msgtablemapping_add # "+ msg +":"+ table +":"+ JSON.stringify(obj));
+    this.logging.debug("---------- msgtablemapping_add # "+ msg +":"+ table +":"+ this.get(this.msgtablemapping_name));
   }
   msgtablemapping_get(msg)//array 리턴
   {
-    if(this.has(this.msgtablemapping_name)==false) { this.set(this.msgtablemapping_name,{}); }
-
+    this.msgtablemapping_init();
     let str = this.get(this.msgtablemapping_name);//{type1:[table1,table2],type2:[table]...}
-    let obj = JSON.parse(str);
-    this.logging.debug("---------- msgtablemapping_get # "+ msg +":"+ obj[msg]);
-    return obj[msg];
+    this.logging.debug("--- msgtablemapping_get 1 # "+ msg +":"+ typeof(str) +":"+ str);// 
+
+    if(str.length<1) return "";
+    let arr = JSON.parse(str);
+    let obj = arr.find(k=>k["key"]==msg);
+    this.logging.debug("---------- msgtablemapping_get # "+ msg +":"+ JSON.stringify(obj));
+    return JSON.stringify(obj);
+  }
+  msgtablemapping_value()//array 리턴
+  {
+    // if(1==1) return {};
+    this.msgtablemapping_init();
+    let str = this.get(this.msgtablemapping_name);//{type1:[table1,table2],type2:[table]...}
+    this.logging.debug("--- msgtablemapping_value 1 # "+ typeof(str) +":"+ str);//
+    return str;
+    // let obj = str.length>0 ? JSON.parse(str):{};
+    // this.logging.debug("---------- msgtablemapping_value # "+ str);
+    // return obj;
   }
 }

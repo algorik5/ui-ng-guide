@@ -48,8 +48,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
 
   tableInit()
   {
-    // this.table.setColumns(["path","table","column","type","pk","samplevalue","checked"]);
-    this.table.setColumns(["path","column","type","pk","samplevalue","checked"]);
+    this.table.setColumns(["column","type","pk","samplevalue","checked"]);
     ////////////////////////////////////////////////////////// edit  
     this.table.setEditable(true);
   }
@@ -78,9 +77,9 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   inputValue = "";
   savelocalstorage()
   {
-    // let table = selectdata[0]["table"];
-    // let msg = selectdata["_type_"]["table"];
-    // this.localstore.msgtablemapping_add();
+    this.localstore.msgtablemapping_add(this.stompmsg,this.stompdbtable);
+    this.logging.debug("======= savelocalstorage end # "+ this.stompdbtable +"#rs="+ this.localstore.msgtablemapping_get(this.stompmsg));
+    this.pubsub.pub("stompdbinsert.debugjsonview.localStorage","");
   }
   testinsert() {
     let selectdata = this.table.getSelectData();

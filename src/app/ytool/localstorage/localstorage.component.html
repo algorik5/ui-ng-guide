@@ -15,21 +15,15 @@
 
                         <nz-form-item>
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="msgtablemapping">msg table mapping</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="msgtablemapping">
-                                <nz-radio-group formControlName="msgtablemapping" [nzButtonStyle]="'solid'" (ngModelChange)="msgtablemapping_click()">
-                                    <br><label nz-radio-button nzValue="msgtablemapping">msgtablemapping</label>
-                                </nz-radio-group>
-                            </nz-form-control>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add1()">msgtablemapping_add1</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add11()">msgtablemapping_add11</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add2()">msgtablemapping_add2</button>
                         </nz-form-item>
 
                         <nz-form-item>
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="manage">manage</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="manage">
-                                <nz-radio-group formControlName="manage" [nzButtonStyle]="'solid'" (ngModelChange)="manage_click()">
-                                    <br><label nz-radio-button nzValue="testadd">testadd</label>
-                                    <br><label nz-radio-button nzValue="clear">clear</label>
-                                </nz-radio-group>
-                            </nz-form-control>
+                            <br><button nz-button nzType="dashed" (click)="testadd()">testadd</button>
+                            <br><button nz-button nzType="dashed" (click)="clear()">clear</button>
                         </nz-form-item>
 
                     </form>
@@ -61,7 +55,6 @@
 
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <!-- test json 표시 -->
                     <nz-collapse-panel [nzHeader]="'view localstorage'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-card>
                             <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
@@ -69,6 +62,14 @@
                             </cdk-virtual-scroll-viewport>
                         </nz-card> 
                     </nz-collapse-panel> 
+                    <nz-collapse-panel [nzHeader]="'view msgtablemapping'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card>
+                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                                <ngx-json-viewer [json]="getMsgtablemapping()" [expanded]="true"></ngx-json-viewer>
+                            </cdk-virtual-scroll-viewport>
+                        </nz-card> 
+                    </nz-collapse-panel> 
+
                 </nz-collapse>
             </nz-col>
 

@@ -29,6 +29,11 @@ export class StompdbinsertDebugjsonviewComponent implements OnInit {
       this.debugjsondata_set(data);//this.debugjsondata = data;
 
       this.debugjsondata_flat = this.flatdata.objectToFlat(data);
+      this.debugjsondata_localStorage = JSON.stringify(localStorage);
+    });
+
+    this.pubsub.sub(this.topicprefix+".localStorage", data => {
+      this.debugjsondata_localStorage = JSON.stringify(localStorage);
     });
     // this.pubsub.sub(this.topicprefix+".datasflat", data => {
     //   this.debugjsondata_flat;//this.debugjsondata = data;
@@ -38,4 +43,5 @@ export class StompdbinsertDebugjsonviewComponent implements OnInit {
 
   //////////////////////////////// test flat data
   debugjsondata_flat = {};
+  debugjsondata_localStorage = {};
 }
