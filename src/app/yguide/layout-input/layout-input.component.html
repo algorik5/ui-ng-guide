@@ -29,3 +29,8 @@
     <div nz-col nzSpan="10">
     </div>
 </nz-input-group>
+
+
+
+<nz-divider [nzText]="'checkbox group'" nzOrientation="left"></nz-divider>
+<nz-checkbox-group [(ngModel)]="msgtables" (ngModelChange)="msgtables_change(msgtables)"></nz-checkbox-group>

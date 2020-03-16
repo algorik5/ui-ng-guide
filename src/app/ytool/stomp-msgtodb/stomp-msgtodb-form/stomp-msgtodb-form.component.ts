@@ -13,17 +13,20 @@ import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
+import { AatableService } from 'src/app/aservice/aatable.service';
+import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 
 @Component({
   selector: 'app-stomp-msgtodb-form',
   templateUrl: './stomp-msgtodb-form.component.html',
   styleUrls: ['./stomp-msgtodb-form.component.less']
+  ,providers: [AatableService]
 })
 export class StompMsgtodbFormComponent implements OnInit {
 
   constructor(private logging:AaloggingService,private form:AaformService,private stomp:AastompService,private pubsub: AapubsubService
     ,private countmap:AacountmapService,private jsonpath: AajsonpathService,private jsonsearch:AajsonsearchService,private flatdata:AaflatdataService
-    ,private sqllocal:AasqllocalService) { }
+    ,private sqllocal:AasqllocalService,private table: AatableService,private localstore:AalocalstorageService) { }
 
   topicprefix = "stompdbinsert.form";//this.topicprefix+".datas"
 
@@ -34,6 +37,8 @@ export class StompMsgtodbFormComponent implements OnInit {
     // });
 
     this.formInit();
+    ///////////////////////////////////////////////// table
+    this.tableInit();
   }
 
   getFormgroup() { return this.form.getFormgroup(); }//html에서 호출
@@ -95,5 +100,51 @@ export class StompMsgtodbFormComponent implements OnInit {
 
 
 
+  ////////////////////////////////////////////////////////// check
+  // msgtables = [
+  //   { label: 'Apple', value: 'Apple', checked: true },
+  //   { label: 'Pear', value: 'Pear', checked: false },
+  //   { label: 'Orange', value: 'Orange', checked: false }
+  // ];
+  // msgtables_change(msgtables)//전체가 옴
+  // {
+  //   this.logging.debug("msgtables_change==="+ JSON.stringify(msgtables));
+  // }
+
+
+
+
+  ////////////////////////////////////////////////////////// table
+  getTableData() { return this.table.getData(); }
+  getTableColumns() { return this.table.getColumns(); }
+  isEditable() { return this.table.isEditable(); }
+  setEditable(edit) { this.table.setEditable(edit); }
+  selectRow(data) {
+    console.log("====== selectRow data=" + JSON.stringify(data));
+    // this.pubsub.pub(this.topicprefix+".selectdata", data);
+  }
+  tableInit()
+  {
+    ////////////////////////////////////////////////////////// edit  
+    this.table.setEditable(false);
+    this.table.setColumns(["msg","table"]);
+  }
+  table_refresh()
+  {
+    this.table.clearData();
+
+    let msgtablesstr = this.localstore.msgtablemapping_value();
+    // this.logging.debug("table_refresh 1==="+ msgtablesstr);
+    if(msgtablesstr.length<1) return;
+    let msgtables = JSON.parse(msgtablesstr);
+    this.logging.debug("table_refresh 2==="+ JSON.stringify(msgtables));
+    msgtables.forEach(msgtable=>{
+      let msg = msgtable["msg"];
+      let tables = msgtable["tables"];
+      tables.forEach(tablename=>{
+        this.table.addData({msg:msg,table:tablename});
+      });
+    });
+  }
 
 }

@@ -15,11 +15,44 @@
 
         </nz-form-control>
     </nz-form-item>
+
     <nz-divider [nzText]="'recv(count)'" nzOrientation="left"></nz-divider>
     <nz-row [nzGutter]="16">
         <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
         <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'insert'" [nzValue]="countvalue('insert')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
     </nz-row>
 
-
 </form>
+
+<!-- <nz-divider [nzText]="'check'" nzOrientation="left"></nz-divider>
+<nz-checkbox-group [(ngModel)]="msgtables" (ngModelChange)="msgtables_change(msgtables)"></nz-checkbox-group> -->
+
+
+<nz-divider [nzText]="'table'" nzOrientation="left"></nz-divider>
+<nz-input-group nzCompact style="margin-bottom: 8px;">
+    &nbsp;<button nz-button (click)="table_refresh()">refresh</button>
+</nz-input-group>  
+<nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [nzDisabled]="true"></th>
+        <ng-container *ngFor="let column of getTableColumns()">
+          <th *ngIf="column.show">{{column["name"]}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of myTable.data">
+        <tr>
+          <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+          <ng-container *ngFor="let column of getTableColumns()">
+            <td *ngIf="column.show">
+              <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
+              <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+</nz-table>
+  
