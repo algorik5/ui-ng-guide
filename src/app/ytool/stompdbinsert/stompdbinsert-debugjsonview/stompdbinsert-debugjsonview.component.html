@@ -1,0 +1,26 @@
+<nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'debugjsondata'" [nzActive]="'false'" [nzDisabled]="'false'" [nzExtra]="extraButton">
+        <nz-card>
+            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                <ngx-json-viewer [json]="debugjsondata" [expanded]="true"></ngx-json-viewer>
+            </cdk-virtual-scroll-viewport>
+        </nz-card>        
+    </nz-collapse-panel> 
+    <nz-collapse-panel [nzHeader]="'flatdata'" [nzActive]="'false'" [nzDisabled]="'false'" [nzExtra]="extraButton">
+        <nz-card>
+            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                <ngx-json-viewer [json]="debugjsondata_flat" [expanded]="true"></ngx-json-viewer>
+            </cdk-virtual-scroll-viewport>
+        </nz-card>        
+    </nz-collapse-panel> 
+    <nz-collapse-panel [nzHeader]="'localStorage'" [nzActive]="'false'" [nzDisabled]="'false'" [nzExtra]="extraButton">
+        <nz-card>
+            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                <ngx-json-viewer [json]="debugjsondata_localStorage" [expanded]="true"></ngx-json-viewer>
+            </cdk-virtual-scroll-viewport>
+        </nz-card>        
+    </nz-collapse-panel> 
+
+</nz-collapse>
+<ng-template #extraButton><i nz-icon nzType="copy" (click)="copyToClipboard()"></i></ng-template>
+

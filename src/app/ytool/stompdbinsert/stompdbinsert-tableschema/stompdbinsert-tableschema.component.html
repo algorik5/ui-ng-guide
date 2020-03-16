@@ -1,0 +1,33 @@
+<nz-input-group nzCompact style="margin-bottom: 8px;">
+  &nbsp;<input type="text" style="width: 200px" nz-input [(ngModel)]="stompmsg" [disabled]="true"/>
+  &nbsp;<input type="text" style="width: 200px" nz-input [(ngModel)]="stompdbtable" />
+  &nbsp;<button nz-button (click)="createtable()">createtable</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testinsert()">testinsert</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testselect()">testselect</button>
+  <!-- &nbsp;<button nz-button (click)="savelocalstorage()">savelocalstorage</button> -->
+</nz-input-group>
+
+<nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
+  <thead>
+    <tr>
+      <th nzShowCheckbox [nzDisabled]="true"></th>
+      <ng-container *ngFor="let column of getTableColumns()">
+        <th *ngIf="column.show">{{column["name"]}}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of myTable.data">
+      <tr>
+        <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+        <ng-container *ngFor="let column of getTableColumns()">
+          <td *ngIf="column.show">
+            <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
+            <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>
+

@@ -21,8 +21,6 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
   { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
 
-  { path: 'guide-test',loadChildren: () => import('./yguide-test/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
-  { path: 'guide-test',loadChildren: () => import('./yguide-test/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/stompchart/stompchart.module').then(m => m.StompchartModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery2/sqlquery2.module').then(m => m.Sqlquery2Module)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/dynamictable/dynamictable.module').then(m => m.DynamictableModule)},
@@ -36,6 +34,8 @@ const routes: Routes = [
   { path: 'tool',loadChildren: () => import('./ytool/ytool.module').then(m => m.YtoolModule)},
   { path: 'tool',loadChildren: () => import('./ytool/dbtable/dbtable.module').then(m => m.DbtableModule)},
   { path: 'tool',loadChildren: () => import('./ytool/stomp-msgtodb/stomp-msgtodb.module').then(m => m.StompMsgtodbModule)},
+  { path: 'tool',loadChildren: () => import('./ytool/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
+  { path: 'tool',loadChildren: () => import('./ytool/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
