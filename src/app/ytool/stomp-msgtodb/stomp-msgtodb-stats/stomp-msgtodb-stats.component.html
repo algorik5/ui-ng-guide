@@ -1,1 +1,28 @@
-<p>stomp-msgtodb-stats works!</p>
+<nz-divider [nzText]="'count by msg'" nzOrientation="left"></nz-divider>
+<nz-row [nzGutter]="16">
+    <!-- <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'recv'" [nzValue]="countvalue('recv')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
+    <nz-col [nzSpan]="12"><nz-statistic [nzTitle]="'insert'" [nzValue]="countvalue('insert')" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col> -->
+    <ng-container *ngFor="let countbymsg of countbymsgs">
+        <nz-col [nzSpan]="3"><nz-statistic [nzTitle]="countbymsg['key']" [nzValue]="countbymsg['value']" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
+    </ng-container>
+</nz-row>
+
+
+
+<nz-divider [nzText]="'count by table'" nzOrientation="left"></nz-divider>
+<nz-row [nzGutter]="16">
+    <ng-container *ngFor="let countbytable of countbytables">
+        <nz-col [nzSpan]="3"><nz-statistic [nzTitle]="countbytable['key']" [nzValue]="countbytable['value']" [nzValueStyle]="{ color: '#3F8600' }" [nzPrefix]="" [nzSuffix]=""></nz-statistic></nz-col>
+    </ng-container>
+</nz-row>
+
+
+
+<nz-divider [nzText]="'linechart by msg'" nzOrientation="left"></nz-divider>
+
+
+
+<nz-divider [nzText]="'barchart by msg'" nzOrientation="left"></nz-divider>
+
+
+<nz-divider [nzText]="'table by msg'" nzOrientation="left"></nz-divider>

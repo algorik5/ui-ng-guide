@@ -12,4 +12,10 @@ export class StompMsgtodbStatsComponent implements OnInit {
   ngOnInit() {
   }
 
+  ////////////////////////////////// msg count
+  countbymsgs = [{key:"k1",value:"v1"},{key:"k2",value:"v2"},{key:"k3",value:"v3"}];
+
+  ////////////////////////////////// table count
+  countbytables = [{key:"k1",value:"v1"},{key:"k2",value:"v2"},{key:"k3",value:"v3"},{key:"k1",value:"v1"},{key:"k2",value:"v2"},{key:"k3",value:"v3"}];
+
 }

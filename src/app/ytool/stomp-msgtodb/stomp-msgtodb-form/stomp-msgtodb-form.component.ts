@@ -74,9 +74,13 @@ export class StompMsgtodbFormComponent implements OnInit {
 
       this.countadd("recv",1);
 
-      /////////////////////////////// (추가)msgtypes
+      /////////////////////////////// 
+      this.msgtables_checked_pass(res);
     });
   }
+
+
+
 
 
   ////////////////////////////////////////////////////////// count
@@ -100,19 +104,6 @@ export class StompMsgtodbFormComponent implements OnInit {
 
 
 
-  ////////////////////////////////////////////////////////// check
-  // msgtables = [
-  //   { label: 'Apple', value: 'Apple', checked: true },
-  //   { label: 'Pear', value: 'Pear', checked: false },
-  //   { label: 'Orange', value: 'Orange', checked: false }
-  // ];
-  // msgtables_change(msgtables)//전체가 옴
-  // {
-  //   this.logging.debug("msgtables_change==="+ JSON.stringify(msgtables));
-  // }
-
-
-
 
   ////////////////////////////////////////////////////////// table
   getTableData() { return this.table.getData(); }
@@ -120,8 +111,9 @@ export class StompMsgtodbFormComponent implements OnInit {
   isEditable() { return this.table.isEditable(); }
   setEditable(edit) { this.table.setEditable(edit); }
   selectRow(data) {
-    console.log("====== selectRow data=" + JSON.stringify(data));
+    this.logging.debug("====== selectRow data=" + JSON.stringify(data));
     // this.pubsub.pub(this.topicprefix+".selectdata", data);
+    this.msgtables_checked_add(data);
   }
   tableInit()
   {
@@ -147,4 +139,31 @@ export class StompMsgtodbFormComponent implements OnInit {
     });
   }
 
+
+
+
+  ////////////////////////////////////////////////////////// msg/table choose
+  msgtables_checked = [];
+  msgtables_checked_add(data)//{msg:..table:...checked:...}
+  {
+    if(data["checked"]==true) this.msgtables_checked = this.msgtables_checked.concat([data]);
+    else this.msgtables_checked = this.msgtables_checked.filter(k=>!(k["msg"]==data["msg"] && k["table"]==data["table"]));
+
+    this.logging.debug("====== msgtables_checked_add msgtables_checked=" + JSON.stringify(this.msgtables_checked));
+  }
+  msgtables_checked_pass(res) 
+  {
+    let msg = res["_type_"];
+    let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
+
+    let msgtables = this.msgtables_checked.filter(k=>!(k["msg"]==msg));
+    msgtables.forEach(k=>{
+      let table = k["table"];
+      let columntypes = this.sqllocal.getColumns(table);
+      let insertsql = QueryUtil.insert_sql(table,columntypes);
+      this.sqllocal.insert_pstmt(insertsql,flatdatas);
+      this.countadd("insert",flatdatas.length);
+    });
+  }
 }
+
