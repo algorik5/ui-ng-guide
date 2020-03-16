@@ -24,7 +24,7 @@ export class AalocalstorageService {
   keyvalues() { //===그냥 localStorage와 동일함
     // if(localStorage == null) return [];
     let str = JSON.stringify(localStorage);
-    this.logging.debug("===== keyvalues#"+ str);
+    // this.logging.debug("===== keyvalues#"+ str);
     return JSON.parse(str);
   }
   tomap() { 
@@ -44,26 +44,26 @@ export class AalocalstorageService {
     if(this.has(this.msgtablemapping_name)==false) { this.set(this.msgtablemapping_name,""); }//{} > [object Object]
   }
 
-  msgtablemapping_add(msg,table)//{type1:[table1,table2],type2:[table]...}
+  msgtablemapping_add(msg,table)//[{msg:type1,tables:[table1,table2]}
   {
     this.msgtablemapping_init();
-    let str = this.get(this.msgtablemapping_name);//[{type:type1,tables:[table1,table2]},{type:type2,tables:[table]...
+    let str = this.get(this.msgtablemapping_name);//[{msg:type1,tables:[table1,table2]}
     this.logging.debug("--- msgtablemapping_add 1 # "+ msg +":"+ table +":"+ typeof(str) +":"+ str);// 
 
     if(str.length<1)
     {
-      let arr = [{key:msg,value:[table]}];
+      let arr = [{msg:msg,tables:[table]}];
       this.logging.debug("--- msgtablemapping_add 2 # "+ msg +":"+ table +":"+ JSON.stringify(arr));
       this.set(this.msgtablemapping_name,JSON.stringify(arr));
     }
     else
     {
       let arr = JSON.parse(str);
-      let obj = arr.find(k=>k["key"]==msg);
-      if(obj == null) { obj = {key:msg,value:[table]}; arr = arr.concat(obj); }
+      let obj = arr.find(k=>k["msg"]==msg);
+      if(obj == null) { obj = {msg:msg,tables:[table]}; arr = arr.concat(obj); }
       else 
       {
-        if(obj["value"].includes(table)==false) obj["value"] = obj["value"].concat(table); 
+        if(obj["tables"].includes(table)==false) obj["tables"] = obj["tables"].concat(table); 
       }
       this.set(this.msgtablemapping_name,JSON.stringify(arr));
     }
@@ -72,12 +72,12 @@ export class AalocalstorageService {
   msgtablemapping_get(msg)//array 리턴
   {
     this.msgtablemapping_init();
-    let str = this.get(this.msgtablemapping_name);//{type1:[table1,table2],type2:[table]...}
+    let str = this.get(this.msgtablemapping_name);
     this.logging.debug("--- msgtablemapping_get 1 # "+ msg +":"+ typeof(str) +":"+ str);// 
 
     if(str.length<1) return "";
     let arr = JSON.parse(str);
-    let obj = arr.find(k=>k["key"]==msg);
+    let obj = arr.find(k=>k["msg"]==msg);
     this.logging.debug("---------- msgtablemapping_get # "+ msg +":"+ JSON.stringify(obj));
     return JSON.stringify(obj);
   }
@@ -88,8 +88,5 @@ export class AalocalstorageService {
     let str = this.get(this.msgtablemapping_name);//{type1:[table1,table2],type2:[table]...}
     this.logging.debug("--- msgtablemapping_value 1 # "+ typeof(str) +":"+ str);//
     return str;
-    // let obj = str.length>0 ? JSON.parse(str):{};
-    // this.logging.debug("---------- msgtablemapping_value # "+ str);
-    // return obj;
   }
 }

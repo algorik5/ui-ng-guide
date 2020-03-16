@@ -34,6 +34,8 @@ const routes: Routes = [
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},
 
   { path: 'tool',loadChildren: () => import('./ytool/ytool.module').then(m => m.YtoolModule)},
+  { path: 'tool',loadChildren: () => import('./ytool/dbtable/dbtable.module').then(m => m.DbtableModule)},
+  { path: 'tool',loadChildren: () => import('./ytool/stomp-msgtodb/stomp-msgtodb.module').then(m => m.StompMsgtodbModule)},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

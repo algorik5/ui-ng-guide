@@ -15,9 +15,10 @@
 
                         <nz-form-item>
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="msgtablemapping">msg table mapping</nz-form-label>
-                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add1()">msgtablemapping_add1</button>
-                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add11()">msgtablemapping_add11</button>
-                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add2()">msgtablemapping_add2</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_refresh()">refresh</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add1()">test add1</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add11()">test add11</button>
+                            <br><button nz-button nzType="dashed" (click)="msgtablemapping_add2()">test add2</button>
                         </nz-form-item>
 
                         <nz-form-item>
@@ -40,15 +41,38 @@
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
                     <!-- table -->
-                    <nz-collapse-panel [nzHeader]="'test_stat'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="12">
+                    <nz-collapse-panel [nzHeader]="'msgtablemapping'" [nzActive]="'true'" [nzDisabled]="'false'">
                                 <nz-card>
-                                    <nz-statistic [nzTitle]="test_stat_title" [nzValue]="test_stat" [nzValueStyle]="{ color: test_stat_color() }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
-                                    <ng-template #myicon><i nz-icon [nzType]="test_stat_icon()"></i></ng-template>
+                                    <nz-input-group nzCompact style="margin-bottom: 8px;">
+                                        &nbsp;<button nz-button (click)="deleterow()">deleterow</button>
+                                      </nz-input-group>
+                                      
+                                      
+                                      <nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
+                                        <thead>
+                                          <tr>
+                                            <th nzShowCheckbox [nzDisabled]="true"></th>
+                                            <ng-container *ngFor="let column of getTableColumns()">
+                                              <th *ngIf="column.show">{{column["name"]}}</th>
+                                            </ng-container>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <ng-container *ngFor="let data of myTable.data">
+                                            <tr>
+                                              <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
+                                              <ng-container *ngFor="let column of getTableColumns()">
+                                                <td *ngIf="column.show">
+                                                  <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
+                                                  <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+                                                </td>
+                                              </ng-container>
+                                            </tr>
+                                          </ng-container>
+                                        </tbody>
+                                      </nz-table>
+                                      
                                 </nz-card>
-                            </nz-col>
-                          </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>
             </nz-col>

@@ -36,7 +36,7 @@ ng g c yguide/layout-input
 복사 - guide/dblocal에서 복사
 
 
-# ========================================== test
+# ========================================== test (simple)
 ng g c ytest/test-websocket
   - { path: 'test-websocket',component: TestWebsocketComponent }
   - <a title routerLink="guide/test-websocket"...
@@ -44,10 +44,10 @@ ng g c ytest/test-websocket
 
 # ========================================== tool
 --ng g m ytool --routing
-ng g c ytool/localstorage
+ng g c ytool/stomp-todb
   - { path: 'localstorage',component: LocalstorageComponent }
   - <a title routerLink="tool/localstorage"...
-복사 - ytest/test-mqtt에서 복사
+복사 - ytool/localstorage에서 복사
 
 
 

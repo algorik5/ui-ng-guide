@@ -4,6 +4,7 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
+import { AatableService } from 'src/app/aservice/aatable.service';
 
 /* 
 
@@ -14,10 +15,12 @@ import { DateUtil } from 'src/app/autil/DateUtil';
   selector: 'app-localstorage',
   templateUrl: './localstorage.component.html',
   styleUrls: ['./localstorage.component.less']
+  ,providers: [AatableService]
 })
 export class LocalstorageComponent implements OnInit {
 
-  constructor(private logging:AaloggingService,private form:AaformService,private pubsub: AapubsubService,private localstore:AalocalstorageService) {}
+  constructor(private logging:AaloggingService,private form:AaformService,private pubsub: AapubsubService,private localstore:AalocalstorageService,
+    private table: AatableService) {}
 
   topicprefix = "myname.localstorage";//this.topicprefix+".datas"
 
@@ -30,6 +33,8 @@ export class LocalstorageComponent implements OnInit {
 
     ////////////////////////////////////////// form
     this.formInit();
+    ////////////////////////////////////////// table
+    this.tableInit();
   }
 
   ////////////////////////////////////////// form
@@ -47,8 +52,15 @@ export class LocalstorageComponent implements OnInit {
 
 
   ///////////////////////////////////// msgtablemapping
-  msgtablemapping()
+  msgtablemapping_refresh()
   {
+    this.table.clearData();
+    
+    let str = this.localstore.msgtablemapping_value();
+    if(str.length<1) return;
+    let datas = JSON.parse(str);
+    
+    this.table.setData(datas);
   }
   msgtablemapping_add1() { this.localstore.msgtablemapping_add("msg1","table1"); }
   msgtablemapping_add11() { this.localstore.msgtablemapping_add("msg1","table2"); }
@@ -58,11 +70,6 @@ export class LocalstorageComponent implements OnInit {
   testadd() { this.localstore.set(DateUtil.currentDateString(),DateUtil.currentDateString()); }
   clear() { this.localstore.clear(); }
   
-  ////////////////////// test_stat
-  test_stat_title = "-";
-  test_stat = "-";
-  test_stat_color() { return "lime"; }
-  test_stat_icon() { return "up"; }
   ////////////////////// test_result
   test_result = [];
   test_result_clear() {}
@@ -71,4 +78,27 @@ export class LocalstorageComponent implements OnInit {
   /////////////////////////////// debug localStorage
   getLocalStorage() { return this.localstore.keyvalues(); } //return localStorage; }
   getMsgtablemapping() { return {}};//this.localstore.msgtablemapping_value(); }//.keyvalues(); } //return localStorage; }
+
+  
+
+
+
+
+  //////////////////////////////////////////////////////////////// table
+  deleterow() {}
+  //////////////////////////////////////////////////////////////// table
+  getTableData() { return this.table.getData(); }
+  getTableColumns() { return this.table.getColumns(); }
+  isEditable() { return this.table.isEditable(); }
+  setEditable(edit) { this.table.setEditable(edit); }
+  selectRow(data) {
+    // console.log("====== selectRow data=" + JSON.stringify(data));
+    this.pubsub.pub(this.topicprefix+".selectdata", data);
+  }
+  tableInit()
+  {
+    ////////////////////////////////////////////////////////// edit  
+    this.table.setEditable(false);
+  }
+
 }
