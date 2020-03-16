@@ -81,6 +81,9 @@ export class AasqllocalService {
     }
     return pkcolumns;
   }
+  hasPK(table) {
+    return this.getPKColumns(table).length>0? true:false;
+  }
   getColumnNames(table) 
   {
     let tableschema = alasql.databases.alasql.tables[table];

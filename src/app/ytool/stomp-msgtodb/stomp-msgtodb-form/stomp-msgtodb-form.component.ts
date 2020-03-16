@@ -74,7 +74,7 @@ export class StompMsgtodbFormComponent implements OnInit {
 
       this.countadd("recv",1);
 
-      /////////////////////////////// 
+      /////////////////////////////// pass시 insert/update
       this.msgtables_checked_pass(res);
     });
   }
@@ -154,15 +154,33 @@ export class StompMsgtodbFormComponent implements OnInit {
   msgtables_checked_pass(res) 
   {
     let msg = res["_type_"];
-    let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
 
-    let msgtables = this.msgtables_checked.filter(k=>!(k["msg"]==msg));
+    /////////////////////////////// stats로 전달
+    this.pubsub.pub("stomp-msgtodb.stats.msg",msg);
+
+    let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
+    this.countadd("insert",flatdatas.length);
+    let msgtables = this.msgtables_checked.filter(k=>k["msg"]==msg);
     msgtables.forEach(k=>{
       let table = k["table"];
       let columntypes = this.sqllocal.getColumns(table);
-      let insertsql = QueryUtil.insert_sql(table,columntypes);
-      this.sqllocal.insert_pstmt(insertsql,flatdatas);
-      this.countadd("insert",flatdatas.length);
+      if(this.sqllocal.hasPK(table))
+      {
+        let updatesql = QueryUtil.update_sql(table,columntypes);
+        let rs = this.sqllocal.insert_pstmt(updatesql,flatdatas);
+        if(rs < 1)
+        {
+          let insertsql = QueryUtil.insert_sql(table,columntypes);
+          this.sqllocal.insert_pstmt(insertsql,flatdatas);
+        }
+      }
+      else
+      {
+        let insertsql = QueryUtil.insert_sql(table,columntypes);
+        this.sqllocal.insert_pstmt(insertsql,flatdatas);
+      }
+      /////////////////////////////// stats로 전달
+      this.pubsub.pub("stomp-msgtodb.stats.table",table);
     });
   }
 }

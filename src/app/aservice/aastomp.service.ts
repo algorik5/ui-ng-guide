@@ -94,7 +94,8 @@ export class AastompService {
     if(this.isSubed())
     {
       this.logging.warn("========== stomp sub already sub # "+ topic);
-      return;
+      // return;
+      this.substop();
     }
     
     // this.substartObs = this.sub_real(topic).subscribe(handler);//unsub하기 위함
