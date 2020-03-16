@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'test1',loadChildren: () => import('./test1/test1.module').then(m => m.Test1Module)},
 
   { path: 'guide',loadChildren: () => import('./yguide/layout/layout.module').then(m => m.LayoutModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/layout-input/layout-input.module').then(m => m.LayoutInputModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form-static/form-static.module').then(m => m.FormStaticModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
@@ -31,6 +32,8 @@ const routes: Routes = [
   
   { path: 'dashboard',loadChildren: () => import('./ydashboard/ydashboard.module').then(m => m.YdashboardModule)},
   { path: 'test',loadChildren: () => import('./ytest/ytest.module').then(m => m.YtestModule)},
+
+  { path: 'tool',loadChildren: () => import('./ytool/ytool.module').then(m => m.YtoolModule)},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

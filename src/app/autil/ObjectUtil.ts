@@ -37,7 +37,13 @@ export class ObjectUtil
     static values(obj)
     {
         //Object.values(obj);//불가 - 지원되지 않는 브라우저가 경우 있음
+        //values.forEach((v,i)=>console.log("-i:v="+i+">>>"+v));
         return Object.keys(obj).map(k=>obj[k]);
+    }
+    static keyvalues(obj)
+    {
+        //keyvalues.forEach((v,i)=>console.log("-i:v="+i+">"+v["key"]+"---"+v["value"]));
+        return Object.keys(obj).map(key=>{ return {key:key,value:obj[key]}; });
     }
     static testCreate():void
     {

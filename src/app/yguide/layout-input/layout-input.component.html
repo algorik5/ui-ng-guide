@@ -1,0 +1,31 @@
+<nz-divider [nzText]="'nzCompact'" nzOrientation="left"></nz-divider>
+<nz-input-group nzCompact>
+    <nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
+      <label nz-radio-button nzValue="createtable">createtable</label>
+      <label nz-radio-button nzValue="testinsert">testinsert</label>
+      <label nz-radio-button nzValue="testselect">testselect</label>
+    </nz-radio-group>
+    &nbsp;<input type="text" style="width: 120px" nz-input [(ngModel)]="inputValue" />
+    &nbsp;<button nz-button nzType="dashed" (click)="savelocalstorage()">savelocalstorage</button>
+</nz-input-group>
+
+
+
+<nz-divider [nzText]="'nzSpan'" nzOrientation="left"></nz-divider>
+<nz-input-group [nzSize]="'medium'">
+    <div nz-col nzSpan="6">
+        <nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
+            <label nz-radio-button nzValue="createtable">createtable</label>
+            <label nz-radio-button nzValue="testinsert">testinsert</label>
+            <label nz-radio-button nzValue="testselect">testselect</label>
+        </nz-radio-group>      
+    </div>
+    <div nz-col nzSpan="5">
+        <input type="text" nz-input [(ngModel)]="inputValue" />
+    </div>
+    <div nz-col nzSpan="3">
+        <button nz-button nzType="dashed" (click)="savelocalstorage()">savelocalstorage</button>
+    </div>
+    <div nz-col nzSpan="10">
+    </div>
+</nz-input-group>

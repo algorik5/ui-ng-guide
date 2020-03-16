@@ -4,6 +4,7 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
+import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 
 @Component({
   selector: 'app-stompdbinsert-tableschema',
@@ -13,7 +14,8 @@ import { QueryUtil } from 'src/app/autil/QueryUtil';
 })
 export class StompdbinsertTableschemaComponent implements OnInit {
 
-  constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService,private sqllocal:AasqllocalService) {}
+  constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService,private sqllocal:AasqllocalService,
+    private localstore:AalocalstorageService) {}
 
   topicprefix = "stompdbinsert.tableschema";//this.topicprefix+".datas"
 
@@ -21,6 +23,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
     //pubsub-table 샘플
     this.pubsub.sub(this.topicprefix+".datas", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
+      this.setMsgTable(datas);
     });
     this.pubsub.sub(this.topicprefix+".data", data => {
       this.table.addData(data);
@@ -45,57 +48,61 @@ export class StompdbinsertTableschemaComponent implements OnInit {
 
   tableInit()
   {
-    this.table.setColumns(["path","table","column","type","pk","samplevalue","checked"]);
+    // this.table.setColumns(["path","table","column","type","pk","samplevalue","checked"]);
+    this.table.setColumns(["path","column","type","pk","samplevalue","checked"]);
     ////////////////////////////////////////////////////////// edit  
     this.table.setEditable(true);
   }
 
   /////////////////////////////////////////////////////////// button
-  buttonStatus = "-";
-  buttonStatusClick()
-  {
-    this.logging.debug("======= buttonStatusClick # "+ this.buttonStatus);
-    if(this.buttonStatus == "createtable") this.createtable();
-    else if(this.buttonStatus == "testinsert") this.testinsert();
-    else if(this.buttonStatus == "testselect") this.testselect();
+  stompmsg = "-";
+  stompdbtable = "-";
+  setMsgTable(datas) 
+  { 
+    let typedata = datas.find(data=>data["column"]=="_type_");
+    this.stompmsg = typedata["samplevalue"];
+    this.stompdbtable = typedata["samplevalue"];//table
   }
-
   createtable()
   {
     let selectdata = this.table.getSelectData();
-    let table = selectdata[0]["table"];
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
     // let columntypes = this.table.getColumns(table);
-    this.logging.debug("======= createtable start # "+ table);
+    this.logging.debug("======= createtable start # "+ this.stompdbtable);
 
-    let sql = QueryUtil.createtable_sql(table,columntypes);
+    let sql = QueryUtil.createtable_sql(this.stompdbtable,columntypes);
     let rs = this.sqllocal.createtable(sql);
-    if(rs > 0) this.pubsub.pub(this.topicprefix+".createtable",table);
-    this.logging.debug("======= createtable end # "+ table +"#rs="+ rs);
+    if(rs > 0) this.pubsub.pub(this.topicprefix+".createtable",this.stompdbtable);
+    this.logging.debug("======= createtable end # "+ this.stompdbtable +"#rs="+ rs);
+  }
+  inputValue = "";
+  savelocalstorage()
+  {
+    // let table = selectdata[0]["table"];
+    // let msg = selectdata["_type_"]["table"];
+    // this.localstore.msgtablemapping_add();
   }
   testinsert() {
     let selectdata = this.table.getSelectData();
-    let table = selectdata[0]["table"];
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
     // let columntypes = this.table.getColumns(table);
-    this.logging.debug("======= testinsert start # "+ table);
+    this.logging.debug("======= testinsert start # "+ this.stompdbtable);
 
-    let sql = QueryUtil.insert_sql(table,columntypes);
+    let sql = QueryUtil.insert_sql(this.stompdbtable,columntypes);
     let samplevalue = {}; selectdata.forEach(data=>{ samplevalue[data["column"]]= data["samplevalue"]; });
     let rs = this.sqllocal.insert_pstmt(sql,samplevalue);
-    this.logging.debug("======= testinsert end # "+ table +"#rs="+ rs);
+    this.logging.debug("======= testinsert end # "+ this.stompdbtable +"#rs="+ rs);
   }
   testselect() { 
     let selectdata = this.table.getSelectData();
-    let table = selectdata[0]["table"];
     let columntypes = selectdata.map(data=>{ return {column:data["column"],type:data["type"],pk:data["pk"]}; });
     // let columntypes = this.table.getColumns(table);
-    this.logging.debug("======= testselect start # "+ table);
+    this.logging.debug("======= testselect start # "+ this.stompdbtable);
 
-    let sql = QueryUtil.select_sql(table,columntypes);
+    let sql = QueryUtil.select_sql(this.stompdbtable,columntypes);
     let rs = this.sqllocal.select(sql);
     this.pubsub.pub("stompdbinsert.tabledata.data",rs);
-    this.logging.debug("======= testselect end # "+ table +"#rs="+ rs);
+    this.logging.debug("======= testselect end  # "+ this.stompdbtable +"#rs="+ rs);
   }
 
 }

@@ -1,0 +1,78 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    ...<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+        <nz-collapse> 
+            <nz-collapse-panel [nzHeader]="'test_senario'" [nzActive]="'true'" [nzDisabled]="'false'">
+                <nz-card> <h6>appsub</h6> 
+                    <form nz-form [formGroup]="getFormgroup()" (ngSubmit)="formSubmit()">
+
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="7" nzRequired nzFor="msgtablemapping">msg table mapping</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="msgtablemapping">
+                                <nz-radio-group formControlName="msgtablemapping" [nzButtonStyle]="'solid'" (ngModelChange)="msgtablemapping_click()">
+                                    <br><label nz-radio-button nzValue="msgtablemapping">msgtablemapping</label>
+                                </nz-radio-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="7" nzRequired nzFor="manage">manage</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="manage">
+                                <nz-radio-group formControlName="manage" [nzButtonStyle]="'solid'" (ngModelChange)="manage_click()">
+                                    <br><label nz-radio-button nzValue="testadd">testadd</label>
+                                    <br><label nz-radio-button nzValue="clear">clear</label>
+                                </nz-radio-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                    </form>
+                </nz-card> 
+            </nz-collapse-panel>
+        </nz-collapse>
+    </nz-col>
+
+
+      
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <!-- table -->
+                    <nz-collapse-panel [nzHeader]="'test_stat'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-row [nzGutter]="16">
+                            <nz-col [nzSpan]="12">
+                                <nz-card>
+                                    <nz-statistic [nzTitle]="test_stat_title" [nzValue]="test_stat" [nzValueStyle]="{ color: test_stat_color() }" [nzPrefix]="myicon" [nzSuffix]="'%'"></nz-statistic>
+                                    <ng-template #myicon><i nz-icon [nzType]="test_stat_icon()"></i></ng-template>
+                                </nz-card>
+                            </nz-col>
+                          </nz-row>
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <!-- test json 표시 -->
+                    <nz-collapse-panel [nzHeader]="'view localstorage'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card>
+                            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                                <ngx-json-viewer [json]="getLocalStorage()" [expanded]="true"></ngx-json-viewer>
+                            </cdk-virtual-scroll-viewport>
+                        </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

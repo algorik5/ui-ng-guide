@@ -27,12 +27,12 @@
 
 
 # ========================================== guide
-ng g m yguide/clipboard --routing
-ng g c yguide/clipboard
+ng g m yguide/layout-input --routing
+ng g c yguide/layout-input
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'clipboard',component: ClipboardComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/clipboard/clipboard.module').then(m => m.ClipboardModule)},
-  - <a title routerLink="guide/clipboard"...
+  - { path: 'layout-input',component: LayoutInputComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/layout-input/layout-input.module').then(m => m.LayoutInputModule)},
+  - <a title routerLink="guide/layout-input"...
 복사 - guide/dblocal에서 복사
 
 
@@ -42,6 +42,12 @@ ng g c ytest/test-websocket
   - <a title routerLink="guide/test-websocket"...
 복사 - ytest/test-mqtt에서 복사
 
+# ========================================== tool
+--ng g m ytool --routing
+ng g c ytool/localstorage
+  - { path: 'localstorage',component: LocalstorageComponent }
+  - <a title routerLink="tool/localstorage"...
+복사 - ytest/test-mqtt에서 복사
 
 
 

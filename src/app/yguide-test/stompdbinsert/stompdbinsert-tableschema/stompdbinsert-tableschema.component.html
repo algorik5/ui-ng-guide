@@ -1,8 +1,11 @@
-<nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
-  <label nz-radio-button nzValue="createtable">createtable</label>
-  <label nz-radio-button nzValue="testinsert">testinsert</label>
-  <label nz-radio-button nzValue="testselect">testselect</label>
-</nz-radio-group>
+<nz-input-group nzCompact style="margin-bottom: 8px;">
+  &nbsp;<button nz-button (click)="createtable()">createtable</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testinsert()">testinsert</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testselect()">testselect</button>
+  &nbsp;<input type="text" style="width: 200px" nz-input [(ngModel)]="stompmsg" [disabled]="true"/>
+  &nbsp;<input type="text" style="width: 200px" nz-input [(ngModel)]="stompdbtable" />
+  &nbsp;<button nz-button (click)="savelocalstorage()">savelocalstorage</button>
+</nz-input-group>
 
 <nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
   <thead>

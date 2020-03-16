@@ -26,6 +26,10 @@ export class DateUtil
     {
         return DateUtil.datePipe.transform(new Date(),"yyyy-MM-dd'T'HH:mm:ss");//elastic date format - yyyy/MM/dd
     }
+    static currentDateString2()
+    {
+        return DateUtil.datePipe.transform(new Date(),"yyyyMMddHHmmss");//elastic date format - yyyy/MM/dd
+    }
     static currentDateString_mmss()
     {
         return DateUtil.datePipe.transform(new Date(),"mm:ss");//elastic date format - yyyy/MM/dd

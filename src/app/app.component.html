@@ -10,6 +10,7 @@
       <li nz-menu-item (click)="setMenuType('guide-test')">guide-test</li>
       <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('test')">test</li>
+      <li nz-menu-item (click)="setMenuType('tool')">tool</li>
     </ul>
   </nz-header>
   <nz-layout>
@@ -23,6 +24,7 @@
       <ng-container *ngIf="menuType=='guide'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout"><span title><i nz-icon nzType="notification"></i>ui-layout</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout-input"><span title><i nz-icon nzType="notification"></i>ui-layout-input</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form"><span title><i nz-icon nzType="notification"></i>ui-form</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form-static"><span title><i nz-icon nzType="notification"></i>ui-form-static</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form-readonly"><span title><i nz-icon nzType="notification"></i>ui-form-readonly</span></a></li>
@@ -82,6 +84,12 @@
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/userdetail"><span title><i nz-icon nzType="laptop"></i>userdetail</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/userall"><span title><i nz-icon nzType="laptop"></i>userall</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test/profile"><span title><i nz-icon nzType="laptop"></i>profile</span></a></li>
+        </ul>
+      </ng-container>
+
+      <ng-container *ngIf="menuType=='tool'">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="tool/localstorage"><span title><i nz-icon nzType="laptop"></i>localstorage</span></a></li>
         </ul>
       </ng-container>
       

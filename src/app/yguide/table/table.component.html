@@ -1,7 +1,7 @@
 <nz-collapse>
   <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'">
     <nz-card>
-      1. html : nz-radio-group,nz-table 복사<br>
+      1. html : nz-input-group,nz-table 복사<br>
       2. ts : constructor뒤 복사<br>
       공통 : topic명 변경<br>
       주의 : providers: [FormService]<br>
@@ -19,10 +19,14 @@
 
 
 <h1>============================ table test</h1>
-<nz-radio-group style="margin-bottom: 8px;" [nzButtonStyle]="'solid'" [(ngModel)]="buttonStatus" (ngModelChange)="buttonStatusClick()">
-  <label nz-radio-button nzValue="start">start</label>
-  <label nz-radio-button nzValue="end">end</label>
-</nz-radio-group>
+<nz-input-group nzCompact style="margin-bottom: 8px;">
+  &nbsp;<button nz-button (click)="createtable()">createtable</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testinsert()">testinsert</button>
+  &nbsp;<button nz-button nzType="dashed" (click)="testselect()">testselect</button>
+  &nbsp;<input type="text" style="width: 120px" nz-input [(ngModel)]="inputValue" />
+  &nbsp;<button nz-button (click)="savelocalstorage()">savelocalstorage</button>
+</nz-input-group>
+
 
 <nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
   <thead>
