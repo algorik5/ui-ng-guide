@@ -13,21 +13,39 @@
       </nz-col>
       <nz-col [nzSpan]="18"> 
         <nz-row [nzGutter]="16">
+
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-card> <app-dashboard-view></app-dashboard-view> </nz-card> 
+                    <nz-collapse-panel [nzHeader]="'server'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dashboard-view-server></app-dashboard-view-server> </nz-card> 
                     </nz-collapse-panel> 
                 </nz-collapse>
             </nz-col>
-            <!-- <nz-col [nzSpan]="24"> 
+
+            <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'detail'" [nzActive]="'true'" [nzDisabled]="'false'">
-                        <nz-card> detail </nz-card> 
+                    <nz-collapse-panel [nzHeader]="'process'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dashboard-view-process></app-dashboard-view-process> </nz-card> 
                     </nz-collapse-panel> 
                 </nz-collapse>
-            </nz-col> -->
+            </nz-col>
 
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'app'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dashboard-view-app></app-dashboard-view-app> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'summary'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dashboard-view-summary></app-dashboard-view-summary> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            
         </nz-row>
       </nz-col>
     </nz-row>
