@@ -16,13 +16,8 @@
                         <!-- test senario 작성 -->
                         <nz-form-item>
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="test_type">test</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="test_type">
-                                <nz-radio-group formControlName="test_type" [nzButtonStyle]="'solid'" (ngModelChange)="test_type_click()">
-                                    <label nz-radio-button nzValue="pub">pub</label><br>
-                                    <label nz-radio-button nzValue="sub">sub</label>
-                                </nz-radio-group>
-
-                            </nz-form-control>
+                            <button nz-button nzType="dashed" (click)="test_pub()">pub</button>
+                            <button nz-button nzType="dashed" (click)="test_sub()">sub</button>
                         </nz-form-item>
 
                         <!-- 추가 - test data view -->

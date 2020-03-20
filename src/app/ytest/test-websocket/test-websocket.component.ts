@@ -53,39 +53,65 @@ export class TestWebsocketComponent implements OnInit {
     this.form.addControlValue("test_data","-");
   }
 
-  ws_url = "ws://localhost:8080";
+  ws_url = "ws://localhost:14223";
   client:ResClient;
-  test_type_click()
+  createClient()
   {
     if(this.client == null)
     {
       this.logging.debug("#################### ResClient start # "+ this.ws_url);
       this.client = new ResClient(this.ws_url);
       this.logging.debug("#################### ResClient client # "+ this.client.getHostUrl());
-      // this.client.on((event,handler)=>{
+      // this.client.on((event,handler)=>{//connect,disconnect,error
       //   this.logging.debug("\t === on # ");//+event +":"+ handler);
       // });
     }
-
-    this.test_result = [];
-    this.test_stat = "";
-
-    let test_type = this.form.getControlValue("test_type");
-
-    let test_data = this.test_data_init(test_type);
-    this.form.setControlValue("test_data",test_data);
-
-    this.test_stat_title = test_type;
-    if(test_type == "pub") {
-      this.client.get("test.1").then(model => {
-        this.logging.debug("\t === MSG # "+JSON.stringify(model));
-      }).catch(err => {
-        this.logging.debug("### error # "+JSON.stringify(err));
-      });
-    }
-    else if(test_type == "sub") { 
-    }
   }
+
+  test_pub()
+  {
+    // this.createClient();
+    // this.client.get("test.1").then(model => {
+    //   this.logging.debug("=== (get) MSG # "+JSON.stringify(model));
+    //   model.on("change",()=>{
+    //     this.logging.debug("\t === (change) MSG # "+JSON.stringify(model));
+    //   });
+    // }).catch(err => {
+    //   this.logging.debug("### error # "+JSON.stringify(err));
+    // });
+  }
+  test_sub() 
+  {
+    this.createClient();
+    this.client.get("test.1").then(model => {
+      this.logging.debug("=== (get) MSG # "+JSON.stringify(model));
+      model.on("change",()=>{
+        this.logging.debug("\t === (change) MSG # "+JSON.stringify(model));
+      });
+    }).catch(err => {
+      this.logging.debug("### error # "+JSON.stringify(err));
+    });
+  }
+
+  //   this.test_result = [];
+  //   this.test_stat = "";
+
+  //   let test_type = this.form.getControlValue("test_type");
+
+  //   let test_data = this.test_data_init(test_type);
+  //   this.form.setControlValue("test_data",test_data);
+
+  //   this.test_stat_title = test_type;
+  //   if(test_type == "pub") {
+  //     this.client.get("test.1").then(model => {
+  //       this.logging.debug("\t === MSG # "+JSON.stringify(model));
+  //     }).catch(err => {
+  //       this.logging.debug("### error # "+JSON.stringify(err));
+  //     });
+  //   }
+  //   else if(test_type == "sub") { 
+  //   }
+  // }
   
   ////////////////////// test_data
   test_data_init(test_type)
