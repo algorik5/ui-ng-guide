@@ -9,6 +9,7 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AajsonpathService } from 'src/app/aservice/aajsonpath.service';
 import { ObjectUtil } from 'src/app/autil/ObjectUtil';
 import { AajsonsearchService } from 'src/app/aservice/aajsonsearch.service';
+import { MSGUtil } from 'src/app/autil/MSGUtil';
 
 @Component({
   selector: 'app-stompchart-form',
@@ -104,7 +105,8 @@ export class StompchartFormComponent implements OnInit {
   //msgtypes = [];
   getMsgtypes() { return this.msgtypemap.valuesToArray(); }//{name:..,color:}
   msgtypesadd(data) {
-      let msgtype = data["_type_"];
+      let msgtype = data["_type_"]; msgtype = MSGUtil.getTypeCompact(msgtype);
+
       this.msgtypecountmap.addCount(msgtype,1);
       if(this.msgtypemap.has(msgtype)==false) 
       {
@@ -187,10 +189,11 @@ export class StompchartFormComponent implements OnInit {
   }
   chartdataPub(res) //legend,x,y가 클릭되면 pub한다 
   {
+    let msgtype = res["_type_"];//msgtype = MSGUtil.getTypeCompact(msgtype);
     if(this.changeSelectAll == false) return;
-    if(res["_type_"] == null) return;
-    if(res["_type_"] != this.curMsgtype) return;
-    this.logging.debug("=== chartdataPub # " +"#changeSelectAll="+this.changeSelectAll+"#curMsgtype="+this.curMsgtype+"#_type_="+res["_type_"]);
+    if(msgtype == null) return;
+    if(msgtype != this.curMsgtype) return;
+    this.logging.debug("=== chartdataPub # " +"#changeSelectAll="+this.changeSelectAll+"#curMsgtype="+this.curMsgtype+"#_type_="+msgtype);
     let legenddatas = this.jsonsearch.search(res,this.curLegend["name"]);
     let xdatas = this.jsonsearch.search(res,this.curX["name"]);
     let ydatas = this.jsonsearch.search(res,this.curY["name"]);

@@ -13,6 +13,7 @@ import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
 import { ArrayUtil } from 'src/app/autil/ArrayUtil';
 import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
+import { MSGUtil } from 'src/app/autil/MSGUtil';
 
 @Component({
   selector: 'app-stompdbinsert-form',
@@ -113,7 +114,7 @@ export class StompdbinsertFormComponent implements OnInit {
   //msgtypes = [];
   getMsgtypes() { return this.msgtypemap.valuesToArray(); }//{name:..,color:}
   msgtypesadd(data) {
-      let msgtype = data["_type_"];
+      let msgtype = data["_type_"]; msgtype = MSGUtil.getTypeCompact(msgtype);
       this.msgtypecountmap.addCount(msgtype,1);
       if(this.msgtypemap.has(msgtype)==false) 
       {
@@ -159,10 +160,11 @@ export class StompdbinsertFormComponent implements OnInit {
   }
   dbbtable_insert(res)
   {
-    if(res["_type_"] == null) return;
+    let msgtype = res["_type_"]; //msgtype = MSGUtil.getTypeCompact(msgtype);
+    if(msgtype == null) return;
     let table = this.curDbtable["name"];
-    if(res["_type_"] != table) return;
-    this.logging.debug("=== dbbtable_insert # " +"#table="+this.curDbtable["name"]+"#_type_="+res["_type_"]);
+    if(msgtype != table) return;
+    this.logging.debug("=== dbbtable_insert # " +"#table="+this.curDbtable["name"]+"#_type_="+msgtype);
 
     let columntypes = this.sqllocal.getColumns(table);
     let sql = QueryUtil.insert_sql(table,columntypes);
@@ -191,9 +193,10 @@ export class StompdbinsertFormComponent implements OnInit {
   tableschema_apply(msgtype,msgdata) 
   {
     let flatdatas = this.flatdata.objectToFlat(msgdata);//[{type:...,host:...}]
-    let table = flatdatas[0]["_type_"];
+    let table = flatdatas[0]["_type_"]; table = MSGUtil.getTypeCompact(table);
     let tableschemas = Object.keys(flatdatas[0]).map(key=>{
       let value = flatdatas[0][key];
+      if(key=="_type_") value = MSGUtil.getTypeCompact(value);
       return {column:key,type:"string",pk:"N",samplevalue:value,checked:true};
     });
 

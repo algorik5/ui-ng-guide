@@ -60,13 +60,13 @@ export class AaflatdataService {
   //////////////////////////////////// test
   test_data()
   {
-    let data = {"_type_":"PROCESS_DATA",
+    let data = {"_type_":"xx.xx.xx.PROCESS_DATA",
       "datas":[
         {"process":"process-0","host":"host-0","time":"2020-03-15 13:22:30","cpu":0,"memory":0},
         {"process":"process-1","host":"host-1","time":"2020-03-15 13:22:30","cpu":2,"memory":3},
         {"process":"process-2","host":"host-2","time":"2020-03-15 13:22:30","cpu":4,"memory":6}]};
 
-    let data2 = {"_type_":"GAP_DATA",
+    let data2 = {"_type_":"xx.x.xx.xxx.GAP_DATA",
       "GAP":{"SRT":1,"END":2,"ERR":3},
       "TOTAL":{"SRT":1,"END":11,"ERR":21},
       "app":"app-1","ver":"v-1","count":731,"time":"2020-03-15 13:22:30"};

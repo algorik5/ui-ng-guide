@@ -15,6 +15,7 @@ import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
 import { AatableService } from 'src/app/aservice/aatable.service';
 import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
+import { MSGUtil } from 'src/app/autil/MSGUtil';
 
 @Component({
   selector: 'app-stomp-msgtodb-form',
@@ -153,14 +154,14 @@ export class StompMsgtodbFormComponent implements OnInit {
   }
   msgtables_checked_pass(res) 
   {
-    let msg = res["_type_"];
+    let msgtype = res["_type_"]; msgtype = MSGUtil.getTypeCompact(msgtype);
 
     /////////////////////////////// stats로 전달
-    this.pubsub.pub("stomp-msgtodb.stats.msg",msg);
+    this.pubsub.pub("stomp-msgtodb.stats.msg",msgtype);
 
     let flatdatas = this.flatdata.objectToFlat(res);//[{type:...,host:...}]
     this.countadd("insert",flatdatas.length);
-    let msgtables = this.msgtables_checked.filter(k=>k["msg"]==msg);
+    let msgtables = this.msgtables_checked.filter(k=>k["msg"]==msgtype);
     msgtables.forEach(k=>{
       let table = k["table"];
       let columntypes = this.sqllocal.getColumns(table);

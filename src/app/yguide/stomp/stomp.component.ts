@@ -6,6 +6,7 @@ import { AastompService } from 'src/app/aservice/aastomp.service';
 import { AacountmapService } from 'src/app/aservice/aacountmap.service';
 import { AamapService } from 'src/app/aservice/aamap.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { MSGUtil } from 'src/app/autil/MSGUtil';
 
 @Component({
   selector: 'app-stomp',
@@ -104,7 +105,8 @@ export class StompComponent implements OnInit {
       this.test_list_add("app]"+ JSON.stringify(data));
 
       //this.statmapadd("cpu",2); this.statmapadd("memory",3); this.statmapadd("disk",4);
-      if(data["_type_"]=="GAP_DATA") { 
+      let msgtype = data["_type_"]; msgtype = MSGUtil.getTypeCompact(msgtype);
+      if(msgtype.includes("GAP_DATA")) { 
         this.statmapadd("GAP.SRT",data["GAP"]["SRT"]);
         this.statmapadd("GAP.END",data["GAP"]["END"]);
         this.statmapadd("GAP.ERR",data["GAP"]["ERR"]);
