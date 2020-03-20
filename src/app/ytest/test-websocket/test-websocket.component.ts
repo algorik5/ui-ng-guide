@@ -50,7 +50,7 @@ export class TestWebsocketComponent implements OnInit {
   test_init()
   {
     this.form.addControlValue("test_type","-");
-    this.form.addControlValue("test_data","-");
+    this.form.addControlValue("test_recv","-");
   }
 
   ws_url = "ws://localhost:14223";
@@ -83,35 +83,21 @@ export class TestWebsocketComponent implements OnInit {
   test_sub() 
   {
     this.createClient();
-    this.client.get("test.1").then(model => {
-      this.logging.debug("=== (get) MSG # "+JSON.stringify(model));
-      model.on("change",()=>{
-        this.logging.debug("\t === (change) MSG # "+JSON.stringify(model));
+    let no = 0;
+    this.client.get("test.1").then(status => {
+      this.logging.debug("=== (get) MSG # "+JSON.stringify(status));//JSON.stringify(model));
+      this.form.setControlValue("test_recv",JSON.stringify(status));
+      status.on("mytype",(data)=>{
+        this.logging.debug("\t === (mytype) MSG # "+JSON.stringify(data));//;
+        this.form.setControlValue("test_recv",JSON.stringify(data));
+        this.test_stat_title = "recv";
+        no++; this.test_stat = ""+ no;
       });
     }).catch(err => {
       this.logging.debug("### error # "+JSON.stringify(err));
     });
   }
 
-  //   this.test_result = [];
-  //   this.test_stat = "";
-
-  //   let test_type = this.form.getControlValue("test_type");
-
-  //   let test_data = this.test_data_init(test_type);
-  //   this.form.setControlValue("test_data",test_data);
-
-  //   this.test_stat_title = test_type;
-  //   if(test_type == "pub") {
-  //     this.client.get("test.1").then(model => {
-  //       this.logging.debug("\t === MSG # "+JSON.stringify(model));
-  //     }).catch(err => {
-  //       this.logging.debug("### error # "+JSON.stringify(err));
-  //     });
-  //   }
-  //   else if(test_type == "sub") { 
-  //   }
-  // }
   
   ////////////////////// test_data
   test_data_init(test_type)

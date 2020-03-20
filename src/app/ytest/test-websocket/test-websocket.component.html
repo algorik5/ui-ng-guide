@@ -16,15 +16,15 @@
                         <!-- test senario 작성 -->
                         <nz-form-item>
                             <nz-form-label [nzSpan]="7" nzRequired nzFor="test_type">test</nz-form-label>
-                            <button nz-button nzType="dashed" (click)="test_pub()">pub</button>
+                            <!-- <button nz-button nzType="dashed" (click)="test_pub()">pub</button> -->
                             <button nz-button nzType="dashed" (click)="test_sub()">sub</button>
                         </nz-form-item>
 
                         <!-- 추가 - test data view -->
                         <nz-form-item>
-                            <nz-form-label [nzSpan]="24" nzRequired nzFor="test_data">test_data</nz-form-label>
-                            <nz-form-control [nzSpan]="24" nzErrorTip="test_data">
-                                <textarea nz-input formControlName="test_data" rows="5" placeholder="test_data"></textarea>
+                            <nz-form-label [nzSpan]="24" nzRequired nzFor="test_recv">test_recv</nz-form-label>
+                            <nz-form-control [nzSpan]="24" nzErrorTip="test_recv">
+                                <textarea nz-input formControlName="test_recv" rows="5" placeholder="test_recv"></textarea>
                             </nz-form-control>
                         </nz-form-item>
 
