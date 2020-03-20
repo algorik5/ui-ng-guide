@@ -1,3 +1,32 @@
+host cpu	bar
+host memory	bar
+
+process cpu	bar
+process memory	bar
+
+queue		bar/grid ?	top10
+elapse		
+
+
+
+*** echarts샘플 - https://gitlab.com/kwak70/angular/-/blob/master/src/app/ui-chart-echarts/ui-chart-echarts.component.ts
+
+
+
+table count 이상함 - select가 아닌가 ?
+==== zorro v9
+
+
+
+
+
+
+
+
+
+
+
+
 = 대시보드
 	last 테이블 - host pk,process pk
 	> host cpu 대시보드 - host갯수/max
