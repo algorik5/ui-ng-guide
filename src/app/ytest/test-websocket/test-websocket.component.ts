@@ -4,7 +4,9 @@ import { AaformService } from 'src/app/aservice/aaform.service';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 
 import ResClient from 'resclient';
-
+/**
+ 사용법은 a_resgate수정.md 참고
+*/
 @Component({
   selector: 'app-test-websocket',
   templateUrl: './test-websocket.component.html',
