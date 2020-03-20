@@ -57,13 +57,5 @@ export class ChartComponent implements OnInit {
     this.pubsub.pub(this.topicprefix+".data",chartdata);//this.chart.addData(chartdata);
   }
 
-  
-  // /////////////////////////////// echarts
-  // linechartoptions = {
-  //   title: { text: 'cpu trend'},
-  //   xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-  //   yAxis: { type: 'value' },
-  //   series: [{ data: [820, 932, 901, 934, 1290, 1330, 1320], type: 'line' }]
-  // };
  
 }

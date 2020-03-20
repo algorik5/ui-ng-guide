@@ -26,11 +26,11 @@
 
 
 # ========================================== guide
-ng g m yguide/layout-input --routing
-ng g c yguide/layout-input
+ng g m yguide/chart-bar --routing
+ng g c yguide/chart-bar
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
-  - { path: 'layout-input',component: LayoutInputComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/layout-input/layout-input.module').then(m => m.LayoutInputModule)},
+  - { path: 'chart-bar',component: ChartBarComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/chart-bar/chart-bar.module').then(m => m.ChartBarModule)},
   - <a title routerLink="guide/layout-input"...
 복사 - guide/dblocal에서 복사
 

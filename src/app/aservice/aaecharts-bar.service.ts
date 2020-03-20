@@ -15,32 +15,30 @@ export class AaechartsBarService {
   constructor(private logging:AaloggingService) { }
 
 
-  option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    series: [{
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar',
-        showBackground: true,
-        backgroundStyle: {
-            color: 'rgba(220, 220, 220, 0.8)'
-        }
-    }]
-};
+
+
+  ///////////////////// kwak-bar
+  testbarNames = ['host-1', 'host-2', 'host-3'];
+  testbarValues = [1,2,3];
+  // barData = [{key:"Mon",value:5},{key:"Tue",value:20}];
+  chartoptions:EChartOption = {
+    legend: { data:[] }//['server'] }
+    ,series: []//[{ name: 'server', type: 'bar', data: this.testbarValues }]//this.barData
+    ,xAxis: { data:[]}// data: this.testbarNames }
+    ,yAxis: {}//[{ type: 'value' }]
+   };
 
 
 
   /////////////////////////// ngx-charts
-  chartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
-    //title: { text: 'test chart' },
-    tooltip: { trigger: 'axis' },
-    xAxis: { type: 'category' },//line(time),bar(category)
-    yAxis: { type: 'value',},// == line
-    legend: { data:[] },
-    series: [],//[{ name: 'Mocking Data', type: 'line', data: this.data }]
-  };
+  // chartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
+  //   //title: { text: 'test chart' },
+  //   tooltip: { trigger: 'axis' },
+  //   xAxis: { type: 'category' },//line(time),bar(category)
+  //   yAxis: { type: 'value',},// == line
+  //   legend: { data:[] },
+  //   series: [],//[{ name: 'Mocking Data', type: 'line', data: this.data }]
+  // };
   getChartOption() { return this.chartoptions; }
 
   chartinstance: ECharts;
@@ -75,11 +73,27 @@ export class AaechartsBarService {
     if(series == null)
     {
       this.chartoptions.legend.data.push(legend);
-      let nextindex = this.chartoptions.series.push({type:"line",name:legend,data:[]});
+      let nextindex = this.chartoptions.series.push({type:"bar",name:legend,data:[]});
       series = this.chartoptions.series[nextindex-1];
     }
-    if(series["data"].length > this.maxrow) series["data"].shift();
-    series["data"].push([x,y]);
+
+    ///////////////////// kwak-bar - line 주석
+    // if(series["data"].length > this.maxrow) series["data"].shift();
+    // series["data"].push([x,y]);
+
+    ///////////////////// kwak-bar
+    // let xAxis = this.chartoptions.xAxis["data"].find(o=>o==x);
+    let index = this.chartoptions.xAxis["data"].indexOf(x);
+    if(index<0)//xAxis == null)
+    {
+      this.chartoptions.xAxis["data"].push(x);
+      series["data"].push(y);
+    }
+    else
+    {
+      series["data"][index] = y;//해당 위치의 값을 변경
+    }
+
     if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
     this.chartinstance.setOption(this.chartoptions);
   }
