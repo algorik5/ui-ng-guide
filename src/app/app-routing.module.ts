@@ -37,6 +37,8 @@ const routes: Routes = [
   { path: 'tool',loadChildren: () => import('./ytool/stompdbinsert/stompdbinsert.module').then(m => m.StompdbinsertModule)},
   { path: 'tool',loadChildren: () => import('./ytool/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
 
+  { path: 'hymon',loadChildren: () => import('./hymon/dashboard/dashboard.module').then(m => m.DashboardModule)},
+  
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

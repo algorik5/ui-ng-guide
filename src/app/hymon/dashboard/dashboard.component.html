@@ -1,0 +1,34 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : 전체복사<br>
+    2. nz-card 변경<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="6"> 
+          <nz-card> <h6>search</h6> <app-dashboard-form></app-dashboard-form> </nz-card> 
+      </nz-col>
+      <nz-col [nzSpan]="18"> 
+        <nz-row [nzGutter]="16">
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'result'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> <app-dashboard-view></app-dashboard-view> </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+            <!-- <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'detail'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-card> detail </nz-card> 
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col> -->
+
+        </nz-row>
+      </nz-col>
+    </nz-row>
+</div>

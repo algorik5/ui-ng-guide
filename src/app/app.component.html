@@ -11,6 +11,7 @@
       <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('test')">test</li>
       <li nz-menu-item (click)="setMenuType('tool')">tool</li>
+      <li nz-menu-item (click)="setMenuType('hymon')">hymon</li>
     </ul>
   </nz-header>
   <nz-layout>
@@ -96,6 +97,13 @@
         </ul>
       </ng-container>
       
+
+      <ng-container *ngIf="menuType=='hymon'">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="hymon/dashboard"><span title><i nz-icon nzType="laptop"></i>dashboard</span></a></li>
+        </ul>
+      </ng-container>
+
     </nz-sider>
 
     <nz-layout style="padding:0 24px 24px">

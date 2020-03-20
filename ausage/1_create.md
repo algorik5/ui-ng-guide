@@ -1,23 +1,22 @@
 # xxx generate
-- ng g m yguide-test/dblocalmanager --routing
-- ng g c yguide-test/dblocalmanager
-- ---ng g s yguide-test/dblocalmanager/dblocalmanager
-- ng g c yguide-test/dblocalmanager/dblocalmanager-form
-- ng g c yguide-test/dblocalmanager/dblocalmanager-tableschema
-- ng g c yguide-test/dblocalmanager/dblocalmanager-tabledata
+- ng g m hymon/dashboard --routing
+- ng g c hymon/dashboard
+- ---ng g s hymon/dashboard/dashboard
+- ng g c hymon/dashboard/dashboard-form
+- ng g c hymon/dashboard/dashboard-view
 # 현재 module 수정
 - xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
 - xxx-routing
-  - { path: 'dblocalmanager',component: DblocalmanagerComponent }
+  - { path: 'dashboard',component: DashboardComponent }
 # app module 수정
 - app-routing
-  - { path: 'guide-test',loadChildren: () => import('./yguide-test/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
+  - { path: 'hymon',loadChildren: () => import('./hymon/dashboard/dashboard.module').then(m => m.DashboardModule)},
 - app.compoent
-  - <a title routerLink="guide-test/dblocalmanager"...
+  - <a title routerLink="hymon/dashboard"...
 # 화면 개발
 - (layout) ....compoenent.html <<< yguide/layout복사 >>>
-  -	nz-row/col 변경 >>> <app-dblocalmanager-form></app-dblocalmanager-form> ...
+  -	nz-row/col 변경 >>> <app-dashboard-form></app-dashboard-form> ...
 - 각 화면 : yguide참고
 - *** topic변경-myname
 # *** service 설정 - 설정하지 않으면 singleton
