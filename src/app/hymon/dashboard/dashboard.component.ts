@@ -27,18 +27,8 @@ export class DashboardComponent implements OnInit {
       this.server_cpu_max(count);
       this.server_cpu_top(count);
       this.server_cpu_trend(count);
-
-      // let curdate = new Date(); let date = DateUtil.addDays(curdate,count);
-      // for(let i=1;i<5;i++)
-      // {
-      //   let legend = "host-"+i; let x = date; let y = MathUtil.random(0,10);
-      //   let linedata = {legend:legend,x:x,y:y};
-      //   this.pubsub.pub("hymon.dashboard-server-cpu-trend.data",linedata);
-
-      //   y = MathUtil.random(0,10);
-      //   let linedata2 = {legend:legend,x:x,y:y};
-      //   this.pubsub.pub("hymon.dashboard-server-memory-trend.data",linedata2);
-      // }
+      this.server_cpu_table(count);
+  
     });
   }
   server_cpu_max(count)
@@ -93,5 +83,23 @@ export class DashboardComponent implements OnInit {
     // let bardata = {legend:"cpu-top",x:rs["host"],y:rs["cpu"]}
     // this.pubsub.pub("hymon.dashboard-server-cpu-top.data",bardata);
     
+  }
+
+  server_cpu_table(count)
+  {
+    let datas = []; let datas2 = [];
+    let curdate = new Date(); let date = DateUtil.addDays(curdate,count);
+    for(let i=1;i<5;i++)
+    {
+      let value = MathUtil.random(0,10);
+      let data = {host:"host-x",date:date,cpu:value};
+      datas = datas.concat(data);
+
+      value = MathUtil.random(0,10);
+      let data2 = {host1:"host-x",date:date,memory:value*2};
+      datas2 = datas2.concat(data2);
+    }
+    this.pubsub.pub("hymon.dashboard-server-cpu-table.datas",datas);//this.table.addDatas(data);
+    this.pubsub.pub("hymon.dashboard-server-memory-table.datas",datas2);//this.table.addDatas(data);
   }
 }

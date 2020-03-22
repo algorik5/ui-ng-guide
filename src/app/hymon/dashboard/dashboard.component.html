@@ -55,6 +55,19 @@
 
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'server table'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-row [nzGutter]="16">
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-table></app-dashboard-server-cpu-table> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-memory-table></app-dashboard-server-memory-table> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-table></app-dashboard-server-cpu-table> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-table></app-dashboard-server-cpu-table> </nz-card></nz-col>
+                        </nz-row>
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'process'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
                             <!-- <nz-col [nzSpan]="12"><nz-card> <app-dashboard-server-cpu-top></app-dashboard-server-cpu-top> </nz-card></nz-col>

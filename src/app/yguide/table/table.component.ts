@@ -57,6 +57,11 @@ export class TableComponent implements OnInit {
     ////////////////////////////////////////////////////////// testdata  
     this.test_datas();
   }
+
+
+
+
+  
   /////////////////////////////////////////////////////////// button
   buttonStatus = "-";
   buttonStatusClick()
