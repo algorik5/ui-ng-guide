@@ -27,8 +27,9 @@ export class ChartComponent implements OnInit {
       this.chart.addDatas(datas);
       this.debugjsondata_set(this.chart.getChartOption());
     });
+    // let no = 0;
     this.pubsub.sub(this.topicprefix+".data",data => {//{legend:-,x:-,y:-}
-      //this.chart.clearChart();
+    // no++; if(no==1) this.chart.clearChart();
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
       this.debugjsondata_set(this.chart.getChartOption());
     });

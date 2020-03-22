@@ -10,6 +10,7 @@ import { MathUtil } from 'src/app/autil/MathUtil';
   selector: 'app-dashboard-process-memory-top',
   templateUrl: './dashboard-process-memory-top.component.html',
   styleUrls: ['./dashboard-process-memory-top.component.less']
+  ,providers: [AaechartsService]
 })
 export class DashboardProcessMemoryTopComponent implements OnInit {
 

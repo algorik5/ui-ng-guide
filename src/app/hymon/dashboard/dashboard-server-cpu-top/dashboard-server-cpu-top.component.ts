@@ -11,6 +11,7 @@ import { MathUtil } from 'src/app/autil/MathUtil';
   selector: 'app-dashboard-server-cpu-top',
   templateUrl: './dashboard-server-cpu-top.component.html',
   styleUrls: ['./dashboard-server-cpu-top.component.less']
+  ,providers: [AaechartsService]
 })
 export class DashboardServerCpuTopComponent implements OnInit {
 
@@ -25,7 +26,9 @@ export class DashboardServerCpuTopComponent implements OnInit {
       this.chart.clearChart();
       this.chart.addDatas(datas);
     });
+    let no = 0;
     this.pubsub.sub(this.topicprefix+".data",data => {//{legend:-,x:-,y:-}
+      no++; if(no==1) this.chart.clearChart();
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
     });
 

@@ -16,7 +16,7 @@
 
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'max'" [nzActive]="'true'" [nzDisabled]="'false'">
+                    <nz-collapse-panel [nzHeader]="'server max'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
                             <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-max></app-dashboard-server-cpu-max> </nz-card></nz-col>
                             <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-memory-max></app-dashboard-server-memory-max> </nz-card></nz-col>
@@ -29,12 +29,25 @@
 
             <nz-col [nzSpan]="24"> 
                 <nz-collapse> 
-                    <nz-collapse-panel [nzHeader]="'server'" [nzActive]="'true'" [nzDisabled]="'false'">
+                    <nz-collapse-panel [nzHeader]="'server top'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
                             <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-top></app-dashboard-server-cpu-top> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-memory-top></app-dashboard-server-memory-top> </nz-card></nz-col>
                             <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-top></app-dashboard-server-cpu-top> </nz-card></nz-col>
                             <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-top></app-dashboard-server-cpu-top> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-top></app-dashboard-server-cpu-top> </nz-card></nz-col>
+                        </nz-row>
+                    </nz-collapse-panel> 
+                </nz-collapse>
+            </nz-col>
+
+            <nz-col [nzSpan]="24"> 
+                <nz-collapse> 
+                    <nz-collapse-panel [nzHeader]="'server trend'" [nzActive]="'true'" [nzDisabled]="'false'">
+                        <nz-row [nzGutter]="16">
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-trend></app-dashboard-server-cpu-trend> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-memory-trend></app-dashboard-server-memory-trend> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-trend></app-dashboard-server-cpu-trend> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-dashboard-server-cpu-trend></app-dashboard-server-cpu-trend> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>

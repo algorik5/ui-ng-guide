@@ -10,6 +10,7 @@ import { MathUtil } from 'src/app/autil/MathUtil';
   selector: 'app-dashboard-process-cpu-top',
   templateUrl: './dashboard-process-cpu-top.component.html',
   styleUrls: ['./dashboard-process-cpu-top.component.less']
+  ,providers: [AaechartsService]
 })
 export class DashboardProcessCpuTopComponent implements OnInit {
 

@@ -18,10 +18,14 @@ import { DashboardServerCpuTopComponent } from './dashboard-server-cpu-top/dashb
 import { DashboardServerMemoryTopComponent } from './dashboard-server-memory-top/dashboard-server-memory-top.component';
 import { DashboardProcessCpuTopComponent } from './dashboard-process-cpu-top/dashboard-process-cpu-top.component';
 import { DashboardProcessMemoryTopComponent } from './dashboard-process-memory-top/dashboard-process-memory-top.component';
+import { DashboardServerCpuTrendComponent } from './dashboard-server-cpu-trend.component';
+import { DashboardServerMemoryTrendComponent } from './dashboard-server-memory-trend.component';
+import { DashboardServerCpuTableComponent } from './dashboard-server-cpu-table.component';
+import { DashboardServerMemoryTableComponent } from './dashboard-server-memory-table.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardServerCpuMaxComponent, DashboardServerMemoryMaxComponent, DashboardProcessCpuMaxComponent, DashboardProcessMemoryMaxComponent, DashboardServerCpuTopComponent, DashboardServerMemoryTopComponent, DashboardProcessCpuTopComponent, DashboardProcessMemoryTopComponent],
+  declarations: [DashboardComponent, DashboardServerCpuMaxComponent, DashboardServerMemoryMaxComponent, DashboardProcessCpuMaxComponent, DashboardProcessMemoryMaxComponent, DashboardServerCpuTopComponent, DashboardServerMemoryTopComponent, DashboardProcessCpuTopComponent, DashboardProcessMemoryTopComponent, DashboardServerCpuTrendComponent, DashboardServerMemoryTrendComponent, DashboardServerCpuTableComponent, DashboardServerMemoryTableComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,

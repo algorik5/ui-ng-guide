@@ -51,11 +51,22 @@ export class AaechartsService {
     this.chartoptions.series = [];
     if(this.charttype == "bar") this.chartoptions.xAxis["data"] = [];
 
+    // this.clearChart_Line();
+    // this.clearChart_Bar();
+
     if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
     this.chartinstance.clear();
   }
-  clearChartData()
+  clearChart_Line()
   {
+    this.linechartoptions.legend.data = [];
+    this.linechartoptions.series = [];
+  }
+  clearChart_Bar()
+  {
+    this.barchartoptions.legend.data = [];
+    this.barchartoptions.series = [];
+    if(this.charttype == "bar") this.barchartoptions.xAxis["data"] = [];
   }
 
   maxrow = 10;
@@ -71,8 +82,7 @@ export class AaechartsService {
   addDataRows(datas) { datas.forEach(data=>this.addDataRow(data["legend"],data["x"],data["y"])) }
   addDataRow(legend,x,y)
   {
-    this.logging.debug("===chart addDataRow start "+"#charttype="+this.charttype+"#legend="+legend +"#x="+x +"#y="+y);
-    // this.logging.debug("===chart addDataRow 2 "+"#chartoptions="+this.chartoptions.series);
+    // this.logging.debug("===chart addDataRow start "+"#charttype="+this.charttype+"#legend="+legend +"#x="+x +"#y="+y);
     //if(x instanceof Date)
     let series = this.chartoptions.series.find(o=>o["name"]==legend);
     if(series == null)
@@ -80,10 +90,8 @@ export class AaechartsService {
       this.chartoptions.legend.data.push(legend);
       let nextindex = this.chartoptions.series.push({type:this.charttype,name:legend,data:[]});//type:"line" 
       series = this.chartoptions.series[nextindex-1];
-      // this.logging.debug("===chartnextindex="+nextindex +":"+ series);
     }
-    // if(series["data"].length > this.maxrow) series["data"].shift();
-    // series["data"].push([x,y]);
+
     if(this.charttype == "bar") this.addData_Bar(series,x,y)
     else this.addData_Line(series,x,y);
 
