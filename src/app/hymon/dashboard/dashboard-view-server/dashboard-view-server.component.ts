@@ -6,7 +6,6 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
-import { AaechartsBarService } from 'src/app/aservice/aaecharts-bar.service';
 
 @Component({
   selector: 'app-dashboard-view-server',
@@ -15,7 +14,7 @@ import { AaechartsBarService } from 'src/app/aservice/aaecharts-bar.service';
 })
 export class DashboardViewServerComponent implements OnInit {
 
-  constructor(private chart:AaechartsBarService,private pubsub:AapubsubService,private logging:AaloggingService) { }
+  constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
   topicprefix = "hymon.dashboard-view-server";//this.topicprefix+".datas"
 
@@ -39,6 +38,9 @@ export class DashboardViewServerComponent implements OnInit {
 
   chartInit()
   {
+    ////////////////////////////////////////////////////////// 필수 - ngInit에서 initChart를 호출해야함
+    this.chart.initChart("bar");
+
     ////////////////////////////////////////////////////////// testdata  
     // this.test_datas();
   }

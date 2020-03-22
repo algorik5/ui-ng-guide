@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
   { path: 'guide',loadChildren: () => import('./yguide/table/table.module').then(m => m.TableModule)},
   { path: 'guide',loadChildren: () => import('./yguide/chart/chart.module').then(m => m.ChartModule)},
-  { path: 'guide',loadChildren: () => import('./yguide/chart-bar/chart-bar.module').then(m => m.ChartBarModule)},
   { path: 'guide',loadChildren: () => import('./yguide/editor/editor.module').then(m => m.EditorModule)},
   { path: 'guide',loadChildren: () => import('./yguide/treetable/treetable.module').then(m => m.TreetableModule)},
   { path: 'guide',loadChildren: () => import('./yguide/treetable-fromjson/treetable-fromjson.module').then(m => m.TreetableFromjsonModule)},

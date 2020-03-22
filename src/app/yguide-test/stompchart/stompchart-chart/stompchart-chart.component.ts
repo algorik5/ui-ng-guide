@@ -40,6 +40,9 @@ export class StompchartChartComponent implements OnInit {
 
   chartInit()
   {
+    ////////////////////////////////////////////////////////// 필수 - ngInit에서 initChart를 호출해야함
+    this.chart.initChart("line");
+
     ////////////////////////////////////////////////////////// testdata  
     // this.test_datas();
   }
