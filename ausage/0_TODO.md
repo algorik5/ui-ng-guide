@@ -1,17 +1,21 @@
-host cpu	bar
-host memory	bar
+host cpu-max				stat
+host memory-max				stat
 
-process cpu	bar
-process memory	bar
+host cpu-top10				bar
+host memory-top10			bar
+
+process cpu-top10			bar
+process memory-top10		bar
 
 queue		bar/grid ?	top10
 elapse		
 
+xxx		line ?
+
+
 
 
 *** echarts샘플 - https://gitlab.com/kwak70/angular/-/blob/master/src/app/ui-chart-echarts/ui-chart-echarts.component.ts
-
-
 
 table count 이상함 - select가 아닌가 ?
 ==== zorro v9
