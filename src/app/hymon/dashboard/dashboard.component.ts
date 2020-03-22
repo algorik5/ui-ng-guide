@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
       let data2 = {host1:"host-x",date:date,memory:value*2};
       datas2 = datas2.concat(data2);
     }
-    this.pubsub.pub("hymon.dashboard-server-cpu-table.datas",datas);//this.table.addDatas(data);
+    this.pubsub.pub("hymon.dashboard-server-cpu-table.datas",datas);//this.table.addDatas(data); 
     this.pubsub.pub("hymon.dashboard-server-memory-table.datas",datas2);//this.table.addDatas(data);
   }
 }

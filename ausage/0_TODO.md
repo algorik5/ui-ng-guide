@@ -1,16 +1,24 @@
-host cpu-max				stat
-host memory-max				stat
+=============== dashboard
+(향후-수정) timer 위치
+(향후) bar막대color
+(향후-수정) inline여부
+table - editable
 
-host cpu-top10				bar
-host memory-top10			bar
 
-process cpu-top10			bar
-process memory-top10		bar
+trend제목
 
-queue		bar/grid ?	top10
-elapse		
+---stat
+---trend - 
+---table - summary
+small chart
+spark line
 
-xxx		line ?
+=========== guide/dashboard
+	guide/stat ?
+
+
+
+
 
 
 
