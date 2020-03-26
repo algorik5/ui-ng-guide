@@ -28,7 +28,7 @@
 # ========================================== guide
 ng g m yguide/chart-bar --routing
 ng g c yguide/chart-bar
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
   - { path: 'chart-bar',component: ChartBarComponent }
   - { path: 'guide',loadChildren: () => import('./yguide/chart-bar/chart-bar.module').then(m => m.ChartBarModule)},
   - <a title routerLink="guide/layout-input"...

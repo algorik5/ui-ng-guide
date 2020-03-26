@@ -17,6 +17,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {TreeTableModule} from 'primeng/treetable';
 // import { ClipboardModule } from '@angular/cdk/clipboard'
+import {NgPipesModule} from 'ngx-pipes';
 
 registerLocaleData(en);
 
@@ -27,7 +28,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
+    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule
