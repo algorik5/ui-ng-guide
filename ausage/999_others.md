@@ -8,7 +8,7 @@
 # 참고
 - site search . algolia.zorro
 
-test1
+test2
 
 
 
