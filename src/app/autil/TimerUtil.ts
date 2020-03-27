@@ -10,4 +10,6 @@ export class TimerUtil
         });
         mytimer.unsubscribe();//timer stop
     }
+  
+  static test() {}
 }
