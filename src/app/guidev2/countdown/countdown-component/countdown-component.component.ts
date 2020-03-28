@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { timer } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { timer } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard-atop',
-  templateUrl: './dashboard-atop.component.html',
-  styleUrls: ['./dashboard-atop.component.less']
+  selector: 'app-countdown-component',
+  templateUrl: './countdown-component.component.html',
+  styleUrls: ['./countdown-component.component.less']
 })
-export class DashboardAtopComponent implements OnInit,OnDestroy {
+export class CountdownComponentComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  topicprefix = "hymon.dashboard";//this.topicprefix+".datas"
+  @Input() countdown = 10;
+
+  topicprefix = "guidev2.countdown";//this.topicprefix+".datas"
 
   ngOnInit() {
-    this.pubsub.pub("app.showmenu","fire");
     this.timerStart();
   }
   ngOnDestroy() { 
@@ -23,7 +24,6 @@ export class DashboardAtopComponent implements OnInit,OnDestroy {
   }
 
   interval = 10;
-  countdown = this.interval;
   stoped = false;
   mytimer;
   timerStart()
@@ -36,7 +36,8 @@ export class DashboardAtopComponent implements OnInit,OnDestroy {
       if(this.countdown < 0) 
       {
         this.logging.debug("======== mytimer # "+ timercount +"#stoped="+this.stoped +"#countdown="+this.countdown +"#interval="+this.interval);
-        this.refreshClick();
+        this.countdown = this.interval;
+        // this.refreshClick();
       }
     });
   }
@@ -47,22 +48,6 @@ export class DashboardAtopComponent implements OnInit,OnDestroy {
       this.mytimer.unsubscribe(); 
       this.mytimer = null; 
     }
-  }
-
-  changeClick(myinterval) { this.stoped = false; this.interval = myinterval; this.countdown = this.interval; }
-  stopClick() { this.stoped = true; this.countdown = this.interval; }
-  refreshClick() {
-    this.countdown = this.interval; 
-    this.pubsub.pub(this.topicprefix+".refresh","fire");
-  }
-
-  leftClick()
-  {
-    this.pubsub.pub(this.topicprefix+".showleft","fire");
-  }
-  rightClick()
-  {
-    this.pubsub.pub(this.topicprefix+".showright","fire");
   }
 
 }

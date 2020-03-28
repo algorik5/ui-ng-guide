@@ -11,10 +11,11 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
+import { CountdownComponentComponent } from './countdown-component/countdown-component.component';
 
 
 @NgModule({
-  declarations: [CountdownComponent],
+  declarations: [CountdownComponent, CountdownComponentComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
