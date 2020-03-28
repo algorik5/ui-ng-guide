@@ -4,7 +4,6 @@ simulator,cpu,mem...
 === guide-v2/acompo	countdown button
 
 
-table - editable
 
 
 
