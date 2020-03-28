@@ -1,4 +1,4 @@
-timer service ?
+
 simulator,cpu,mem...
 
 === guide-v2/acompo	countdown button

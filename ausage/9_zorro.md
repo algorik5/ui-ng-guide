@@ -12,7 +12,7 @@
 # 참고
 - badge : (주의)nzCount는 무조건 숫자
 - stat/countdown : countdown는 내부가 div로 되어 있어 button과 동일라인에 넣을수없음
-
+- drawer : (주의) 반드시 선언은 되어야한다+visible로 show <<< <xxx-drawer></xxx-drawer>
 
 
 <div style="background: rgb(190, 200, 200);padding: 26px 16px 16px;">

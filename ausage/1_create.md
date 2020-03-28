@@ -1,37 +1,37 @@
 # xxx generate
-- ng g m hymon/dashboard --routing
-- ng g c hymon/dashboard
-- ---ng g s hymon/dashboard/dashboard
-- ng g c hymon/dashboard/dashboard-server-cpu-max
+- ng g m guidev2/countdown --routing
+- ng g c guidev2/countdown
+- ---ng g s guidev2/countdown/countdown
+- ng g c guidev2/countdown/countdown-server-cpu-max
 # 현재 module 수정
 - xxx.module.ts	
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
 - xxx-routing
-  - { path: 'dashboard',component: DashboardComponent }
+  - { path: 'countdown',component: CountdownComponent }
 # app module 수정
 - app-routing
-  - { path: 'hymon',loadChildren: () => import('./hymon/dashboard/dashboard.module').then(m => m.DashboardModule)},
+  - { path: 'guidev2',loadChildren: () => import('./guidev2/countdown/countdown.module').then(m => m.CountdownModule)},
 - app.compoent
-  - <a title routerLink="hymon/dashboard"...
+  - <a title routerLink="guidev2/countdown"...
 # 화면 개발
-- (layout) ....compoenent.html <<< yguide/layout복사 >>>
-  -	nz-row/col 변경 >>> <app-dashboard-form></app-dashboard-form> ...
-- 각 화면 : yguide참고
+- (layout) ....compoenent.html <<< guidev2/layout복사 >>>
+  -	nz-row/col 변경 >>> <app-countdown-form></app-countdown-form> ...
+- 각 화면 : guidev2 참고
 - *** topic변경-myname
 # *** service 설정 - 설정하지 않으면 singleton
 - 결론 - singleton필요하지 않으면 반드시 compo에 설정해서 사용하자
 - (***주의) providers: [AatableService] <<< 또는 compo.ts에 설정 >>>
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
-
+guidev2/countdown
 # ========================================== guide
-ng g m yguide/chart-bar --routing
-ng g c yguide/chart-bar
+ng g m guidev2/countdown --routing
+ng g c guidev2/countdown
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-  - { path: 'chart-bar',component: ChartBarComponent }
-  - { path: 'guide',loadChildren: () => import('./yguide/chart-bar/chart-bar.module').then(m => m.ChartBarModule)},
-  - <a title routerLink="guide/layout-input"...
-복사 - guide/dblocal에서 복사
+  - { path: 'countdown',component: CountdownComponent }
+  - { path: 'guidev2',loadChildren: () => import('./guidev2/countdown/countdown.module').then(m => m.CountdownModule)},
+  - <a title routerLink="guidev2/countdown"...
+복사 - guidev2/dblocal에서 복사
 
 
 # ========================================== test (simple)
