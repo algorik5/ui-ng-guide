@@ -15,29 +15,32 @@ export class DashboardComponent implements OnInit {
 
   constructor(private sqllocal:AasqllocalService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  ngOnInit() {
-    this.timerInit();
-  }
+  topicprefix = "hymon.dashboard";//this.topicprefix+".datas"
 
-  timerInit()
-  {
-    let mytimer = timer(1000,10000);
-    mytimer.subscribe(count=>{
-      this.logging.debug("======== mytimer # "+ count);
-      this.server_cpu_max(count);
-      this.server_cpu_top(count);
-      this.server_cpu_trend(count);
-      this.server_cpu_table(count);
-  
+  ngOnInit() {
+    this.pubsub.sub(this.topicprefix+".refresh",datas=>{
+      this.refreshAll();
     });
   }
-  server_cpu_max(count)
+
+  testcount = 3;
+  refreshAll()
   {
-    let color = "black"; if(count%3==0) color = "red";
-    let stat = {title:"cpu-max",value:count,suffix:"host-x",color:color,icon:"like"}
+    this.testcount++; if(this.testcount>10) this.testcount = 3;
+    this.logging.debug("======== mytimer # "+ this.testcount);
+    this.server_cpu_max();
+    this.server_cpu_top();
+    this.server_cpu_trend();
+    this.server_cpu_table();
+  }
+
+  server_cpu_max()
+  {
+    let color = "black"; if(this.testcount%3==0) color = "red";
+    let stat = {title:"cpu-max",value:this.testcount,suffix:"host-x",color:color,icon:"like"}
     this.pubsub.pub("hymon.dashboard-server-cpu-max.data",stat);
 
-    let stat2 = {title:"memory-max",value:count*2,suffix:"host-xx",color:color,icon:"like"}
+    let stat2 = {title:"memory-max",value:this.testcount*2,suffix:"host-xx",color:color,icon:"like"}
     this.pubsub.pub("hymon.dashboard-server-memory-max.data",stat2);
 
     // let query = "SELECT * FROM server WHERE cpu = (SELECT max(cpu) FROM server) limit 1";//select max(cpu) from server
@@ -47,14 +50,14 @@ export class DashboardComponent implements OnInit {
     // this.pubsub.pub("hymon.dashboard-server-cpu-max.data",stat);
   }
 
-  server_cpu_top(count)
+  server_cpu_top()
   {
     for(let i=1;i<10;i++)
     {
-      let bardata = {legend:"cpu-top",x:"host-"+i,y:count*i}
+      let bardata = {legend:"cpu-top",x:"host-"+i,y:this.testcount*i}
       this.pubsub.pub("hymon.dashboard-server-cpu-top.data",bardata);
     
-      let bardata2 = {legend:"memory-top",x:"host-"+i,y:count*i*2}
+      let bardata2 = {legend:"memory-top",x:"host-"+i,y:this.testcount*i*2}
       this.pubsub.pub("hymon.dashboard-server-memory-top.data",bardata2);
     }
 
@@ -64,9 +67,9 @@ export class DashboardComponent implements OnInit {
     // this.pubsub.pub("hymon.dashboard-server-cpu-top.data",bardata);
   }
   
-  server_cpu_trend(count)
+  server_cpu_trend()
   {
-    let curdate = new Date(); let date = DateUtil.addDays(curdate,count);
+    let curdate = new Date(); let date = DateUtil.addDays(curdate,this.testcount);
     for(let i=1;i<5;i++)
     {
       let legend = "host-"+i; let x = date; let y = MathUtil.random(0,10);
@@ -85,10 +88,10 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  server_cpu_table(count)
+  server_cpu_table()
   {
     let datas = []; let datas2 = [];
-    let curdate = new Date(); let date = DateUtil.addDays(curdate,count);
+    let curdate = new Date(); let date = DateUtil.addDays(curdate,this.testcount);
     for(let i=1;i<5;i++)
     {
       let value = MathUtil.random(0,10);

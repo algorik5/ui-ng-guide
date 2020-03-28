@@ -2,8 +2,7 @@
 - ng g m hymon/dashboard --routing
 - ng g c hymon/dashboard
 - ---ng g s hymon/dashboard/dashboard
-- ng g c hymon/dashboard/dashboard-form
-- ng g c hymon/dashboard/dashboard-view
+- ng g c hymon/dashboard/dashboard-server-cpu-max
 # 현재 module 수정
 - xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,

@@ -15,7 +15,7 @@
     </ul>
   </nz-header>
   <nz-layout>
-    <nz-sider [nzWidth]="200" style="background:#fff">
+    <nz-sider [nzWidth]="200" style="background:#fff" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0">
       <ng-container *ngIf="menuType=='main'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1"><span title><i nz-icon nzType="notification"></i>Test1</span></a></li>

@@ -1,0 +1,22 @@
+<nz-page-header nzBackIcon (nzBack)="leftClick()" [nzGhost]="false">
+    <nz-page-header-title>Title</nz-page-header-title>
+    <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
+    <nz-page-header-extra>
+      <button nz-button>Operation</button>
+
+      <nz-badge [nzCount]="countdown" nzShowZero [nzStyle]="{ backgroundColor: 'red' }">
+        <button nz-button nz-dropdown [nzDropdownMenu]="mymenu" [nzSize]="'small'">refresh<i nz-icon nzType="down"></i></button>
+        <nz-dropdown-menu #mymenu="nzDropdownMenu">
+        <ul nz-menu>
+            <li nz-menu-item (click)="refreshClick()">refresh</li>
+            <li nz-menu-item (click)="stopClick()">disable</li>
+            <li nz-menu-item (click)="changeClick(10)">10 secs</li>
+            <li nz-menu-item (click)="changeClick(30)">30 secs</li>
+            <li nz-menu-item (click)="changeClick(60)">60 secs</li>
+        </ul>
+        </nz-dropdown-menu>
+      </nz-badge>
+
+      <i nz-icon [nzType]="'arrow-right'" (click)="rightClick()"></i>
+    </nz-page-header-extra>
+  </nz-page-header>

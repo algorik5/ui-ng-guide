@@ -22,10 +22,13 @@ import { DashboardServerCpuTrendComponent } from './dashboard-server-cpu-trend.c
 import { DashboardServerMemoryTrendComponent } from './dashboard-server-memory-trend.component';
 import { DashboardServerCpuTableComponent } from './dashboard-server-cpu-table.component';
 import { DashboardServerMemoryTableComponent } from './dashboard-server-memory-table.component';
+import { DashboardAtopComponent } from './dashboard-atop/dashboard-atop.component';
+import { DashboardAleftComponent } from './dashboard-aleft/dashboard-aleft.component';
+import { DashboardArightComponent } from './dashboard-aright/dashboard-aright.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardServerCpuMaxComponent, DashboardServerMemoryMaxComponent, DashboardProcessCpuMaxComponent, DashboardProcessMemoryMaxComponent, DashboardServerCpuTopComponent, DashboardServerMemoryTopComponent, DashboardProcessCpuTopComponent, DashboardProcessMemoryTopComponent, DashboardServerCpuTrendComponent, DashboardServerMemoryTrendComponent, DashboardServerCpuTableComponent, DashboardServerMemoryTableComponent],
+  declarations: [DashboardComponent, DashboardServerCpuMaxComponent, DashboardServerMemoryMaxComponent, DashboardProcessCpuMaxComponent, DashboardProcessMemoryMaxComponent, DashboardServerCpuTopComponent, DashboardServerMemoryTopComponent, DashboardProcessCpuTopComponent, DashboardProcessMemoryTopComponent, DashboardServerCpuTrendComponent, DashboardServerMemoryTrendComponent, DashboardServerCpuTableComponent, DashboardServerMemoryTableComponent, DashboardAtopComponent, DashboardAleftComponent, DashboardArightComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
