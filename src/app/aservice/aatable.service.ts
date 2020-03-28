@@ -59,6 +59,11 @@ export class AatableService {
   isEditable() { return this.editable; }
   setEditable(myeditable) { this.editable = myeditable; }
 
+  ////////////////////////////// editable
+  checkable = true;
+  isCheckable() { return this.checkable; }
+  setCheckable(mycheckable) { this.checkable = mycheckable; }
+
   ////////////////////////////// test data
   testmode = true;
   test_data()

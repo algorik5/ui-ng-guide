@@ -1,42 +1,30 @@
-==~ acompo,
-guide-v2	countdown button
 timer service ?
 simulator,cpu,mem...
 
+=== guide-v2/acompo	countdown button
 
-~stat countdown은 버튼과 동일라인에 안들어감 - 내부가 div로 되어잇음
-guide - badge,countdown,stats,drawer,description
-  - badge nzvalue-숫자
+
+table - editable
+
+
+
+
 
 
 
 =============== dashboard
-(향후-수정) timer 위치
 (향후) bar막대color
 (향후-수정) inline여부
-table - editable
 
 
 trend제목
 
----stat
----trend - 
----table - summary
-small chart
-spark line
 
-=========== guide/dashboard
-	guide/stat ?
 
 
 ### 나중에radio > buttondbinset > createtable--nred만 사용시 aedes/mqtt.js
 === chart otherseries only data gauge,spark,loading?,tree?echartsinstance.resize
-
-
-
-
-
-*** echarts샘플 - https://gitlab.com/kwak70/angular/-/blob/master/src/app/ui-chart-echarts/ui-chart-echarts.component.ts
+	*** echarts샘플 - https://gitlab.com/kwak70/angular/-/blob/master/src/app/ui-chart-echarts/ui-chart-echarts.component.ts
 
 table count 이상함 - select가 아닌가 ?
 ==== zorro v9
