@@ -1,1 +1,6 @@
-<p>dashboard-aleft works!</p>
+<nz-drawer nzTitle="Left" [nzWidth]="400" [nzClosable]="false" [nzVisible]="visible" [nzPlacement]="place" (nzOnClose)="close()">
+    <ul nz-menu [nzMode]="'inline'" style="height:100%">
+        <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1"><span title><i nz-icon nzType="notification"></i>Test1</span></a></li>
+        <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1"><span title><i nz-icon nzType="notification"></i>Test1</span></a></li>
+    </ul>
+</nz-drawer>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { timer } from 'rxjs';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
@@ -8,22 +8,31 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
   templateUrl: './dashboard-atop.component.html',
   styleUrls: ['./dashboard-atop.component.less']
 })
-export class DashboardAtopComponent implements OnInit {
+export class DashboardAtopComponent implements OnInit,OnDestroy {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
   topicprefix = "hymon.dashboard";//this.topicprefix+".datas"
 
   ngOnInit() {
+    this.pubsub.pub("app.showmenu","fire");
     this.timerInit();
+  }
+  ngOnDestroy() { 
+    if(this.mytimer != null) { 
+      this.logging.debug("======== mytimer STOP - ngOnDestroy # ");
+      this.mytimer.unsubscribe(); 
+      this.mytimer = null; 
+    }
   }
 
   interval = 10;
   countdown = this.interval;
   stoped = false;
+  mytimer;
   timerInit()
   {
-    let mytimer = timer(1000,1000).subscribe(timercount=>{
+    this.mytimer = timer(1000,1000).subscribe(timercount=>{
       // this.logging.debug("======== mytimer # "+ timercount +"#stoped="+this.stoped +"#countdown="+this.countdown +"#interval="+this.interval);
       if(this.stoped == true) return;
       this.countdown = this.countdown - 1;
@@ -46,11 +55,11 @@ export class DashboardAtopComponent implements OnInit {
 
   leftClick()
   {
-
+    this.pubsub.pub(this.topicprefix+".showleft","fire");
   }
   rightClick()
   {
-
+    this.pubsub.pub(this.topicprefix+".showright","fire");
   }
 
 }
