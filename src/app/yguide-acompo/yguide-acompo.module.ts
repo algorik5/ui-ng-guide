@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CountdownRoutingModule } from './countdown-routing.module';
-import { CountdownComponent } from './countdown.component';
+import { YguideAcompoRoutingModule } from './yguide-acompo-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -11,15 +10,17 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
-import { CountdownComponentComponent } from './countdown-component/countdown-component.component';
+import { AcompoModule } from '../acompo/acompo.module';
+import { AcountdownTestComponent } from './acountdown-test/acountdown-test.component';
 
 
 @NgModule({
-  declarations: [CountdownComponent, CountdownComponentComponent],
+  declarations: [AcountdownTestComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-    CountdownRoutingModule
+    AcompoModule,
+    YguideAcompoRoutingModule
   ]
 })
-export class CountdownModule { }
+export class YguideAcompoModule { }

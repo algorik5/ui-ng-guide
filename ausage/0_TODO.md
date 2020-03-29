@@ -27,7 +27,7 @@ trend제목
 
 table count 이상함 - select가 아닌가 ?
 ==== zorro v9
-
+주석 > pre
 
 
 

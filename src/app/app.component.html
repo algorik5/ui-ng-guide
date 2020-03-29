@@ -8,7 +8,7 @@
       <li nz-menu-item (click)="setMenuType('main')" nzSelected>main</li>
       <li nz-menu-item (click)="setMenuType('guide')">guide</li>
       <li nz-menu-item (click)="setMenuType('guide-test')">guide-test</li>
-      <li nz-menu-item (click)="setMenuType('guidev2')">guidev2</li>
+      <li nz-menu-item (click)="setMenuType('guide-acompo')">guide-acompo</li>
       <li nz-menu-item (click)="setMenuType('dashboard')">dashboard</li>
       <li nz-menu-item (click)="setMenuType('test')">test</li>
       <li nz-menu-item (click)="setMenuType('tool')">tool</li>
@@ -45,9 +45,9 @@
 
         </ul>
       </ng-container>
-      <ng-container *ngIf="menuType=='guidev2'">
+      <ng-container *ngIf="menuType=='guide-acompo'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guidev2/countdown"><span title><i nz-icon nzType="notification"></i>countdown</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide-acompo/acountdown-test"><span title><i nz-icon nzType="notification"></i>acompo countdown</span></a></li>
         </ul>
       </ng-container>
 

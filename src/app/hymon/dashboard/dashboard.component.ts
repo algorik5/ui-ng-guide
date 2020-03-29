@@ -105,4 +105,5 @@ export class DashboardComponent implements OnInit {
     this.pubsub.pub("hymon.dashboard-server-cpu-table.datas",datas);//this.table.addDatas(data); 
     this.pubsub.pub("hymon.dashboard-server-memory-table.datas",datas2);//this.table.addDatas(data);
   }
+
 }

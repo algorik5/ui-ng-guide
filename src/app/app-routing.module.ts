@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
   { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
 
-  { path: 'guidev2',loadChildren: () => import('./guidev2/countdown/countdown.module').then(m => m.CountdownModule)},
+  { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
 
   { path: 'guide-test',loadChildren: () => import('./yguide-test/stompchart/stompchart.module').then(m => m.StompchartModule)},
   { path: 'guide-test',loadChildren: () => import('./yguide-test/sqlquery2/sqlquery2.module').then(m => m.Sqlquery2Module)},

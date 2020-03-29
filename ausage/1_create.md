@@ -23,7 +23,7 @@
 - (***주의) providers: [AatableService] <<< 또는 compo.ts에 설정 >>>
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
-guidev2/countdown
+
 # ========================================== guide
 ng g m guidev2/countdown --routing
 ng g c guidev2/countdown
@@ -34,6 +34,27 @@ ng g c guidev2/countdown
 복사 - guidev2/dblocal에서 복사
 
 
+# #############################################################################
+# ========================================== acompo (1 module)
+(처음에만) ng g m acompo --routing
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+ng g c acompo/acountdown --export=true
+  -----exports: AcountdownComponent
+# ========================================== acompo guide (1 module)
+(처음에만) ng g m yguide-acompo --routing
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+  - ***AcompoModule
+  - { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
+ng g c yguide-acompo/acountdown-test
+  - { path: 'acountdown-test',component: AcountdownTestComponent }
+  - app-routing
+  - app.component
+
+
+
+
+
+# #############################################################################
 # ========================================== test (simple)
 ng g c ytest/test-websocket
   - { path: 'test-websocket',component: TestWebsocketComponent }

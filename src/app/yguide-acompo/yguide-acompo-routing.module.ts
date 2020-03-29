@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CountdownComponent } from './countdown.component';
+import { AcountdownTestComponent } from './acountdown-test/acountdown-test.component';
 
 
 const routes: Routes = [
-  { path: 'countdown',component: CountdownComponent }
+  { path: 'acountdown-test',component: AcountdownTestComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CountdownRoutingModule { }
+export class YguideAcompoRoutingModule { }
