@@ -31,7 +31,7 @@ table count 이상함 - select가 아닌가 ?
 ==== scroll ? (https://ng.ant.design/components/affix/en)
 <div class="scrollable-container"... <div class="background"> ...
 
-
+==== ? 코드블럭 ? https://auralinna.blog/post/2017/code-syntax-highlighting-with-angular-and-prismjs
 
 
 
