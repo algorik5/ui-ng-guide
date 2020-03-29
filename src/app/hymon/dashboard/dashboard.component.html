@@ -3,7 +3,11 @@
 <app-dashboard-aleft></app-dashboard-aleft>
 <app-dashboard-aright></app-dashboard-aright>
 
-<div style="background: #ECECEC; padding: 30px;">
+<nz-affix [nzTarget]="mytarget" [nzOffsetTop]="300"> <button nz-button [nzType]="'primary'">Affix</button></nz-affix>
+<!-- <nz-affix [nzTarget]="mytarget" style="position: absolute; top: 100px, left: 100px"> <button nz-button [nzType]="'primary'">Affix</button></nz-affix> -->
+<!-- <nz-affix style="position: absolute; top: 100px, left: 100px"><button nz-button [nzType]="'primary'"> <span>Affix 2</span> </button></nz-affix> -->
+
+<div style="background: #ECECEC; padding: 30px;" #mytarget>
     <nz-row [nzGutter]="16">
       <!-- <nz-col [nzSpan]="6"> 
           <nz-card> <h6>search</h6> <app-dashboard-form></app-dashboard-form> </nz-card> 

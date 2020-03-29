@@ -1,7 +1,6 @@
 
 simulator,cpu,mem...
 
-=== guide-v2/acompo	countdown button
 
 
 
@@ -14,7 +13,8 @@ simulator,cpu,mem...
 =============== dashboard
 (향후) bar막대color
 (향후-수정) inline여부
-
+향후 - atop >>> affix 변경
+주석 > pre
 
 trend제목
 
@@ -27,7 +27,9 @@ trend제목
 
 table count 이상함 - select가 아닌가 ?
 ==== zorro v9
-주석 > pre
+
+==== scroll ? (https://ng.ant.design/components/affix/en)
+<div class="scrollable-container"... <div class="background"> ...
 
 
 
