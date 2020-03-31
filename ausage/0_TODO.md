@@ -13,8 +13,6 @@ simulator,cpu,mem...
 =============== dashboard
 (향후) bar막대color
 (향후-수정) inline여부
-향후 - atop >>> affix 변경
-주석 > pre
 
 trend제목
 
@@ -32,6 +30,8 @@ table count 이상함 - select가 아닌가 ?
 <div class="scrollable-container"... <div class="background"> ...
 
 ==== ? 코드블럭 ? https://auralinna.blog/post/2017/code-syntax-highlighting-with-angular-and-prismjs
+---향후 - atop >>> affix 변경
+---주석 > pre
 
 
 
@@ -148,7 +148,6 @@ user create : this.router.navigateByUrl(`/user/${user.getId()}`);
 
 
 ================================================ 보류
-(보류) ashared acompo
 (보류) checked > __checked,안보이게...
 (보류) 테이블크기 고정
 
