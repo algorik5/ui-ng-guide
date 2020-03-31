@@ -36,6 +36,7 @@ ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --f
 
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
   - { path: 'dashboardv2',component: Dashboardv2Component }
+app routing/component
 
 
 # ========================================== guide (향후변경 - 1 module)
