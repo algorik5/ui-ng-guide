@@ -15,8 +15,16 @@
 
 
 # =========================================================================
-# git config : https://yunyoung1819.tistory.com/128
-# git merge ---- http://hochulshin.com/git-diff/
+# user/.gitconfig 또는 project/.git/config 설정
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+# fetch + diff + merge	
 git fetch origin
 git difftool master origin/master <<< 소스비교>>>
 git merge <<< MERGE CHANGES에 표시됨 - accept incoming change>>>
