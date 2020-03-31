@@ -21,3 +21,4 @@ git merge <<< merge하기전 commit은 되어 있어야 함>>>
 
 
 
+1
