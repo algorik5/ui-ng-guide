@@ -2,14 +2,14 @@
     ==================== component
     1. html은 무관
     1. @Input() 정의
-        @Input() interval = 10;
-        *** 주의 - ngOnChanges에서 부모 변경값 인식 가능
-    1. @Output() 정의
-       @Output() fireEvent : EventEmitter-number = new EventEmitter();
-       this.fireEvent.emit(this.countdown);
+        @Input() parentname = "acompo"; myname = "countdown";
+    2. parent/child 통신
+        this.pubsub.sub(this.parentname+"."+this.myname+".interval",data=
+        this.pubsub.pub(this.parentname+"."+this.myname+".fire"
     ==================== 사용
-    1. (Input사용) app-countdown-component [interval]="myinterval" ----- (양방향-안됨) [(countdown)]="countdown2"
-    2. (Output사용) app-countdown-component (fireEvent)="myfireEvent($event)"
+    1. app-acountdown [parentname]="myname"
+    2. this.pubsub.sub(this.myname+".countdown.fire",data
+    3. this.pubsub.pub(this.myname+".countdown.interval",
 </pre></nz-card> </nz-collapse-panel> </nz-collapse>
 
 
@@ -24,4 +24,4 @@
 
 
 
-<app-acountdown [interval]="myinterval" (fireEvent)="myfireEvent($event)"></app-acountdown>
+<app-acountdown [parentname]="myname"></app-acountdown>
