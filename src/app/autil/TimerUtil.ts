@@ -11,5 +11,5 @@ export class TimerUtil
         mytimer.unsubscribe();//timer stop
     }
 
-    
+    static test1() { console.log("test"); }
 }
