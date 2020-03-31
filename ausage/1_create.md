@@ -25,14 +25,14 @@
 
 
 
-- ng g m hymon/dashboardv2 --routing
-- ng g c hymon/dashboardv2
-- ng g c hymon/dashboardv2/atop
-- ng g c hymon/dashboardv2/aleft
-- ng g c hymon/dashboardv2/aright
-- ng g c hymon/dashboardv2/view-max
-- ng g c hymon/dashboardv2/view-top
-- ng g c hymon/dashboardv2/view-trend
+ng g m hymon/dashboardv2 --routing
+ng g c hymon/dashboardv2
+ng g c hymon/dashboardv2/atop --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/aleft --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/aright --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-max --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true
 
 
 
