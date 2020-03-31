@@ -31,6 +31,10 @@ export class AchartComponent implements OnInit {
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
     });
 
+    this.pubsub.sub(this.parentname+"."+this.myname+".charttype",data => {
+      this.chart.initChart(data);
+    });
+
     this.chartInit();
   }
 

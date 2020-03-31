@@ -1,13 +1,12 @@
-<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
-    1. html : div echarts 복사<br>
-    2. ts : constructor뒤 복사<br>
-	3. ts : chartInit 수정<br>
-	공통 : topic명 변경<br>
-	주의 : providers: [AaechartsService]<br>
-	bar chart ===============================<br>
-	- this.chart.initChart("bar");<br>
-	- 포맷 : legend:"server-cpu",x:data["host"],y:data["cpu"]<br>
-</nz-card> </nz-collapse-panel> </nz-collapse>
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
+    1. html : app-achart [parentname]="myname"
+    2. ts : constructor뒤 복사
+	3. ts : chartInit 수정
+
+    bar chart ===============================
+	- this.chart.initChart("bar");
+	- 포맷 : legend:"server-cpu",x:data["host"],y:data["cpu"]
+</pre></nz-card> </nz-collapse-panel> </nz-collapse>
 
 
 

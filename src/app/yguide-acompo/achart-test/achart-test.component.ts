@@ -26,21 +26,19 @@ export class AchartTestComponent implements OnInit {
   ///////////////////////////////// linechart 테스트버튼
   line_chartInit()
   {
-    // this.chart.clearChart();
-    // this.chart.initChart("line");
+    this.pubsub.pub(this.myname+".chart.charttype","line");
   }
   line_test_datas() { 
-    // this.chart.clearChart();
     // let datas = this.chart.test_data();
     // let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
     // this.pubsub.pub(this.myname+".chart.datas",chartdatas);//this.chart.addDatas(chartdatas);
   }
   line_test_no = 0;
   line_test_datarow() { 
-    // this.test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.test_no);
-    // let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
-    // let chartdata = {legend:legend,x:x,y:y};
-    // this.pubsub.pub(this.myname+".chart.data",chartdata);//this.chart.addData(chartdata);
+    this.line_test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.line_test_no);
+    let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
+    let chartdata = {legend:legend,x:x,y:y};
+    this.pubsub.pub(this.myname+".chart.data",chartdata);//this.chart.addData(chartdata);
   }
 
  
@@ -48,9 +46,7 @@ export class AchartTestComponent implements OnInit {
   ///////////////////////////////// barchart 테스트버튼
   bar_chartInit()
   {
-    // ////////////////////////////////////////////////////////// 필수 - ngInit에서 initChart를 호출해야함
-    // this.chart.clearChart();
-    // this.chart.initChart("bar");
+    this.pubsub.pub(this.myname+".chart.charttype","bar");
   }
   ////////////////////////////////////////////////////////// testdata  
   bar_test_datas() { 
@@ -63,12 +59,10 @@ export class AchartTestComponent implements OnInit {
   }
   bar_test_no = 0;
   bar_test_datarow() { 
-    // this.bar_test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.test_no);
-    // // let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
-    // //kwak-bar
-    // let legend = "server-cpu"; let x = "host-z"; let y = MathUtil.random(0,10);
-    // let chartdata = {legend:legend,x:x,y:y};
-    // this.pubsub.pub(this.myname+".chart.data",chartdata);//this.chart.addData(chartdata);
+    this.bar_test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.bar_test_no);
+    let legend = "server-cpu"; let x = "host-z"; let y = MathUtil.random(0,10);
+    let chartdata = {legend:legend,x:x,y:y};
+    this.pubsub.pub(this.myname+".chart.data",chartdata);//this.chart.addData(chartdata);
   }
 
 
