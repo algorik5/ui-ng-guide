@@ -1,11 +1,12 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
     1. html : app-achart [parentname]="myname"
-    2. ts : constructor뒤 복사
-	3. ts : chartInit 수정
-
-    bar chart ===============================
-	- this.chart.initChart("bar");
-	- 포맷 : legend:"server-cpu",x:data["host"],y:data["cpu"]
+    2. ts :
+        - @Input() parentname = "---"; myname = "chart-test";
+        - this.pubsub.sub(this.myname+".chart.xxx",data=>...
+        - this.pubsub.pub(this.myname+".chart.charttype",this.mycharttype);
+    ===============================
+	- line포맷 : legend:data["host"],x:data["time"],y:data["cpu"]
+	- bar포맷  : legend:"server-cpu",x:data["host"],y:data["cpu"]
 </pre></nz-card> </nz-collapse-panel> </nz-collapse>
 
 

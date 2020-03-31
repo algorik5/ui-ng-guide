@@ -5,6 +5,7 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { DateUtil } from 'src/app/autil/DateUtil';
 import { MathUtil } from 'src/app/autil/MathUtil';
+import { zTestDataUtil } from 'src/app/autil/zTestDataUtil';
 
 @Component({
   selector: 'app-achart-test',
@@ -29,9 +30,9 @@ export class AchartTestComponent implements OnInit {
     this.pubsub.pub(this.myname+".chart.charttype","line");
   }
   line_test_datas() { 
-    // let datas = this.chart.test_data();
-    // let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
-    // this.pubsub.pub(this.myname+".chart.datas",chartdatas);//this.chart.addDatas(chartdatas);
+    let datas = zTestDataUtil.test_data();
+    let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
+    this.pubsub.pub(this.myname+".chart.datas",chartdatas);//this.chart.addDatas(chartdatas);
   }
   line_test_no = 0;
   line_test_datarow() { 
@@ -50,12 +51,9 @@ export class AchartTestComponent implements OnInit {
   }
   ////////////////////////////////////////////////////////// testdata  
   bar_test_datas() { 
-    // this.chart.clearChart();
-    // let datas = this.chart.test_data();
-    // // let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
-    // //kwak-bar
-    // let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:"server-cpu",x:data["host"],y:data["cpu"]}); });
-    // this.pubsub.pub(this.myname+".chart.datas",chartdatas);//this.chart.addDatas(chartdatas);
+    let datas = zTestDataUtil.test_data();
+    let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:"server-cpu",x:data["host"],y:data["cpu"]}); });
+    this.pubsub.pub(this.myname+".chart.datas",chartdatas);//this.chart.addDatas(chartdatas);
   }
   bar_test_no = 0;
   bar_test_datarow() { 
