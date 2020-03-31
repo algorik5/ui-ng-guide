@@ -18,8 +18,8 @@
 # git config : https://yunyoung1819.tistory.com/128
 # git merge ---- http://hochulshin.com/git-diff/
 git fetch origin
-git difftool master origin/master
-git merge <<< merge하기전 commit은 되어 있어야 함>>>
+git difftool master origin/master <<< 소스비교>>>
+git merge <<< MERGE CHANGES에 표시됨 - accept incoming change>>>
 
 
 
