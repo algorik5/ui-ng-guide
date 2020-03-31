@@ -6,9 +6,7 @@
 # module/route
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
   - { path: 'dashboardv2',component: Dashboardv2Component }
-# app
-  - { path: 'hymon',loadChildren: () => import('./hymon/dashboardv2/dashboardv2.module').then(m => m.Dashboardv2Module)},
-  - <a title routerLink="hymon/dashboardv2"...
+# app 수정 (route/menu)
 # 화면 개발
 - (layout) ....compoenent.html <<< hymon/layout복사 >>>
   -	nz-row/col 변경 >>> <app-dashboardv2-form></app-dashboardv2-form> ...
