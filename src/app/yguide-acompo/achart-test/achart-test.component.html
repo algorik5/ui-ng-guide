@@ -1,0 +1,44 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
+    1. html : div echarts 복사<br>
+    2. ts : constructor뒤 복사<br>
+	3. ts : chartInit 수정<br>
+	공통 : topic명 변경<br>
+	주의 : providers: [AaechartsService]<br>
+	bar chart ===============================<br>
+	- this.chart.initChart("bar");<br>
+	- 포맷 : legend:"server-cpu",x:data["host"],y:data["cpu"]<br>
+</nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+<button nz-button nzType="danger" (click)="line_chartInit()">linechart</button>
+<button nz-button nzType="dashed" (click)="line_test_datas()">line_test_datas</button>
+<button nz-button nzType="dashed" (click)="line_test_datarow()">line_test_datarow</button>
+
+<nz-divider nzType="vertical"></nz-divider>                
+<button nz-button nzType="danger" (click)="bar_chartInit()">barchart</button>
+<button nz-button nzType="dashed" (click)="bar_test_datas()">bar_test_datas</button>
+<button nz-button nzType="dashed" (click)="bar_test_datarow()">bar_test_datarow</button>
+
+<nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'realtime'" [nzActive]="'true'" [nzDisabled]="'false'"> 
+        <nz-card>
+            <app-achart [parentname]="myname"></app-achart>
+        </nz-card> 
+    </nz-collapse-panel> 
+
+</nz-collapse>
+
+
+
+
+<nz-collapse> 
+    <nz-collapse-panel [nzHeader]="'debugjsondata'" [nzActive]="'false'" [nzDisabled]="'false'" [nzExtra]="extraButton">
+        <nz-card>
+            <cdk-virtual-scroll-viewport itemSize="50" style="height: 50vh">
+                <ngx-json-viewer [json]="debugjsondata" [expanded]="true"></ngx-json-viewer>
+            </cdk-virtual-scroll-viewport>
+        </nz-card>        
+    </nz-collapse-panel> 
+</nz-collapse>
+<ng-template #extraButton><i nz-icon nzType="copy" (click)="copyToClipboard()"></i></ng-template>

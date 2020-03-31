@@ -11,10 +11,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
 import { AcountdownComponent } from './acountdown/acountdown.component';
+import { AchartComponent } from './achart/achart.component';
 
 @NgModule({
-  declarations: [AcountdownComponent],
-  exports: [AcountdownComponent],
+  declarations: [AcountdownComponent, AchartComponent],
+  exports: [AcountdownComponent, AchartComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,

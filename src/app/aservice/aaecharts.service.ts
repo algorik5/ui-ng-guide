@@ -46,6 +46,8 @@ export class AaechartsService {
 
   clearChart()
   {
+    if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
+
     // this.chartoptions = {};
     this.chartoptions.legend.data = [];
     this.chartoptions.series = [];
@@ -54,7 +56,7 @@ export class AaechartsService {
     // this.clearChart_Line();
     // this.clearChart_Bar();
 
-    if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
+    // if(this.chartinstance == null) return;//setChartInstance가 addDataRow보다 늦게 호출될수있음
     this.chartinstance.clear();
   }
   clearChart_Line()

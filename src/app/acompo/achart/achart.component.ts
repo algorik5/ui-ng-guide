@@ -1,0 +1,49 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { EChartOption } from 'echarts';
+import { AaechartsService } from 'src/app/aservice/aaecharts.service';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { DateUtil } from 'src/app/autil/DateUtil';
+import { MathUtil } from 'src/app/autil/MathUtil';
+
+@Component({
+  selector: 'app-achart',
+  templateUrl: './achart.component.html',
+  styleUrls: ['./achart.component.less'],
+  providers: [AaechartsService]
+})
+export class AchartComponent implements OnInit {
+
+  constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
+
+  @Input() parentname = "acompo"; myname = "chart";
+  ngOnInit() {
+
+  	////////////////////////////////////////////////////////// chart  
+    this.pubsub.sub(this.parentname+"."+this.myname+".datas",datas => {//[{legend:-,x:-,y:-}...
+      this.chart.clearChart();
+      // this.chart.initChart("line");
+      this.chart.addDatas(datas);
+    });
+    // let no = 0;
+    this.pubsub.sub(this.parentname+"."+this.myname+".data",data => {//{legend:-,x:-,y:-}
+    // no++; if(no==1) this.chart.clearChart();
+      this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
+    });
+
+    this.chartInit();
+  }
+
+  ////////////////////////////////////////////////////////// chart  
+  getChartOptions() { return this.chart.getChartOption(); }
+  setChartInstance(event) { this.chart.setChartInstance(event); }
+
+  charttype = "line";
+  chartInit()
+  {
+    ////////////////////////////////////////////////////////// 필수 - ngInit에서 initChart를 호출해야함
+    this.chart.initChart(this.charttype);
+
+  }
+
+}
