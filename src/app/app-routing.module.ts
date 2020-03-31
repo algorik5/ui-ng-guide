@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'tool',loadChildren: () => import('./ytool/dblocalmanager/dblocalmanager.module').then(m => m.DblocalmanagerModule)},
 
   { path: 'hymon',loadChildren: () => import('./hymon/dashboard/dashboard.module').then(m => m.DashboardModule)},
+  { path: 'hymon',loadChildren: () => import('./hymon/dashboardv2/dashboardv2.module').then(m => m.Dashboardv2Module)},
   
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

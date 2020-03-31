@@ -34,6 +34,8 @@ ng g c hymon/dashboardv2/view-max --inlineStyle=true --inlineTemplate=true --fla
 ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true
 
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+  - { path: 'dashboardv2',component: Dashboardv2Component }
 
 
 # ========================================== guide (향후변경 - 1 module)
