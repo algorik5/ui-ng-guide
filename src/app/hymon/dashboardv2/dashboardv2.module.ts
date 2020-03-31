@@ -17,10 +17,11 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
+import { ViewTableComponent } from './view-table.component';
 
 
 @NgModule({
-  declarations: [Dashboardv2Component, AtopComponent, AleftComponent, ArightComponent, ViewMaxComponent, ViewTopComponent, ViewTrendComponent],
+  declarations: [Dashboardv2Component, AtopComponent, AleftComponent, ArightComponent, ViewMaxComponent, ViewTopComponent, ViewTrendComponent, ViewTableComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,

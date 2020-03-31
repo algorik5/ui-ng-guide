@@ -1,17 +1,13 @@
-# xxx generate
+# generate
 - ng g m hymon/dashboardv2 --routing
 - ng g c hymon/dashboardv2
 - ng g c hymon/dashboardv2/view-max (--inlineStyle=true --inlineTemplate=true --flat=true)
 - (보류)---ng g s hymon/dashboardv2/dashboardv2
-# 현재 module 수정
-- xxx.module.ts	
+# module/route
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-- xxx-routing
   - { path: 'dashboardv2',component: Dashboardv2Component }
-# app module 수정
-- app-routing
+# app
   - { path: 'hymon',loadChildren: () => import('./hymon/dashboardv2/dashboardv2.module').then(m => m.Dashboardv2Module)},
-- app.compoent
   - <a title routerLink="hymon/dashboardv2"...
 # 화면 개발
 - (layout) ....compoenent.html <<< hymon/layout복사 >>>
@@ -24,7 +20,7 @@
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
 
-
+# ========================================== dashboard
 ng g m hymon/dashboardv2 --routing
 ng g c hymon/dashboardv2
 ng g c hymon/dashboardv2/atop --inlineStyle=true --inlineTemplate=true --flat=true
@@ -33,9 +29,10 @@ ng g c hymon/dashboardv2/aright --inlineStyle=true --inlineTemplate=true --flat=
 ng g c hymon/dashboardv2/view-max --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-table --inlineStyle=true --inlineTemplate=true --flat=true
 
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-  - { path: 'dashboardv2',component: Dashboardv2Component }
+module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+route - { path: 'dashboardv2',component: Dashboardv2Component }
 app routing/component
 
 
@@ -92,7 +89,6 @@ ng g c ytool/stomp-todb
 복사 - ytool/localstorage에서 복사
 
 
-# ========================================== dashboard
 
 
 # ======================== 참고
