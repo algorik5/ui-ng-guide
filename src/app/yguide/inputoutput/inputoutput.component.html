@@ -1,0 +1,26 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
+    ==================== 최종권장 - pubsub으로 parent/child 통신
+    ==================== component
+    1. html은 무관
+    1. @Input() 정의
+        @Input() interval = 10;
+        *** 주의 - ngOnChanges에서 부모 변경값 인식 가능
+    1. @Output() 정의
+       @Output() fireEvent : EventEmitter-number = new EventEmitter();
+       this.fireEvent.emit(this.countdown);
+    ==================== 사용
+    1. (Input사용) app-countdown-component [interval]="myinterval" ----- (양방향-안됨) [(countdown)]="countdown2"
+    2. (Output사용) app-countdown-component (fireEvent)="myfireEvent($event)"
+</pre></nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+
+<button nz-button nzType="dashed" (click)="test_interval(5)">test_interval 5</button>
+<button nz-button nzType="dashed" (click)="test_interval(10)">test_interval 10</button>
+<nz-tag [nzColor]="'magenta'">myinterval-{{myinterval}}</nz-tag>
+<nz-tag [nzColor]="'magenta'">myfirecount-{{myfirecount}}</nz-tag>
+<!-- <nz-tag [nzColor]="'magenta'">mycountdown-{{mycountdown}}</nz-tag> -->
+<nz-divider nzType="vertical"></nz-divider>                
+
+
+<app-inputoutput-child [interval]="myinterval" (fireEvent)="myfireEvent($event)"></app-inputoutput-child>

@@ -24,14 +24,14 @@
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
 
-# ========================================== guide
-ng g m guidev2/countdown --routing
-ng g c guidev2/countdown
+# ========================================== guide (향후변경 - 1 module)
+ng g m yguide/inputoutput --routing
+ng g c yguide/inputoutput
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-  - { path: 'countdown',component: CountdownComponent }
-  - { path: 'guidev2',loadChildren: () => import('./guidev2/countdown/countdown.module').then(m => m.CountdownModule)},
-  - <a title routerLink="guidev2/countdown"...
-복사 - guidev2/dblocal에서 복사
+  - { path: 'inputoutput',component: InputoutputComponent }
+  - { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
+  - <a title routerLink="guide/inputoutput"...
+복사 - guide/dblocal에서 복사
 
 
 # #############################################################################
