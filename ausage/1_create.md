@@ -23,9 +23,9 @@
 # ========================================== dashboard
 ng g m hymon/dashboardv2 --routing
 ng g c hymon/dashboardv2
-ng g c hymon/dashboardv2/atop --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/aleft --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/aright --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-atop --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-aleft --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/dashboardv2/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-max --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true

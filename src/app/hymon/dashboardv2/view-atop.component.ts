@@ -4,7 +4,7 @@ import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
-  selector: 'app-atop',
+  selector: 'app-view-atop',
   template: `
   <nz-page-header nzBackIcon (nzBack)="leftClick()" [nzGhost]="false">
   <nz-page-header-title>Title</nz-page-header-title>
@@ -30,7 +30,7 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
   `,
   styles: []
 })
-export class AtopComponent implements OnInit,OnDestroy {
+export class ViewAtopComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 

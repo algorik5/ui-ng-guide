@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { Dashboardv2RoutingModule } from './dashboardv2-routing.module';
 import { Dashboardv2Component } from './dashboardv2.component';
-import { AtopComponent } from './atop.component';
-import { AleftComponent } from './aleft.component';
-import { ArightComponent } from './aright.component';
 import { ViewMaxComponent } from './view-max.component';
 import { ViewTopComponent } from './view-top.component';
 import { ViewTrendComponent } from './view-trend.component';
@@ -18,10 +15,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
 import { ViewTableComponent } from './view-table.component';
+import { ViewAtopComponent } from './view-atop.component';
+import { ViewAleftComponent } from './view-aleft.component';
+import { ViewArightComponent } from './view-aright.component';
 
 
 @NgModule({
-  declarations: [Dashboardv2Component, AtopComponent, AleftComponent, ArightComponent, ViewMaxComponent, ViewTopComponent, ViewTrendComponent, ViewTableComponent],
+  declarations: [Dashboardv2Component, ViewMaxComponent, ViewTopComponent, ViewTrendComponent, ViewTableComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
