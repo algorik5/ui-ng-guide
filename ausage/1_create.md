@@ -1,27 +1,39 @@
 # xxx generate
-- ng g m guidev2/countdown --routing
-- ng g c guidev2/countdown
-- ---ng g s guidev2/countdown/countdown
-- ng g c guidev2/countdown/countdown-server-cpu-max
+- ng g m hymon/dashboardv2 --routing
+- ng g c hymon/dashboardv2
+- ng g c hymon/dashboardv2/view-max (--inlineStyle=true --inlineTemplate=true --flat=true)
+- (보류)---ng g s hymon/dashboardv2/dashboardv2
 # 현재 module 수정
 - xxx.module.ts	
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
 - xxx-routing
-  - { path: 'countdown',component: CountdownComponent }
+  - { path: 'dashboardv2',component: Dashboardv2Component }
 # app module 수정
 - app-routing
-  - { path: 'guidev2',loadChildren: () => import('./guidev2/countdown/countdown.module').then(m => m.CountdownModule)},
+  - { path: 'hymon',loadChildren: () => import('./hymon/dashboardv2/dashboardv2.module').then(m => m.Dashboardv2Module)},
 - app.compoent
-  - <a title routerLink="guidev2/countdown"...
+  - <a title routerLink="hymon/dashboardv2"...
 # 화면 개발
-- (layout) ....compoenent.html <<< guidev2/layout복사 >>>
-  -	nz-row/col 변경 >>> <app-countdown-form></app-countdown-form> ...
-- 각 화면 : guidev2 참고
+- (layout) ....compoenent.html <<< hymon/layout복사 >>>
+  -	nz-row/col 변경 >>> <app-dashboardv2-form></app-dashboardv2-form> ...
+- 각 화면 : hymon 참고
 - *** topic변경-myname
 # *** service 설정 - 설정하지 않으면 singleton
 - 결론 - singleton필요하지 않으면 반드시 compo에 설정해서 사용하자
 - (***주의) providers: [AatableService] <<< 또는 compo.ts에 설정 >>>
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
+
+
+
+- ng g m hymon/dashboardv2 --routing
+- ng g c hymon/dashboardv2
+- ng g c hymon/dashboardv2/atop
+- ng g c hymon/dashboardv2/aleft
+- ng g c hymon/dashboardv2/aright
+- ng g c hymon/dashboardv2/view-max
+- ng g c hymon/dashboardv2/view-top
+- ng g c hymon/dashboardv2/view-trend
+
 
 
 # ========================================== guide (향후변경 - 1 module)
