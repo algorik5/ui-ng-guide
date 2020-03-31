@@ -38,9 +38,9 @@ ng g c yguide/inputoutput
 # ========================================== acompo (1 module)
 (처음에만) ng g m acompo --routing
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
-ng g c acompo/achart --export=true (===exports: AcountdownComponent)
+ng g c acompo/atable --export=true (===exports: AtableComponent)
  - (개발) 
-   - @Input() parentname = "acompo"; myname = "chart";
+   - @Input() parentname = "acompo"; myname = "table";//this.parentname+"."+this.myname
    - this.pubsub.sub(this.parentname+"."+this.myname+".datas",datas => { });
    - this.pubsub.pub(this.parentname+"."+this.myname+".xxx","xxx");    
 # ========================================== acompo guide (1 module)
@@ -48,14 +48,14 @@ ng g c acompo/achart --export=true (===exports: AcountdownComponent)
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
   - ***AcompoModule
   - { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
-ng g c yguide-acompo/achart-test
-  - { path: 'achart-test',component: AchartTestComponent }
+ng g c yguide-acompo/atable-test
+  - { path: 'atable-test',component: AtableTestComponent }
   - app.component : 메뉴 등록
   - (개발) 
-    - <app-achart [parentname]="myname"></app-achart>
-    - @Input() parentname = "---"; myname = "chart-test";
-    - this.pubsub.sub(this.myname+".chart.xxx",data=>{ });
-    - this.pubsub.pub(this.myname+".chart.charttype",this.mycharttype);
+    - <app-atable [parentname]="myname"></app-atable>
+    - @Input() parentname = "---"; myname = "table-test";//this.myname+".table.
+    - this.pubsub.sub(this.myname+".table.xxx",data=>{ });
+    - this.pubsub.pub(this.myname+".table.charttype",this.mycharttype);
           
 
 

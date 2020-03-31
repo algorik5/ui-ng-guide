@@ -1,0 +1,37 @@
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
+    1. html : app-atable [parentname]="myname"
+    2. ts :
+        - @Input() parentname = "---"; myname = "table-test";
+        - this.pubsub.sub(this.myname+".table.selectdata",data=>...
+        - this.pubsub.pub(this.myname+".table.datas",datas)
+        - this.pubsub.pub(this.myname+".table.data",data)
+        - this.pubsub.pub(this.myname+".table.columnshow"...
+        - this.pubsub.pub(this.myname+".table.editable"...
+        - this.pubsub.pub(this.myname+".table.checkable"...
+        - this.pubsub.pub(this.myname+".table.checkall"...
+</pre></nz-card> </nz-collapse-panel> </nz-collapse>
+
+
+  
+  
+  <button nz-button nzType="dashed" (click)="test_datas()">test_datas</button>
+  <button nz-button nzType="dashed" (click)="test_data()">test_data</button>
+  <button nz-button nzType="dashed" (click)="test_columnshow()">test_columnshow</button>
+  <button nz-button nzType="dashed" (click)="test_edit()">test_edit</button>
+  <button nz-button nzType="dashed" (click)="test_check()">test_check</button>
+  <button nz-button nzType="dashed" (click)="test_checkall()">test_checkall</button>
+  
+  
+  <h1>============================ table button</h1>
+  <nz-input-group nzCompact style="margin-bottom: 8px;">
+    &nbsp;<button nz-button (click)="createtable()">createtable</button>
+    &nbsp;<button nz-button nzType="dashed" (click)="testinsert()">testinsert</button>
+    &nbsp;<button nz-button nzType="dashed" (click)="testselect()">testselect</button>
+    &nbsp;<input type="text" style="width: 120px" nz-input [(ngModel)]="inputValue" />
+    &nbsp;<button nz-button (click)="savelocalstorage()">savelocalstorage</button>
+  </nz-input-group>
+  <h1>============================ table</h1>
+  <app-atable [parentname]="myname"></app-atable>
+  
+  
+ 

@@ -1,16 +1,11 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
-    ==================== component
-    1. html은 무관
-    1. @Input() 정의
-        @Input() parentname = "acompo"; myname = "countdown";
-    2. parent/child 통신
-        this.pubsub.sub(this.parentname+"."+this.myname+".interval",data=
-        this.pubsub.pub(this.parentname+"."+this.myname+".fire"
-    ==================== 사용
-    1. app-acountdown [parentname]="myname"
-    2. this.pubsub.sub(this.myname+".countdown.fire",data
-    3. this.pubsub.pub(this.myname+".countdown.interval",
+    1. html : app-acountdown [parentname]="myname"
+    2. ts :
+        - @Input() parentname = "---"; myname = "countdown-test";
+        - this.pubsub.sub(this.myname+".countdown.fire",data=>...
+        - this.pubsub.pub(this.myname+".countdown.interval",this.myinterval);
 </pre></nz-card> </nz-collapse-panel> </nz-collapse>
+
 
 
 

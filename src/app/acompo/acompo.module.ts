@@ -12,10 +12,11 @@ import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
 import { AcountdownComponent } from './acountdown/acountdown.component';
 import { AchartComponent } from './achart/achart.component';
+import { AtableComponent } from './atable/atable.component';
 
 @NgModule({
-  declarations: [AcountdownComponent, AchartComponent],
-  exports: [AcountdownComponent, AchartComponent],
+  declarations: [AcountdownComponent, AchartComponent, AtableComponent],
+  exports: [AcountdownComponent, AchartComponent, AtableComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,

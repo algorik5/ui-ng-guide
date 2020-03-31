@@ -13,10 +13,11 @@ import { NgPipesModule } from 'ngx-pipes';
 import { AcompoModule } from '../acompo/acompo.module';
 import { AcountdownTestComponent } from './acountdown-test/acountdown-test.component';
 import { AchartTestComponent } from './achart-test/achart-test.component';
+import { AtableTestComponent } from './atable-test/atable-test.component';
 
 
 @NgModule({
-  declarations: [AcountdownTestComponent, AchartTestComponent],
+  declarations: [AcountdownTestComponent, AchartTestComponent, AtableTestComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
