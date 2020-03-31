@@ -12,4 +12,5 @@ export class TimerUtil
     }
 
     
+    static test1() {}
 }
