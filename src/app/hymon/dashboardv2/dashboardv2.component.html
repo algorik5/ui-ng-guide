@@ -1,8 +1,8 @@
 
 <nz-card> 
-    <app-view-atop></app-view-atop> 
-    <app-view-aleft></app-view-aleft> 
-    <app-view-aright></app-view-aright> 
+    <app-view-atop [myname]="myname"></app-view-atop> 
+    <app-view-aleft [myname]="myname"></app-view-aleft> 
+    <app-view-aright [myname]="myname"></app-view-aright> 
 </nz-card>
 <!-- <app-dashboard-aleft></app-dashboard-aleft>
 <app-dashboard-aright></app-dashboard-aright> -->
@@ -23,10 +23,12 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'server max'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-max></app-view-max> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-max></app-view-max> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-max></app-view-max> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-max></app-view-max> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_cpu"></app-astat> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_memory"></app-astat> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_cpu"></app-astat> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_cpu"></app-astat> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_cpu"></app-astat> </nz-card></nz-col>
+                            <nz-col [nzSpan]="4"><nz-card> <app-astat [myname]="myname_server_max_cpu"></app-astat> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>

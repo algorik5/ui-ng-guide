@@ -29,20 +29,22 @@ export class Dashboardv2Component implements OnInit {
   {
     this.testcount++; if(this.testcount>10) this.testcount = 3;
     this.logging.debug("======== mytimer # "+ this.testcount);
-    // this.server_max();
+    this.server_max();
     this.server_top();
     this.server_trend();
     this.server_table();
   }
 
+  myname_server_max_cpu = this.myname+".server_max_cpu";
+  myname_server_max_memory = this.myname+".server_max_memory";
   server_max()
   {
     let color = "black"; if(this.testcount%3==0) color = "red";
-    let stat = {title:"cpu-max",value:this.testcount,suffix:"host-x",color:color,icon:"like"}
-    this.pubsub.pub("hymon.dashboard-server-cpu-max.data",stat);
+    let statdata = {title:"cpu-max",value:this.testcount,suffix:"host-x",color:color,icon:"like"};
+    this.pubsub.pub(this.myname_server_max_cpu+".statdata",statdata);
 
-    let stat2 = {title:"memory-max",value:this.testcount*2,suffix:"host-xx",color:color,icon:"like"}
-    this.pubsub.pub("hymon.dashboard-server-memory-max.data",stat2);
+    let statdata2 = {title:"memory-max",value:this.testcount*2,suffix:"host-xx",color:color,icon:"like"}
+    this.pubsub.pub(this.myname_server_max_memory+".statdata",statdata2);
 
     // let query = "SELECT * FROM server WHERE cpu = (SELECT max(cpu) FROM server) limit 1";//select max(cpu) from server
     // let rs = this.sqllocal.select(query);

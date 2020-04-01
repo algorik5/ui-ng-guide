@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { Dashboardv2RoutingModule } from './dashboardv2-routing.module';
 import { Dashboardv2Component } from './dashboardv2.component';
-import { ViewMaxComponent } from './view-max.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -19,7 +18,7 @@ import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
-  declarations: [Dashboardv2Component, ViewMaxComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
+  declarations: [Dashboardv2Component, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,

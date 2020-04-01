@@ -5,7 +5,10 @@
 - add : push대신 concat사용
 
 
-
+# 참고 - 문법
+- [name]="'val'" 가능 <<< boolean/int는 [name]="true">>>
+- 주의-nginit순서 > 부모부터 ngInit > 자신 ngInit ....
+- (template string) `xxx` <<< multi line(`) <<< `${var}`
 
 
 # service 싱글턴 제거 (https://poiemaweb.com/angular-service) *** https://angular.io/guide/singleton-services ***https://angular.io/guide/providers
