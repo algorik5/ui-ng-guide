@@ -32,7 +32,7 @@
 <nz-table #myTable nzBordered [nzData]="getTableData()" nzSize="small">
   <thead>
     <tr>
-      <ng-container *ngIf="isCheckable()"><th nzShowCheckbox [nzDisabled]="true"></th></ng-container>
+      <ng-container *ngIf="checkable"><th nzShowCheckbox [nzDisabled]="true"></th></ng-container>
       <ng-container *ngFor="let column of getTableColumns()">
         <th *ngIf="column.show">{{column["name"]}}</th>
       </ng-container>
@@ -41,11 +41,11 @@
   <tbody>
     <ng-container *ngFor="let data of myTable.data">
       <tr>        
-        <ng-container *ngIf="isCheckable()"><td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td></ng-container>
+        <ng-container *ngIf="checkable"><td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td></ng-container>
         <ng-container *ngFor="let column of getTableColumns()">
           <td *ngIf="column.show">
-            <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
-            <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+            <ng-container *ngIf="!editable">{{data[column["name"]]}}</ng-container>
+            <ng-container *ngIf="editable"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
           </td>
         </ng-container>
       </tr>

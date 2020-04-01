@@ -25,9 +25,6 @@ ng g c hymon/dashboardv2/view-atop --inlineStyle=true --inlineTemplate=true --fl
 ng g c hymon/dashboardv2/view-aleft --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-max --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/view-table --inlineStyle=true --inlineTemplate=true --flat=true
 
 module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule
 route - { path: 'dashboardv2',component: Dashboardv2Component }

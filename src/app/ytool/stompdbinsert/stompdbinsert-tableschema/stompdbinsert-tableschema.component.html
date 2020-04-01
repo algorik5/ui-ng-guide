@@ -22,8 +22,8 @@
         <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="selectRow(data)"></td>
         <ng-container *ngFor="let column of getTableColumns()">
           <td *ngIf="column.show">
-            <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
-            <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+            <ng-container *ngIf="!editable">{{data[column["name"]]}}</ng-container>
+            <ng-container *ngIf="editable"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
           </td>
         </ng-container>
       </tr>

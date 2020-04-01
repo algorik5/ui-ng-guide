@@ -24,8 +24,8 @@ import { ArrayUtil } from 'src/app/autil/ArrayUtil';
       <tr>
         <ng-container *ngFor="let column of getTableColumns()">
           <td *ngIf="column.show">
-            <ng-container *ngIf="isEditable()==false">{{data[column["name"]]}}</ng-container>
-            <ng-container *ngIf="isEditable()==true"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
+            <ng-container *ngIf="!editable">{{data[column["name"]]}}</ng-container>
+            <ng-container *ngIf="editable"> <input type="text" nz-input [(ngModel)]='data[column["name"]]'/></ng-container>
           </td>
         </ng-container>
       </tr>
@@ -66,8 +66,7 @@ export class DashboardServerMemoryTableComponent implements OnInit {
 
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
+  editable = false;
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -75,7 +74,7 @@ export class DashboardServerMemoryTableComponent implements OnInit {
   tableInit()
   {
     ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(false);
+    // this.table.setEditable(false);
 
     ////////////////////////////////////////////////////////// testdata  
     // this.test_datas();

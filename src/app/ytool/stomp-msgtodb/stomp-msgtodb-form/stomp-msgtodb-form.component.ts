@@ -109,8 +109,7 @@ export class StompMsgtodbFormComponent implements OnInit {
   ////////////////////////////////////////////////////////// table
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
+  editable = false;
   selectRow(data) {
     this.logging.debug("====== selectRow data=" + JSON.stringify(data));
     // this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -119,7 +118,7 @@ export class StompMsgtodbFormComponent implements OnInit {
   tableInit()
   {
     ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(false);
+    // this.table.setEditable(false);
     this.table.setColumns(["msg","table"]);
   }
   table_refresh()

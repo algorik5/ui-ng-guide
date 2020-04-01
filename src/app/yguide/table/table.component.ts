@@ -43,10 +43,8 @@ export class TableComponent implements OnInit {
 
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
-  isCheckable() { return this.table.isCheckable(); }
-  setCheckable(check) { this.table.setCheckable(check); }
+  editable = false;
+  checkable = false;
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -54,9 +52,9 @@ export class TableComponent implements OnInit {
   tableInit()
   {
     ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(false);
+    // this.table.setEditable(false);
     ////////////////////////////////////////////////////////// checkable
-    this.table.setCheckable(true);
+    // this.table.setCheckable(true);
 
     ////////////////////////////////////////////////////////// testdata  
     this.test_datas();
@@ -98,8 +96,8 @@ export class TableComponent implements OnInit {
   {
     this.pubsub.pub(this.topicprefix+".columnshow","host");//this.table.changeColumnShow("host");
   }
-  test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.table.setEditable(this.test_editable); }
-  test_checkable = false; test_check() { this.test_checkable = this.test_checkable?false:true; this.table.setCheckable(this.test_checkable); }
+  test_editable = false; test_edit() { this.test_editable = this.test_editable?false:true; this.editable = this.test_editable; }
+  test_checkable = false; test_check() { this.test_checkable = this.test_checkable?false:true; this.checkable = this.test_checkable; }
   test_checkedall = false; test_checkall() { this.test_checkedall = this.test_checkedall?false:true; ArrayUtil.setColumnValue(this.table.getData(),"checked",this.test_checkedall); }
 
 }

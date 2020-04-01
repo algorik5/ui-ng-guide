@@ -39,8 +39,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
 
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
+  editable = false;
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -50,7 +49,7 @@ export class StompdbinsertTableschemaComponent implements OnInit {
   {
     this.table.setColumns(["column","type","pk","samplevalue","checked"]);
     ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(true);
+    // this.table.setEditable(true);
   }
 
   /////////////////////////////////////////////////////////// button

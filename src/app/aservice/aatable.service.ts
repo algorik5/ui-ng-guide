@@ -55,14 +55,14 @@ export class AatableService {
   }
 
   ////////////////////////////// editable (사용안함)
-  editable = false;
-  isEditable() { return this.editable; }
-  setEditable(myeditable) { this.editable = myeditable; }
+  // editable = false;
+  // isEditable() { return this.editable; }
+  // setEditable(myeditable) { this.editable = myeditable; }
 
-  ////////////////////////////// editable (사용안함)
-  checkable = true;
-  isCheckable() { return this.checkable; }
-  setCheckable(mycheckable) { this.checkable = mycheckable; }
+  ////////////////////////////// checkable (사용안함)
+  // checkable = true;
+  // isCheckable() { return this.checkable; }
+  // setCheckable(mycheckable) { this.checkable = mycheckable; }
 
   ////////////////////////////// test data
   testmode = true;

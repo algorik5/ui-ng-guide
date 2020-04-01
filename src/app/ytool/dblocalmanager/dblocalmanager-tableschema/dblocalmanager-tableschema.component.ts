@@ -43,8 +43,8 @@ export class DblocalmanagerTableschemaComponent implements OnInit {
 
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
+  editable = false;
+  checkable = false;
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
     this.pubsub.pub(this.topicprefix+".selectdata", data);
@@ -52,7 +52,7 @@ export class DblocalmanagerTableschemaComponent implements OnInit {
   tableInit()
   {
     ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(false);
+    // this.table.setEditable(false);
 
   }
   /////////////////////////////////////////////////////////// button
