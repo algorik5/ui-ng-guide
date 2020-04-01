@@ -16,12 +16,11 @@ export class AchartComponent implements OnInit {
 
   constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  // @Input() parentname = "acompo"; myname = "chart";
   @Input() myname = "chart";
   @Input() charttype = "line";
   ngOnInit() {
 
-    this.logging.debug("======================== AchartComponent "+"#myname="+this.myname+"#charttype="+this.charttype)
+    this.logging.debug("======================== AchartComponent "+"#myname="+this.myname+"#charttype="+this.charttype);
   	////////////////////////////////////////////////////////// chart  
     this.pubsub.sub(this.myname+".chartdatas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();

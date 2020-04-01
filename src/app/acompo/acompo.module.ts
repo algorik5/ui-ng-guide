@@ -13,10 +13,11 @@ import { NgPipesModule } from 'ngx-pipes';
 import { AcountdownComponent } from './acountdown/acountdown.component';
 import { AchartComponent } from './achart/achart.component';
 import { AtableComponent } from './atable/atable.component';
+import { AstatComponent } from './astat/astat.component';
 
 @NgModule({
-  declarations: [AcountdownComponent, AchartComponent, AtableComponent],
-  exports: [AcountdownComponent, AchartComponent, AtableComponent],
+  declarations: [AcountdownComponent, AchartComponent, AtableComponent, AstatComponent],
+  exports: [AcountdownComponent, AchartComponent, AtableComponent, AstatComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
