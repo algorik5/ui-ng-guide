@@ -1,7 +1,7 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
-    1. html : app-acountdown [parentname]="myname"
+    1. html : app-acountdown [myname]="myname"
     2. ts :
-        - @Input() parentname = "---"; myname = "countdown-test";
+        - myname = "countdown-test";
         - this.pubsub.sub(this.myname+".countdown.fire",data=>...
         - this.pubsub.pub(this.myname+".countdown.interval",this.myinterval);
 </pre></nz-card> </nz-collapse-panel> </nz-collapse>

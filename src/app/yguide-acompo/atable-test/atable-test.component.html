@@ -1,7 +1,7 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
-    1. html : app-atable [parentname]="myname" [checkable]="false" [editable]="false"
+    1. html : app-atable [myname]="myname" [checkable]="false" [editable]="false"
     2. ts :
-        - @Input() parentname = "---"; myname = "table-test";
+        - myname = "table-test";
         - this.pubsub.sub(this.myname+".tableselectdata",data=>...
         - this.pubsub.pub(this.myname+".tabledatas",datas)
         - this.pubsub.pub(this.myname+".tabledata",data)

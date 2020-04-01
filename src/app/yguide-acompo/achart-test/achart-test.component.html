@@ -1,7 +1,7 @@
 <nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
-    1. html : app-achart [parentname]="myname"
+    1. html : app-achart [myname]="myname"
     2. ts :
-        - @Input() parentname = "---"; myname = "chart-test";
+        - @Input() myname = "chart-test";
         - this.pubsub.sub(this.myname+".chart.xxx",data=>...
         - this.pubsub.pub(this.myname+".chart.charttype",this.mycharttype);
     ===============================

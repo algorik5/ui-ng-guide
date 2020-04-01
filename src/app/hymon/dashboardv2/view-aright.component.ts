@@ -19,10 +19,10 @@ export class ViewArightComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "hymon"; myname = "dashboardv2";//this.parentname+"."+this.myname
+  @Input() myname = "right";
 
   ngOnInit() {
-    this.pubsub.sub(this.parentname+"."+this.myname+".showright",datas=>{
+    this.pubsub.sub(this.myname+".showright",datas=>{
       this.open();
     });
   }

@@ -15,8 +15,7 @@ export class Dashboardv2Component implements OnInit {
 
   constructor(private sqllocal:AasqllocalService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  // topicprefix = "hymon.dashboardv2";//this.topicprefix+".datas"
-  @Input() myname = "hymon.dashboardv2";//this.parentname+"."+this.myname
+  @Input() myname = "hymon.dashboardv2";
 
   ngOnInit() {
     this.logging.debug("======================== Dashboardv2Component "+"#myname="+this.myname)

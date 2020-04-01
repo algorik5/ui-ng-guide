@@ -34,7 +34,7 @@ export class ViewAtopComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "hymon"; myname = "dashboardv2";//this.parentname+"."+this.myname
+  @Input() myname = "top";
 
   ngOnInit() {
     this.pubsub.pub("app.showmenu","fire");
@@ -75,16 +75,16 @@ export class ViewAtopComponent implements OnInit {
   stopClick() { this.stoped = true; this.countdown = this.interval; }
   refreshClick() {
     this.countdown = this.interval; 
-    this.pubsub.pub(this.parentname+"."+this.myname+".refresh","fire");
+    this.pubsub.pub(this.myname+".refresh","fire");
   }
 
   leftClick()
   {
-    this.pubsub.pub(this.parentname+"."+this.myname+".showleft","fire");
+    this.pubsub.pub(this.myname+".showleft","fire");
   }
   rightClick()
   {
-    this.pubsub.pub(this.parentname+"."+this.myname+".showright","fire");
+    this.pubsub.pub(this.myname+".showright","fire");
   }
 
 }

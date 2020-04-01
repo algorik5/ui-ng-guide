@@ -18,10 +18,10 @@ export class ViewAleftComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "hymon"; myname = "dashboardv2";//this.parentname+"."+this.myname
+  @Input() myname = "left";
 
   ngOnInit() {
-    this.pubsub.sub(this.parentname+"."+this.myname+".showleft",datas=>{
+    this.pubsub.sub(this.myname+".showleft",datas=>{
       this.open();
     });
   }
