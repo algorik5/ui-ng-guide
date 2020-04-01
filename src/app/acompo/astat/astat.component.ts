@@ -16,25 +16,30 @@ export class AstatComponent implements OnInit {
 
     this.logging.debug("======================== AstatComponent "+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".stattitle",data => {
+      this.title = data;
     });
     this.pubsub.sub(this.myname+".statvalue",data => {
+      this.value = data;
     });
     this.pubsub.sub(this.myname+".statsuffix",data => {
+      this.suffix = data;
     });
     this.pubsub.sub(this.myname+".statcolor",data => {
+      this.color = data;
     });
     this.pubsub.sub(this.myname+".staticon",data => {
+      this.icon = data;
     });
 
     this.statInit();
   }
 
 
-  title:"t1";
-  value:"v1";
-  suffix:"s1";
-  color:"black";
-  icon:"down";
+  title = "t1";
+  value = "v1";
+  suffix = "s1";
+  color = "blue";
+  icon = "down";
 
   statInit()
   {

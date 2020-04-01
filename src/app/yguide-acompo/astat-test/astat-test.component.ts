@@ -19,28 +19,18 @@ export class AstatTestComponent implements OnInit {
   @Input() myname = "astat-test";
   ngOnInit() {
 
-  	////////////////////////////////////////////////////////// chart  
-    this.pubsub.sub(this.myname+".xxx",datas => {//[{legend:-,x:-,y:-}...
+    this.pubsub.sub(this.myname+".statxxx",datas => {
     });
   }
 
-  ///////////////////////////////// linechart 테스트버튼
-  line_chartInit()
+  test_no = 0;
+  test_type(type)
   {
-    this.pubsub.pub(this.myname+".charttype","line");
-    // this.pubsub.pub(this.myname+".clear","clear");
+    this.test_no++;
+    if(type=="title") this.pubsub.pub(this.myname+".stattitle","title-"+this.test_no);
+    if(type=="value") this.pubsub.pub(this.myname+".statvalue","value-"+this.test_no);
+    if(type=="suffix") this.pubsub.pub(this.myname+".statsuffix","suffix-"+this.test_no);
+    if(type=="color") this.pubsub.pub(this.myname+".statcolor",this.test_no%2==1?"red":"lime");
+    if(type=="icon") this.pubsub.pub(this.myname+".staticon",this.test_no%2==1?"up":"down");
   }
-  line_test_datas() { 
-    let datas = zTestDataUtil.test_data();
-    let chartdatas = []; datas.forEach((data,i)=>{ chartdatas.push({legend:data["host"],x:data["date"],y:data["cpu"]}); });
-    this.pubsub.pub(this.myname+".chartdatas",chartdatas);//this.chart.addDatas(chartdatas);
-  }
-  line_test_no = 0;
-  line_test_datarow() { 
-    this.line_test_no++; let curdate = new Date(); let date = DateUtil.addDays(curdate,this.line_test_no);
-    let legend = "host-x"; let x = date; let y = MathUtil.random(0,10);
-    let chartdata = {legend:legend,x:x,y:y};
-    this.pubsub.pub(this.myname+".chartdata",chartdata);//this.chart.addData(chartdata);
-  }
-
 }

@@ -45,7 +45,7 @@ ng g c yguide/inputoutput
 (처음에만) ng g m acompo --routing
   - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
 ng g c acompo/astat --export=true (===exports: AstatComponent)
- - (개발) <<< achart.ts 복사>>>
+ - (개발)-astat 복사)
    - @Input() myname = "stat";
    - this.pubsub.sub(this.myname+".datas",datas => { });
    - this.pubsub.pub(this.myname+".xxx","xxx");    
@@ -57,7 +57,7 @@ ng g c acompo/astat --export=true (===exports: AstatComponent)
 ng g c yguide-acompo/astat-test
   - { path: 'astat-test',component: AstatTestComponent }
   - app.component : 메뉴 등록
-  - (개발) 
+  - (개발-astat-test복사) 
     - <app-astat [myname]="myname"></app-astat>
     - @Input() myname = "stat-test";
     - this.pubsub.sub(this.myname+".statselectdata",data=>{ });
