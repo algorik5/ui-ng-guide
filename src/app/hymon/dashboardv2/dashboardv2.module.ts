@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { Dashboardv2RoutingModule } from './dashboardv2-routing.module';
 import { Dashboardv2Component } from './dashboardv2.component';
 import { ViewMaxComponent } from './view-max.component';
-import { ViewTopComponent } from './view-top.component';
-import { ViewTrendComponent } from './view-trend.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -18,13 +16,15 @@ import { ViewTableComponent } from './view-table.component';
 import { ViewAtopComponent } from './view-atop.component';
 import { ViewAleftComponent } from './view-aleft.component';
 import { ViewArightComponent } from './view-aright.component';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
-  declarations: [Dashboardv2Component, ViewMaxComponent, ViewTopComponent, ViewTrendComponent, ViewTableComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
+  declarations: [Dashboardv2Component, ViewMaxComponent, ViewTableComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+    AcompoModule,
     Dashboardv2RoutingModule
   ]
 })

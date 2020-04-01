@@ -16,23 +16,30 @@ export class AchartComponent implements OnInit {
 
   constructor(private chart:AaechartsService,private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "acompo"; myname = "chart";
+  // @Input() parentname = "acompo"; myname = "chart";
+  @Input() myname = "chart";
+  @Input() charttype = "line";
   ngOnInit() {
 
+    this.logging.debug("======================== AchartComponent "+"#myname="+this.myname+"#charttype="+this.charttype)
   	////////////////////////////////////////////////////////// chart  
-    this.pubsub.sub(this.parentname+"."+this.myname+".datas",datas => {//[{legend:-,x:-,y:-}...
+    this.pubsub.sub(this.myname+".chartdatas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();
       // this.chart.initChart("line");
       this.chart.addDatas(datas);
     });
     // let no = 0;
-    this.pubsub.sub(this.parentname+"."+this.myname+".data",data => {//{legend:-,x:-,y:-}
+    this.pubsub.sub(this.myname+".chartdata",data => {//{legend:-,x:-,y:-}
     // no++; if(no==1) this.chart.clearChart();
       this.chart.addData(data);//this.chart.addDataRow(data["host"],data["date"],data["cpu"]);//data["memory"]
     });
+    this.pubsub.sub(this.myname+".chartclear",data => {
+      this.chart.clearChart();
+    });
 
-    this.pubsub.sub(this.parentname+"."+this.myname+".charttype",data => {
+    this.pubsub.sub(this.myname+".charttype",data => {
       this.chart.initChart(data);
+      this.chart.clearChart();
     });
 
     this.chartInit();
@@ -42,7 +49,6 @@ export class AchartComponent implements OnInit {
   getChartOptions() { return this.chart.getChartOption(); }
   setChartInstance(event) { this.chart.setChartInstance(event); }
 
-  charttype = "line";
   chartInit()
   {
     ////////////////////////////////////////////////////////// 필수 - ngInit에서 initChart를 호출해야함

@@ -54,12 +54,12 @@ export class AatableService {
     this.logging.debug("=== changeColumnShow find="+JSON.stringify(find) +"#columns="+JSON.stringify(this.columns));
   }
 
-  ////////////////////////////// editable
+  ////////////////////////////// editable (사용안함)
   editable = false;
   isEditable() { return this.editable; }
   setEditable(myeditable) { this.editable = myeditable; }
 
-  ////////////////////////////// editable
+  ////////////////////////////// editable (사용안함)
   checkable = true;
   isCheckable() { return this.checkable; }
   setCheckable(mycheckable) { this.checkable = mycheckable; }

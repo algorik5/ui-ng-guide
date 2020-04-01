@@ -14,7 +14,7 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
 
   @Input() parentname = "acompo"; myname = "countdown";
   ngOnInit() {
-    this.logging.debug("======== ngOnInit # "+"#parentname="+this.parentname +"#myname="+ this.myname );
+    this.logging.debug("======================== acountdown "+"#myname="+this.myname)
     this.pubsub.sub(this.parentname+"."+this.myname+".interval",data=>{
       this.logging.debug("======== interval change # "+ "#parent="+this.parentname +"#myname="+ this.myname +"#interval="+this.interval+"#countdown="+this.countdown);
       this.interval = data;

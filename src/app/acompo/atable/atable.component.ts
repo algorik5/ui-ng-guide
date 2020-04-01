@@ -17,31 +17,37 @@ export class AtableComponent implements OnInit {
 
   constructor(private table: AatableService, private pubsub: AapubsubService,private logging:AaloggingService) {}
 
-  @Input() parentname = "acompo"; myname = "table";
+  @Input() myname = "table";
+  @Input() editable = false;
+  @Input() checkable = false;
   ngOnInit() {
-    //pubsub-table 샘플
-    this.pubsub.sub(this.parentname+"."+this.myname+".datas", datas => {
+    this.logging.debug("======================== AtableComponent "+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
+
+    this.pubsub.sub(this.myname+".tabledatas", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);
+      this.logging.debug("=== tabledatas "+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
     });
-    this.pubsub.sub(this.parentname+"."+this.myname+".data", data => {
+    this.pubsub.sub(this.myname+".tabledata", data => {
       if(Array.isArray(data)) this.table.addDatas(data);
       else this.table.addData(data);
     });
-    this.pubsub.sub(this.parentname+"."+this.myname+".clear", data => {
+    this.pubsub.sub(this.myname+".tableclear", data => {
       this.table.clearColumns();
       this.table.clearData();
     });
 
-    this.pubsub.sub(this.parentname+"."+this.myname+".columnshow", data => {
+    this.pubsub.sub(this.myname+".tablecolumnshow", data => {
       this.table.changeColumnShow(data);
     });
-    this.pubsub.sub(this.parentname+"."+this.myname+".editable", data => {
-      this.table.setEditable(data);
+    this.pubsub.sub(this.myname+".tableeditable", data => {
+      this.editable = data;
+      // this.table.setEdiable(data);
     });
-    this.pubsub.sub(this.parentname+"."+this.myname+".checkable", data => {
-      this.table.setCheckable(data);
+    this.pubsub.sub(this.myname+".tablecheckable", data => {
+      this.checkable = data;
+      // this.table.setCheckable(data);
     });
-    this.pubsub.sub(this.parentname+"."+this.myname+".checkall", data => {
+    this.pubsub.sub(this.myname+".tablecheckall", data => {
       this.setCheckAll(data);
     });
 
@@ -50,10 +56,10 @@ export class AtableComponent implements OnInit {
   
   getTableData() { return this.table.getData(); }
   getTableColumns() { return this.table.getColumns(); }
-  isEditable() { return this.table.isEditable(); }
-  setEditable(edit) { this.table.setEditable(edit); }
-  isCheckable() { return this.table.isCheckable(); }
-  setCheckable(check) { this.table.setCheckable(check); }
+  // isEditable() { return this.table.isEditable(); }
+  // setEditable(edit) { this.table.setEditable(edit); }
+  // isCheckable() { return this.table.isCheckable(); }
+  // setCheckable(check) { this.table.setCheckable(check); }
   // checkedall = false;
   setCheckAll(checkedall) { 
     // this.checkedall = this.checkedall?false:true; 
@@ -62,14 +68,14 @@ export class AtableComponent implements OnInit {
   }
   selectRow(data) {
     // console.log("====== selectRow data=" + JSON.stringify(data));
-    this.pubsub.pub(this.parentname+"."+this.myname+".selectdata", data);
+    this.pubsub.pub(this.myname+".tableselectdata", data);
   }
   tableInit()
   {
-    ////////////////////////////////////////////////////////// edit  
-    this.table.setEditable(false);
-    ////////////////////////////////////////////////////////// checkable
-    this.table.setCheckable(true);
+    // ////////////////////////////////////////////////////////// edit  
+    // this.table.setEditable(false);
+    // ////////////////////////////////////////////////////////// checkable
+    // this.table.setCheckable(true);
   }
  
   /////////////////////////////////////////////////////////// button

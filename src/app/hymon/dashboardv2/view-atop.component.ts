@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { timer } from 'rxjs';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
@@ -34,7 +34,7 @@ export class ViewAtopComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  topicprefix = "hymon.dashboard";//this.topicprefix+".datas"
+  @Input() parentname = "hymon"; myname = "dashboardv2";//this.parentname+"."+this.myname
 
   ngOnInit() {
     this.pubsub.pub("app.showmenu","fire");
@@ -75,16 +75,16 @@ export class ViewAtopComponent implements OnInit {
   stopClick() { this.stoped = true; this.countdown = this.interval; }
   refreshClick() {
     this.countdown = this.interval; 
-    this.pubsub.pub(this.topicprefix+".refresh","fire");
+    this.pubsub.pub(this.parentname+"."+this.myname+".refresh","fire");
   }
 
   leftClick()
   {
-    this.pubsub.pub(this.topicprefix+".showleft","fire");
+    this.pubsub.pub(this.parentname+"."+this.myname+".showleft","fire");
   }
   rightClick()
   {
-    this.pubsub.pub(this.topicprefix+".showright","fire");
+    this.pubsub.pub(this.parentname+"."+this.myname+".showright","fire");
   }
 
 }

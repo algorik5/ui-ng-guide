@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
@@ -19,10 +19,10 @@ export class ViewArightComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  topicprefix = "hymon.dashboard";//this.topicprefix+".datas"
+  @Input() parentname = "hymon"; myname = "dashboardv2";//this.parentname+"."+this.myname
 
   ngOnInit() {
-    this.pubsub.sub(this.topicprefix+".showright",datas=>{
+    this.pubsub.sub(this.parentname+"."+this.myname+".showright",datas=>{
       this.open();
     });
   }

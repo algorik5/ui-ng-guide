@@ -4,7 +4,7 @@
 - ng g c hymon/dashboardv2/view-max (--inlineStyle=true --inlineTemplate=true --flat=true)
 - (보류)---ng g s hymon/dashboardv2/dashboardv2
 # module/route
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule
   - { path: 'dashboardv2',component: Dashboardv2Component }
 # app 수정 (route/menu)
 # 화면 개발
@@ -29,7 +29,7 @@ ng g c hymon/dashboardv2/view-top --inlineStyle=true --inlineTemplate=true --fla
 ng g c hymon/dashboardv2/view-trend --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/dashboardv2/view-table --inlineStyle=true --inlineTemplate=true --flat=true
 
-module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule
 route - { path: 'dashboardv2',component: Dashboardv2Component }
 app routing/component
 
@@ -37,7 +37,7 @@ app routing/component
 # ========================================== guide (향후변경 - 1 module)
 ng g m yguide/inputoutput --routing
 ng g c yguide/inputoutput
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule
   - { path: 'inputoutput',component: InputoutputComponent }
   - { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
   - <a title routerLink="guide/inputoutput"...

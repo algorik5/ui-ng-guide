@@ -36,10 +36,10 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'server top'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-top></app-view-top> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-top></app-view-top> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-top></app-view-top> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-top></app-view-top> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_top_cpu" [charttype]="'bar'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_top_memory" [charttype]="'bar'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_top_cpu" [charttype]="'bar'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_top_cpu" [charttype]="'bar'"></app-achart> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>
@@ -49,10 +49,10 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'server trend'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-trend></app-view-trend> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-trend></app-view-trend> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-trend></app-view-trend> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-trend></app-view-trend> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_trend_cpu" [charttype]="'line'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_trend_memory" [charttype]="'line'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_trend_cpu" [charttype]="'line'"></app-achart> </nz-card></nz-col>
+                            <nz-col [nzSpan]="6"><nz-card> <app-achart [myname]="myname_server_trend_cpu" [charttype]="'line'"></app-achart> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>
@@ -62,10 +62,8 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'server table'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-table></app-view-table> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-table></app-view-table> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-table></app-view-table> </nz-card></nz-col>
-                            <nz-col [nzSpan]="6"><nz-card> <app-view-table></app-view-table> </nz-card></nz-col>
+                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_cpu"></app-atable> </nz-card></nz-col>
+                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_memory"></app-atable> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>
