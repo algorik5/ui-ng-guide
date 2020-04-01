@@ -14,10 +14,11 @@ import { AcompoModule } from '../acompo/acompo.module';
 import { AcountdownTestComponent } from './acountdown-test/acountdown-test.component';
 import { AchartTestComponent } from './achart-test/achart-test.component';
 import { AtableTestComponent } from './atable-test/atable-test.component';
+import { AstatTestComponent } from './astat-test/astat-test.component';
 
 
 @NgModule({
-  declarations: [AcountdownTestComponent, AchartTestComponent, AtableTestComponent],
+  declarations: [AcountdownTestComponent, AchartTestComponent, AtableTestComponent, AstatTestComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
