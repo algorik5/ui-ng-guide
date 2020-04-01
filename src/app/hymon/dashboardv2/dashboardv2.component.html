@@ -62,8 +62,8 @@
                 <nz-collapse> 
                     <nz-collapse-panel [nzHeader]="'server table'" [nzActive]="'true'" [nzDisabled]="'false'">
                         <nz-row [nzGutter]="16">
-                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_cpu"></app-atable> </nz-card></nz-col>
-                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_memory"></app-atable> </nz-card></nz-col>
+                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_cpu" [checkable]="false" [editable]="false"></app-atable> </nz-card></nz-col>
+                            <nz-col [nzSpan]="12"><nz-card> <app-atable [myname]="myname_server_table_memory" [checkable]="false" [editable]="false"></app-atable> </nz-card></nz-col>
                         </nz-row>
                     </nz-collapse-panel> 
                 </nz-collapse>

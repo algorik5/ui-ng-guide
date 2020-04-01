@@ -12,7 +12,6 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
-import { ViewTableComponent } from './view-table.component';
 import { ViewAtopComponent } from './view-atop.component';
 import { ViewAleftComponent } from './view-aleft.component';
 import { ViewArightComponent } from './view-aright.component';
@@ -20,7 +19,7 @@ import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
-  declarations: [Dashboardv2Component, ViewMaxComponent, ViewTableComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
+  declarations: [Dashboardv2Component, ViewMaxComponent, ViewAtopComponent, ViewAleftComponent, ViewArightComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,

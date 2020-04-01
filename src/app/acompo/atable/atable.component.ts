@@ -42,10 +42,12 @@ export class AtableComponent implements OnInit {
     this.pubsub.sub(this.myname+".tableeditable", data => {
       this.editable = data;
       // this.table.setEdiable(data);
+      this.logging.debug("=== tableeditable "+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
     });
     this.pubsub.sub(this.myname+".tablecheckable", data => {
       this.checkable = data;
       // this.table.setCheckable(data);
+      this.logging.debug("=== tablecheckable "+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
     });
     this.pubsub.sub(this.myname+".tablecheckall", data => {
       this.setCheckAll(data);
