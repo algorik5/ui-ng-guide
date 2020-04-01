@@ -28,7 +28,7 @@ export class AaechartsService {
 
   /////////////////////////// line
   linechartoptions:EChartOption = { //주의 - null이면 chartinit 호출안됨
-    //title: { text: 'test chart' },
+    title: { text: 'test chart' },
     tooltip: { trigger: 'axis' },
     xAxis: { type: 'time' },
     yAxis: { type: 'value',},// boundaryGap: [0, '100%'], },

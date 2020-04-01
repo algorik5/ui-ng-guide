@@ -42,9 +42,9 @@ export class AstatComponent implements OnInit {
   }
 
 
-  title = "t1";
-  value = "v1";
-  suffix = "s1";
+  title = "title-1";
+  value = "value-1";
+  suffix = "suffix-1";
   color = "blue";
   icon = "down";
 

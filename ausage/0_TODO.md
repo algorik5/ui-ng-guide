@@ -12,7 +12,6 @@ simulator,cpu,mem...
 
 =============== dashboard
 (향후) bar막대color
-(향후-수정) inline여부
 
 trend제목
 
