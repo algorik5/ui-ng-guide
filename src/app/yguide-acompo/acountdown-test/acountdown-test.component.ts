@@ -12,10 +12,10 @@ export class AcountdownTestComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "---"; myname = "countdown-test";
+  myname = "countdown-test";
   ngOnInit() {
-    this.logging.debug("======== ngOnInit # "+"#parentname="+this.parentname +"#myname="+ this.myname );
-    this.pubsub.sub(this.myname+".countdown.fire",data=>{
+    this.logging.debug("======== ngOnInit # "+"#myname="+ this.myname );
+    this.pubsub.sub(this.myname+".countdownfire",data=>{
       this.logging.debug("======== fire change # "+ "#myname="+ this.myname +"#myfirecount="+this.myfirecount);
       this.myfirecount++;
     });
@@ -27,7 +27,7 @@ export class AcountdownTestComponent implements OnInit {
   test_interval(myinterval)
   {
     this.myinterval= myinterval;
-    this.pubsub.pub(this.myname+".countdown.interval",this.myinterval);
+    this.pubsub.pub(this.myname+".countdowninterval",this.myinterval);
   }
   myfirecount = 0;
 

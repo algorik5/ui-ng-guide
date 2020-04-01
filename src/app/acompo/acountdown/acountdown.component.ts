@@ -12,11 +12,13 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  @Input() parentname = "acompo"; myname = "countdown";
+  @Input() myname = "countdown";
+  @Input() interval = 10;
   ngOnInit() {
-    this.logging.debug("======================== acountdown "+"#myname="+this.myname)
-    this.pubsub.sub(this.parentname+"."+this.myname+".interval",data=>{
-      this.logging.debug("======== interval change # "+ "#parent="+this.parentname +"#myname="+ this.myname +"#interval="+this.interval+"#countdown="+this.countdown);
+    this.logging.debug("======================== acountdown "+"#myname="+this.myname+"#interval="+this.interval);
+    this.countdown = this.interval;
+    this.pubsub.sub(this.myname+".countdowninterval",data=>{
+      this.logging.debug("======== interval change # "+"#myname="+ this.myname +"#interval="+this.interval+"#countdown="+this.countdown);
       this.interval = data;
       this.countdown = data;
       this.timerStart();
@@ -26,7 +28,6 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
     this.timerStop();
   }
 
-  interval = 10;
   countdown = -1;
   stoped = false;
   mytimer;
@@ -55,7 +56,7 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
   }
   refreshClick()
   {
-    this.pubsub.pub(this.parentname+"."+this.myname+".fire","fire");
+    this.pubsub.pub(this.myname+".countdownfire","fire");
     this.countdown = this.interval;
   }
 
