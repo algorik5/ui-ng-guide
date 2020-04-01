@@ -14,6 +14,7 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
 
   @Input() myname = "countdown";
   @Input() interval = 10;
+  @Input() startup = false;
   ngOnInit() {
     this.logging.debug("======================== acountdown "+"#myname="+this.myname+"#interval="+this.interval);
     this.countdown = this.interval;
@@ -23,6 +24,8 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
       this.countdown = data;
       this.timerStart();
     });
+
+    if(this.startup) this.timerStart();
   }
   ngOnDestroy() { 
     this.timerStop();
@@ -41,7 +44,7 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
 
       if(this.countdown <= 0) 
       {
-        this.logging.debug("======== mytimer # "+ timercount +"#stoped="+this.stoped +"#countdown="+this.countdown +"#interval="+this.interval);
+        this.logging.debug("======== mytimer # "+ timercount +"#myname="+this.myname+"#stoped="+this.stoped +"#countdown="+this.countdown +"#interval="+this.interval);
         this.refreshClick();
       }
     });
@@ -49,7 +52,7 @@ export class AcountdownComponent implements OnInit,OnDestroy {//,OnChanges {
   timerStop()
   {
     if(this.mytimer != null) { 
-      this.logging.debug("======== mytimer STOP # ");
+      this.logging.debug("======== mytimer STOP # "+"#myname="+this.myname);
       this.mytimer.unsubscribe(); 
       this.mytimer = null; 
     }

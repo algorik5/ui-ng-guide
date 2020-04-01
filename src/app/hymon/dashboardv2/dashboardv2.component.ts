@@ -19,7 +19,7 @@ export class Dashboardv2Component implements OnInit {
 
   ngOnInit() {
     this.logging.debug("======================== Dashboardv2Component "+"#myname="+this.myname)
-    this.pubsub.sub(this.myname+".refresh",datas=>{
+    this.pubsub.sub(this.myname+".countdownfire",datas=>{
       this.refreshAll();
     });
   }
@@ -28,7 +28,7 @@ export class Dashboardv2Component implements OnInit {
   refreshAll()
   {
     this.testcount++; if(this.testcount>10) this.testcount = 3;
-    this.logging.debug("======== mytimer # "+ this.testcount);
+    this.logging.debug("======== refreshAll # "+ this.testcount);
     this.server_max();
     this.server_top();
     this.server_trend();
