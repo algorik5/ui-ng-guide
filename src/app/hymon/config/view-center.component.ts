@@ -62,7 +62,7 @@ export class ViewCenterComponent implements OnInit {
   mapOfExpandData: { [key: string]: boolean } = {};
   tableInit() {
     for (let i = 0; i < 5; i++) {
-      let msg = "msg-"+i;
+      let msg = "msg_"+i;
       let table = this.localstore.msgtablemapping_get(msg);
         this.datas.push({
         msg:msg,

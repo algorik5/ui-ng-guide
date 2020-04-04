@@ -34,7 +34,13 @@ export class ViewAtopComponent implements OnInit {
   buttonStatus = "-";
   inputValue = "--";
 
-  leftClick() {}
-  rightClick() {}
+  leftClick() {
+    this.pubsub.pub(this.myname+".showleft","fire");
+
+  }
+  rightClick() {
+    this.pubsub.pub(this.myname+".localstorage","fire");
+
+  }
 
 }

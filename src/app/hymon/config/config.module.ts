@@ -16,10 +16,11 @@ import { TreeTableModule } from 'primeng/treetable';
 import { NgPipesModule } from 'ngx-pipes';
 import { AcompoModule } from 'src/app/acompo/acompo.module';
 import { ViewTableschemaComponent } from './view-tableschema.component';
+import { ViewLocalstorageComponent } from './view-localstorage.component';
 
 
 @NgModule({
-  declarations: [ConfigComponent, ViewAtopComponent, ViewArightComponent, ViewCenterComponent, ViewTableschemaComponent],
+  declarations: [ConfigComponent, ViewAtopComponent, ViewArightComponent, ViewCenterComponent, ViewTableschemaComponent, ViewLocalstorageComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,
