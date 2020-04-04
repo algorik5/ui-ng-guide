@@ -21,7 +21,7 @@ export class AtableComponent implements OnInit {
   @Input() editable = false;
   @Input() checkable = false;
   ngOnInit() {
-    this.logging.debug("======================== AtableComponent "+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname+"#editable="+this.editable+"#checkable="+this.checkable);
 
     this.pubsub.sub(this.myname+".tabledatas", datas => {
       this.table.setData(datas);//this.table.clearData(); this.table.addDatas(datas);

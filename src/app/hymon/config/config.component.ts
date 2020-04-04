@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
   selector: 'app-config',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
+
+  @Input() myname = "hymon.config";
 
   ngOnInit() {
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
   }
 
 }

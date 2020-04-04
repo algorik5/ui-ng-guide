@@ -21,6 +21,7 @@ export class ViewArightComponent implements OnInit {
   @Input() myname = "right";
 
   ngOnInit() {
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".showright",datas=>{
       this.open();
     });

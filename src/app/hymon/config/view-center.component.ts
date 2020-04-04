@@ -1,32 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-// <th nzShowExpand></th>
-// <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]"></td>
+import { Component, OnInit, Input } from '@angular/core';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
+// 
+// 
 
 @Component({
   selector: 'app-view-center',
   template: `
-<nz-table #myTable [nzData]="listOfData" [nzSize]="'small'" [nzScroll]="{ x: '1150px', y: '240px' }">
+<nz-table #myTable [nzData]="datas" [nzSize]="'small'" [nzScroll]="{ x: '1000px', y: '400px' }" nzBordered>
   <thead>
     <tr>
-      <th nzWidth="150px" nzLeft="0px">Full Name</th>
-      <th nzWidth="100px" nzLeft="150px">Age</th>
-      <th nzWidth="100px">Column 1</th>
+      <th nzWidth="50px" nzShowExpand></th>
+      <th nzWidth="150px" nzLeft="50px">msg</th>
+      <th nzWidth="200px">count</th>
+      <th nzWidth="200px">table</th>
+      <th>msgstring</th>
       <th nzWidth="100px" nzRight="0px">Action</th>
     </tr>
   </thead>
   <tbody>
     <ng-template ngFor let-data [ngForOf]="myTable.data">
       <tr>
-        <td nzLeft="0px">{{ data.name }}</td>
-        <td nzLeft="150px">{{ data.age }}</td>
-        <td>{{ data.address }}</td>
+        <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.msg]"></td>
+        <td nzLeft="50px">{{ data.msg }}</td>
+        <td>{{ data.count }}</td>
+        <td>{{ data.table }}</td>
+        <td>{{ data.msgstring }}</td>
         <td nzRight="0px">
-          <a>action</a>
+          <button nz-button nzType="link" (click)="clickAction(data.msg)">create table</button>
         </td>
       </tr>
-      <tr [nzExpand]="mapOfExpandData[data.id]">
+      <tr [nzExpand]="mapOfExpandData[data.msg]">
         <td></td>
-        <td colspan="3">{{ data.address }}</td>
+        <td colspan="5">{{ data.msgstring }}</td>
       </tr>
     </ng-template>
   </tbody>
@@ -36,18 +42,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCenterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
 
-  listOfData = [];
-  mapOfExpandData: { [key: string]: boolean } = {};
+  @Input() myname = "right";
+  
   ngOnInit() {
-    for (let i = 0; i < 100; i++) {
-      this.listOfData.push({
-        id:"id-"+i,
-        name: `Edward King ${i}`,
-        age: 32,
-        address: `London`
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
+    this.pubsub.sub(this.myname+".showright",datas=>{
+      // this.open();
+    });
+
+    this.tableInit();
+  }
+
+  columns = ["type","table","count","insert"];
+
+  datas = [];
+  mapOfExpandData: { [key: string]: boolean } = {};
+  tableInit() {
+    for (let i = 0; i < 5; i++) {
+      this.datas.push({
+        msg:"msg-"+i,
+        count: i,
+        table: "table-"+i,
+        msgstring: "{ host:host-1 ... }"
       });
     }
   }
+
+  clickAction(id){
+    console.log("======= clickAction # "+ id);
+    this.pubsub.pub(this.myname+".showright","fire");
+  } 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AapubsubService } from 'src/app/aservice/aapubsub.service';
+import { AaloggingService } from 'src/app/aservice/aalogging.service';
 
 @Component({
   selector: 'app-view-atop',
@@ -21,9 +23,12 @@ import { Component, OnInit } from '@angular/core';
 export class ViewAtopComponent implements OnInit {
   // <nz-divider nzType="vertical"></nz-divider>
 
-  constructor() { }
+  constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
+  
+  @Input() myname = "right";
 
   ngOnInit() {
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
   }
   
   buttonStatus = "-";

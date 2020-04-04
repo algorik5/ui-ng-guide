@@ -26,6 +26,7 @@ export class ViewAtopComponent implements OnInit {
   @Input() myname = "top";
 
   ngOnInit() {
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.pub("app.showmenu","fire");
   }
   ngOnDestroy() { 

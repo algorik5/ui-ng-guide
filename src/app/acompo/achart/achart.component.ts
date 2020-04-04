@@ -20,7 +20,7 @@ export class AchartComponent implements OnInit {
   @Input() charttype = "line";
   ngOnInit() {
 
-    this.logging.debug("======================== AchartComponent "+"#myname="+this.myname+"#charttype="+this.charttype);
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname+"#charttype="+this.charttype);
   	////////////////////////////////////////////////////////// chart  
     this.pubsub.sub(this.myname+".chartdatas",datas => {//[{legend:-,x:-,y:-}...
       this.chart.clearChart();

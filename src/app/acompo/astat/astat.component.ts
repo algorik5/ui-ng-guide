@@ -14,7 +14,7 @@ export class AstatComponent implements OnInit {
   @Input() myname = "stat";
   ngOnInit() {
 
-    this.logging.debug("======================== AstatComponent "+"#myname="+this.myname);
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".statdata",data => {//    {title:"cpu-max",value:this.testcount,suffix:"host-x",color:color,icon:"like"}
       this.title = data["title"];
       this.value = data["value"];

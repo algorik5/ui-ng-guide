@@ -18,7 +18,7 @@ export class Dashboardv2Component implements OnInit {
   @Input() myname = "hymon.dashboardv2";
 
   ngOnInit() {
-    this.logging.debug("======================== Dashboardv2Component "+"#myname="+this.myname)
+    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".countdownfire",datas=>{
       this.refreshAll();
     });
