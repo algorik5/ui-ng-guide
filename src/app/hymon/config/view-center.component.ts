@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
+import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 // 
 // 
 
@@ -42,7 +43,7 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 })
 export class ViewCenterComponent implements OnInit {
 
-  constructor(private pubsub:AapubsubService,private logging:AaloggingService) { }
+  constructor(private pubsub:AapubsubService,private logging:AaloggingService,private localstore:AalocalstorageService) { }
 
   @Input() myname = "right";
   
@@ -55,23 +56,26 @@ export class ViewCenterComponent implements OnInit {
     this.tableInit();
   }
 
-  columns = ["type","table","count","insert"];
+  //columns = ["type","table","count","insert"];
 
   datas = [];
   mapOfExpandData: { [key: string]: boolean } = {};
   tableInit() {
     for (let i = 0; i < 5; i++) {
-      this.datas.push({
-        msg:"msg-"+i,
+      let msg = "msg-"+i;
+      let table = this.localstore.msgtablemapping_get(msg);
+        this.datas.push({
+        msg:msg,
         count: i,
-        table: "table-"+i,
-        msgstring: "{ host:host-1 ... }"
+        table: table,
+        msgstring: JSON.stringify({host:"host-1",time:"2001",cpu:1,memory:11})
       });
     }
   }
 
-  clickAction(id){
-    console.log("======= clickAction # "+ id);
-    this.pubsub.pub(this.myname+".showright","fire");
+  clickAction(msg){
+    console.log("======= clickAction # "+ msg);
+    let data = this.datas.find(o=>o["msg"]==msg);
+    this.pubsub.pub(this.myname+".tableschema",data);
   } 
 }
