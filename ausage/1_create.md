@@ -18,15 +18,16 @@
 - AatableService의 경우 singleton이면 다른 화면에서 값을 넣으면 전체가 같이 변경되니 주의바람
 
 
-# ========================================== dashboard
-ng g m hymon/dashboardv2 --routing
-ng g c hymon/dashboardv2
-ng g c hymon/dashboardv2/view-atop --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/view-aleft --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/dashboardv2/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
+# ========================================== 화면개발 (dashboard 등)
+ng g m hymon/config --routing
+ng g c hymon/config
+ng g c hymon/config/view-atop --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/config/view-aleft --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/config/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/config/view-center --inlineStyle=true --inlineTemplate=true --flat=true
 
-module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule
-route - { path: 'dashboardv2',component: Dashboardv2Component }
+module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,
+route - { path: 'config',component: ConfigComponent }
 app routing/component
 
 

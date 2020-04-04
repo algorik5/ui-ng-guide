@@ -10,7 +10,8 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
     <p>Some contents...</p>
     <p>Some contents...</p>
   </nz-drawer>
-`,
+
+  `,
   styles: []
 })
 export class ViewArightComponent implements OnInit {
@@ -29,5 +30,5 @@ export class ViewArightComponent implements OnInit {
   place = "right";
   open(): void { this.visible = true; }
   close(): void { this.visible = false; }
-  
+
 }

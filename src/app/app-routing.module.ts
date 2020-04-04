@@ -42,6 +42,7 @@ const routes: Routes = [
 
   { path: 'hymon',loadChildren: () => import('./hymon/dashboard/dashboard.module').then(m => m.DashboardModule)},
   { path: 'hymon',loadChildren: () => import('./hymon/dashboardv2/dashboardv2.module').then(m => m.Dashboardv2Module)},
+  { path: 'hymon',loadChildren: () => import('./hymon/config/config.module').then(m => m.ConfigModule)},
   
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

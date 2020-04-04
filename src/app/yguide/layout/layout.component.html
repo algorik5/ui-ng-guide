@@ -1,11 +1,11 @@
-<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card> 
-    1. html : 전체복사<br>
-    2. nz-card 변경<br>
-</nz-card> </nz-collapse-panel> </nz-collapse>
+<nz-collapse> <nz-collapse-panel [nzHeader]="'usage'" [nzActive]="'true'" [nzDisabled]="'false'"> <nz-card><pre>
+    1. html : 전체복사
+    2. nz-card 변경
+</pre></nz-card> </nz-collapse-panel> </nz-collapse>
 
 
 
-
+<nz-divider [nzText]="'lefs/right'" nzOrientation="left"></nz-divider>
 <div style="background: #ECECEC; padding: 30px;">
     <nz-row [nzGutter]="16">
       <nz-col [nzSpan]="6"> 
@@ -30,5 +30,21 @@
 
         </nz-row>
       </nz-col>
+    </nz-row>
+</div>
+
+
+<nz-divider [nzText]="'row only'" nzOrientation="left"></nz-divider>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="24"> 
+            <nz-card> <h6>1</h6> 1 component </nz-card> 
+        </nz-col>
+        <nz-col [nzSpan]="24"> 
+            <nz-card> <h6>2</h6> 2 component </nz-card> 
+        </nz-col>
+        <nz-col [nzSpan]="24"> 
+            <nz-card> <h6>3</h6> 3 component </nz-card> 
+        </nz-col>
     </nz-row>
 </div>

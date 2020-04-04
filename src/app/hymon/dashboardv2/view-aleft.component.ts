@@ -29,11 +29,6 @@ export class ViewAleftComponent implements OnInit {
   visible = false;
   place = "left";
 
-  open(): void {
-    this.visible = true;
-  }
-
-  close(): void {
-    this.visible = false;
-  }
+  open(): void { this.visible = true; }
+  close(): void { this.visible = false; }
 }
