@@ -50,12 +50,12 @@ export class AalocalstorageService {
   {
     this.tablemapping_init();
     let str = this.get(this.tablemapping_name);//[{msg:type1,tables:[table1,table2]}
-    this.logging.debug("--- tablemapping_add 1 # "+ msg +":"+ table +":"+ typeof(str) +":"+ str);// 
+    // this.logging.debug("--- tablemapping_add 1 # "+ msg +":"+ table +":"+ typeof(str) +":"+ str);// 
 
     if(str.length<1)
     {
       let arr = [{table:table,msg:msg,tableschema:tableschema}];
-      this.logging.debug("--- tablemapping_add 2 # "+ msg +":"+ table +":"+ JSON.stringify(arr));
+      // this.logging.debug("--- tablemapping_add 2 # "+ msg +":"+ table +":"+ JSON.stringify(arr));
       this.set(this.tablemapping_name,JSON.stringify(arr));
     }
     else
@@ -68,29 +68,30 @@ export class AalocalstorageService {
       arr = arr.concat(obj);
       this.set(this.tablemapping_name,JSON.stringify(arr));
     }
-    this.logging.debug("---------- tablemapping_add # "+ msg +":"+ table +":"+ this.get(this.tablemapping_name));
+    // this.logging.debug("---------- tablemapping_add # "+ msg +":"+ table +":"+ this.get(this.tablemapping_name));
   }
   tablemapping_get(table)
   {
     this.tablemapping_init();
     let str = this.get(this.tablemapping_name);
-    this.logging.debug("--- tablemapping_get 1 # "+ table +":"+ typeof(str) +":"+ str);// 
+    // this.logging.debug("--- tablemapping_get 1 # "+ table +":"+ typeof(str) +":"+ str);// 
 
-    if(str.length<1) return "";
+    if(str.length<1) return {};
     let arr = JSON.parse(str);
     let obj = arr.find(k=>k["table"]==table);
-    this.logging.debug("---------- tablemapping_get # "+ table +":"+ JSON.stringify(obj));
-    return JSON.stringify(obj);
+    // this.logging.debug("---------- tablemapping_get # "+ table +":"+ JSON.stringify(obj));
+    return obj;//JSON.stringify(obj);
   }
   tablemapping_value()//array 리턴
   {
     // if(1==1) return {};
     this.tablemapping_init();
     let str = this.get(this.tablemapping_name);//{type1:[table1,table2],type2:[table]...}
-    this.logging.debug("--- tablemapping_value 1 # "+ typeof(str) +":"+ str);//
+    // this.logging.debug("--- tablemapping_value 1 # "+ typeof(str) +":"+ str);//
     if(str.length > 0) return JSON.parse(str);
-    return {};//str;
+    return [];//str;
   }
+  tablemapping_clear() { this.set(this.tablemapping_name,""); }
 
 
 

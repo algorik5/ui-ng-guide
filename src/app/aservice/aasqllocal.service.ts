@@ -42,7 +42,7 @@ export class AasqllocalService {
     return Object.keys(alasql.tables);
   }
   dbtablecount() { return Object.keys(alasql.tables).length; }//alasql.tables.length > undefined
-  
+  hasTable(table) { return this.dbtables().includes(table); }
   getColumns(table) 
   {
     let tableschema = alasql.databases.alasql.tables[table];
@@ -107,11 +107,24 @@ export class AasqllocalService {
       throw err;//return "ERROR-"+ err; //throw err; //throw new Error("createtable ERROR - "+ err);
     }
   }
+  droptable(table) {
+    if(this.hasTable(table)==false) return -1;
+    let sql = "drop table "+ table;
+    try{      
+      this.logging.debug("=== droptable === "+ sql);
+      let rs = alasql.exec(sql);
+      return rs;
+    }catch(err) 
+    { 
+      this.logging.error("=== droptable ERROR === "+ sql +":"+ err);
+    }
+  }
   select_count(table:string)
   {
+    if(this.hasTable(table)==false) return -1;
     let rs = alasql.exec("select count(*) from "+ table);//let rs = Object.keys(alasql.databases.alasql.tables[table]).length
-    this.logging.debug("=== selectcount === #rs="+ JSON.stringify(rs));
-    return rs;
+    this.logging.debug("=== selectcount === #rs="+ JSON.stringify(rs));//[{"COUNT(*)":0}]
+    return rs[0]["COUNT(*)"];//rs;
   }
   select(sql:string)
   {

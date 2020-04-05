@@ -12,7 +12,6 @@ import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
       <th nzWidth="50px" nzShowExpand></th>
       <th nzWidth="150px" nzLeft="50px">msg</th>
       <th nzWidth="200px">count</th>
-      <th nzWidth="200px">table</th>
       <th>msgstring</th>
       <th nzWidth="100px" nzRight="0px">Action</th>
     </tr>
@@ -23,7 +22,6 @@ import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
         <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.msg]"></td>
         <td nzLeft="50px">{{ data.msg }}</td>
         <td>{{ data.count }}</td>
-        <td>{{ data.table }}</td>
         <td>{{ data.msgstring }}</td>
         <td nzRight="0px">
           <button nz-button nzType="link" (click)="clickAction(data.msg)">create table</button>
@@ -62,11 +60,9 @@ export class ViewMsgstatusComponent implements OnInit {
   tableInit() {
     for (let i = 0; i < 5; i++) {
       let msg = "msg_"+i;
-      let table = this.localstore.msgtablemapping_get(msg);
-        this.datas.push({
+      this.datas.push({
         msg:msg,
         count: i,
-        table: table,
         msgstring: JSON.stringify({host:"host-1",time:"2001",cpu:1,memory:11})
       });
     }

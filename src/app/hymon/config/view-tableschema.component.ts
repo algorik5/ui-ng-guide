@@ -4,6 +4,7 @@ import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 import { QueryUtil } from 'src/app/autil/QueryUtil';
 import { AasqllocalService } from 'src/app/aservice/aasqllocal.service';
+import { MSGUtil } from 'src/app/autil/MSGUtil';
 
 @Component({
   selector: 'app-view-tableschema',
@@ -29,19 +30,19 @@ export class ViewTableschemaComponent implements OnInit {
 
   msgname = "-";
   tablename = "-";
-  tabledatas = [];
+  tableschema = [];
   ngOnInit() {
     this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".show",datas=>{// {type:,table:,count:,insert:];
-      this.tabledatas = [];
       this.msgname = datas["msg"];
       this.tablename = datas["msg"];
-      let json = JSON.parse(datas["msgstring"]);
-      Object.keys(json).forEach(key=>{
-        let data = {column:key,type:"string",pk:"N",sample:json[key]};
-        this.tabledatas = this.tabledatas.concat(data);
-      });
-      this.pubsub.pub(this.myname+".tabledatas",this.tabledatas);
+      this.tableschema = MSGUtil.msgToTableColumn(datas["msgstring"]);
+      // let json = JSON.parse(datas["msgstring"]);
+      // Object.keys(json).forEach(key=>{
+      //   let data = {column:key,type:"string",pk:"N",sample:json[key]};
+      //   this.tabledatas = this.tabledatas.concat(data);
+      // });
+      this.pubsub.pub(this.myname+".tabledatas",this.tableschema);
       this.open();
     });
   }
@@ -50,22 +51,15 @@ export class ViewTableschemaComponent implements OnInit {
   {
     this.logging.debug("======= createtable start # "+ this.tablename);
 
-    let sql = QueryUtil.createtable_sql(this.tablename,this.tabledatas);
+    let sql = QueryUtil.createtable_sql(this.tablename,this.tableschema);
     let rs = this.sqllocal.createtable(sql);
     if(rs > 0)
     {
-      this.savelocalstorage();
-      // this.pubsub.pub(this.topicprefix+".createtable",this.tablename);
+      this.localstore.tablemapping_add(this.tablename,this.msgname,this.tableschema);
+      this.pubsub.pub("hymon.config_tablestatus.refresh","refresh");
     } 
     this.logging.debug("======= createtable end # "+ this.tablename +"#rs="+ rs);
 
-  }
-
-  savelocalstorage()
-  {
-    this.localstore.tablemapping_add(this.tablename,this.msgname,this.tabledatas);
-    this.logging.debug("======= savelocalstorage end # "+ this.tablename +"#rs="+ this.localstore.tablemapping_get(this.tablename));
-    // this.pubsub.pub("stompdbinsert.debugjsonview.localStorage","");
   }
 
   /////////////////////////////////////////////// drawer
