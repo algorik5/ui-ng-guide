@@ -32,7 +32,7 @@ export class ViewTableschemaComponent implements OnInit {
   tabledatas = [];
   ngOnInit() {
     this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
-    this.pubsub.sub(this.myname+".tableschema",datas=>{// {type:,table:,count:,insert:];
+    this.pubsub.sub(this.myname+".show",datas=>{// {type:,table:,count:,insert:];
       this.tabledatas = [];
       this.msgname = datas["msg"];
       this.tablename = datas["msg"];
@@ -63,8 +63,8 @@ export class ViewTableschemaComponent implements OnInit {
 
   savelocalstorage()
   {
-    this.localstore.msgtablemapping_add(this.msgname,this.tablename);
-    this.logging.debug("======= savelocalstorage end # "+ this.tablename +"#rs="+ this.localstore.msgtablemapping_get(this.msgname));
+    this.localstore.tablemapping_add(this.tablename,this.msgname,this.tabledatas);
+    this.logging.debug("======= savelocalstorage end # "+ this.tablename +"#rs="+ this.localstore.tablemapping_get(this.tablename));
     // this.pubsub.pub("stompdbinsert.debugjsonview.localStorage","");
   }
 

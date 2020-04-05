@@ -11,7 +11,7 @@ import { QueryUtil } from 'src/app/autil/QueryUtil';
   <nz-input-group nzCompact style="margin-bottom: 8px;">
   &nbsp;<input type="text" style="width: 100px" nz-input [(ngModel)]="msgname" [disabled]="true"/>
   &nbsp;<input type="text" style="width: 100px" nz-input [(ngModel)]="tablename" />
-  &nbsp;<button nz-button (click)="createtable()">createtable</button>
+  &nbsp;<button nz-button (click)="refresh()">refresh</button>
 </nz-input-group>
 
 <app-atable [myname]="myname" [checkable]="false" [editable]="true"></app-atable>
@@ -26,51 +26,34 @@ export class ViewTablestatusComponent implements OnInit {
 
   @Input() myname = "right";
 
-  msgname = "-";
-  tablename = "-";
-  tabledatas = [];
   ngOnInit() {
     this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
     this.pubsub.sub(this.myname+".tableschema",datas=>{// {type:,table:,count:,insert:];
-      this.tabledatas = [];
-      this.msgname = datas["msg"];
-      this.tablename = datas["msg"];
-      let json = JSON.parse(datas["msgstring"]);
-      Object.keys(json).forEach(key=>{
-        let data = {column:key,type:"string",pk:"N",sample:json[key]};
-        this.tabledatas = this.tabledatas.concat(data);
-      });
-      this.pubsub.pub(this.myname+".tabledatas",this.tabledatas);
-      this.open();
     });
   }
 
-  createtable()
+  refresh()
   {
-    this.logging.debug("======= createtable start # "+ this.tablename);
-
-    let sql = QueryUtil.createtable_sql(this.tablename,this.tabledatas);
-    let rs = this.sqllocal.createtable(sql);
-    if(rs > 0)
-    {
-      this.savelocalstorage();
-      // this.pubsub.pub(this.topicprefix+".createtable",this.tablename);
-    } 
-    this.logging.debug("======= createtable end # "+ this.tablename +"#rs="+ rs);
+    this.logging.debug("======= refresh start # "+ this.myname);
+    let json = this.localstore.tablemapping_value();
+    this.logging.debug("======= refresh localstorage # "+ JSON.stringify(json));
+    this.pubsub.pub(this.myname+".tabledatas",json);
+    // let sql = QueryUtil.createtable_sql(this.tablename,this.tabledatas);
+    // let rs = this.sqllocal.createtable(sql);
+    // if(rs > 0)
+    // {
+    //   this.savelocalstorage();
+    //   // this.pubsub.pub(this.topicprefix+".createtable",this.tablename);
+    // } 
+    // this.logging.debug("======= createtable end # "+ this.tablename +"#rs="+ rs);
 
   }
 
-  savelocalstorage()
-  {
-    this.localstore.msgtablemapping_add(this.msgname,this.tablename);
-    this.logging.debug("======= savelocalstorage end # "+ this.tablename +"#rs="+ this.localstore.msgtablemapping_get(this.msgname));
-    // this.pubsub.pub("stompdbinsert.debugjsonview.localStorage","");
-  }
-
-  /////////////////////////////////////////////// drawer
-  visible = false;
-  place = "right";
-  open(): void { this.visible = true; }
-  close(): void { this.visible = false; }
+  // savelocalstorage()
+  // {
+  //   this.localstore.msgtablemapping_add(this.msgname,this.tablename);
+  //   this.logging.debug("======= savelocalstorage end # "+ this.tablename +"#rs="+ this.localstore.msgtablemapping_get(this.msgname));
+  //   // this.pubsub.pub("stompdbinsert.debugjsonview.localStorage","");
+  // }
 
 }

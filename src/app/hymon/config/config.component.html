@@ -4,15 +4,15 @@
             <nz-card> <h6>1</h6> <app-view-atop [myname]="myname"></app-view-atop> </nz-card> 
         </nz-col>
         <nz-col [nzSpan]="24"> 
-            <nz-card> <h6>2</h6> <app-view-msgstatus [myname]="myname"></app-view-msgstatus> </nz-card> 
+            <nz-card> <h6>2</h6> <app-view-msgstatus [myname]="myname+'_msgstatus'"></app-view-msgstatus> </nz-card> 
         </nz-col>
         <nz-col [nzSpan]="24"> 
-            <nz-card> <h6>2</h6> <app-view-tablestatus [myname]="myname"></app-view-tablestatus> </nz-card> 
+            <nz-card> <h6>2</h6> <app-view-tablestatus [myname]="myname+'_talestatus'"></app-view-tablestatus> </nz-card> 
         </nz-col>
     </nz-row>
 </div>
 
 
 <app-view-aright [myname]="myname"></app-view-aright>
-<app-view-tableschema [myname]="myname"></app-view-tableschema>
+<app-view-tableschema [myname]="myname+'_tableschema'"></app-view-tableschema>
 <app-view-localstorage [myname]="myname"></app-view-localstorage>

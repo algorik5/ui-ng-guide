@@ -75,7 +75,7 @@ export class ViewMsgstatusComponent implements OnInit {
   clickAction(msg){
     console.log("======= clickAction # "+ msg);
     let data = this.datas.find(o=>o["msg"]==msg);
-    this.pubsub.pub(this.myname+".tableschema",data);
+    this.pubsub.pub("hymon.config_tableschema.show",data);
   } 
 
 }
