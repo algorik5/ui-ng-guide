@@ -5,7 +5,6 @@ import { ConfigRoutingModule } from './config-routing.module';
 import { ConfigComponent } from './config.component';
 import { ViewAtopComponent } from './view-atop.component';
 import { ViewArightComponent } from './view-aright.component';
-import { ViewCenterComponent } from './view-center.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -17,10 +16,12 @@ import { NgPipesModule } from 'ngx-pipes';
 import { AcompoModule } from 'src/app/acompo/acompo.module';
 import { ViewTableschemaComponent } from './view-tableschema.component';
 import { ViewLocalstorageComponent } from './view-localstorage.component';
+import { ViewMsgstatusComponent } from './view-msgstatus.component';
+import { ViewTablestatusComponent } from './view-tablestatus.component';
 
 
 @NgModule({
-  declarations: [ConfigComponent, ViewAtopComponent, ViewArightComponent, ViewCenterComponent, ViewTableschemaComponent, ViewLocalstorageComponent],
+  declarations: [ConfigComponent, ViewAtopComponent, ViewArightComponent, ViewTableschemaComponent, ViewLocalstorageComponent, ViewMsgstatusComponent, ViewTablestatusComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,

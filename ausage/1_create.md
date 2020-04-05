@@ -24,7 +24,7 @@ ng g c hymon/config
 ng g c hymon/config/view-atop --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/config/view-aleft --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/config/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
-ng g c hymon/config/view-center --inlineStyle=true --inlineTemplate=true --flat=true
+ng g c hymon/config/view-tablestatus --inlineStyle=true --inlineTemplate=true --flat=true
 
 module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,
 route - { path: 'config',component: ConfigComponent }

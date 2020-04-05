@@ -2,13 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
 import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
-// 
-// 
 
 @Component({
-  selector: 'app-view-center',
+  selector: 'app-view-msgstatus',
   template: `
-<nz-table #myTable [nzData]="datas" [nzSize]="'small'" [nzScroll]="{ x: '1000px', y: '400px' }" nzBordered>
+  <nz-table #myTable [nzData]="datas" [nzSize]="'small'" [nzScroll]="{ x: '1000px', y: '400px' }" nzBordered>
   <thead>
     <tr>
       <th nzWidth="50px" nzShowExpand></th>
@@ -38,10 +36,11 @@ import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
     </ng-template>
   </tbody>
 </nz-table>
+
   `,
   styles: []
 })
-export class ViewCenterComponent implements OnInit {
+export class ViewMsgstatusComponent implements OnInit {
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService,private localstore:AalocalstorageService) { }
 
@@ -78,4 +77,5 @@ export class ViewCenterComponent implements OnInit {
     let data = this.datas.find(o=>o["msg"]==msg);
     this.pubsub.pub(this.myname+".tableschema",data);
   } 
+
 }
