@@ -45,6 +45,7 @@ export class AanatsService {
   {
     let topicprefix = StringUtil.substringBeforeLast(topic,".");
     let topiclast = StringUtil.substringAfterLast(topic,".");
+    this.logging.info("sub -------- "+"#topicprefix="+ topicprefix +"#topiclast="+ topiclast);
     let no = 0;
     this.client.get(topicprefix).then(status => {
       this.logging.debug("=== (get) MSG # "+JSON.stringify(status));//JSON.stringify(model));
