@@ -88,6 +88,6 @@ ng g c ytool/stomp-todb
 
 # ======================== 참고
 - ng g c yguide-test/sqlquery/view-search --inlineStyle=true --inlineTemplate=true --flat=true
-
+- ng g s aservice/aanats
 
 
