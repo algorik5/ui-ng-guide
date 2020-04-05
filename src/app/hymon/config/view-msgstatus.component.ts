@@ -6,7 +6,7 @@ import { AalocalstorageService } from 'src/app/aservice/aalocalstorage.service';
 @Component({
   selector: 'app-view-msgstatus',
   template: `
-  <nz-table #myTable [nzData]="datas" [nzSize]="'small'" [nzScroll]="{ x: '1000px', y: '400px' }" nzBordered>
+  <nz-table #myTable [nzData]="tabledatas" [nzSize]="'small'" [nzScroll]="{ x: '1000px', y: '400px' }" nzBordered>
   <thead>
     <tr>
       <th nzWidth="50px" nzShowExpand></th>
@@ -46,8 +46,12 @@ export class ViewMsgstatusComponent implements OnInit {
   
   ngOnInit() {
     this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname);
-    this.pubsub.sub(this.myname+".showright",datas=>{
-      // this.open();
+    this.pubsub.sub(this.myname+".data",datas=>{//{"_type_":"server","host":"host-5","time":1586085636275,"cpu":5,"memory":10}
+      let msg = datas["_type_"];
+      let find = this.tabledatas.find(o=>o["msg"]==msg);
+      if(find != null) { find["count"] = find["count"]+1; return; }
+      let count = 1; 
+      this.addtabledata(msg,count,datas);
     });
 
     this.tableInit();
@@ -55,22 +59,27 @@ export class ViewMsgstatusComponent implements OnInit {
 
   //columns = ["type","table","count","insert"];
 
-  datas = [];
+  tabledatas = [];
   mapOfExpandData: { [key: string]: boolean } = {};
   tableInit() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       let msg = "msg_"+i;
-      this.datas.push({
-        msg:msg,
-        count: i,
-        msgstring: JSON.stringify({host:"host-1",time:"2001",cpu:1,memory:11})
-      });
+      this.addtabledata(msg,i,{host:"host-1",time:"2001",cpu:1,memory:11});
     }
   }
 
+  addtabledata(msg,count,data)
+  {
+    this.tabledatas = this.tabledatas.concat({
+      msg:msg,
+      count: count,
+      msgstring: JSON.stringify(data)
+    });
+}
+
   clickAction(msg){
     console.log("======= clickAction # "+ msg);
-    let data = this.datas.find(o=>o["msg"]==msg);
+    let data = this.tabledatas.find(o=>o["msg"]==msg);
     this.pubsub.pub("hymon.config_tableschema.show",data);
   } 
 

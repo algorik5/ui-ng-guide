@@ -96,7 +96,7 @@ export class TestWebsocketComponent implements OnInit {
         no++; this.test_stat = ""+ no;
       });
     }).catch(err => {
-      this.logging.debug("### error # "+JSON.stringify(err));
+      this.logging.debug("### error # "+JSON.stringify(err)); 
     });
   }
 

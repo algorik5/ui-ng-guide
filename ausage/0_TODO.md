@@ -1,6 +1,43 @@
 
 simulator,cpu,mem...
 
+테이블 생성/삭제 ...
+
+
+
+
+
+목록	type/msg건수/insert건수/메시지	체크시 테이블스키마+createtable
+	enable버튼 > insert
+	nats connect 바
+
+
+
+msg topic
+
+---테이블크기 고정은 ?
+page제거
+table getdataall 가져오는 방법? pubsub/emit
+
+tool-resgate 업데이트
+
+pubsub myname/this.constructor.name
+	*myname=myname+"."+this.constructor.name
+
+
+=guide	drawer
+= 필수	[myname]=...포함 +로깅(    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname))
+	
+
+
+
+========== 실행
+nats-server/tool-resgate
+nats-reg
+nred
+ng serve
+
+
 
 
 
