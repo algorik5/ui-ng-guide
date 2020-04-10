@@ -22,7 +22,9 @@
 ~굿디자인 - mdbootstrap.com
 
 
-# =========================================================================
+# ========================================================================= git merge
+    **** (최신)~ vscode에서 pull하면 conflict존재하면 merge change에 표시됨 >>> accept incomming >>> commit
+# --------------------- 아래는 무시
 # user/.gitconfig 또는 project/.git/config 설정
 [diff]
     tool = default-difftool

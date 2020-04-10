@@ -28,6 +28,9 @@
 - npm run build:ssr > npm run serve:ssr > localhost:4000
 - server.ts
 
+# tab component <<< 각 tab별로 별도 component 사용하기 - ***ngTemplateOutlet >>>
+- <nz-tab ... <ng-container *ngTemplateOutlet="template"></ng-container> </nz-tab>
+- <ng-template #template> <router-outlet> </router-outlet> </ng-template>
 
 
 ## 참고

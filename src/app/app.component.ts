@@ -45,14 +45,14 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl(this.tabs[index]["url"]);
     this.tabindex = index;
   }
-  tabSelect(myname)
+  tabSelect(myname)//ngTemplateOutlet으로 tab별로 component가 별도 생성되므로 nav 안해도 됨
   {
     // let index = this.tabs.findIndex(o=>o["name"]==myname);
     // this.logging.debug("=======tabSelect "+"#name="+myname+"#index="+index);
     // this.router.navigateByUrl(this.tabs[index]["url"]);
     // this.tabindex = index;
   }
-  tabClose(myname)
+  tabClose(myname)//ngTemplateOutlet으로 tab별로 component가 별도 생성되므로 nav 안해도 됨
   {
     let index = this.tabs.findIndex(o=>o["name"]==myname);
     this.logging.debug("=======tabClose "+"#name="+myname+"#index="+index);
