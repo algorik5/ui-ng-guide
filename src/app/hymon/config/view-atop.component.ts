@@ -12,9 +12,9 @@ import { AanatsService } from 'src/app/aservice/aanats.service';
 
     
     <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="url" /> </div>
-    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="connect()">connect</button> </div>
-    <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="subject" /> </div>
-    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="sub()">sub</button> </div>
+    <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="topic" /> </div>
+    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substart()">sub</button> </div>
+    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substop()">connect</button> </div>
     <div nz-col nzSpan="6"> <input type="text" nz-input [(ngModel)]="recv" [disabled]="true"/></div>
 
     <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
@@ -41,18 +41,22 @@ export class ViewAtopComponent implements OnInit {
     this.nats.connect();
   }
   recv = -1;
-  sub()
+  substart()
   {
     this.nats.connect();
-    this.nats.sub(this.subject,data=>{
+    this.nats.sub(this.topic,data=>{
       this.recv++;
       this.pubsub.pub("hymon.config_msgstatus.data",data);
     });
   }
-  
+  substop()
+  {
+    this.nats.substop(this.topic);
+  }
+
   buttonStatus = "-";
   url = "--";
-  subject = "test.server.all";
+  topic = "test.server.all";
 
   leftClick() {
     this.pubsub.pub(this.myname+".showleft","fire");

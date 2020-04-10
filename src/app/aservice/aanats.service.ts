@@ -41,6 +41,14 @@ export class AanatsService {
     // return false;
   }
 
+  topicmodels = [];
+  substop(topic) { 
+    this.logging.info("substop start -------- ");
+    let index = this.topicmodels.findIndex(o=>o["topic"]==topic);
+    this.topicmodels[index].off();
+    this.topicmodels.splice(index,1);
+    this.logging.info("substop end   -------- ");
+  }
   sub(topic,handler)
   {
     let topicprefix = StringUtil.substringBeforeLast(topic,".");
@@ -48,6 +56,7 @@ export class AanatsService {
     this.logging.info("sub -------- "+"#topicprefix="+ topicprefix +"#topiclast="+ topiclast);
     let no = 0;
     this.client.get(topicprefix).then(status => {
+      this.topicmodels = this.topicmodels.concat({topic:topic,model:status});
       this.logging.debug("=== (get) MSG # "+JSON.stringify(status));//JSON.stringify(model));
       status.on(topiclast,(data)=>{
         this.logging.debug("\t === (mytype) MSG # "+JSON.stringify(data));//;
