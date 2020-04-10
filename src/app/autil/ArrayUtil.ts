@@ -43,6 +43,7 @@ export class ArrayUtil
     }
 
     static removeDup(arr):any[] { return Array.from(new Set(arr)); }
+    static remove(arr,name) { let index = arr.findIndex(name); arr.splice(index,1); }
     
     static sort(arr) { arr.sort(); }//주의 - 리턴값 아님  -그냥 호출하면 sort됨
     static sortstring(arr) { arr.sort((old,cur)=>Number(cur)-Number(old)); }

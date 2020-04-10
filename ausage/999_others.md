@@ -1,5 +1,13 @@
 
 
+# ================ code share
+- codeshare.io : 실행안됨,코드내용만 공유+비디오
+- codesandbox.io : 실행가능(js,ts,ng...),live code 가능
+- vscode : extension설치하면 가능
+
+
+
+
 
 
 ~defiant array는 1부터 ,전체[*]

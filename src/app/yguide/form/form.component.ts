@@ -50,7 +50,7 @@ export class FormComponent implements OnInit {
     this.test_data();
     // this.form.addControls(["host","ip"]);
     // this.form.setControlValue("host","host-1");
-    // this.form.setControlValue("ip","ip-0");
+    // this.form.setControlValue("name","testname");
   }
 
   ////////////////////////////////////////////////////////// nz-tag 

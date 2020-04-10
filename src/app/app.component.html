@@ -25,8 +25,13 @@
 
       <ng-container *ngIf="menuType=='guide'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout"><span title><i nz-icon nzType="notification"></i>ui-layout</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title (click)="routeTo('guide/layout')"><span title><i nz-icon nzType="notification"></i>ui-layout</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title (click)="routeTo('guide/layout-input')"><span title><i nz-icon nzType="notification"></i>ui-layout-input</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title (click)="routeTo('guide/inputoutput')"><span title><i nz-icon nzType="notification"></i>util-inputoutput</span></a></li>
+          <!-- <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout"><span title><i nz-icon nzType="notification"></i>ui-layout</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/layout-input"><span title><i nz-icon nzType="notification"></i>ui-layout-input</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/inputoutput"><span title><i nz-icon nzType="notification"></i>util-inputoutput</span></a></li> -->
+
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form"><span title><i nz-icon nzType="notification"></i>ui-form</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form-static"><span title><i nz-icon nzType="notification"></i>ui-form-static</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/form-readonly"><span title><i nz-icon nzType="notification"></i>ui-form-readonly</span></a></li>
@@ -42,7 +47,6 @@
 
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/treetable-fromjson"><span title><i nz-icon nzType="notification"></i>util-treetable-fromjson</span></a></li>
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/jsonpath"><span title><i nz-icon nzType="notification"></i>util-jsonpath/search</span></a></li>
-          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="guide/inputoutput"><span title><i nz-icon nzType="notification"></i>util-inputoutput</span></a></li>
 
         </ul>
       </ng-container>
@@ -119,9 +123,23 @@
     </nz-sider>
 
     <nz-layout style="padding:0 24px 24px">
+      <div class="card-container">
+
+      <nz-tabset [nzType]="'card'" [nzSelectedIndex]="tabindex" >
+        <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate" (nzSelect)="tabSelect(tab['name'])">
+          <ng-template #titleTemplate>
+            <div>{{ tab['name'] }}<i nz-icon nzType="close" class="ant-tabs-close-x" (click)="tabClose(tab['name'])"></i></div>
+          </ng-template>
+          <!-- Content of {{ tab['name'] }} -->
+        </nz-tab>
+      </nz-tabset>
+
       <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
         <router-outlet></router-outlet>
       </nz-content>
+
+    </div>
+
     </nz-layout>
   </nz-layout>
 </nz-layout>

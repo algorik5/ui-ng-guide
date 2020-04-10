@@ -8,6 +8,8 @@ const routes: Routes = [
 
   { path: 'guide',loadChildren: () => import('./yguide/layout/layout.module').then(m => m.LayoutModule)},
   { path: 'guide',loadChildren: () => import('./yguide/layout-input/layout-input.module').then(m => m.LayoutInputModule)},
+  { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
+  
   { path: 'guide',loadChildren: () => import('./yguide/form/form.module').then(m => m.FormModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form-static/form-static.module').then(m => m.FormStaticModule)},
   { path: 'guide',loadChildren: () => import('./yguide/form-readonly/form-readonly.module').then(m => m.FormReadonlyModule)},
@@ -20,7 +22,6 @@ const routes: Routes = [
   { path: 'guide',loadChildren: () => import('./yguide/jsonview/jsonview.module').then(m => m.JsonviewModule)},
   { path: 'guide',loadChildren: () => import('./yguide/stomp/stomp.module').then(m => m.StompModule)},
   { path: 'guide',loadChildren: () => import('./yguide/dblocal/dblocal.module').then(m => m.DblocalModule)},
-  { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
 
   { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
 
