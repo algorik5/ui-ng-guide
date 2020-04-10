@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
 
   ////////////////////////////////////////////// tab
-  tabs = [{name:"layout",url:"guide/layout"}];
+  tabs = [{name:"about",url:"test1/about"}];
   tabindex = 0;
   routeTo(myurl)
   {
@@ -47,20 +47,20 @@ export class AppComponent implements OnInit {
   }
   tabSelect(myname)
   {
-    let index = this.tabs.findIndex(o=>o["name"]==myname);
-    this.logging.debug("=======tabSelect "+"#name="+myname+"#index="+index);
-    this.router.navigateByUrl(this.tabs[index]["url"]);
-    this.tabindex = index;
+    // let index = this.tabs.findIndex(o=>o["name"]==myname);
+    // this.logging.debug("=======tabSelect "+"#name="+myname+"#index="+index);
+    // this.router.navigateByUrl(this.tabs[index]["url"]);
+    // this.tabindex = index;
   }
   tabClose(myname)
   {
     let index = this.tabs.findIndex(o=>o["name"]==myname);
     this.logging.debug("=======tabClose "+"#name="+myname+"#index="+index);
     this.tabs.splice(index,1);
-    if(index == this.tabindex)
-    { 
-      this.router.navigateByUrl(this.tabs[index-1]["url"]);
-      this.tabindex = index-1;
-    }
+    // if(index == this.tabindex)
+    // { 
+    //   this.router.navigateByUrl(this.tabs[index-1]["url"]);
+    //   this.tabindex = index-1;
+    // }
   }
 }

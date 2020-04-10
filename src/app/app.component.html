@@ -20,6 +20,7 @@
       <ng-container *ngIf="menuType=='main'">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1"><span title><i nz-icon nzType="notification"></i>Test1</span></a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a title routerLink="test1/about"><span title><i nz-icon nzType="notification"></i>Test1 about</span></a></li>
         </ul>
       </ng-container>
 
@@ -131,12 +132,12 @@
             <div>{{ tab['name'] }}<i nz-icon nzType="close" class="ant-tabs-close-x" (click)="tabClose(tab['name'])"></i></div>
           </ng-template>
           <!-- Content of {{ tab['name'] }} -->
+          <ng-container *ngTemplateOutlet="template"></ng-container>
         </nz-tab>
       </nz-tabset>
 
-      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
-        <router-outlet></router-outlet>
-      </nz-content>
+      <!-- <nz-content style="background:#fff; padding: 24px; min-height: 280px;"> <router-outlet></router-outlet> </nz-content> -->
+      <ng-template #template> <router-outlet> </router-outlet> </ng-template>
 
     </div>
 
