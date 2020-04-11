@@ -1,31 +1,24 @@
 
-simulator,cpu,mem...
-테이블 생성/삭제 ...
+
+
+================== simulator
 
 
 
 
 
-목록	type/msg건수/insert건수/메시지	체크시 테이블스키마+createtable
-	enable버튼 > insert
-	nats connect 바
+================== 기존 모니터링 구현
 
 
 
-msg topic
-
----테이블크기 고정은 ?
-page제거
-table getdataall 가져오는 방법? pubsub/emit
-
-tool-resgate 업데이트
-
-pubsub myname/this.constructor.name
-	*myname=myname+"."+this.constructor.name
 
 
-=guide	drawer
-= 필수	[myname]=...포함 +로깅(    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname))
+
+
+
+
+
+
 	
 
 
@@ -48,8 +41,11 @@ ng serve
 
 =============== dashboard
 (향후) bar막대color
-
 trend제목
+---테이블크기 고정은 ?
+= (향후) pubsub myname/this.constructor.name <<< *myname=myname+"."+this.constructor.name
+=guide	drawer
+= 필수	[myname]=...포함 +로깅(    this.logging.debug("======================== "+this.constructor.name+"#myname="+this.myname))
 
 
 
