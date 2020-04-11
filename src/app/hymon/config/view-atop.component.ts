@@ -12,10 +12,14 @@ import { AanatsService } from 'src/app/aservice/aanats.service';
 
     
     <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="url" /> </div>
-    <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="topic" /> </div>
+    <div nz-col nzSpan="7">
+      <nz-select [(ngModel)]="topic" nzAllowClear nzShowSearch nzPlaceHolder="Choose" style="width:100%">
+        <nz-option *ngFor="let value of topiclist" [nzLabel]="value" [nzValue]="value"></nz-option>
+      </nz-select>
+    </div>
     <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substart()">sub</button> </div>
     <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substop()">connect</button> </div>
-    <div nz-col nzSpan="6"> <input type="text" nz-input [(ngModel)]="recv" [disabled]="true"/></div>
+    <div nz-col nzSpan="3"> <input type="text" nz-input [(ngModel)]="recv" [disabled]="true"/></div>
 
     <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
     <div nz-col nzSpan="1"> <i nz-icon [nzType]="'arrow-right'" (click)="rightClick()"></i> </div>
@@ -23,7 +27,7 @@ import { AanatsService } from 'src/app/aservice/aanats.service';
   `,
   styles: []
 })
-export class ViewAtopComponent implements OnInit {
+export class ViewAtopComponent implements OnInit {//nzspan.7 nzselect ngmodel.subject nzsize.medium style.width.100%
   // <nz-divider nzType="vertical"></nz-divider>
 
   constructor(private pubsub:AapubsubService,private logging:AaloggingService,private nats:AanatsService) { }
@@ -57,6 +61,12 @@ export class ViewAtopComponent implements OnInit {
   buttonStatus = "-";
   url = "--";
   topic = "test.server.all";
+  topiclist = [
+    "test.server.all"
+    ,"_LOCAL.LAKE.REAL.LAKE.ADAPTER.AGENT.SERVER"
+    ,"_LOCAL.LAKE.REAL.LAKE.ADAPTER.AGENT.PROCESS"
+    ,"_LOCAL.LAKE.REAL.LAKE.MON.MON.STATUS"
+  ];
 
   leftClick() {
     this.pubsub.pub(this.myname+".showleft","fire");
