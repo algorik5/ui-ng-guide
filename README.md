@@ -2,22 +2,19 @@
 
 ui ng guide (by ng-zorro universial starter)
 
-## Installation
+## 개발환경
+- npm install (or yarn)
+- vscode 오픈
+- ng serve
+- http://localhost:4200/
+- (주의-git remote disable) git remote set-url --push origin DISABLE
 
-Run `npm install` or `yarn`
 
-## Development
+## (참고) Build
+- ng build (dist폴더에 생성,운영:--prod)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-### Pre-render
-
+### (참고) Pre-render
 Run `npm run build:prerender && npm run serve:prerender`. Navigate to `http://localhost:8080/`.
 
-### Server-side Rendering (SSR)
-
+### (참고) Server-side Rendering (SSR)
 Run `npm run build:ssr && npm run serve:ssr`. Navigate to `http://localhost:4000/`.
