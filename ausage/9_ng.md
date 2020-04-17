@@ -71,3 +71,5 @@ npm install
 npm install monaco-editor@latest			<< 0.20
 ng serve
 === 에러수정
+=== (참고) npm outdated > package.json수정 > npm install
+

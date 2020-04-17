@@ -1,6 +1,8 @@
 
 ================== TODO
-
+읽어보기
+	http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8554017
+	https://angular-2-training-book.rangle.io/modules/shared-modules-di
 
 
 ================== hymon 구현
@@ -16,10 +18,10 @@
 
 
 ================== 향후
-NgZorroAntdModule 제거 > 개별 모듈로 ...
-formexplain > nzerrortip
-
-
+=NgZorroAntdModule 제거 > 개별 모듈로 ...
+	formexplain > nzerrortip
+=g2 : Type 'PieLayerConfig' is not assignable to type 'ViewLayerConfig' <<< 몇일전에 패치됨 - 향후 패치 >>>
+	임시 : dashboard.component.ts - 1)this.initg2plot(); 2)new Bar 3)import >>> 3개주석처리함
 
 
 
@@ -266,3 +268,37 @@ import { Chart } from '@antv/g2';
 let data ... let chart=new Chart... chart.data... chart.render() <<< 주의-data필드명 고정
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========================== npm outdated > package.json수정 > npm install
+D:\project\kwakNG\ui-ng-guide>npm outdated
+Package                            Current    Wanted   Latest  Location
+@antv/g2plot                       0.11.41   0.11.41    1.0.3  ui-ng-guide
+@types/jasmine                      3.3.16    3.3.16   3.5.10  ui-ng-guide
+@types/node                       12.12.35  12.12.35  13.11.1  ui-ng-guide
+http-server                         0.11.1    0.11.1   0.12.1  ui-ng-guide
+jasmine-core                         3.4.0     3.4.0    3.5.0  ui-ng-guide
+jasmine-spec-reporter                4.2.1     4.2.1    5.0.1  ui-ng-guide
+karma                                4.1.0     4.1.0    5.0.2  ui-ng-guide
+karma-chrome-launcher                2.2.0     2.2.0    3.1.0  ui-ng-guide
+karma-coverage-istanbul-reporter     2.0.6     2.0.6    2.1.1  ui-ng-guide
+karma-jasmine                        2.0.1     2.0.1    3.1.1  ui-ng-guide
+ts-loader                            6.2.2     6.2.2    7.0.0  ui-ng-guide
+ts-node                              8.3.0     8.3.0    8.8.2  ui-ng-guide
+tslint                              5.18.0    5.18.0    6.1.1  ui-ng-guide 

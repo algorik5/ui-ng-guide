@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Bar } from '@antv/g2plot';
-// import { Chart } from '@antv/g2';
+// import { Bar } from '@antv/g2plot';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private _document: any) { }
 
   ngOnInit() {
-    this.initg2plot();
+    // this.initg2plot();
     // this.initg2();
   }
   /////////////////////////////// table
@@ -47,10 +46,10 @@ export class DashboardComponent implements OnInit {
   {
     let data = [ { year: '1951', sales: 38 }, { year: '1952', sales: 52 }, { year: '1956', sales: 61 }, { year: '1957', sales: 145 }, { year: '1958', sales: 48 }, ];
     let div = this._document.getElementById('g2plot1');
-    let bar = new Bar(div, {
-      data,//반드시 data
-      xField: 'sales', yField: 'year', colorField: 'year' });    
-    bar.render();
+    // let bar = new Bar(div, {
+    //   data,//반드시 data
+    //   xField: 'sales', yField: 'year', colorField: 'year' });    
+    // bar.render();
   }
   /////////////////////////////// g2
   initg2()
