@@ -53,5 +53,8 @@ npm install -g @angular/cli
 === 프로젝트
 ng update @angular/core@8 @angular/cli@8 	<< ng8최신
 ng update @angular/core @angular/cli		<< ng9
-ng update									<< 모든항목 update
-
+ng update									<< 모든항목 update (cdk,zorro,rxjs,express-engine...)
+rm -rf package-lock.json node_modules
+npm install
+ng serve
+=== 에러수정
