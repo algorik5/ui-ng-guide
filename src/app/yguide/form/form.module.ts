@@ -3,17 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor'
+import { SharedModule } from 'src/app/shared.module';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
   declarations: [FormComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
+    SharedModule,AcompoModule,
     FormRoutingModule
   ]
 })

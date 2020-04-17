@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { YdashboardRoutingModule } from './ydashboard-routing.module';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { PageHeaderActionsComponent } from './page-header/page-header-actions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Dashboardv2Component } from './dashboardv2/dashboardv2.component';
@@ -18,6 +15,8 @@ import { ViewcputrendComponent } from './dashboardv2/viewcputrend.component';
 import { ViewdiskmaxComponent } from './dashboardv2/viewdiskmax.component';
 import { ViewmemorymaxComponent } from './dashboardv2/viewmemorymax.component';
 import { ViewswapmaxComponent } from './dashboardv2/viewswapmax.component';
+import { SharedModule } from 'src/app/shared.module';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 @NgModule({
   declarations: [ DashboardComponent,Dashboardv2Component,TableComponent,FormComponent,PageHeaderActionsComponent,
@@ -25,9 +24,7 @@ import { ViewswapmaxComponent } from './dashboardv2/viewswapmax.component';
     ViewdiskmaxComponent,ViewmemorymaxComponent,ViewswapmaxComponent ],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
-    FormsModule,ReactiveFormsModule,
-    NgxEchartsModule,
+    SharedModule,AcompoModule,
     YdashboardRoutingModule
   ]
 })

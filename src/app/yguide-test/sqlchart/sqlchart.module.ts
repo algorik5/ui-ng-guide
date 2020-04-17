@@ -6,18 +6,15 @@ import { SqlchartComponent } from './sqlchart.component';
 import { SqlchartConditionComponent } from './sqlchart-condition/sqlchart-condition.component';
 import { SqlchartListComponent } from './sqlchart-list/sqlchart-list.component';
 import { SqlchartChartComponent } from './sqlchart-chart/sqlchart-chart.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { SharedModule } from 'src/app/shared.module';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
   declarations: [SqlchartComponent, SqlchartConditionComponent, SqlchartListComponent, SqlchartChartComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,
-    NgZorroAntdModule,
-    NgxEchartsModule,
+    SharedModule,AcompoModule,
     SqlchartRoutingModule
   ]
 })

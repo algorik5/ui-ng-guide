@@ -27,7 +27,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     ,NgPipesModule,NgxJsonViewerModule,TreeTableModule
     ,NgZorroAntdModule,NzCodeEditorModule
     ,NgxEchartsModule
-    ,AcompoModule
+    // ,AcompoModule //Maximum call stack size exceeded <<< SharedModule에서 AcompoModule 참고하면 안됨 - recursive참조가 됨 >>>
   ]
 })
 export class SharedModule { }

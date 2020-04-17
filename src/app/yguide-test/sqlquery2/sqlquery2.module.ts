@@ -6,17 +6,15 @@ import { Sqlquery2Component } from './sqlquery2.component';
 import { Sqlquery2ConditionComponent } from './sqlquery2-condition/sqlquery2-condition.component';
 import { Sqlquery2ResultComponent } from './sqlquery2-result/sqlquery2-result.component';
 import { Sqlquery2UpdateComponent } from './sqlquery2-update/sqlquery2-update.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
+import { SharedModule } from 'src/app/shared.module';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 
 @NgModule({
   declarations: [Sqlquery2Component, Sqlquery2ConditionComponent, Sqlquery2ResultComponent, Sqlquery2UpdateComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,
+    SharedModule,AcompoModule,
     Sqlquery2RoutingModule
   ]
 })

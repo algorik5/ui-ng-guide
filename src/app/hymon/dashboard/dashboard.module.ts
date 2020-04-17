@@ -3,13 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { TreeTableModule } from 'primeng/treetable';
 import { DashboardServerCpuMaxComponent } from './dashboard-server-cpu-max/dashboard-server-cpu-max.component';
 import { DashboardServerMemoryMaxComponent } from './dashboard-server-memory-max/dashboard-server-memory-max.component';
 import { DashboardProcessCpuMaxComponent } from './dashboard-process-cpu-max/dashboard-process-cpu-max.component';
@@ -25,13 +18,14 @@ import { DashboardServerMemoryTableComponent } from './dashboard-server-memory-t
 import { DashboardAtopComponent } from './dashboard-atop/dashboard-atop.component';
 import { DashboardAleftComponent } from './dashboard-aleft/dashboard-aleft.component';
 import { DashboardArightComponent } from './dashboard-aright/dashboard-aright.component';
-
+import { SharedModule } from 'src/app/shared.module';
+import { AcompoModule } from 'src/app/acompo/acompo.module';
 
 @NgModule({
   declarations: [DashboardComponent, DashboardServerCpuMaxComponent, DashboardServerMemoryMaxComponent, DashboardProcessCpuMaxComponent, DashboardProcessMemoryMaxComponent, DashboardServerCpuTopComponent, DashboardServerMemoryTopComponent, DashboardProcessCpuTopComponent, DashboardProcessMemoryTopComponent, DashboardServerCpuTrendComponent, DashboardServerMemoryTrendComponent, DashboardServerCpuTableComponent, DashboardServerMemoryTableComponent, DashboardAtopComponent, DashboardAleftComponent, DashboardArightComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,
+    SharedModule,AcompoModule,
     DashboardRoutingModule
   ]
 })

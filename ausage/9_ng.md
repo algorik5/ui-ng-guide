@@ -1,5 +1,6 @@
 # 에러 - cb() never called
 - 무조건 한번더(npm install)
+- Maximum call stack size exceeded <<< SharedModule에서 AcompoModule을 참고하면 안됨 - recursive참조가 됨 >>>
 
 # array
 - add : push대신 concat사용

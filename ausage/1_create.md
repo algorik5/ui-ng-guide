@@ -1,10 +1,11 @@
+
 # generate
 - ng g m hymon/dashboardv2 --routing
 - ng g c hymon/dashboardv2
 - ng g c hymon/dashboardv2/view-max (--inlineStyle=true --inlineTemplate=true --flat=true)
 - (보류)---ng g s hymon/dashboardv2/dashboardv2
 # module/route
-  - SharedModule
+  - SharedModule,AcompoModule, //신규 module은 SharedModule에 exports에 추가
   - { path: 'dashboardv2',component: Dashboardv2Component }
 # app 수정 (route/menu)
 # 화면 개발
@@ -26,7 +27,7 @@ ng g c hymon/config/view-aleft --inlineStyle=true --inlineTemplate=true --flat=t
 ng g c hymon/config/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/config/view-tablestatus --inlineStyle=true --inlineTemplate=true --flat=true
 
-module  - SharedModule
+module  - SharedModule,AcompoModule,//신규 module은 SharedModule에 exports에 추가
 route - { path: 'config',component: ConfigComponent }
 app routing/component
 
@@ -34,7 +35,7 @@ app routing/component
 # ========================================== guide (향후변경 - 1 module)
 ng g m yguide/inputoutput --routing
 ng g c yguide/inputoutput
-  - SharedModule
+  - SharedModule,AcompoModule,//신규 module은 SharedModule에 exports에 추가
   - { path: 'inputoutput',component: InputoutputComponent }
   - { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
   - <a title routerLink="guide/inputoutput"...
@@ -44,7 +45,7 @@ ng g c yguide/inputoutput
 # #############################################################################
 # ========================================== acompo (1 module)
 (처음에만) ng g m acompo --routing
-  - SharedModule
+  - SharedModule,AcompoModule,//신규 module은 SharedModule에 exports에 추가
 ng g c acompo/astat --export=true (===exports: AstatComponent)
  - (개발)-astat 복사)
    - @Input() myname = "stat";
@@ -52,7 +53,7 @@ ng g c acompo/astat --export=true (===exports: AstatComponent)
    - this.pubsub.pub(this.myname+".xxx","xxx");    
 # ========================================== acompo guide (1 module)
 (처음에만) ng g m yguide-acompo --routing
-  - SharedModule
+  - SharedModule,AcompoModule,//신규 module은 SharedModule에 exports에 추가
   - ***AcompoModule
   - { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
 ng g c yguide-acompo/astat-test
