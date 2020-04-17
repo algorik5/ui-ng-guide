@@ -40,6 +40,16 @@ cdkportal
 data?.name
 ngswitch,ngifelse
 
+# ======================== ng sharedmodule 사용법
+	잘안되면 ng restart
+	(참고) lazy load module : https://alligator.io/angular/providers-shared-modules/
+1) src/shared.module.ts > 
+	(모듈) exports: NgPipesModule
+	(service--사용하지마) providers: LoggingService <<< 굳이 안해도 그냥 쓰면 됨
+2) src/app.module.ts > imports SharedModule
+3) src/xxx/xxx.module.ts > imports SharedModule
+
+
 
 # ======================== ng9 특징
 - providedin
@@ -48,6 +58,7 @@ ngswitch,ngifelse
 - localize
 
 # ======================== ng9 upgrade
+	좀 느려짐
 === cli
 npm install -g @angular/cli
 === 프로젝트
