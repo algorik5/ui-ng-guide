@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 import { NZ_ICONS } from 'ng-zorro-antd'
 import { ANT_ICONS } from '../ant-svg-icons'
 
@@ -16,11 +15,10 @@ import { en_US, NZ_I18N, NzI18nModule } from 'ng-zorro-antd/i18n';
   imports: [
     AppModule,
     ServerModule,
-    ModuleMapLoaderModule,
     HttpClientModule,
     NoopAnimationsModule,
     NzI18nModule
-  ],
+],
   bootstrap: [AppComponent],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
