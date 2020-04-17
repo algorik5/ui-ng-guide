@@ -18,13 +18,14 @@ import { ViewTableschemaComponent } from './view-tableschema.component';
 import { ViewLocalstorageComponent } from './view-localstorage.component';
 import { ViewMsgstatusComponent } from './view-msgstatus.component';
 import { ViewTablestatusComponent } from './view-tablestatus.component';
+import { SharedModule } from 'src/app/shared.module';
 
 
 @NgModule({
   declarations: [ConfigComponent, ViewAtopComponent, ViewArightComponent, ViewTableschemaComponent, ViewLocalstorageComponent, ViewMsgstatusComponent, ViewTablestatusComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,
+    SharedModule, 
     ConfigRoutingModule
   ]
 })

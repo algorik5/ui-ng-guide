@@ -4,7 +4,7 @@
 - ng g c hymon/dashboardv2/view-max (--inlineStyle=true --inlineTemplate=true --flat=true)
 - (보류)---ng g s hymon/dashboardv2/dashboardv2
 # module/route
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,ClipboardModule,
+  - SharedModule
   - { path: 'dashboardv2',component: Dashboardv2Component }
 # app 수정 (route/menu)
 # 화면 개발
@@ -26,7 +26,7 @@ ng g c hymon/config/view-aleft --inlineStyle=true --inlineTemplate=true --flat=t
 ng g c hymon/config/view-aright --inlineStyle=true --inlineTemplate=true --flat=true
 ng g c hymon/config/view-tablestatus --inlineStyle=true --inlineTemplate=true --flat=true
 
-module - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,ClipboardModule,
+module  - SharedModule
 route - { path: 'config',component: ConfigComponent }
 app routing/component
 
@@ -34,7 +34,7 @@ app routing/component
 # ========================================== guide (향후변경 - 1 module)
 ng g m yguide/inputoutput --routing
 ng g c yguide/inputoutput
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,AcompoModule,ClipboardModule,
+  - SharedModule
   - { path: 'inputoutput',component: InputoutputComponent }
   - { path: 'guide',loadChildren: () => import('./yguide/inputoutput/inputoutput.module').then(m => m.InputoutputModule)},
   - <a title routerLink="guide/inputoutput"...
@@ -44,7 +44,7 @@ ng g c yguide/inputoutput
 # #############################################################################
 # ========================================== acompo (1 module)
 (처음에만) ng g m acompo --routing
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,ClipboardModule,
+  - SharedModule
 ng g c acompo/astat --export=true (===exports: AstatComponent)
  - (개발)-astat 복사)
    - @Input() myname = "stat";
@@ -52,7 +52,7 @@ ng g c acompo/astat --export=true (===exports: AstatComponent)
    - this.pubsub.pub(this.myname+".xxx","xxx");    
 # ========================================== acompo guide (1 module)
 (처음에만) ng g m yguide-acompo --routing
-  - FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,ClipboardModule,
+  - SharedModule
   - ***AcompoModule
   - { path: 'guide-acompo',loadChildren: () => import('./yguide-acompo/yguide-acompo.module').then(m => m.YguideAcompoModule)},
 ng g c yguide-acompo/astat-test
