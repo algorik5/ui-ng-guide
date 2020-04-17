@@ -39,3 +39,19 @@ date-fns 포맷,addday,after...
 cdkportal
 data?.name
 ngswitch,ngifelse
+
+
+# ======================== ng9 특징
+- providedin
+- youtupeplayer,googlemaps
+- (ts) optional chaing --- data.person?.id
+- localize
+
+# ======================== ng9 upgrade
+=== cli
+npm install -g @angular/cli
+=== 프로젝트
+ng update @angular/core@8 @angular/cli@8 	<< ng8최신
+ng update @angular/core @angular/cli		<< ng9
+ng update									<< 모든항목 update
+
