@@ -1,8 +1,9 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, Directive } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter,map } from 'rxjs/operators';
 import { AaloggingService } from './aalogging.service';
 
+//ng9 @Directive()
 @Injectable({
   providedIn: 'root'
 })
