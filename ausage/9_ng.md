@@ -56,5 +56,6 @@ ng update @angular/core @angular/cli		<< ng9
 ng update									<< 모든항목 update (cdk,zorro,rxjs,express-engine...)
 rm -rf package-lock.json node_modules
 npm install
+npm install monaco-editor@latest			<< 0.20
 ng serve
 === 에러수정

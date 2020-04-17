@@ -17,7 +17,7 @@ export class InputoutputChildComponent implements OnInit,OnDestroy,OnChanges {
   @Output() fireEvent : EventEmitter<number> = new EventEmitter();
 
   //////////////////// (잘안됨-무시) 외부 - 양방향 (getter,setter) --- [(countdown)]=mycountdown
-  private countdown = -1;
+  countdown = -1;
   // @Input() get countdown () { return this.countdowntemp; }
   // @Output() countdownEvent : EventEmitter<number> = new EventEmitter();
   // @Input() set countdown (val) { this._countdown = val; }//this.countdownEvent.emit(this.countdowntemp); }

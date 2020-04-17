@@ -186,4 +186,10 @@ export class DblocalComponent implements OnInit {
   //   this.pubsub.pub(this.topicprefix+".data",data);//this.table.addDatas(data);
   // }
 
+
+
+
+
+
+  test_stat_title2 = "";
 }

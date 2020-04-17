@@ -15,5 +15,13 @@ export class ProfileComponent implements OnInit {
 	email?: string = "email";
 	name?: string = "name";
 	role?: string = "role";
-	banned?: string | boolean = true;
+  banned?: string | boolean = true;
+ 
+  
+
+
+
+
+  onChange(){}
+  onChangeDebounced(){}
 }

@@ -21,4 +21,18 @@ export class UsertableComponent implements OnInit {
   ];
 
   pageSize = 1;
+
+
+
+
+
+  pageIndex = 1;
+
+  sort(event) {}
+  update1(b) {}
+  update() {}
+
+  refreshing = "";
+  refreshingDelay = "";
+  onSignIn(){}
 }

@@ -15,5 +15,12 @@ export class UserfilterComponent implements OnInit {
 	email?: string = "email";
 	name?: string = "name";
 	role?: string = "role";
-	banned?: string | boolean = true;
+  banned?: string | boolean = true;
+  
+
+
+  onSubmit(){}
+  onChange(){}
+  update(b){}
+  onChangeDebounced(){}
 }

@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   selector: 'app-view-form-hapify',
   template: `
   <h3>app-view-form-hapify</h3>
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="fromSubmit()">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="formSubmit()">
   <nz-form-item>
       <nz-form-label>{{ 'user' }}</nz-form-label>
       <input nz-input formControlName="userName" class="w-100" (keyup)="onChangeDebounced()" [placeholder]="'common_value-string'"/>
@@ -53,5 +53,8 @@ export class ViewFormHapifyComponent implements OnInit {
   {
     
   }
+  onChangeDebounced(){}
+  loading = "";
 
+  onChange(){}
 }

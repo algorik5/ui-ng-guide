@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AapubsubService } from 'src/app/aservice/aapubsub.service';
 import { AaloggingService } from 'src/app/aservice/aalogging.service';
-import { NzCopyToClipboardService, NzNotificationService } from 'ng-zorro-antd';
+import { NzNotificationService } from 'ng-zorro-antd';
+import { Clipboard } from "@angular/cdk/clipboard";
 import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AaflatdataService } from 'src/app/aservice/aaflatdata.service';
 })
 export class StompdbinsertDebugjsonviewComponent implements OnInit {
 
-  constructor(private pubsub: AapubsubService,private logging:AaloggingService,private clipboard:NzCopyToClipboardService,private noti:NzNotificationService
+  constructor(private pubsub: AapubsubService,private logging:AaloggingService,private clipboard:Clipboard,private noti:NzNotificationService
     ,private flatdata:AaflatdataService) {}
 
   topicprefix = "stompdbinsert.debugjsonview";//this.topicprefix+".datas"

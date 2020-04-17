@@ -32,4 +32,11 @@ export class LayoutInputComponent implements OnInit,OnDestroy,OnChanges {
     // this.logging.debug("msgtables_change==="+ JSON.stringify(msgtables));
   }
 
+
+  buttonStatus = "";
+  buttonStatusClick() {}
+
+  inputValue = "";
+
+  savelocalstorage() {}
 }

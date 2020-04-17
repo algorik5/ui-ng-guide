@@ -5,8 +5,11 @@
 # 소수점 : [nzValue]="11.28 | number: '1.0-2'"
 
 # clipboard (참고-guide/jsonview)
-- private clipboard:NzCopyToClipboardService
-- this.clipboard.copy(JSON.stringify(this.debugjsondata))
+- (v9에서 제거) private clipboard:NzCopyToClipboardService < this.clipboard.copy(JSON.stringify(this.debugjsondata))
+- cdk로 변경 
+  - import {ClipboardModule} from '@angular/cdk/clipboard';
+  - (1-directive) CdkCopyToClipboard >>> <button cdkCopyToClipboard="...
+  - (2-service) Clipboard >>> private clipboard: Clipboard >>> this.clipboard.copy(... >>> import { Clipboard } from "@angular/cdk/clipboard"
 
 # 참고 - table
 - 헤더고정(y값) - [nzScroll]="{ y: '400px' }" <<< scroll들어가면 헤더자동고정됨

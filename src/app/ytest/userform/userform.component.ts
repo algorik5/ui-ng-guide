@@ -40,4 +40,13 @@ export class UserformComponent implements OnInit {
 		});
 
   }
+
+
+
+
+
+  onSubmit(){}
+  loading = "";
+  update(){}
+  
 }

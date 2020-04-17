@@ -14,4 +14,9 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+
+
+
+
+  onSignIn(){}
 }

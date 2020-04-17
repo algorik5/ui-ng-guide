@@ -18,6 +18,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import {TreeTableModule} from 'primeng/treetable';
 // import { ClipboardModule } from '@angular/cdk/clipboard'
 import {NgPipesModule} from 'ngx-pipes';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 registerLocaleData(en);
 
@@ -28,7 +29,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,
+    FormsModule,ReactiveFormsModule,NgZorroAntdModule,NgxEchartsModule,NzCodeEditorModule,NgxJsonViewerModule,ScrollingModule,TreeTableModule,NgPipesModule,ClipboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule

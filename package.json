@@ -42,7 +42,7 @@
     "defiant.js": "^2.2.6",
     "echarts": "^4.6.0",
     "express": "^4.15.2",
-    "monaco-editor": "^0.17.1",
+    "monaco-editor": "^0.20.0",
     "ng-zorro-antd": "^9.0.1",
     "ngx-echarts": "^4.2.2",
     "ngx-json-viewer": "^2.4.0",

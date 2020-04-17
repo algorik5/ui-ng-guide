@@ -59,4 +59,12 @@ export class AtableTestComponent implements OnInit {
     this.pubsub.pub(this.myname+".tablecheckall",this.test_checkedall);//this.table.changeColumnShow("host");
   }
 
+
+
+
+  createtable(){}
+  testinsert(){}
+  testselect(){}
+  inputValue = "";
+  savelocalstorage(){}
 }

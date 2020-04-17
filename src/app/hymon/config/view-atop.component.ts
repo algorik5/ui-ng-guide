@@ -6,23 +6,24 @@ import { AanatsService } from 'src/app/aservice/aanats.service';
 @Component({
   selector: 'app-view-atop',
   template: `
-  <nz-input-group [nzSize]="'medium'">
-   <div nz-col nzSpan="1"> <i nz-icon [nzType]="'arrow-left'" (click)="leftClick()"></i> </div>
-   <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
+  <nz-input-group [nzSize]="'default'"> 
+    <div nz-row nzGutter="8">
+      <div nz-col nzSpan="1"> <i nz-icon [nzType]="'arrow-left'" (click)="leftClick()"></i> </div>
+      <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
 
-    
-    <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="url" /> </div>
-    <div nz-col nzSpan="7">
-      <nz-select [(ngModel)]="topic" nzAllowClear nzShowSearch nzPlaceHolder="Choose" style="width:100%">
-        <nz-option *ngFor="let value of topiclist" [nzLabel]="value" [nzValue]="value"></nz-option>
-      </nz-select>
+      <div nz-col nzSpan="4"> <input type="text" nz-input [(ngModel)]="url" /> </div>
+      <div nz-col nzSpan="7">
+        <nz-select [(ngModel)]="topic" nzAllowClear nzShowSearch nzPlaceHolder="Choose" style="width:100%">
+          <nz-option *ngFor="let value of topiclist" [nzLabel]="value" [nzValue]="value"></nz-option>
+        </nz-select>
+      </div>
+      <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substart()">sub</button> </div>
+      <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substop()">connect</button> </div>
+      <div nz-col nzSpan="3"> <input type="text" nz-input [(ngModel)]="recv" [disabled]="true"/></div>
+
+      <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
+      <div nz-col nzSpan="1"> <i nz-icon [nzType]="'arrow-right'" (click)="rightClick()"></i> </div>
     </div>
-    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substart()">sub</button> </div>
-    <div nz-col nzSpan="3"> <button nz-button nzType="dashed" (click)="substop()">connect</button> </div>
-    <div nz-col nzSpan="3"> <input type="text" nz-input [(ngModel)]="recv" [disabled]="true"/></div>
-
-    <div nz-col nzSpan="1"> <nz-divider nzType="vertical"></nz-divider> </div>
-    <div nz-col nzSpan="1"> <i nz-icon [nzType]="'arrow-right'" (click)="rightClick()"></i> </div>
   </nz-input-group> 
   `,
   styles: []

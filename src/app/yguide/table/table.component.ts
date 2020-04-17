@@ -71,8 +71,8 @@ export class TableComponent implements OnInit {
     this.logging.debug("======= buttonStatusClick # "+ this.buttonStatus);
   }
 
-
-
+  createtable(){}
+  savelocalstorage(){}
 
 
 
@@ -100,4 +100,13 @@ export class TableComponent implements OnInit {
   test_checkable = false; test_check() { this.test_checkable = this.test_checkable?false:true; this.checkable = this.test_checkable; }
   test_checkedall = false; test_checkall() { this.test_checkedall = this.test_checkedall?false:true; ArrayUtil.setColumnValue(this.table.getData(),"checked",this.test_checkedall); }
 
+
+
+
+
+
+
+  inputValue = "";
+  testselect(){}
+  testinsert(){}
 }
