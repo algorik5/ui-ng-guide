@@ -1,4 +1,10 @@
 
+================== 배포판 만들기
+
+
+
+
+
 ================== TODO
 읽어보기
 	http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8554017

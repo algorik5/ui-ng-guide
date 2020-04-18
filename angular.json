@@ -162,9 +162,9 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
-            ,              "optimization": true
-}
+              ],
+              "optimization": true
+            }
           }
         },
         "serve-ssr": {
@@ -224,5 +224,8 @@
       }
     }
   },
-  "defaultProject": "ui-ng-guide"
+  "defaultProject": "ui-ng-guide",
+  "cli": {
+    "analytics": false
+  }
 }
