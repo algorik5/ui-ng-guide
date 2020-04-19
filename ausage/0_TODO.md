@@ -7,6 +7,25 @@ confluence - 산출물 링크
 	***https://medium.com/plustv/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85-%EA%B0%99%EC%9D%B4-%EC%9D%BC%ED%95%98%EB%8A%94-%EB%8A%A5%EB%A0%A5-%EA%B8%B0%EB%A5%B4%EA%B8%B0-feat-attlasian-c3a55ff4eb5a	
 	https://www.eventservice.kr/atlassian/file/1207_Atlassian_busan_HandsOnLabs01.pdf
 
+=== PM - 프로젝트 생성(==1제품)
+=== PM - epic > story > task 생성 > task에 설명달고 개발자 배분
+=== 개발자 - task를 in process로 변경 > 주기적으로 update > 완료시 resolve
+=== PM - close
+============ 문서
+https://uxd.team.handstudio.net/post/64286399069/jira%EB%A5%BC-%ED%86%B5%ED%95%B4-%ED%94%84%EB%A1%9C%ED%8E%98%EC%85%94%EB%84%90%ED%95%98%EA%B2%8C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%98%91%EC%97%85%ED%95%98%EA%B8%B0
+http://melonicedlatte.com/softwareengineering/2017/10/15/212131.html
+https://www.slideshare.net/ssuser800974/jira-98019877
+https://www.eventservice.kr/atlassian/file/1207_Atlassian_busan_HandsOnLabs03.pdf
+https://smallake.kr/?p=19559
+
+=jira간트 : https://www.lesstif.com/jira/jira-wbs-big-gantt-36209441.html
+
+(component:논리그룹=sub project,epic : 스토리묶음,story : 요구사항,개발대상task : 할일)
+
+
+
+
+
 
 
 ================== 배포판 만들기 - ng-zorro-universal-starter
