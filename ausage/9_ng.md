@@ -10,6 +10,8 @@
 - [name]="'val'" 가능 <<< boolean/int는 [name]="true">>>
 - 주의-nginit순서 > 부모부터 ngInit > 자신 ngInit ....
 - (template string) `xxx` <<< multi line(`) <<< `${var}`
+=== <input #myname... <button (click)="click(myname.value) <<< #사용하여 dom을 지역변수처럼 접근
+= ActivatedRoute : 파라미터받기 (this.route.params.subscribe(params)
 
 
 # service 싱글턴 제거 (https://poiemaweb.com/angular-service) *** https://angular.io/guide/singleton-services ***https://angular.io/guide/providers

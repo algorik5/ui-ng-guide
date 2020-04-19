@@ -1,14 +1,25 @@
 
-================== 배포판 만들기
+================== 프로젝트 관리툴 -taskworld(유료)
+jira칸반(또는 trello) - 1주 계획(월~목,금:평가/보완)
+confluence - 산출물 링크
+카톡 - 채팅
+기타 - jira간트...
+	***https://medium.com/plustv/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85-%EA%B0%99%EC%9D%B4-%EC%9D%BC%ED%95%98%EB%8A%94-%EB%8A%A5%EB%A0%A5-%EA%B8%B0%EB%A5%B4%EA%B8%B0-feat-attlasian-c3a55ff4eb5a	
+	https://www.eventservice.kr/atlassian/file/1207_Atlassian_busan_HandsOnLabs01.pdf
 
 
+
+================== 배포판 만들기 - ng-zorro-universal-starter
+업그레이드 9 - ng/zorro
+템플릿 코드
+app/페이지명
 
 
 
 ================== TODO
 읽어보기
-	http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8554017
 	https://angular-2-training-book.rangle.io/modules/shared-modules-di
+
 
 
 ================== hymon 구현
@@ -19,6 +30,20 @@
 
 
 
+=== ngrx store...
+simple > https://dzone.com/articles/ngrx-with-redux-in-angular
+https://doyoungan.github.io/react-vue-angular-redux/
+https://pcconsoleoraksil.tistory.com/304
+https://ngrx.io/guide/store
+https://mobicon.tistory.com/567
+https://soon-devblog.tistory.com/17
+https://medium.com/pplink/ngrx-architecture%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-angular-%EC%95%B1%EC%9D%84-%EB%8D%94-%EA%B8%B0%EB%B6%84-%EC%A2%8B%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-9182c582a113
+
+
+ng강의자료
+	http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8554017
+	https://angular.kr/start
+	https://poiemaweb.com/ (js)
 
 
 
