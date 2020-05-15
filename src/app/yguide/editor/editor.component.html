@@ -3,7 +3,7 @@
     2. ts : typescript_text 복사<br>
     참고.설치과정<br>
         -문서 -  https://ng.ant.design/experimental/code-editor/en<br>
-        -npm install monaco-editor@0.17.1 (zorro사용) <<< ambient context(20버젼에러)<br>
+        -npm install monaco-editor@latest (zorro사용) <<< (ng8에러 - ambient context(20버젼에러) - 0.17사용) <br>
         -styles.less > @import "../node_modules/ng-zorro-antd/code-editor/style/entry.less";<br>
         -angular.json >  z "glob": "**/*","input": "./node_modules/monaco-editor/min/vs","output": "/assets/vs/" z<br>
         -xxx.module.ts 	import z NzCodeEditorModule z  from 'ng-zorro-antd/code-editor'<br>
@@ -17,18 +17,18 @@
 <nz-collapse> 
     <nz-collapse-panel [nzHeader]="'json'" [nzActive]="'true'" [nzDisabled]="'false'"> 
         <nz-card> 
-            <nz-code-editor style="height:100px;" [ngModel]="json_text" [nzEditorOption]="{ language: 'json' }">sss</nz-code-editor>
+            <nz-code-editor style="height:100px;" [(ngModel)]="json_text" [nzEditorOption]="{ language: 'json' }">sss</nz-code-editor>
         </nz-card> 
     </nz-collapse-panel> 
 
     <nz-collapse-panel [nzHeader]="'typescript'" [nzActive]="'true'" [nzDisabled]="'false'"> 
         <nz-card> 
-            <nz-code-editor style="height:100px;" [ngModel]="typescript_text" [nzEditorOption]="{ language: 'typescript' }"></nz-code-editor>
+            <nz-code-editor style="height:100px;" [(ngModel)]="typescript_text" [nzEditorOption]="{ language: 'typescript' }"></nz-code-editor>
         </nz-card> 
     </nz-collapse-panel> 
     <nz-collapse-panel [nzHeader]="'markdown'" [nzActive]="'true'" [nzDisabled]="'false'"> 
         <nz-card> 
-            <nz-code-editor style="height:100px;" [ngModel]="markdown_text" [nzEditorOption]="{ language: 'markdown' }"></nz-code-editor>
+            <nz-code-editor style="height:100px;" [(ngModel)]="markdown_text" [nzEditorOption]="{ language: 'markdown' }"></nz-code-editor>
         </nz-card> 
     </nz-collapse-panel> 
 
