@@ -62,6 +62,7 @@ ngswitch,ngifelse
 
 # ======================== ng9 upgrade
 	좀 느려짐
+=== node 업그레이드 (14 or 15)
 === cli
 npm install -g @angular/cli
 === 프로젝트
