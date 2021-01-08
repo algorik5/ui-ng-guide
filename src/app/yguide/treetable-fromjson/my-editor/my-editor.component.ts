@@ -25,7 +25,7 @@ export class MyEditorComponent implements OnInit {
   changeTheme()
   {
     if(this.dark==true) this.dark=false; else this.dark=true;
-    this.nzCodeEditorService.updateDefaultOption({ theme: this.dark ? 'vs-dark' : 'vs' });
+    this.nzCodeEditorService./** TODO(NG-ZORRO V10) updateDefaultOption is deprecated, Please use `set` of `NzConfigService` instead. **/updateDefaultOption({ theme: this.dark ? 'vs-dark' : 'vs' });
   }
 
   ///////////////////////////////////////////// test
