@@ -67,8 +67,7 @@
               "./node_modules/flatted/min.js",
               "./node_modules/defiant.js/dist/defiant.js",
               "./node_modules/alasql/dist/alasql.min.js"
-            ],
-            "es5BrowserSupport": true
+            ]
           },
           "configurations": {
             "production": {
