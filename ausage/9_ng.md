@@ -62,13 +62,14 @@ ngswitch,ngifelse
 
 # ======================== ng9 upgrade
 	좀 느려짐
-=== node 업그레이드 (14 or 15)
+=== node 업그레이드 (14 or 15) (Unknown error: SyntaxError: Unexpected token 'export')
 === cli
 npm install -g @angular/cli
 === 프로젝트
 ng update @angular/core@8 @angular/cli@8 	<< ng8최신
 - git commit/push
 ng update @angular/core @angular/cli		<< ng9
+- --force (Migration failed: Incompatible peer dependencies found.)
 ng update									<< 모든항목 update (cdk,zorro,rxjs,express-engine...)
 rm -rf package-lock.json node_modules
 npm install
